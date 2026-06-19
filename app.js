@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navScore = document.getElementById("nav-score");
   const navAcc = document.getElementById("nav-acc");
   const progressBar = document.getElementById("progressBar");
+  const mainContent = document.querySelector(".main-content");
   
   const questionPanel = document.getElementById("questionPanel");
   const qBadge = document.getElementById("qBadge");
@@ -209,6 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderQuestion() {
+    mainContent.scrollTop = 0;
     feedbackStrip.style.display = "none";
     nextBtn.style.display = "none";
     skipBtn.style.display = "block";
