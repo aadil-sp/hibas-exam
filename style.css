@@ -220,9 +220,8 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 .option-btn.wrong .option-letter { background: var(--red); color: #fff; }
 
 .option-btn.reveal {
-  border-color: var(--green); background: #22c55e0d; opacity: .7;
+  opacity: 0.4;
 }
-.option-btn.reveal .option-letter { background: var(--green); color: #fff; }
 
 .option-btn:disabled { cursor: default; }
 

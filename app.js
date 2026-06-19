@@ -326,22 +326,21 @@ document.addEventListener("DOMContentLoaded", () => {
       feedbackStrip.className = "feedback-strip fb-correct";
       const randomMotivation = MOTIVATIONS[Math.floor(Math.random() * MOTIVATIONS.length)];
       feedbackStrip.innerHTML = `<strong>✓ Correct!</strong><br>${randomMotivation}`;
-      notesPanel.style.display = "none";
     } else {
       feedbackStrip.className = "feedback-strip fb-wrong";
       const randomEncouragement = ENCOURAGEMENTS[Math.floor(Math.random() * ENCOURAGEMENTS.length)];
       feedbackStrip.innerHTML = `<strong>✗ Incorrect</strong><br>${randomEncouragement}`;
-      
-      // Populate and show notes panel side-by-side or below
-      notesBody.innerHTML = q.notes || "No explanation notes available for this question.";
-      notesPanel.style.display = "block";
-      
-      // Auto-scroll on phone to see the note
-      if (window.innerWidth < 768) {
-        setTimeout(() => {
-          notesPanel.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
-      }
+    }
+
+    // Always show explanation notes on the side / below
+    notesBody.innerHTML = q.notes || "No explanation notes available for this question.";
+    notesPanel.style.display = "block";
+
+    // Auto-scroll on phone to see the note
+    if (window.innerWidth < 768) {
+      setTimeout(() => {
+        notesPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
     }
   }
 
