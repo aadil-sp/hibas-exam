@@ -320,3 +320,34 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
   .notes-panel { width: 320px; flex-shrink: 0; position: sticky; top: 0; }
   .question-text { font-size: 17px; }
 }
+
+/* ── FLOATING RESET BUTTON ── */
+.float-reset-btn {
+  position: fixed;
+  bottom: calc(var(--stats-h) + 14px);
+  right: 14px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+  padding: 10px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+.float-reset-btn:hover {
+  background: #ef444415;
+  border-color: #ef444466;
+  color: var(--red);
+  transform: translateY(-2px);
+}
+.float-reset-btn:active {
+  transform: translateY(0);
+}

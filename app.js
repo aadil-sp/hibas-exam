@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const notesBody = document.getElementById("notesBody");
   const notesClose = document.getElementById("notesClose");
   const resetBtn = document.getElementById("resetBtn");
+  const floatResetBtn = document.getElementById("floatResetBtn");
 
   // Bottom Stats
   const statAnswered = document.getElementById("statAnswered");
@@ -393,28 +394,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Reset Session
-  resetBtn.addEventListener("click", () => {
-    if (confirm("Are you sure you want to reset your practice session? This will clear your current score and progress.")) {
-      stats = {
-        correct: 0,
-        wrong: 0,
-        skipped: 0,
-        answeredIndices: {}
-      };
-      saveStats();
-      activeSection = "all";
-      activeTopic = "all";
-      
-      // Reset sidebar styles
-      navList.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
-      navList.querySelector('[data-section="all"]').classList.add("active");
-      sectionLabel.textContent = "All Topics";
-      
-      initApp();
+  // Reset and Shuffle Logic
+  function performResetAndShuffle() {
+    stats = {
+      correct: 0,
+      wrong: 0,
+      skipped: 0,
+      answeredIndices: {}
+    };
+    saveStats();
+
+    // Shuffle QUESTIONS array in-place
+    for (let i = QUESTIONS.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = QUESTIONS[i];
+      QUESTIONS[i] = QUESTIONS[j];
+      QUESTIONS[j] = temp;
+    }
+
+    activeSection = "all";
+    activeTopic = "all";
+    
+    // Reset sidebar styles
+    navList.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
+    navList.querySelector('[data-section="all"]').classList.add("active");
+    sectionLabel.textContent = "All Topics";
+    
+    initApp();
+  }
+
+  function handleResetClick() {
+    if (confirm("Are you sure you want to reset your practice session? This will clear your current score and shuffle all 500+ questions.")) {
+      performResetAndShuffle();
       closeSidebar();
     }
-  });
+  }
+
+  resetBtn.addEventListener("click", handleResetClick);
+  floatResetBtn.addEventListener("click", handleResetClick);
 
   // --- INITIAL RUN ---
   initApp();
