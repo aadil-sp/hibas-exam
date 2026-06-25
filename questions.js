@@ -6666,4 +6666,605 @@ const QUESTIONS = [
     "answer": 3,
     "notes": "Above 8 km, the poles start warming up and become warmer than the equator (since the equator's tropopause is much higher and colder). Thus, there is a reversal of temperature and density, meaning the lapse rate reverses at the poles and becomes negative."
   }
+,
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "What is the percentage of Argon (Ar) in clean, dry air by volume?",
+    "options": [
+      "0.035%",
+      "0.93%",
+      "20.95%"
+    ],
+    "answer": 1,
+    "notes": "Argon is a permanent gas in the atmosphere, constituting approximately 0.93% of clean, dry air by volume."
+  },
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "By weight, the approximate ratio of Oxygen to Nitrogen in the atmosphere is ..........",
+    "options": [
+      "1:4",
+      "1:3",
+      "1:5"
+    ],
+    "answer": 1,
+    "notes": "While the ratio of Oxygen to Nitrogen by volume is approximately 1:4 (21% to 78%), the ratio by weight is approximately 1:3 due to molecular mass differences."
+  },
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "By volume, the approximate ratio of Oxygen to Nitrogen in the atmosphere is ..........",
+    "options": [
+      "1:4",
+      "1:3",
+      "1:5"
+    ],
+    "answer": 0,
+    "notes": "By volume, Oxygen and Nitrogen constitute almost 99% of the air in an approximate ratio of 1:4 (or 21% Oxygen to 78% Nitrogen)."
+  },
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "Up to what height does the atmosphere maintain a nearly similar and well-mixed chemical composition, known as the Homosphere?",
+    "options": [
+      "Up to 50 km",
+      "Up to 80 km",
+      "Up to 10,000 km"
+    ],
+    "answer": 1,
+    "notes": "Due to Earth's gravitation and turbulent mixing, the atmosphere has a nearly uniform composition up to about 80 km, which is called the Homosphere. Above 80 km is the Heterosphere."
+  },
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "What percentage of the total atmospheric mass lies within the first 16 km from the Earth's surface?",
+    "options": [
+      "50%",
+      "80%",
+      "99%"
+    ],
+    "answer": 1,
+    "notes": "Although the atmosphere is about 480 km thick, about 80% of its total mass is concentrated within the first 16 km due to gravitational compression."
+  },
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "What is the approximate total thickness of the Earth's atmosphere before it merges into outer space?",
+    "options": [
+      "100 km",
+      "480 km",
+      "10,000 km"
+    ],
+    "answer": 1,
+    "notes": "The Earth's atmosphere is approximately 480 km thick, though it has no exact ending boundary and just gets thinner and thinner."
+  },
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "Which of the following is a physical characteristic of the atmosphere?",
+    "options": [
+      "It is a highly efficient conductor of electricity",
+      "It is a poor conductor of heat and electricity",
+      "It has a definite shape and is incompressible"
+    ],
+    "answer": 1,
+    "notes": "The atmosphere has weight, exerts pressure, is compressible and expandable, has no definite shape, is highly mobile, and is a poor conductor of both heat and electricity."
+  },
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "In the tropics (23.5\u00b0N to 23.5\u00b0S), air can hold as much as what percentage of water vapour by volume?",
+    "options": [
+      "1%",
+      "2%",
+      "4%"
+    ],
+    "answer": 2,
+    "notes": "In warm tropical climates, air is highly capable of holding moisture and can hold up to 4% water vapour by volume. At the poles, it is almost negligible."
+  },
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "What is the Relative Humidity (RH) of air that is fully saturated with 4% water vapour by volume?",
+    "options": [
+      "50%",
+      "100%",
+      "4%"
+    ],
+    "answer": 1,
+    "notes": "Saturated air holds the maximum possible water vapour for its temperature and has a Relative Humidity (RH) of exactly 100%. Unsaturated air has RH < 100% and is called Dry Air."
+  },
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "Due to gravitational attraction, approximately what fraction of the atmospheric air mass is contained below 10 km?",
+    "options": [
+      "1/2",
+      "3/4",
+      "99%"
+    ],
+    "notes": "The vertical distribution of air mass is: below 6 km (approx 20,000 ft) is 1/2 (50%), below 10 km is 3/4 (75%), and below 35 km is 99%.",
+    "answer": 1
+  },
+  {
+    "section": "met",
+    "topic": "Composition & Structure",
+    "question": "Due to gravitational attraction, approximately what percentage of the atmospheric air mass is contained below 35 km?",
+    "options": [
+      "75%",
+      "90%",
+      "99%"
+    ],
+    "answer": 2,
+    "notes": "Approximately 99% of the total atmospheric mass is contained below 35 km. Above this height, the air is extremely thin."
+  },
+  {
+    "section": "met",
+    "topic": "Thermal Structure & Heat",
+    "question": "What percentage of the heat flow from the Earth's surface to the atmosphere is transferred via Latent Heat processes?",
+    "options": [
+      "23%",
+      "50%",
+      "77%"
+    ],
+    "answer": 2,
+    "notes": "Latent heat (evaporation, condensation, sublimation) is the primary driver of heat transfer, accounting for 77% of the heat flow. Sensible heat (conduction, convection, radiation) accounts for 23%."
+  },
+  {
+    "section": "met",
+    "topic": "Thermal Structure & Heat",
+    "question": "What percentage of the heat flow from the Earth's surface to the atmosphere is transferred via Sensible Heat (conduction, convection, radiation)?",
+    "options": [
+      "23%",
+      "77%",
+      "100%"
+    ],
+    "answer": 0,
+    "notes": "Sensible heat processes account for 23% of the heat transfer into the atmosphere, while the remaining 77% is transferred via latent heat."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "What is the average temperature lapse rate in the troposphere?",
+    "options": [
+      "6.5\u00b0C per km",
+      "2.0\u00b0C per km",
+      "1.98\u00b0C per km"
+    ],
+    "answer": 0,
+    "notes": "As ascending hot air gradually cools, temperatures in the troposphere fall with height at an average rate of 6.5\u00b0C/km, known as the lapse rate."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "What is the average temperature lapse rate in the troposphere in terms of feet?",
+    "options": [
+      "1.98\u00b0C per 1000 ft",
+      "3.5\u00b0C per 1000 ft",
+      "2\u00b0C per 1000 m"
+    ],
+    "answer": 0,
+    "notes": "The standard average lapse rate in the troposphere is 1.98\u00b0C per 1000 ft (often rounded to 2\u00b0C per 1000 ft in quick pilot calculations)."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "Why is the tropopause height much higher at the equator than at the poles?",
+    "options": [
+      "Strong rising hot convection currents push it upwards",
+      "The Earth's rotation causes centrifugal bulge",
+      "Polar air incursions depress the equatorial atmosphere"
+    ],
+    "answer": 0,
+    "notes": "The equator is much warmer than the poles, creating strong ascending hot convection currents that push the tropopause higher (16-18 km at equator vs 8-10 km at poles)."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "What is the height of the tropopause at the poles?",
+    "options": [
+      "16-18 km",
+      "8-10 km",
+      "11.5 km"
+    ],
+    "answer": 1,
+    "notes": "At the poles, the tropopause is at a lower height, typically between 8 to 10 km (about 30,000 feet)."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "What is the height of the tropopause at the equator?",
+    "options": [
+      "8-10 km",
+      "16-18 km",
+      "11.5 km"
+    ],
+    "answer": 1,
+    "notes": "At the equator, the tropopause is at a higher altitude, typically between 16 to 18 km, due to warm surface temperatures and rising convection currents."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "Above what altitude do the poles start warming up and become warmer than the equator, creating a temperature reversal?",
+    "options": [
+      "5 km",
+      "8 km",
+      "11 km"
+    ],
+    "answer": 1,
+    "notes": "Because temperatures continue to fall up to the tropopause, and the equator tropopause is much higher and colder, the poles actually start warming up above 8 km and become warmer than the equator, resulting in a temperature and density reversal."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "The tropopause is discontinuous and features abrupt height changes (breaks/folds) at approximately which latitudes?",
+    "options": [
+      "30\u00b0 and 60\u00b0 latitude",
+      "40\u00b0 and 60\u00b0 latitude",
+      "30\u00b0 and 50\u00b0 latitude"
+    ],
+    "answer": 1,
+    "notes": "The tropopause has two prominent regions of abrupt height changes (breaks or folds), which occur near 40\u00b0 and 60\u00b0 latitude. The break at 40\u00b0 latitude is more prominent."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "What significant meteorological feature is found at the tropopause breaks?",
+    "options": [
+      "Tropical cyclones",
+      "Jet streams",
+      "Trade winds"
+    ],
+    "answer": 1,
+    "notes": "Jet streams occur at the breaks or folds of the tropopause where there are strong horizontal temperature and pressure gradients."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "In India, the Middle Tropopause is typically found at what height?",
+    "options": [
+      "16-16.5 km",
+      "11.5 km",
+      "8 km"
+    ],
+    "answer": 1,
+    "notes": "In India, the Middle Tropopause occurs near the 200 hPa level at a height of approximately 11.5 km (with a temperature of -45\u00b0C)."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "What is the typical temperature of the Middle Tropopause over India?",
+    "options": [
+      "-45\u00b0C",
+      "-70\u00b0C",
+      "-56.5\u00b0C"
+    ],
+    "answer": 0,
+    "notes": "Over India, the Middle Tropopause is found at ~11.5 km with a characteristic temperature of -45\u00b0C."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "Which jet stream is found at the southern end of the Middle Tropopause over India in winter?",
+    "options": [
+      "Polar Front Jet Stream",
+      "Subtropical Jetstream (STJ)",
+      "Tropical Easterly Jet"
+    ],
+    "answer": 1,
+    "notes": "The Subtropical Jetstream (STJ) occurs at the southern end of the Middle Tropopause, which in winter may descend to 23\u00b0N latitude over India."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "Over India, the Tropical Tropopause is found at a height of approximately:",
+    "options": [
+      "11.5 km",
+      "16-16.5 km",
+      "20 km"
+    ],
+    "answer": 1,
+    "notes": "The Tropical Tropopause over India is found at a height of approximately 16 to 16.5 km, usually at the 100 hPa level, extending from the equator to 35\u00b0-40\u00b0 latitude."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "The Tropical Tropopause usually occurs at which pressure level?",
+    "options": [
+      "300 hPa",
+      "200 hPa",
+      "100 hPa"
+    ],
+    "answer": 2,
+    "notes": "The Tropical Tropopause is usually located at the 100 hPa pressure level, representing the highest and coldest tropopause section."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "The Polar Tropopause typically occurs near which pressure level?",
+    "options": [
+      "300 hPa",
+      "200 hPa",
+      "100 hPa"
+    ],
+    "answer": 0,
+    "notes": "The Polar Tropopause is located near the 300 hPa pressure level, polewards of 45\u00b0 to 60\u00b0 latitude. In winter, polar air incursions can bring it over Srinagar."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "What is the temperature of the tropopause over the equator?",
+    "options": [
+      "-40\u00b0C to -45\u00b0C",
+      "-70\u00b0C to -75\u00b0C",
+      "-56.5\u00b0C"
+    ],
+    "answer": 1,
+    "notes": "Because the troposphere is thicker at the equator and temperature continues to fall, the tropopause over the equator is extremely cold: -70\u00b0C to -75\u00b0C (compared to -40\u00b0C to -45\u00b0C over the poles)."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "What is the temperature of the tropopause over the poles?",
+    "options": [
+      "-40\u00b0C to -45\u00b0C",
+      "-70\u00b0C to -75\u00b0C",
+      "-56.5\u00b0C"
+    ],
+    "answer": 0,
+    "notes": "Because the troposphere is thinner at the poles, the temperature stops falling at a lower altitude, making the polar tropopause warmer, around -40\u00b0C to -45\u00b0C."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "Which atmospheric boundary layer represents the maximum height to which clouds can reach?",
+    "options": [
+      "Stratopause",
+      "Tropopause",
+      "Mesopause"
+    ],
+    "answer": 1,
+    "notes": "The Tropopause acts as a strong thermal barrier that stops vertical cloud growth. It is the maximum height to which clouds (such as Cumulonimbus) can reach."
+  },
+  {
+    "section": "met",
+    "topic": "Troposphere & Tropopause",
+    "question": "Clear Air Turbulence (CAT) and maximum wind speeds are typically found:",
+    "options": [
+      "Just above the tropopause",
+      "Just below the tropopause",
+      "At the Earth's surface"
+    ],
+    "answer": 1,
+    "notes": "Clear Air Turbulence (CAT), jet streams, and maximum wind speeds occur just below the tropopause level."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "The Stratosphere extends from the tropopause up to a height of:",
+    "options": [
+      "80 km",
+      "50 km",
+      "30 km"
+    ],
+    "answer": 1,
+    "notes": "The Stratosphere extends from the tropopause boundary up to a height of 50 km from the Earth's surface, where it ends at the Stratopause."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "What is the temperature characteristic of the first 8-10 km of the Stratosphere?",
+    "options": [
+      "It decreases rapidly",
+      "It is isothermal (constant temperature)",
+      "It increases sharply"
+    ],
+    "answer": 1,
+    "notes": "The lowest 8 to 10 km of the Stratosphere is isothermal (constant temperature) before the temperature begins to rise slowly and then sharply."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "What causes the temperature inversion (warming with height) in the Stratosphere?",
+    "options": [
+      "Convection currents from the surface",
+      "Absorption of solar ultraviolet (UV) radiation by Ozone",
+      "Release of latent heat by cloud condensation"
+    ],
+    "answer": 1,
+    "notes": "Ozone ($O_3$) absorbs harmful solar ultraviolet (UV) radiation, which heats the stratosphere and produces a temperature inversion, safeguarding Earth from radiation."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "The ozone layer is concentrated in the Stratosphere, with its maximum concentration at what height?",
+    "options": [
+      "20 to 25 km",
+      "11 km",
+      "50 km"
+    ],
+    "answer": 0,
+    "notes": "Ozone is distributed between 10 and 50 km, but its maximum concentration is found at a height of 20 to 25 km (also referred to as 25 km)."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "What type of rare, iridescent clouds can sometimes be seen in the upper stratosphere at high latitudes during winter?",
+    "options": [
+      "Noctilucent Clouds",
+      "Nacreous Clouds (Mother of Pearl Clouds)",
+      "Cirrus Clouds"
+    ],
+    "answer": 1,
+    "notes": "Nacreous Clouds, or Mother of Pearl Clouds, are rare, glowing, colorful clouds seen in the upper stratosphere at high latitudes in winter."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "The Mesosphere extends from the Stratopause to what height from the Earth's surface?",
+    "options": [
+      "80 km",
+      "100 km",
+      "60 km"
+    ],
+    "answer": 0,
+    "notes": "The Mesosphere lies above the stratosphere, extending from 50 km (Stratopause) to 80 km (Mesopause)."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "Why do temperatures fall with height in the Mesosphere?",
+    "options": [
+      "Lack of solar radiation absorption and weak vertical mixing",
+      "Rising cold convection currents",
+      "Rapid expansion of dry air"
+    ],
+    "answer": 0,
+    "notes": "Because there is a lack of solar radiation absorption in this layer and weak vertical mixing, temperatures fall with height in the Mesosphere."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "What type of rare, glowing clouds are occasionally seen in the upper Mesosphere in polar regions?",
+    "options": [
+      "Nacreous Clouds",
+      "Noctilucent Clouds",
+      "Cumulonimbus Clouds"
+    ],
+    "answer": 1,
+    "notes": "Noctilucent Clouds are extremely high-altitude, ice-crystal clouds that glow in the night sky, occasionally seen in the polar regions of the upper Mesosphere."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "What is the temperature at the Mesopause (80 km), which represents the coldest region of the atmosphere?",
+    "options": [
+      "-56.5\u00b0C",
+      "-100\u00b0C (173.15 K)",
+      "-80\u00b0C"
+    ],
+    "answer": 1,
+    "notes": "The Mesopause at 80 km is the coldest region in the atmosphere, where temperatures stop falling and reach approximately -100\u00b0C (173.15 K)."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "In which layer of the atmosphere do most meteors burn up upon entry?",
+    "options": [
+      "Troposphere",
+      "Stratosphere",
+      "Mesosphere"
+    ],
+    "answer": 2,
+    "notes": "Meteors burn up due to friction with air molecules in the Mesosphere layer, near the Mesopause."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "The region above 60 km that is highly ionized by solar radiation and crucial for long-distance radio wave propagation is called the:",
+    "options": [
+      "Homosphere",
+      "Ionosphere",
+      "Exosphere"
+    ],
+    "answer": 1,
+    "notes": "The Ionosphere (located above 60 km, overlapping the thermosphere) contains ionized particles that reflect radio waves back to Earth, making radio propagation possible."
+  },
+  {
+    "section": "met",
+    "topic": "Upper Atmosphere",
+    "question": "The outermost layer of the atmosphere, extending up to 10,000 km, where atoms and molecules escape into space is the:",
+    "options": [
+      "Thermosphere",
+      "Exosphere",
+      "Stratosphere"
+    ],
+    "answer": 1,
+    "notes": "The Exosphere is the outermost layer extending to 10,000 km. The air is extremely thin and particles are far apart, so there is very little actual heat."
+  },
+  {
+    "section": "met",
+    "topic": "Standard Atmosphere (ISA/JSA)",
+    "question": "What is the Mean Sea Level (MSL) temperature specified by the ICAO International Standard Atmosphere (ISA)?",
+    "options": [
+      "15\u00b0C (288.15 K)",
+      "0\u00b0C",
+      "20\u00b0C"
+    ],
+    "answer": 0,
+    "notes": "The ICAO ISA specifies a standard Mean Sea Level (MSL) temperature of exactly 15\u00b0C, which is equal to 288.15 K."
+  },
+  {
+    "section": "met",
+    "topic": "Standard Atmosphere (ISA/JSA)",
+    "question": "What is the standard Mean Sea Level (MSL) pressure in the ICAO International Standard Atmosphere (ISA)?",
+    "options": [
+      "1000.00 hPa",
+      "1013.25 hPa",
+      "29.92 hPa"
+    ],
+    "answer": 1,
+    "notes": "The standard MSL pressure in the ICAO ISA is exactly 1013.25 hectopascals (hPa) or millibars."
+  },
+  {
+    "section": "met",
+    "topic": "Standard Atmosphere (ISA/JSA)",
+    "question": "What is the standard Mean Sea Level (MSL) air density in the ICAO International Standard Atmosphere (ISA)?",
+    "options": [
+      "1000 g/m\u00b3",
+      "1225 g/m\u00b3 (1.225 kg/m\u00b3)",
+      "800 g/m\u00b3"
+    ],
+    "answer": 1,
+    "notes": "The standard MSL air density in the ICAO ISA is exactly 1225 g/m\u00b3 (or 1.225 kg/m\u00b3)."
+  },
+  {
+    "section": "met",
+    "topic": "Standard Atmosphere (ISA/JSA)",
+    "question": "In the ICAO ISA model, what is the temperature lapse rate up to the tropopause height of 11 km (36,090 ft)?",
+    "options": [
+      "6.5\u00b0C per km (1.98\u00b0C per 1000 ft)",
+      "2.0\u00b0C per km (0.6\u00b0C per 1000 ft)",
+      "5.0\u00b0C per km (1.5\u00b0C per 1000 ft)"
+    ],
+    "answer": 0,
+    "notes": "The ISA model assumes a constant lapse rate of 6.5\u00b0C/km (or 1.98\u00b0C/1000 ft) up to 11 km (36,090 ft)."
+  },
+  {
+    "section": "met",
+    "topic": "Standard Atmosphere (ISA/JSA)",
+    "question": "In the ICAO ISA model, the temperature remains constant at -56.5\u00b0C in the isothermal layer between which altitudes?",
+    "options": [
+      "11 km and 20 km",
+      "11 km and 16 km",
+      "20 km and 30 km"
+    ],
+    "answer": 0,
+    "notes": "The ISA assumes an isothermal layer where temperature is constant at -56.5\u00b0C between 11 km and 20 km (65,617 ft)."
+  },
+  {
+    "section": "met",
+    "topic": "Standard Atmosphere (ISA/JSA)",
+    "question": "If the actual temperature at MSL is 25\u00b0C, what is the ISA deviation?",
+    "options": [
+      "ISA + 10\u00b0C",
+      "ISA - 10\u00b0C",
+      "ISA + 5\u00b0C"
+    ],
+    "answer": 0,
+    "notes": "ISA temperature at MSL is 15\u00b0C. Actual is 25\u00b0C. Deviation = Actual - ISA = 25 - 15 = +10\u00b0C, written as ISA + 10."
+  },
+  {
+    "section": "met",
+    "topic": "Standard Atmosphere (ISA/JSA)",
+    "question": "If the actual temperature at 2 km is -5\u00b0C, what is the ISA deviation?",
+    "options": [
+      "ISA - 5\u00b0C",
+      "ISA - 7\u00b0C",
+      "ISA + 3\u00b0C"
+    ],
+    "answer": 1,
+    "notes": "Standard ISA temperature at 2 km is: 15\u00b0C - (6.5\u00b0C/km * 2 km) = 2\u00b0C. Actual is -5\u00b0C. Deviation = Actual - ISA = -5 - 2 = -7\u00b0C, written as ISA - 7."
+  }
 ];
