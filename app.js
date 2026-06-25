@@ -1,32 +1,22 @@
 // ─────────────────────────────────────────
-// HIBA'S CPL PREP — APPLICATION ENGINE
+// CAPTAIN HIBA'S CPL PREP — APPLICATION ENGINE
 // ─────────────────────────────────────────
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- STATE ---
+  let activeSubject = "met"; // Default to Meteorology for tomorrow's exam
   let activeSection = "all";
   let activeTopic = "all";
   let currentQuestionIndex = 0;
   let filteredQuestions = [];
   
-  // Stats
+  // Subject-specific stats
   let stats = {
     correct: 0,
     wrong: 0,
     skipped: 0,
-    answeredIndices: {} // map of question ID to 'correct', 'wrong', 'skipped'
+    answeredIndices: {} // map of question key to status ('correct', 'wrong', 'skipped')
   };
-
-  // Load from LocalStorage if available
-  const savedStats = localStorage.getItem("cpl_prep_stats");
-  if (savedStats) {
-    try {
-      stats = JSON.parse(savedStats);
-      if (!stats.answeredIndices) stats.answeredIndices = {};
-    } catch (e) {
-      console.error("Error reading saved stats", e);
-    }
-  }
 
   // --- MOTIVATIONAL PHRASES ---
   const MOTIVATIONS = [
@@ -42,20 +32,29 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const ENCOURAGEMENTS = [
-    "It's okay! Read the quick note on the side and keep going. 📝",
+    "It's okay! Read the quick note below and keep going. 📝",
     "Mistakes are where we learn. You'll remember this for tomorrow!",
     "No worries, Captain. Review the explanation and press forward! 👍",
-    "A minor turbulence! Check the regulation below.",
+    "A minor turbulence! Check the flight log below.",
     "Almost! Every wrong answer now is a correct answer tomorrow! 🔮"
   ];
 
   // --- DOM ELEMENTS ---
+  const landingScreen = document.getElementById("landingScreen");
+  const btnSelectMet = document.getElementById("btnSelectMet");
+  const btnSelectRegs = document.getElementById("btnSelectRegs");
+  const cardMet = document.getElementById("cardMet");
+  const cardRegs = document.getElementById("cardRegs");
+  
   const hamburger = document.getElementById("hamburger");
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
   const closeBtn = document.getElementById("closeBtn");
   const navList = document.getElementById("navList");
+  const sectionContainer = document.getElementById("sectionContainer");
   const topicFilters = document.getElementById("topicFilters");
+  const sidebarSubLabel = document.getElementById("sidebarSubLabel");
+  const subjectLabel = document.getElementById("subjectLabel");
   const sectionLabel = document.getElementById("sectionLabel");
   const topScore = document.getElementById("topScore");
   const navScore = document.getElementById("nav-score");
@@ -77,12 +76,59 @@ document.addEventListener("DOMContentLoaded", () => {
   const notesClose = document.getElementById("notesClose");
   const resetBtn = document.getElementById("resetBtn");
   const floatResetBtn = document.getElementById("floatResetBtn");
+  const sidebarHomeBtn = document.getElementById("sidebarHomeBtn");
+  const topbarHomeBtn = document.getElementById("topbarHomeBtn");
+
+  // Switcher Buttons in Sidebar
+  const switchBtnMet = document.getElementById("switchBtnMet");
+  const switchBtnRegs = document.getElementById("switchBtnRegs");
 
   // Bottom Stats
   const statAnswered = document.getElementById("statAnswered");
   const statCorrect = document.getElementById("statCorrect");
   const statWrong = document.getElementById("statWrong");
   const statSkipped = document.getElementById("statSkipped");
+
+  // --- PERSISTENCE & LOAD ---
+  function getStatsKey(subject) {
+    return `cpl_prep_stats_${subject}`;
+  }
+
+  function loadSession(subject) {
+    activeSubject = subject;
+    localStorage.setItem("cpl_active_subject", subject);
+    
+    const savedStats = localStorage.getItem(getStatsKey(subject));
+    if (savedStats) {
+      try {
+        stats = JSON.parse(savedStats);
+        if (!stats.answeredIndices) stats.answeredIndices = {};
+      } catch (e) {
+        console.error("Error reading saved stats", e);
+        resetStatsObject();
+      }
+    } else {
+      resetStatsObject();
+    }
+
+    // Reset active filters on subject switch
+    activeSection = "all";
+    activeTopic = "all";
+    currentQuestionIndex = 0;
+  }
+
+  function resetStatsObject() {
+    stats = {
+      correct: 0,
+      wrong: 0,
+      skipped: 0,
+      answeredIndices: {}
+    };
+  }
+
+  function saveStats() {
+    localStorage.setItem(getStatsKey(activeSubject), JSON.stringify(stats));
+  }
 
   // --- MENU FUNCTIONS ---
   function toggleSidebar() {
@@ -99,6 +145,105 @@ document.addEventListener("DOMContentLoaded", () => {
   closeBtn.addEventListener("click", closeSidebar);
   overlay.addEventListener("click", closeSidebar);
 
+  // --- SUBJECT SWITCHERS ---
+  function setSubject(subject) {
+    loadSession(subject);
+    
+    // Update theme and UI labels
+    document.body.className = `subject-mode-${subject}`;
+    
+    if (subject === "met") {
+      sidebarSubLabel.textContent = "Meteorology";
+      subjectLabel.textContent = "Meteorology";
+      switchBtnMet.classList.add("active");
+      switchBtnRegs.classList.remove("active");
+      sectionContainer.style.display = "none"; // Hide sections list for Meteorology (rely on topic chips)
+    } else {
+      sidebarSubLabel.textContent = "Air Regulations";
+      subjectLabel.textContent = "Air Regulations";
+      switchBtnRegs.classList.add("active");
+      switchBtnMet.classList.remove("active");
+      sectionContainer.style.display = "block"; // Show sections list for Air Regulations
+      buildSectionNav();
+    }
+
+    sectionLabel.textContent = "All Topics";
+    
+    initApp();
+    closeSidebar();
+  }
+
+  switchBtnMet.addEventListener("click", () => setSubject("met"));
+  switchBtnRegs.addEventListener("click", () => setSubject("regs"));
+
+  // Landing page selectors
+  btnSelectMet.addEventListener("click", () => {
+    landingScreen.classList.add("hidden");
+    setSubject("met");
+  });
+
+  btnSelectRegs.addEventListener("click", () => {
+    landingScreen.classList.add("hidden");
+    setSubject("regs");
+  });
+
+  // Also make cards clickable for better experience
+  cardMet.addEventListener("click", (e) => {
+    if (e.target.tagName !== "BUTTON") {
+      landingScreen.classList.add("hidden");
+      setSubject("met");
+    }
+  });
+
+  cardRegs.addEventListener("click", (e) => {
+    if (e.target.tagName !== "BUTTON") {
+      landingScreen.classList.add("hidden");
+      setSubject("regs");
+    }
+  });
+
+  // Return to Home Deck (Subject Selector)
+  function showHomeSelector() {
+    landingScreen.classList.remove("hidden");
+    closeSidebar();
+  }
+
+  sidebarHomeBtn.addEventListener("click", showHomeSelector);
+  topbarHomeBtn.addEventListener("click", showHomeSelector);
+
+  // --- DYNAMIC SIDEBAR SECTIONS ---
+  function buildSectionNav() {
+    navList.innerHTML = "";
+    
+    const sections = [
+      { id: "all", label: "🌐 All Topics" },
+      { id: "icao", label: "📘 ICAO Standards" },
+      { id: "rules", label: "⚖️ Rules of the Air" },
+      { id: "ats", label: "🗼 Air Traffic Services" },
+      { id: "airspace", label: "🗺️ Airspace & Navigation" }
+    ];
+
+    sections.forEach(sec => {
+      const li = document.createElement("li");
+      li.className = `nav-item ${activeSection === sec.id ? "active" : ""}`;
+      li.dataset.section = sec.id;
+      li.textContent = sec.label;
+      
+      li.addEventListener("click", () => {
+        navList.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active"));
+        li.classList.add("active");
+        
+        activeSection = sec.id;
+        activeTopic = "all"; // Reset topic on section change
+        sectionLabel.textContent = sec.label;
+        
+        initApp();
+        closeSidebar();
+      });
+      navList.appendChild(li);
+    });
+  }
+
   // --- DATA FILTERING & INITIALIZATION ---
   function initApp() {
     buildTopicFilters();
@@ -107,11 +252,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function buildTopicFilters() {
-    // Collect all topics based on activeSection
+    // Collect all topics based on activeSubject and activeSection
     const topics = new Set();
     QUESTIONS.forEach(q => {
-      if (activeSection === "all" || q.section === activeSection) {
-        topics.add(q.topic);
+      const isMet = q.section === "met";
+      const matchesSubject = activeSubject === "met" ? isMet : !isMet;
+      
+      if (matchesSubject) {
+        if (activeSection === "all" || q.section === activeSection) {
+          topics.add(q.topic);
+        }
       }
     });
 
@@ -150,16 +300,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function filterQuestions() {
     filteredQuestions = QUESTIONS.filter(q => {
+      const isMet = q.section === "met";
+      const matchesSubject = activeSubject === "met" ? isMet : !isMet;
+      
       const matchesSec = activeSection === "all" || q.section === activeSection;
       const matchesTop = activeTopic === "all" || q.topic === activeTopic;
-      return matchesSec && matchesTop;
+      
+      return matchesSubject && matchesSec && matchesTop;
     });
 
     // Reset current question index to first unanswered question in this filter, or just 0 if all are answered
     currentQuestionIndex = 0;
     for (let i = 0; i < filteredQuestions.length; i++) {
       const q = filteredQuestions[i];
-      // Generate a stable key for this question to track answered status
       const qKey = getQuestionKey(q);
       if (!stats.answeredIndices[qKey]) {
         currentQuestionIndex = i;
@@ -169,16 +322,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getQuestionKey(q) {
-    // Generate a unique string for question identification
     return `${q.section}_${q.topic}_${q.question.substring(0, 30)}`;
   }
 
   // --- STATS & LOGIC ---
-  function saveStats() {
-    localStorage.setItem("cpl_prep_stats", JSON.stringify(stats));
-  }
-
   function updateUI() {
+    // Get total questions in the active subject (to accurately calculate overall progress)
+    const totalQsInSubject = QUESTIONS.filter(q => {
+      const isMet = q.section === "met";
+      return activeSubject === "met" ? isMet : !isMet;
+    }).length;
+
     // Update Stats Display
     const answeredCount = Object.keys(stats.answeredIndices).length;
     statAnswered.textContent = answeredCount;
@@ -201,8 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Progress bar
-    const totalQ = QUESTIONS.length;
-    const progressPct = totalQ > 0 ? (answeredCount / totalQ) * 100 : 0;
+    const progressPct = totalQsInSubject > 0 ? (answeredCount / totalQsInSubject) * 100 : 0;
     progressBar.style.width = `${progressPct}%`;
 
     // Render current question
@@ -214,18 +367,17 @@ document.addEventListener("DOMContentLoaded", () => {
     feedbackStrip.style.display = "none";
     nextBtn.style.display = "none";
     skipBtn.style.display = "block";
-    notesPanel.style.display = "none"; // Hide notes panel until wrong answer is clicked
+    notesPanel.style.display = "none";
 
     if (filteredQuestions.length === 0) {
-      questionText.textContent = "No questions found matching your filter criteria.";
+      questionText.textContent = "No training questions found matching this category.";
       optionsList.innerHTML = "";
       skipBtn.style.display = "none";
       return;
     }
 
     if (currentQuestionIndex >= filteredQuestions.length) {
-      // Loop back or show completion
-      questionText.textContent = "🎉 You have completed all questions in this category! Select another topic from the menu or reset session to start over.";
+      questionText.textContent = "🎉 Training cycle complete! You have completed all questions in this category. Choose another topic or reset the session to shuffle and restart.";
       optionsList.innerHTML = "";
       skipBtn.style.display = "none";
       return;
@@ -233,20 +385,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const q = filteredQuestions[currentQuestionIndex];
     qBadge.textContent = `Q ${currentQuestionIndex + 1} of ${filteredQuestions.length}`;
-    
-    // Friendly section mapping
-    const sectionNames = {
-      icao: "📘 ICAO Standards",
-      rules: "⚖️ Rules of the Air",
-      ats: "🗼 Air Traffic Services",
-      airspace: "🗺️ Airspace & Nav"
-    };
     qTopicTag.textContent = q.topic;
     questionText.textContent = q.question;
 
     optionsList.innerHTML = "";
     
-    // Check if user has already answered this question in this session
+    // Check if answered
     const qKey = getQuestionKey(q);
     const existingAnswer = stats.answeredIndices[qKey];
 
@@ -263,14 +407,10 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.appendChild(letterSpan);
       btn.appendChild(textNode);
 
-      // Disable button if already answered
       if (existingAnswer) {
         btn.disabled = true;
         if (idx === q.answer) {
           btn.classList.add("correct");
-        } else if (existingAnswer === "wrong" && idx !== q.answer) {
-          // If we want to show what the user clicked, but stats doesn't store exact clicked index,
-          // we just reveal the correct one. If they got it wrong, we highlight correct.
         }
       } else {
         btn.addEventListener("click", () => handleAnswerSelect(idx, btn));
@@ -317,7 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
     skipBtn.style.display = "none";
     nextBtn.style.display = "block";
 
-    // Immediate bottom stats update for satisfaction
+    // Immediate bottom stats update
     statAnswered.textContent = Object.keys(stats.answeredIndices).length;
     statCorrect.textContent = stats.correct;
     statWrong.textContent = stats.wrong;
@@ -335,11 +475,11 @@ document.addEventListener("DOMContentLoaded", () => {
       feedbackStrip.innerHTML = `<strong>✗ Incorrect</strong><br>${randomEncouragement}`;
     }
 
-    // Always show explanation notes on the side / below
+    // Always show notes
     notesBody.innerHTML = q.notes || "No explanation notes available for this question.";
     notesPanel.style.display = "block";
 
-    // Auto-scroll on phone to see the note
+    // Auto-scroll on mobile
     if (window.innerWidth < 768) {
       setTimeout(() => {
         notesPanel.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -372,41 +512,13 @@ document.addEventListener("DOMContentLoaded", () => {
     notesPanel.style.display = "none";
   });
 
-  // Section List Navigation
-  navList.querySelectorAll(".nav-item").forEach(item => {
-    item.addEventListener("click", () => {
-      navList.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
-      item.classList.add("active");
-      
-      activeSection = item.dataset.section;
-      activeTopic = "all"; // Reset topic on section change
-      
-      // Friendly labels
-      const sectionLabels = {
-        all: "🌐 All Topics",
-        icao: "📘 ICAO Standards",
-        rules: "⚖️ Rules of the Air",
-        ats: "🗼 Air Traffic Services",
-        airspace: "🗺️ Airspace & Navigation"
-      };
-      sectionLabel.textContent = sectionLabels[activeSection];
-      
-      initApp();
-      closeSidebar();
-    });
-  });
-
   // Reset and Shuffle Logic
   function performResetAndShuffle() {
-    stats = {
-      correct: 0,
-      wrong: 0,
-      skipped: 0,
-      answeredIndices: {}
-    };
+    resetStatsObject();
     saveStats();
 
-    // Shuffle QUESTIONS array in-place
+    // Shuffle only the active subject's questions or the whole array
+    // Shuffling the whole array is fine since our filter runs every time.
     for (let i = QUESTIONS.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = QUESTIONS[i];
@@ -416,17 +528,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     activeSection = "all";
     activeTopic = "all";
+    currentQuestionIndex = 0;
     
-    // Reset sidebar styles
-    navList.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
-    navList.querySelector('[data-section="all"]').classList.add("active");
+    // Reset sidebar section highlights if in regs mode
+    if (activeSubject === "regs") {
+      navList.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
+      navList.querySelector('[data-section="all"]').classList.add("active");
+    }
+    
     sectionLabel.textContent = "All Topics";
     
     initApp();
   }
 
   function handleResetClick() {
-    if (confirm("Are you sure you want to reset your practice session? This will clear your current score and shuffle all 500+ questions.")) {
+    const subjectName = activeSubject === "met" ? "Meteorology" : "Air Regulations";
+    if (confirm(`Are you sure you want to reset your ${subjectName} practice session? This will clear your current score and shuffle the question pool.`)) {
       performResetAndShuffle();
       closeSidebar();
     }
@@ -435,6 +552,16 @@ document.addEventListener("DOMContentLoaded", () => {
   resetBtn.addEventListener("click", handleResetClick);
   floatResetBtn.addEventListener("click", handleResetClick);
 
-  // --- INITIAL RUN ---
-  initApp();
+  // --- INITIAL CHECK ---
+  // Check if there is an active subject stored
+  const storedActiveSubject = localStorage.getItem("cpl_active_subject");
+  if (storedActiveSubject) {
+    landingScreen.classList.add("hidden");
+    setSubject(storedActiveSubject);
+  } else {
+    // Show landing screen (default state)
+    // We pre-load Meteorology so variables are safe if they bypass
+    loadSession("met");
+    document.body.className = "subject-mode-met";
+  }
 });

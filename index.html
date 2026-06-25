@@ -3,51 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Hiba's CPL Air Regulations Practice</title>
-  <meta name="description" content="CPL Air Regulations practice exam for Hiba — 500+ questions, topic-wise, mobile-first." />
+  <title>Hiba's CPL Aviation Prep Portal</title>
+  <meta name="description" content="Personalized CPL exam training dashboard for Captain Hiba, covering Air Regulations and Meteorology." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+<!-- ───────── WELCOME / SUBJECT SELECTOR LANDING SCREEN ───────── -->
+<div class="landing-screen" id="landingScreen">
+  <div class="landing-backdrop-blur"></div>
+  <div class="landing-content">
+    <div class="pilot-header">
+      <div class="pilot-badge">👩‍✈️ Captain Hiba's Flight Deck</div>
+      <h1>Select Flight Path</h1>
+      <p class="pilot-subtitle">Choose your active syllabus for today's training session</p>
+    </div>
+
+    <div class="subject-grid">
+      <!-- Meteorology Card -->
+      <div class="subject-card urgent" id="cardMet">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-badge">🚨 EXAM TOMORROW</div>
+          <div class="card-icon-wrap">
+            <span class="card-icon">🌦️</span>
+          </div>
+          <h3>Meteorology</h3>
+          <p class="card-desc">Atmosphere structure, composition, greenhouse gases, layers, and ISA/JSA standards.</p>
+          <div class="card-meta">
+            <span class="meta-item">📊 45 Qs</span>
+            <span class="meta-item">🎯 Official Key</span>
+          </div>
+          <button class="select-btn select-met-btn" id="btnSelectMet">Begin Flight Prep →</button>
+        </div>
+      </div>
+
+      <!-- Air Regulations Card -->
+      <div class="subject-card" id="cardRegs">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-badge">CORE SYLLABUS</div>
+          <div class="card-icon-wrap">
+            <span class="card-icon">✈️</span>
+          </div>
+          <h3>Air Regulations</h3>
+          <p class="card-desc">Comprehensive question bank covering ICAO standards, Rules of the Air, ATS, and Airspace.</p>
+          <div class="card-meta">
+            <span class="meta-item">📊 500+ Qs</span>
+            <span class="meta-item">🔒 Persistent Stats</span>
+          </div>
+          <button class="select-btn select-regs-btn" id="btnSelectRegs">Begin Flight Prep →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="landing-footer">
+      <p>Clear skies and tailwinds. You've got this, Hiba! 🌟</p>
+    </div>
+  </div>
+</div>
 
 <!-- ───────── SIDEBAR NAV ───────── -->
 <div class="overlay" id="overlay"></div>
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <div class="logo-mark">✈</div>
+    <div class="logo-mark">⚡</div>
     <div>
-      <p class="sidebar-title">Hiba's CPL Prep</p>
-      <p class="sidebar-sub">Air Regulations</p>
+      <p class="sidebar-title">Captain Hiba's Prep</p>
+      <p class="sidebar-sub" id="sidebarSubLabel">Meteorology</p>
     </div>
     <button class="close-btn" id="closeBtn" aria-label="Close menu">✕</button>
   </div>
 
+  <!-- Quick Subject Switcher -->
+  <div class="sidebar-switcher">
+    <button class="switch-btn" id="switchBtnMet" data-subject="met">🌦️ Meteorology</button>
+    <button class="switch-btn" id="switchBtnRegs" data-subject="regs">✈️ Air Regs</button>
+  </div>
+
   <div class="sidebar-score-card">
     <div class="sc-row">
-      <span>Score</span><span id="nav-score">0 / 0</span>
+      <span>Training Score</span><span id="nav-score">0 / 0</span>
     </div>
     <div class="sc-row">
-      <span>Accuracy</span><span id="nav-acc">—</span>
+      <span>Accuracy Rate</span><span id="nav-acc">—</span>
     </div>
     <div class="sc-row">
-      <span>Pass mark</span><span class="pass-badge">70 / 100</span>
+      <span>Winning Target</span><span class="pass-badge">70% Minimum</span>
     </div>
   </div>
 
-  <p class="section-label">SECTIONS</p>
-  <ul class="nav-list" id="navList">
-    <li class="nav-item active" data-section="all">🌐 All Topics</li>
-    <li class="nav-item" data-section="icao">📘 ICAO Standards</li>
-    <li class="nav-item" data-section="rules">⚖️ Rules of the Air</li>
-    <li class="nav-item" data-section="ats">🗼 Air Traffic Services</li>
-    <li class="nav-item" data-section="airspace">🗺️ Airspace &amp; Navigation</li>
-  </ul>
+  <div id="sectionContainer">
+    <p class="section-label" id="sectionHeader">SECTIONS</p>
+    <ul class="nav-list" id="navList">
+      <!-- Injected dynamically by JS depending on subject -->
+    </ul>
+  </div>
 
   <p class="section-label">FILTER BY TOPIC</p>
   <div id="topicFilters" class="topic-chips"></div>
 
   <div class="sidebar-footer">
+    <button class="home-nav-btn" id="sidebarHomeBtn">🏠 Home Deck</button>
     <button class="reset-btn" id="resetBtn">🔄 Reset Session</button>
   </div>
 </nav>
@@ -61,8 +120,11 @@
       <span></span><span></span><span></span>
     </button>
     <div class="topbar-title">
+      <span id="subjectLabel">Meteorology</span>
+      <span class="divider">/</span>
       <span id="sectionLabel">All Topics</span>
     </div>
+    <button class="home-icon-btn" id="topbarHomeBtn" title="Go to Flight Path Selector">🏠</button>
     <div class="topbar-score">
       <span id="topScore">0/0</span>
     </div>
@@ -81,7 +143,7 @@
 
       <div class="q-meta">
         <span class="q-badge" id="qBadge">Q 1</span>
-        <span class="q-topic-tag" id="qTopicTag">ICAO</span>
+        <span class="q-topic-tag" id="qTopicTag">Atmosphere</span>
       </div>
 
       <p class="question-text" id="questionText">Loading question…</p>
@@ -93,15 +155,15 @@
       <div class="feedback-strip" id="feedbackStrip" style="display:none"></div>
 
       <div class="action-row">
-        <button class="btn-skip" id="skipBtn">⏭ Skip</button>
-        <button class="btn-next" id="nextBtn" style="display:none">Next →</button>
+        <button class="btn-skip" id="skipBtn">⏭ Skip Question</button>
+        <button class="btn-next" id="nextBtn" style="display:none">Next Question →</button>
       </div>
     </section>
 
-    <!-- NOTES PANEL (slides in on wrong answer) -->
+    <!-- NOTES PANEL (explains correct answer) -->
     <aside class="notes-panel" id="notesPanel" style="display:none">
       <div class="notes-header">
-        <span>📝 Quick Notes</span>
+        <span>📝 Explanatory flight log notes</span>
         <button class="notes-close" id="notesClose">✕</button>
       </div>
       <div class="notes-body" id="notesBody"></div>
@@ -113,7 +175,7 @@
   <footer class="stats-bar">
     <div class="stat-item">
       <span class="stat-val" id="statAnswered">0</span>
-      <span class="stat-lbl">Answered</span>
+      <span class="stat-lbl">Attempted</span>
     </div>
     <div class="stat-item correct">
       <span class="stat-val" id="statCorrect">0</span>
@@ -126,10 +188,11 @@
     <div class="stat-item skip">
       <span class="stat-val" id="statSkipped">0</span>
       <span class="stat-lbl">Skipped</span>
+    </div>
   </footer>
 
   <!-- Floating Reset & Shuffle Button -->
-  <button class="float-reset-btn" id="floatResetBtn" title="Reset & Shuffle">🔄 Reset &amp; Shuffle</button>
+  <button class="float-reset-btn" id="floatResetBtn" title="Reset & Shuffle Session">🔄 Reset &amp; Shuffle</button>
 
 </div>
 
