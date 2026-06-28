@@ -1412,5 +1412,113 @@ const QUESTIONS = [
     ],
     "answer": 1,
     "notes": "Noctilucent clouds occur in the upper Mesosphere, near polar regions, on rare occasions."
+  },
+  {
+    "section": "troposphere",
+    "topic": "Thermal Structure Diagram",
+    "question": "According to the thermal structure diagram (Figure 1.1), what is the constant temperature at the Tropopause?",
+    "options": [
+      "15\u00b0C",
+      "-56.5\u00b0C",
+      "-90\u00b0C"
+    ],
+    "answer": 1,
+    "notes": "Figure 1.1 shows that the temperature remains constant at -56.5\u00b0C at the Tropopause level before rising in the Stratosphere."
+  },
+  {
+    "section": "upper",
+    "topic": "Thermal Structure Diagram",
+    "question": "According to the thermal structure diagram, what is the height boundary of the Stratopause?",
+    "options": [
+      "10-16 km",
+      "50 km",
+      "80 km"
+    ],
+    "answer": 1,
+    "notes": "Figure 1.1 shows that the Stratosphere ends and the Stratopause is located at a height of 50 km."
+  },
+  {
+    "section": "upper",
+    "topic": "Thermal Structure Diagram",
+    "question": "According to the thermal structure diagram, what is the height boundary of the Mesopause?",
+    "options": [
+      "50 km",
+      "80 km",
+      "100 km"
+    ],
+    "answer": 1,
+    "notes": "Figure 1.1 shows that the Mesosphere ends and the Mesopause is located at a height of 80 km."
+  },
+  {
+    "section": "upper",
+    "topic": "Thermal Structure Diagram",
+    "question": "According to the handwritten notes on Figure 1.1, which cloud type is sketched and labeled in the Mesosphere?",
+    "options": [
+      "Nacreous Clouds",
+      "Noctilucent Clouds",
+      "Cirrocumulus Clouds"
+    ],
+    "answer": 1,
+    "notes": "The handwritten notes on the Mesosphere section of Figure 1.1 draw and label 'Noctilucent' clouds."
+  },
+  {
+    "section": "upper",
+    "topic": "Thermal Structure Diagram",
+    "question": "According to the handwritten notes on Figure 1.1, which cloud type is sketched and labeled in the Stratosphere?",
+    "options": [
+      "Nacreous Clouds",
+      "Noctilucent Clouds",
+      "Altocumulus Clouds"
+    ],
+    "answer": 0,
+    "notes": "The handwritten notes on the Stratosphere section of Figure 1.1 draw and label 'Nacreous' clouds."
+  },
+  {
+    "section": "composition",
+    "topic": "Thermal Structure Diagram",
+    "question": "Based on the thermal structure diagram, the Homosphere extends from the surface up to what altitude?",
+    "options": [
+      "50 km",
+      "80 km",
+      "Above 100 km"
+    ],
+    "answer": 1,
+    "notes": "Figure 1.1 shows the Homosphere extends from the Earth's surface up to the Mesopause level at 80 km."
+  },
+  {
+    "section": "upper",
+    "topic": "Thermal Structure Diagram",
+    "question": "Based on the thermal structure diagram, the Ionosphere layer begins at what altitude?",
+    "options": [
+      "Above 60 km",
+      "Above 80 km",
+      "Above 11 km"
+    ],
+    "answer": 0,
+    "notes": "Figure 1.1 shows the Ionosphere layer starts above 60 km, overlapping the upper Homosphere and extending into the Heterosphere."
+  },
+  {
+    "section": "troposphere",
+    "topic": "Thermal Structure Diagram",
+    "question": "According to the handwritten notes on the diagram, the Troposphere is labeled as .......... and the Stratosphere is labeled as ..........",
+    "options": [
+      "stable; unstable",
+      "unstable; stable",
+      "constant; variable"
+    ],
+    "answer": 1,
+    "notes": "The handwritten notes on the diagram mark the Troposphere as 'unstable' (weather-active) and the Stratosphere as 'stable'."
+  },
+  {
+    "section": "troposphere",
+    "topic": "Thermal Structure Diagram",
+    "question": "According to the handwritten notes in the Stratosphere section of Figure 1.1, what range is written next to the Ozone band?",
+    "options": [
+      "20 to 25 km",
+      "10 to 15 km",
+      "30 to 35 km"
+    ],
+    "answer": 0,
+    "notes": "The handwritten notes in the Stratosphere section of the diagram show 'OZONE 20 to 25' indicating the altitude range of maximum concentration."
   }
 ];
