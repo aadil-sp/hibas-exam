@@ -3,84 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Hiba's CPL Aviation Prep Portal</title>
-  <meta name="description" content="Personalized CPL exam training dashboard for Captain Hiba, covering Air Regulations and Meteorology." />
+  <title>Hiba's CPL Meteorology Prep Portal</title>
+  <meta name="description" content="Dedicated CPL Meteorology exam training dashboard for Captain Hiba." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-
-<!-- ───────── WELCOME / SUBJECT SELECTOR LANDING SCREEN ───────── -->
-<div class="landing-screen" id="landingScreen">
-  <div class="landing-backdrop-blur"></div>
-  <div class="landing-content">
-    <div class="pilot-header">
-      <div class="pilot-badge">👩‍✈️ Captain Hiba's Flight Deck</div>
-      <h1>Select Flight Path</h1>
-      <p class="pilot-subtitle">Choose your active syllabus for today's training session</p>
-    </div>
-
-    <div class="subject-grid">
-      <!-- Meteorology Card -->
-      <div class="subject-card urgent" id="cardMet">
-        <div class="card-glow"></div>
-        <div class="card-inner">
-          <div class="card-badge">🚨 EXAM TOMORROW</div>
-          <div class="card-icon-wrap">
-            <span class="card-icon">🌦️</span>
-          </div>
-          <h3>Meteorology</h3>
-          <p class="card-desc">Atmosphere structure, composition, greenhouse gases, layers, and ISA/JSA standards.</p>
-          <div class="card-meta">
-            <span class="meta-item">📊 45 Qs</span>
-            <span class="meta-item">🎯 Official Key</span>
-          </div>
-          <button class="select-btn select-met-btn" id="btnSelectMet">Begin Flight Prep →</button>
-        </div>
-      </div>
-
-      <!-- Air Regulations Card -->
-      <div class="subject-card" id="cardRegs">
-        <div class="card-glow"></div>
-        <div class="card-inner">
-          <div class="card-badge">CORE SYLLABUS</div>
-          <div class="card-icon-wrap">
-            <span class="card-icon">✈️</span>
-          </div>
-          <h3>Air Regulations</h3>
-          <p class="card-desc">Comprehensive question bank covering ICAO standards, Rules of the Air, ATS, and Airspace.</p>
-          <div class="card-meta">
-            <span class="meta-item">📊 500+ Qs</span>
-            <span class="meta-item">🔒 Persistent Stats</span>
-          </div>
-          <button class="select-btn select-regs-btn" id="btnSelectRegs">Begin Flight Prep →</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="landing-footer">
-      <p>Clear skies and tailwinds. You've got this, Hiba! 🌟</p>
-    </div>
-  </div>
-</div>
+<body class="subject-mode-met">
 
 <!-- ───────── SIDEBAR NAV ───────── -->
 <div class="overlay" id="overlay"></div>
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <div class="logo-mark">⚡</div>
+    <div class="logo-mark">🌦️</div>
     <div>
-      <p class="sidebar-title">Captain Hiba's Prep</p>
-      <p class="sidebar-sub" id="sidebarSubLabel">Meteorology</p>
+      <p class="sidebar-title">CPL Meteorology Prep</p>
+      <p class="sidebar-sub">Captain Hiba's Flight Deck</p>
     </div>
     <button class="close-btn" id="closeBtn" aria-label="Close menu">✕</button>
-  </div>
-
-  <!-- Quick Subject Switcher -->
-  <div class="sidebar-switcher">
-    <button class="switch-btn" id="switchBtnMet" data-subject="met">🌦️ Meteorology</button>
-    <button class="switch-btn" id="switchBtnRegs" data-subject="regs">✈️ Air Regs</button>
   </div>
 
   <div class="sidebar-score-card">
@@ -96,9 +36,14 @@
   </div>
 
   <div id="sectionContainer">
-    <p class="section-label" id="sectionHeader">SECTIONS</p>
+    <p class="section-label" id="sectionHeader">CHAPTERS</p>
     <ul class="nav-list" id="navList">
-      <!-- Injected dynamically by JS depending on subject -->
+      <li class="nav-item active" data-section="all">🌐 All Chapters</li>
+      <li class="nav-item" data-section="composition">📘 Composition &amp; Structure</li>
+      <li class="nav-item" data-section="heating">☀️ Heating &amp; Thermal Structure</li>
+      <li class="nav-item" data-section="troposphere">⛈️ Troposphere &amp; Tropopause</li>
+      <li class="nav-item" data-section="upper">🚀 Stratosphere &amp; Upper Layers</li>
+      <li class="nav-item" data-section="standard">✈️ Standard Atmosphere (ISA/JSA)</li>
     </ul>
   </div>
 
@@ -106,7 +51,6 @@
   <div id="topicFilters" class="topic-chips"></div>
 
   <div class="sidebar-footer">
-    <button class="home-nav-btn" id="sidebarHomeBtn">🏠 Home Deck</button>
     <button class="reset-btn" id="resetBtn">🔄 Reset Session</button>
   </div>
 </nav>
@@ -120,11 +64,10 @@
       <span></span><span></span><span></span>
     </button>
     <div class="topbar-title">
-      <span id="subjectLabel">Meteorology</span>
+      <span id="subjectLabel">CPL Meteorology</span>
       <span class="divider">/</span>
-      <span id="sectionLabel">All Topics</span>
+      <span id="sectionLabel">All Chapters</span>
     </div>
-    <button class="home-icon-btn" id="topbarHomeBtn" title="Go to Flight Path Selector">🏠</button>
     <div class="topbar-score">
       <span id="topScore">0/0</span>
     </div>

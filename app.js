@@ -1,16 +1,18 @@
-// ─────────────────────────────────────────
-// CAPTAIN HIBA'S CPL PREP — APPLICATION ENGINE
-// ─────────────────────────────────────────
+// ────────────────────────────────────────────────────────
+// CAPTAIN HIBA'S CPL METEOROLOGY PREP — APPLICATION ENGINE
+// ────────────────────────────────────────────────────────
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- STATE ---
-  let activeSubject = "met"; // Default to Meteorology for tomorrow's exam
   let activeSection = "all";
   let activeTopic = "all";
   let currentQuestionIndex = 0;
   let filteredQuestions = [];
   
-  // Subject-specific stats
+  // Storage key for stats
+  const STATS_KEY = "cpl_meteorology_stats";
+  
+  // Training stats
   let stats = {
     correct: 0,
     wrong: 0,
@@ -18,9 +20,34 @@ document.addEventListener("DOMContentLoaded", () => {
     answeredIndices: {} // map of question key to status ('correct', 'wrong', 'skipped')
   };
 
+  // Load stats from LocalStorage
+  const savedStats = localStorage.getItem(STATS_KEY);
+  if (savedStats) {
+    try {
+      stats = JSON.parse(savedStats);
+      if (!stats.answeredIndices) stats.answeredIndices = {};
+    } catch (e) {
+      console.error("Error reading saved stats", e);
+      resetStatsObject();
+    }
+  }
+
+  function resetStatsObject() {
+    stats = {
+      correct: 0,
+      wrong: 0,
+      skipped: 0,
+      answeredIndices: {}
+    };
+  }
+
+  function saveStats() {
+    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+  }
+
   // --- MOTIVATIONAL PHRASES ---
   const MOTIVATIONS = [
-    "Perfect! You're going to ace tomorrow's exam! ✈️",
+    "Perfect! You're going to ace the exam! ✈️",
     "Spot on, Captain Hiba! 👩‍✈️",
     "Keep it up! The skies are waiting! 🌟",
     "Exceptional! Smooth flying ahead! 🌤️",
@@ -33,28 +60,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const ENCOURAGEMENTS = [
     "It's okay! Read the quick note below and keep going. 📝",
-    "Mistakes are where we learn. You'll remember this for tomorrow!",
+    "Mistakes are where we learn. You'll remember this for the exam!",
     "No worries, Captain. Review the explanation and press forward! 👍",
     "A minor turbulence! Check the flight log below.",
-    "Almost! Every wrong answer now is a correct answer tomorrow! 🔮"
+    "Almost! Every wrong answer now is a correct answer on the exam! 🔮"
   ];
 
   // --- DOM ELEMENTS ---
-  const landingScreen = document.getElementById("landingScreen");
-  const btnSelectMet = document.getElementById("btnSelectMet");
-  const btnSelectRegs = document.getElementById("btnSelectRegs");
-  const cardMet = document.getElementById("cardMet");
-  const cardRegs = document.getElementById("cardRegs");
-  
   const hamburger = document.getElementById("hamburger");
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
   const closeBtn = document.getElementById("closeBtn");
   const navList = document.getElementById("navList");
-  const sectionContainer = document.getElementById("sectionContainer");
   const topicFilters = document.getElementById("topicFilters");
-  const sidebarSubLabel = document.getElementById("sidebarSubLabel");
-  const subjectLabel = document.getElementById("subjectLabel");
   const sectionLabel = document.getElementById("sectionLabel");
   const topScore = document.getElementById("topScore");
   const navScore = document.getElementById("nav-score");
@@ -76,59 +94,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const notesClose = document.getElementById("notesClose");
   const resetBtn = document.getElementById("resetBtn");
   const floatResetBtn = document.getElementById("floatResetBtn");
-  const sidebarHomeBtn = document.getElementById("sidebarHomeBtn");
-  const topbarHomeBtn = document.getElementById("topbarHomeBtn");
-
-  // Switcher Buttons in Sidebar
-  const switchBtnMet = document.getElementById("switchBtnMet");
-  const switchBtnRegs = document.getElementById("switchBtnRegs");
 
   // Bottom Stats
   const statAnswered = document.getElementById("statAnswered");
   const statCorrect = document.getElementById("statCorrect");
   const statWrong = document.getElementById("statWrong");
   const statSkipped = document.getElementById("statSkipped");
-
-  // --- PERSISTENCE & LOAD ---
-  function getStatsKey(subject) {
-    return `cpl_prep_stats_${subject}`;
-  }
-
-  function loadSession(subject) {
-    activeSubject = subject;
-    localStorage.setItem("cpl_active_subject", subject);
-    
-    const savedStats = localStorage.getItem(getStatsKey(subject));
-    if (savedStats) {
-      try {
-        stats = JSON.parse(savedStats);
-        if (!stats.answeredIndices) stats.answeredIndices = {};
-      } catch (e) {
-        console.error("Error reading saved stats", e);
-        resetStatsObject();
-      }
-    } else {
-      resetStatsObject();
-    }
-
-    // Reset active filters on subject switch
-    activeSection = "all";
-    activeTopic = "all";
-    currentQuestionIndex = 0;
-  }
-
-  function resetStatsObject() {
-    stats = {
-      correct: 0,
-      wrong: 0,
-      skipped: 0,
-      answeredIndices: {}
-    };
-  }
-
-  function saveStats() {
-    localStorage.setItem(getStatsKey(activeSubject), JSON.stringify(stats));
-  }
 
   // --- MENU FUNCTIONS ---
   function toggleSidebar() {
@@ -145,105 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
   closeBtn.addEventListener("click", closeSidebar);
   overlay.addEventListener("click", closeSidebar);
 
-  // --- SUBJECT SWITCHERS ---
-  function setSubject(subject) {
-    loadSession(subject);
-    
-    // Update theme and UI labels
-    document.body.className = `subject-mode-${subject}`;
-    
-    if (subject === "met") {
-      sidebarSubLabel.textContent = "Meteorology";
-      subjectLabel.textContent = "Meteorology";
-      switchBtnMet.classList.add("active");
-      switchBtnRegs.classList.remove("active");
-      sectionContainer.style.display = "none"; // Hide sections list for Meteorology (rely on topic chips)
-    } else {
-      sidebarSubLabel.textContent = "Air Regulations";
-      subjectLabel.textContent = "Air Regulations";
-      switchBtnRegs.classList.add("active");
-      switchBtnMet.classList.remove("active");
-      sectionContainer.style.display = "block"; // Show sections list for Air Regulations
-      buildSectionNav();
-    }
-
-    sectionLabel.textContent = "All Topics";
-    
-    initApp();
-    closeSidebar();
-  }
-
-  switchBtnMet.addEventListener("click", () => setSubject("met"));
-  switchBtnRegs.addEventListener("click", () => setSubject("regs"));
-
-  // Landing page selectors
-  btnSelectMet.addEventListener("click", () => {
-    landingScreen.classList.add("hidden");
-    setSubject("met");
-  });
-
-  btnSelectRegs.addEventListener("click", () => {
-    landingScreen.classList.add("hidden");
-    setSubject("regs");
-  });
-
-  // Also make cards clickable for better experience
-  cardMet.addEventListener("click", (e) => {
-    if (e.target.tagName !== "BUTTON") {
-      landingScreen.classList.add("hidden");
-      setSubject("met");
-    }
-  });
-
-  cardRegs.addEventListener("click", (e) => {
-    if (e.target.tagName !== "BUTTON") {
-      landingScreen.classList.add("hidden");
-      setSubject("regs");
-    }
-  });
-
-  // Return to Home Deck (Subject Selector)
-  function showHomeSelector() {
-    landingScreen.classList.remove("hidden");
-    closeSidebar();
-  }
-
-  sidebarHomeBtn.addEventListener("click", showHomeSelector);
-  topbarHomeBtn.addEventListener("click", showHomeSelector);
-
-  // --- DYNAMIC SIDEBAR SECTIONS ---
-  function buildSectionNav() {
-    navList.innerHTML = "";
-    
-    const sections = [
-      { id: "all", label: "🌐 All Topics" },
-      { id: "icao", label: "📘 ICAO Standards" },
-      { id: "rules", label: "⚖️ Rules of the Air" },
-      { id: "ats", label: "🗼 Air Traffic Services" },
-      { id: "airspace", label: "🗺️ Airspace & Navigation" }
-    ];
-
-    sections.forEach(sec => {
-      const li = document.createElement("li");
-      li.className = `nav-item ${activeSection === sec.id ? "active" : ""}`;
-      li.dataset.section = sec.id;
-      li.textContent = sec.label;
-      
-      li.addEventListener("click", () => {
-        navList.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active"));
-        li.classList.add("active");
-        
-        activeSection = sec.id;
-        activeTopic = "all"; // Reset topic on section change
-        sectionLabel.textContent = sec.label;
-        
-        initApp();
-        closeSidebar();
-      });
-      navList.appendChild(li);
-    });
-  }
-
   // --- DATA FILTERING & INITIALIZATION ---
   function initApp() {
     buildTopicFilters();
@@ -252,16 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function buildTopicFilters() {
-    // Collect all topics based on activeSubject and activeSection
+    // Collect all topics based on activeSection
     const topics = new Set();
     QUESTIONS.forEach(q => {
-      const isMet = q.section === "met";
-      const matchesSubject = activeSubject === "met" ? isMet : !isMet;
-      
-      if (matchesSubject) {
-        if (activeSection === "all" || q.section === activeSection) {
-          topics.add(q.topic);
-        }
+      if (activeSection === "all" || q.section === activeSection) {
+        topics.add(q.topic);
       }
     });
 
@@ -300,16 +167,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function filterQuestions() {
     filteredQuestions = QUESTIONS.filter(q => {
-      const isMet = q.section === "met";
-      const matchesSubject = activeSubject === "met" ? isMet : !isMet;
-      
       const matchesSec = activeSection === "all" || q.section === activeSection;
       const matchesTop = activeTopic === "all" || q.topic === activeTopic;
-      
-      return matchesSubject && matchesSec && matchesTop;
+      return matchesSec && matchesTop;
     });
 
-    // Reset current question index to first unanswered question in this filter, or just 0 if all are answered
+    // Reset current question index to first unanswered question in this filter, or 0 if all are answered
     currentQuestionIndex = 0;
     for (let i = 0; i < filteredQuestions.length; i++) {
       const q = filteredQuestions[i];
@@ -327,12 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- STATS & LOGIC ---
   function updateUI() {
-    // Get total questions in the active subject (to accurately calculate overall progress)
-    const totalQsInSubject = QUESTIONS.filter(q => {
-      const isMet = q.section === "met";
-      return activeSubject === "met" ? isMet : !isMet;
-    }).length;
-
     // Update Stats Display
     const answeredCount = Object.keys(stats.answeredIndices).length;
     statAnswered.textContent = answeredCount;
@@ -354,8 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
       navAcc.textContent = "—";
     }
 
-    // Progress bar
-    const progressPct = totalQsInSubject > 0 ? (answeredCount / totalQsInSubject) * 100 : 0;
+    // Progress bar (across all questions)
+    const progressPct = QUESTIONS.length > 0 ? (answeredCount / QUESTIONS.length) * 100 : 0;
     progressBar.style.width = `${progressPct}%`;
 
     // Render current question
@@ -370,14 +227,14 @@ document.addEventListener("DOMContentLoaded", () => {
     notesPanel.style.display = "none";
 
     if (filteredQuestions.length === 0) {
-      questionText.textContent = "No training questions found matching this category.";
+      questionText.textContent = "No questions found matching this chapter.";
       optionsList.innerHTML = "";
       skipBtn.style.display = "none";
       return;
     }
 
     if (currentQuestionIndex >= filteredQuestions.length) {
-      questionText.textContent = "🎉 Training cycle complete! You have completed all questions in this category. Choose another topic or reset the session to shuffle and restart.";
+      questionText.textContent = "🎉 Chapter complete! You have completed all questions in this category. Select another chapter or reset the session to start over.";
       optionsList.innerHTML = "";
       skipBtn.style.display = "none";
       return;
@@ -390,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     optionsList.innerHTML = "";
     
-    // Check if answered
+    // Check if already answered
     const qKey = getQuestionKey(q);
     const existingAnswer = stats.answeredIndices[qKey];
 
@@ -475,11 +332,11 @@ document.addEventListener("DOMContentLoaded", () => {
       feedbackStrip.innerHTML = `<strong>✗ Incorrect</strong><br>${randomEncouragement}`;
     }
 
-    // Always show notes
+    // Show notes
     notesBody.innerHTML = q.notes || "No explanation notes available for this question.";
     notesPanel.style.display = "block";
 
-    // Auto-scroll on mobile
+    // Auto-scroll on phone
     if (window.innerWidth < 768) {
       setTimeout(() => {
         notesPanel.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -512,13 +369,27 @@ document.addEventListener("DOMContentLoaded", () => {
     notesPanel.style.display = "none";
   });
 
+  // Section Navigation (Chapters)
+  navList.querySelectorAll(".nav-item").forEach(item => {
+    item.addEventListener("click", () => {
+      navList.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
+      
+      activeSection = item.dataset.section;
+      activeTopic = "all"; // Reset topic on chapter switch
+      sectionLabel.textContent = item.textContent;
+      
+      initApp();
+      closeSidebar();
+    });
+  });
+
   // Reset and Shuffle Logic
   function performResetAndShuffle() {
     resetStatsObject();
     saveStats();
 
-    // Shuffle only the active subject's questions or the whole array
-    // Shuffling the whole array is fine since our filter runs every time.
+    // Shuffle array in place
     for (let i = QUESTIONS.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = QUESTIONS[i];
@@ -530,20 +401,16 @@ document.addEventListener("DOMContentLoaded", () => {
     activeTopic = "all";
     currentQuestionIndex = 0;
     
-    // Reset sidebar section highlights if in regs mode
-    if (activeSubject === "regs") {
-      navList.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
-      navList.querySelector('[data-section="all"]').classList.add("active");
-    }
-    
-    sectionLabel.textContent = "All Topics";
+    // Reset sidebar highlights
+    navList.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
+    navList.querySelector('[data-section="all"]').classList.add("active");
+    sectionLabel.textContent = "All Chapters";
     
     initApp();
   }
 
   function handleResetClick() {
-    const subjectName = activeSubject === "met" ? "Meteorology" : "Air Regulations";
-    if (confirm(`Are you sure you want to reset your ${subjectName} practice session? This will clear your current score and shuffle the question pool.`)) {
+    if (confirm("Are you sure you want to reset your practice session? This will clear your current score and shuffle the question bank.")) {
       performResetAndShuffle();
       closeSidebar();
     }
@@ -552,16 +419,6 @@ document.addEventListener("DOMContentLoaded", () => {
   resetBtn.addEventListener("click", handleResetClick);
   floatResetBtn.addEventListener("click", handleResetClick);
 
-  // --- INITIAL CHECK ---
-  // Check if there is an active subject stored
-  const storedActiveSubject = localStorage.getItem("cpl_active_subject");
-  if (storedActiveSubject) {
-    landingScreen.classList.add("hidden");
-    setSubject(storedActiveSubject);
-  } else {
-    // Show landing screen (default state)
-    // We pre-load Meteorology so variables are safe if they bypass
-    loadSession("met");
-    document.body.className = "subject-mode-met";
-  }
+  // --- INITIAL RUN ---
+  initApp();
 });
