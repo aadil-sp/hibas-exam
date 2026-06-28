@@ -1,58 +1,39 @@
-# Hiba's CPL Air Regulations Practice Website ✈️
+---
+title: Hibas Exam
+emoji: 🌦️
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+---
 
-A heavily optimized, mobile-first, frontend-only practice website built specifically for **Hiba's CPL (Commercial Pilot License) Air Regulations Exam**. 
+# Hiba's CPL Meteorology Practice Portal 🌦️
 
-This application contains a robust bank of **500+ questions** covering all core topics of Air Regulations, specifically tailored to help Hiba pass her 100-mark, 3-option MCQ exam tomorrow (70 marks needed to win).
+A heavily optimized, mobile-first CPL (Commercial Pilot License) Meteorology practice application built specifically for Captain Hiba's exam preparation.
+
+This application runs on a Python FastAPI backend and is containerized with Docker, deployed on Hugging Face Spaces. It contains a robust bank of **126 verified questions** covering all core topics of Meteorology.
 
 ---
 
 ## 🌟 Key Features
 
-1. **500+ Questions**: Covers ICAO Standards & Annexes, Rules of the Air, Air Traffic Services (ATS), and Airspace & Navigation.
-2. **Mobile First & Responsive**: Specifically designed to work perfectly on mobile screens (since Hiba uses her phone exclusively). Responsive layout works great on tablets and desktop as well.
-3. **Optimized for Quick Study**: 
-   - No timers or stress elements.
-   - Shows **one question at a time**.
-   - If the selected answer is correct: highlights green and shows a motivational message.
-   - If incorrect: highlights red and immediately reveals explanatory **notes on the side/below** (no annoying popups).
-   - Includes a **Skip** button to move quickly through known concepts.
-4. **Interactive Navigation**: Topic-wise filters and sidebar section selection to study weak areas.
-5. **Persistence**: Saves test session stats, accuracy, and answered history to local storage, allowing progress retention even after page refresh.
+1. **126 Chapter-wise Questions**: Covers Composition & Structure, Heating & Thermal Structure, Troposphere & Tropopause, Stratosphere & Upper Layers, and Standard Atmosphere (ISA/JSA).
+2. **Mobile First & Responsive**: Specifically designed to work perfectly on mobile screens for single-handed study.
+3. **Explanatory Notes**: Instant slide-in logs detailing notes and step-by-step calculations for every question.
+4. **Independent Stats Persistence**: Saves session training stats to local storage.
 
 ---
 
-## 🚀 How to Run Locally
+## 🚀 Local Run
 
-Since this is a client-side only (HTML/CSS/JS) application with no external backend dependencies:
-1. Simply double-click `index.html` to open it in any browser.
-2. Or run a lightweight local server (e.g. `npx serve .` or Live Server extension in VS Code).
-
----
-
-## ☁️ How to Deploy to Vercel (Step-by-Step)
-
-Vercel is the easiest platform to deploy frontend-only websites for free. Follow these simple steps:
-
-### Method 1: Deploying via GitHub (Recommended)
-1. Create a new repository on your GitHub account called `hibas-exam`.
-2. Push this local repository to GitHub:
+To run the FastAPI server locally:
+1. Install dependencies:
    ```bash
-   git remote add origin https://github.com/YOUR_GITHUB_USERNAME/hibas-exam.git
-   git branch -M main
-   git push -u origin main
+   pip install -r requirements.txt
    ```
-3. Go to [Vercel](https://vercel.com/) and log in (or sign up using GitHub).
-4. Click the **Add New...** button and select **Project**.
-5. Import the `hibas-exam` repository.
-6. Vercel will automatically detect that it is a Static Website. Click **Deploy**.
-7. In less than a minute, your website will be live at a public URL (e.g., `hibas-exam.vercel.app`)!
-
-### Method 2: Deploying via Vercel CLI (Super Fast)
-If you don't want to use GitHub, you can deploy directly from your command line:
-1. Open your terminal in this project folder.
-2. Run the Vercel CLI tool (using `npx` so you don't have to install it globally):
+2. Start the server:
    ```bash
-   npx vercel
+   uvicorn main:app --reload --port 7860
    ```
-3. Follow the interactive prompts (log in, choose scope, and select defaults).
-4. Within seconds, your site will be deployed and you will get a production URL!
+3. Open `http://localhost:7860` in your web browser.
