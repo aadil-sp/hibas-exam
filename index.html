@@ -11,52 +11,164 @@
 </head>
 <body class="subject-mode-met">
 
-<!-- ───────── SIDEBAR NAV ───────── -->
-<div class="overlay" id="overlay"></div>
-<nav class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <div class="logo-mark">🌦️</div>
-    <div>
-      <p class="sidebar-title">CPL Meteorology Prep</p>
-      <p class="sidebar-sub">Captain Hiba's Flight Deck</p>
+<!-- ───────── 1. PROFILE SELECTION SCREEN ───────── -->
+<div class="profile-screen" id="profileScreen">
+  <div class="profile-backdrop-blur"></div>
+  <div class="profile-content">
+    <h1 class="profile-title">Who's training today?</h1>
+    <div class="profile-grid">
+      <!-- Profile: Captain Hiba -->
+      <div class="profile-card" id="profileCardHiba">
+        <div class="avatar-wrap hiba-avatar">
+          <span class="avatar-emoji">👩‍✈️</span>
+        </div>
+        <h3 class="profile-name">Captain Hiba</h3>
+        <p class="profile-role">CPL Candidate</p>
+      </div>
+
+      <!-- Profile: Mentor Aadil -->
+      <div class="profile-card" id="profileCardAadil">
+        <div class="avatar-wrap aadil-avatar">
+          <span class="avatar-emoji">🧭</span>
+        </div>
+        <h3 class="profile-name">Mentor Aadil</h3>
+        <p class="profile-role">Flight Instructor</p>
+      </div>
     </div>
-    <button class="close-btn" id="closeBtn" aria-label="Close menu">✕</button>
-  </div>
-
-  <div class="sidebar-score-card">
-    <div class="sc-row">
-      <span>Training Score</span><span id="nav-score">0 / 0</span>
-    </div>
-    <div class="sc-row">
-      <span>Accuracy Rate</span><span id="nav-acc">—</span>
-    </div>
-    <div class="sc-row">
-      <span>Winning Target</span><span class="pass-badge">70% Minimum</span>
+    <div class="profile-footer">
+      <p>CPL Meteorology Examination Portal</p>
     </div>
   </div>
+</div>
 
-  <div id="sectionContainer">
-    <p class="section-label" id="sectionHeader">CHAPTERS</p>
-    <ul class="nav-list" id="navList">
-      <li class="nav-item active" data-section="all">🌐 All Chapters</li>
-      <li class="nav-item" data-section="composition">📘 Composition &amp; Structure</li>
-      <li class="nav-item" data-section="heating">☀️ Heating &amp; Thermal Structure</li>
-      <li class="nav-item" data-section="troposphere">⛈️ Troposphere &amp; Tropopause</li>
-      <li class="nav-item" data-section="upper">🚀 Stratosphere &amp; Upper Layers</li>
-      <li class="nav-item" data-section="standard">✈️ Standard Atmosphere (ISA/JSA)</li>
-    </ul>
-  </div>
+<!-- ───────── 2. CAPTAIN HIBA'S DASHBOARD ───────── -->
+<div class="dashboard-layout hidden" id="hibaDashboard">
+  <header class="dash-header">
+    <div class="header-profile-badge">
+      <span class="badge-avatar">👩‍✈️</span>
+      <div>
+        <p class="badge-title">Captain Hiba</p>
+        <p class="badge-sub">CPL Meteorology</p>
+      </div>
+    </div>
+    <button class="logout-btn" id="logoutBtnHiba">Switch User ⇄</button>
+  </header>
 
-  <p class="section-label">FILTER BY TOPIC</p>
-  <div id="topicFilters" class="topic-chips"></div>
+  <main class="dash-main">
+    <!-- Quick Overall Metrics -->
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <span class="metric-val" id="dashHibaAccuracy">—</span>
+        <span class="metric-lbl">Overall Accuracy</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val" id="dashHibaMastery">0 / 0</span>
+        <span class="metric-lbl">Questions Completed</span>
+      </div>
+    </section>
 
-  <div class="sidebar-footer">
-    <button class="reset-btn" id="resetBtn">🔄 Reset Session</button>
-  </div>
-</nav>
+    <!-- Large Start Test Call-To-Action -->
+    <section class="action-card">
+      <div class="ac-glow"></div>
+      <div class="ac-content">
+        <h2>Start Practice Flight</h2>
+        <p>Answer questions from the CPL Meteorology syllabus. Expands your knowledge base with immediate log feedback.</p>
+        <button class="flight-btn" id="btnStartFlight">🚀 Take Practice Flight</button>
+      </div>
+    </section>
 
-<!-- ───────── MAIN LAYOUT ───────── -->
-<div class="app-shell">
+    <!-- Chapters & Topics Filter -->
+    <section class="chapters-section">
+      <h3 class="section-title">Select Chapter focus</h3>
+      <div class="chapter-chips-grid">
+        <button class="chip active" data-section="all">🌐 All Chapters</button>
+        <button class="chip" data-section="composition">📘 Composition &amp; Structure</button>
+        <button class="chip" data-section="heating">☀️ Heating &amp; Thermal Structure</button>
+        <button class="chip" data-section="troposphere">⛈️ Troposphere &amp; Tropopause</button>
+        <button class="chip" data-section="upper">🚀 Stratosphere &amp; Upper Layers</button>
+        <button class="chip" data-section="standard">✈️ Standard Atmosphere (ISA/JSA)</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ───────── 3. MENTOR AADIL'S PORTAL ───────── -->
+<div class="dashboard-layout hidden" id="aadilDashboard">
+  <header class="dash-header">
+    <div class="header-profile-badge">
+      <span class="badge-avatar">🧭</span>
+      <div>
+        <p class="badge-title">Mentor Aadil</p>
+        <p class="badge-sub">Flight Analytics Console</p>
+      </div>
+    </div>
+    <button class="logout-btn" id="logoutBtnAadil">Switch User ⇄</button>
+  </header>
+
+  <main class="dash-main">
+    <!-- Hiba's Summary Stats -->
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <span class="metric-val" id="mentorAccuracy">—</span>
+        <span class="metric-lbl">Hiba's Accuracy</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val" id="mentorTotalAttempts">0</span>
+        <span class="metric-lbl">Total Attempts</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val" id="mentorCorrectAnswers">0</span>
+        <span class="metric-lbl">Correct Answers</span>
+      </div>
+    </section>
+
+    <div class="mentor-details-grid">
+      <!-- Chapter-wise Performance -->
+      <section class="mentor-section">
+        <h3 class="section-title">Accuracy by Chapter</h3>
+        <div class="chapter-progress-list" id="mentorChapterList">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </section>
+
+      <!-- Activity Calendar (How often she does this) -->
+      <section class="mentor-section">
+        <h3 class="section-title">Daily Effort Levels</h3>
+        <div class="activity-log-list" id="mentorActivityList">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Chronological Question Log -->
+    <section class="mentor-section full-width">
+      <h3 class="section-title">Hiba's Attempt History Log</h3>
+      <div class="table-wrap">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Chapter</th>
+              <th>Question</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="mentorHistoryBody">
+            <!-- Dynamically populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Administrative Controls -->
+    <section class="admin-controls">
+      <button class="btn-clear-db" id="btnClearDb">⚠️ Clear Server Activity Logs</button>
+    </section>
+  </main>
+</div>
+
+<!-- ───────── 4. EXAMINATION SYSTEM ───────── -->
+<div class="app-shell hidden" id="examPanel">
 
   <!-- TOP BAR -->
   <header class="topbar">
@@ -64,10 +176,11 @@
       <span></span><span></span><span></span>
     </button>
     <div class="topbar-title">
-      <span id="subjectLabel">CPL Meteorology</span>
+      <span id="subjectLabel">Meteorology</span>
       <span class="divider">/</span>
       <span id="sectionLabel">All Chapters</span>
     </div>
+    <button class="home-icon-btn" id="exitExamBtn" title="Back to Dashboard">📋</button>
     <div class="topbar-score">
       <span id="topScore">0/0</span>
     </div>
@@ -83,7 +196,6 @@
 
     <!-- QUESTION PANEL -->
     <section class="question-panel" id="questionPanel">
-
       <div class="q-meta">
         <span class="q-badge" id="qBadge">Q 1</span>
         <span class="q-topic-tag" id="qTopicTag">Atmosphere</span>
@@ -136,8 +248,52 @@
 
   <!-- Floating Reset & Shuffle Button -->
   <button class="float-reset-btn" id="floatResetBtn" title="Reset & Shuffle Session">🔄 Reset &amp; Shuffle</button>
-
 </div>
+
+<!-- ───────── OVERLAY NAVIGATION FOR EXAM SIDEBAR ───────── -->
+<div class="overlay" id="overlay"></div>
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-mark">🌦️</div>
+    <div>
+      <p class="sidebar-title">CPL Meteorology Prep</p>
+      <p class="sidebar-sub">Captain Hiba's Flight Deck</p>
+    </div>
+    <button class="close-btn" id="examSidebarClose" aria-label="Close menu">✕</button>
+  </div>
+
+  <div class="sidebar-score-card">
+    <div class="sc-row">
+      <span>Active Session Score</span><span id="nav-score">0 / 0</span>
+    </div>
+    <div class="sc-row">
+      <span>Accuracy Rate</span><span id="nav-acc">—</span>
+    </div>
+    <div class="sc-row">
+      <span>Winning Target</span><span class="pass-badge">70% Minimum</span>
+    </div>
+  </div>
+
+  <div id="sectionContainer">
+    <p class="section-label" id="sectionHeader">CHAPTERS</p>
+    <ul class="nav-list" id="examNavList">
+      <li class="nav-item active" data-section="all">🌐 All Chapters</li>
+      <li class="nav-item" data-section="composition">📘 Composition &amp; Structure</li>
+      <li class="nav-item" data-section="heating">☀️ Heating &amp; Thermal Structure</li>
+      <li class="nav-item" data-section="troposphere">⛈️ Troposphere &amp; Tropopause</li>
+      <li class="nav-item" data-section="upper">🚀 Stratosphere &amp; Upper Layers</li>
+      <li class="nav-item" data-section="standard">✈️ Standard Atmosphere (ISA/JSA)</li>
+    </ul>
+  </div>
+
+  <p class="section-label">FILTER BY TOPIC</p>
+  <div id="examTopicFilters" class="topic-chips"></div>
+
+  <div class="sidebar-footer">
+    <button class="home-nav-btn" id="examHomeBtn">🏠 Main Dashboard</button>
+    <button class="reset-btn" id="examResetBtn">🔄 Reset Session</button>
+  </div>
+</nav>
 
 <script src="questions.js"></script>
 <script src="app.js"></script>
