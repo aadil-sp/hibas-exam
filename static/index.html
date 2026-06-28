@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Hiba's CPL Meteorology Prep Portal</title>
+  <meta name="description" content="Dedicated CPL Meteorology exam training dashboard for Captain Hiba." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="subject-mode-met">
+
+<!-- ───────── SIDEBAR NAV ───────── -->
+<div class="overlay" id="overlay"></div>
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-mark">🌦️</div>
+    <div>
+      <p class="sidebar-title">CPL Meteorology Prep</p>
+      <p class="sidebar-sub">Captain Hiba's Flight Deck</p>
+    </div>
+    <button class="close-btn" id="closeBtn" aria-label="Close menu">✕</button>
+  </div>
+
+  <div class="sidebar-score-card">
+    <div class="sc-row">
+      <span>Training Score</span><span id="nav-score">0 / 0</span>
+    </div>
+    <div class="sc-row">
+      <span>Accuracy Rate</span><span id="nav-acc">—</span>
+    </div>
+    <div class="sc-row">
+      <span>Winning Target</span><span class="pass-badge">70% Minimum</span>
+    </div>
+  </div>
+
+  <div id="sectionContainer">
+    <p class="section-label" id="sectionHeader">CHAPTERS</p>
+    <ul class="nav-list" id="navList">
+      <li class="nav-item active" data-section="all">🌐 All Chapters</li>
+      <li class="nav-item" data-section="composition">📘 Composition &amp; Structure</li>
+      <li class="nav-item" data-section="heating">☀️ Heating &amp; Thermal Structure</li>
+      <li class="nav-item" data-section="troposphere">⛈️ Troposphere &amp; Tropopause</li>
+      <li class="nav-item" data-section="upper">🚀 Stratosphere &amp; Upper Layers</li>
+      <li class="nav-item" data-section="standard">✈️ Standard Atmosphere (ISA/JSA)</li>
+    </ul>
+  </div>
+
+  <p class="section-label">FILTER BY TOPIC</p>
+  <div id="topicFilters" class="topic-chips"></div>
+
+  <div class="sidebar-footer">
+    <button class="reset-btn" id="resetBtn">🔄 Reset Session</button>
+  </div>
+</nav>
+
+<!-- ───────── MAIN LAYOUT ───────── -->
+<div class="app-shell">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="topbar-title">
+      <span id="subjectLabel">CPL Meteorology</span>
+      <span class="divider">/</span>
+      <span id="sectionLabel">All Chapters</span>
+    </div>
+    <div class="topbar-score">
+      <span id="topScore">0/0</span>
+    </div>
+  </header>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- QUESTION PANEL -->
+    <section class="question-panel" id="questionPanel">
+
+      <div class="q-meta">
+        <span class="q-badge" id="qBadge">Q 1</span>
+        <span class="q-topic-tag" id="qTopicTag">Atmosphere</span>
+      </div>
+
+      <p class="question-text" id="questionText">Loading question…</p>
+
+      <div class="options-list" id="optionsList">
+        <!-- Options injected by JS -->
+      </div>
+
+      <div class="feedback-strip" id="feedbackStrip" style="display:none"></div>
+
+      <div class="action-row">
+        <button class="btn-skip" id="skipBtn">⏭ Skip Question</button>
+        <button class="btn-next" id="nextBtn" style="display:none">Next Question →</button>
+      </div>
+    </section>
+
+    <!-- NOTES PANEL (explains correct answer) -->
+    <aside class="notes-panel" id="notesPanel" style="display:none">
+      <div class="notes-header">
+        <span>📝 Explanatory flight log notes</span>
+        <button class="notes-close" id="notesClose">✕</button>
+      </div>
+      <div class="notes-body" id="notesBody"></div>
+    </aside>
+
+  </main>
+
+  <!-- STATS BAR (bottom on mobile) -->
+  <footer class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-val" id="statAnswered">0</span>
+      <span class="stat-lbl">Attempted</span>
+    </div>
+    <div class="stat-item correct">
+      <span class="stat-val" id="statCorrect">0</span>
+      <span class="stat-lbl">Correct ✓</span>
+    </div>
+    <div class="stat-item wrong">
+      <span class="stat-val" id="statWrong">0</span>
+      <span class="stat-lbl">Wrong ✗</span>
+    </div>
+    <div class="stat-item skip">
+      <span class="stat-val" id="statSkipped">0</span>
+      <span class="stat-lbl">Skipped</span>
+    </div>
+  </footer>
+
+  <!-- Floating Reset & Shuffle Button -->
+  <button class="float-reset-btn" id="floatResetBtn" title="Reset & Shuffle Session">🔄 Reset &amp; Shuffle</button>
+
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>
