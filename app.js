@@ -149,33 +149,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- PROFILE SELECTOR ROUTING ---
   function selectProfile(profile) {
-    currentProfile = profile;
-    localStorage.setItem("cpl_current_profile", profile);
-    profileScreen.classList.add("hidden");
-    
     if (profile === "hiba") {
-      hibaDashboard.classList.remove("hidden");
-      aadilDashboard.classList.add("hidden");
-      examPanel.classList.add("hidden");
-      updateHibaDashboardUI();
+      window.location.hash = "#/hiba";
     } else if (profile === "aadil") {
-      aadilDashboard.classList.remove("hidden");
-      hibaDashboard.classList.add("hidden");
-      examPanel.classList.add("hidden");
-      loadAadilAnalytics();
+      window.location.hash = "#/aadil";
     }
   }
 
   function logout() {
-    currentProfile = null;
-    localStorage.removeItem("cpl_current_profile");
-    profileScreen.classList.remove("hidden");
+    window.location.hash = "#/";
+  }
+
+  function handleRoute() {
+    const hash = window.location.hash || "#/";
+
+    // Hide all panels
+    profileScreen.classList.add("hidden");
     hibaDashboard.classList.add("hidden");
     aadilDashboard.classList.add("hidden");
     examPanel.classList.add("hidden");
-    chaptersSection.classList.add("hidden");
-    subjectCards.forEach(c => c.classList.remove("active"));
+
+    if (hash === "#/hiba") {
+      currentProfile = "hiba";
+      localStorage.setItem("cpl_current_profile", "hiba");
+      hibaDashboard.classList.remove("hidden");
+      updateHibaDashboardUI();
+    } else if (hash === "#/aadil") {
+      currentProfile = "aadil";
+      localStorage.setItem("cpl_current_profile", "aadil");
+      aadilDashboard.classList.remove("hidden");
+      loadAadilAnalytics();
+    } else if (hash === "#/exam") {
+      const storedProfile = localStorage.getItem("cpl_current_profile");
+      if (storedProfile === "hiba") {
+        currentProfile = "hiba";
+        examPanel.classList.remove("hidden");
+        if (QUESTIONS.length > 0) {
+          initExamApp();
+        }
+      } else {
+        window.location.hash = "#/";
+      }
+    } else {
+      currentProfile = null;
+      localStorage.removeItem("cpl_current_profile");
+      profileScreen.classList.remove("hidden");
+      chaptersSection.classList.add("hidden");
+      subjectCards.forEach(c => c.classList.remove("active"));
+    }
   }
+
+  window.addEventListener("hashchange", handleRoute);
 
   profileCardHiba.addEventListener("click", () => selectProfile("hiba"));
   profileCardAadil.addEventListener("click", () => selectProfile("aadil"));
@@ -382,9 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function startExamFlight() {
-    hibaDashboard.classList.add("hidden");
-    examPanel.classList.remove("hidden");
-    initExamApp();
+    window.location.hash = "#/exam";
   }
 
   // --- MENTOR AADIL'S PORTAL HANDLERS ---
@@ -889,16 +911,12 @@ document.addEventListener("DOMContentLoaded", () => {
   floatResetBtn.addEventListener("click", handleResetClick);
 
   exitExamBtn.addEventListener("click", () => {
-    examPanel.classList.add("hidden");
-    hibaDashboard.classList.remove("hidden");
-    updateHibaDashboardUI();
+    window.location.hash = "#/hiba";
   });
 
   examHomeBtn.addEventListener("click", () => {
     closeSidebar();
-    examPanel.classList.add("hidden");
-    hibaDashboard.classList.remove("hidden");
-    updateHibaDashboardUI();
+    window.location.hash = "#/hiba";
   });
 
 
@@ -912,38 +930,55 @@ document.addEventListener("DOMContentLoaded", () => {
       QUESTIONS = await response.json();
       onQuestionsReady();
     } catch (e) {
-      console.warn("Failed to load questions from backend, falling back to local questions.js", e);
-      if (window.QUESTIONS && window.QUESTIONS.length > 0) {
-        QUESTIONS = window.QUESTIONS;
+      console.warn("Failed to load questions from backend, trying local questions.json", e);
+      try {
+        const localResponse = await fetch('questions.json');
+        if (!localResponse.ok) throw new Error("Local JSON not available");
+        QUESTIONS = await localResponse.json();
         onQuestionsReady();
-      } else {
-        const script = document.createElement("script");
-        script.src = "questions.js";
-        script.onload = () => {
+      } catch (err) {
+        console.warn("Local JSON fetch failed, trying static/questions.json", err);
+        try {
+          const staticResponse = await fetch('static/questions.json');
+          if (!staticResponse.ok) throw new Error("Static JSON not available");
+          QUESTIONS = await staticResponse.json();
+          onQuestionsReady();
+        } catch (staticErr) {
+          console.warn("Static JSON fetch failed, falling back to window.QUESTIONS", staticErr);
           if (window.QUESTIONS && window.QUESTIONS.length > 0) {
             QUESTIONS = window.QUESTIONS;
             onQuestionsReady();
           } else {
-            document.getElementById("questionText").textContent = "⚠️ Error loading questions. Please refresh the page.";
+            const script = document.createElement("script");
+            script.src = "questions.js";
+            script.onload = () => {
+              if (window.QUESTIONS && window.QUESTIONS.length > 0) {
+                QUESTIONS = window.QUESTIONS;
+                onQuestionsReady();
+              } else {
+                document.getElementById("questionText").textContent = "⚠️ Error loading questions. Please refresh the page.";
+              }
+            };
+            script.onerror = () => {
+              document.getElementById("questionText").textContent = "⚠️ Error loading questions. Please refresh the page.";
+            };
+            document.body.appendChild(script);
           }
-        };
-        script.onerror = () => {
-          document.getElementById("questionText").textContent = "⚠️ Error loading questions. Please refresh the page.";
-        };
-        document.body.appendChild(script);
+        }
       }
     }
   }
 
   function onQuestionsReady() {
-    const storedProfile = localStorage.getItem("cpl_current_profile");
-    if (storedProfile) {
-      selectProfile(storedProfile);
+    if (window.location.hash && window.location.hash !== "#/") {
+      handleRoute();
     } else {
-      profileScreen.remove("hidden");
-      hibaDashboard.classList.add("hidden");
-      aadilDashboard.classList.add("hidden");
-      examPanel.classList.add("hidden");
+      const storedProfile = localStorage.getItem("cpl_current_profile");
+      if (storedProfile) {
+        selectProfile(storedProfile);
+      } else {
+        handleRoute();
+      }
     }
   }
 
