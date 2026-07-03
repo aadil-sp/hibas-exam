@@ -80,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dashHibaAccuracy = document.getElementById("dashHibaAccuracy");
   const dashHibaMastery = document.getElementById("dashHibaMastery");
   const btnTargetedPrep = document.getElementById("btnTargetedPrep");
-  const logoutBtnHiba = document.getElementById("logoutBtnHiba");
   const subjectCards = document.querySelectorAll(".subjects-grid .subject-card");
   const chaptersSection = document.getElementById("chaptersSection");
   const chaptersTitle = document.getElementById("chaptersTitle");
@@ -88,14 +87,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Aadil's Dashboard
   const aadilDashboard = document.getElementById("aadilDashboard");
-  const logoutBtnAadil = document.getElementById("logoutBtnAadil");
   const mentorAccuracy = document.getElementById("mentorAccuracy");
   const mentorTotalAttempts = document.getElementById("mentorTotalAttempts");
   const mentorCorrectAnswers = document.getElementById("mentorCorrectAnswers");
   const mentorSubjectList = document.getElementById("mentorSubjectList");
   const mentorActivityList = document.getElementById("mentorActivityList");
   const mentorHistoryBody = document.getElementById("mentorHistoryBody");
-  const btnClearDb = document.getElementById("btnClearDb");
+
+  // Settings Modal Elements
+  const settingsModal = document.getElementById("settingsModal");
+  const dashSettingsBtn = document.getElementById("dashSettingsBtn");
+  const mentorSettingsBtn = document.getElementById("mentorSettingsBtn");
+  const examSettingsBtn = document.getElementById("examSettingsBtn");
+  const settingsCloseBtn = document.getElementById("settingsCloseBtn");
+  const connectionStatus = document.getElementById("connectionStatus");
+  const settingsSwitchProfileBtn = document.getElementById("settingsSwitchProfileBtn");
+  const settingsResetBtn = document.getElementById("settingsResetBtn");
+  const settingsHardResetBtn = document.getElementById("settingsHardResetBtn");
+  const settingsClearServerLogsBtn = document.getElementById("settingsClearServerLogsBtn");
 
   // Exam Screen
   const examPanel = document.getElementById("examPanel");
@@ -162,12 +171,100 @@ document.addEventListener("DOMContentLoaded", () => {
     hibaDashboard.classList.add("hidden");
     aadilDashboard.classList.add("hidden");
     examPanel.classList.add("hidden");
+    chaptersSection.classList.add("hidden");
+    subjectCards.forEach(c => c.classList.remove("active"));
   }
 
   profileCardHiba.addEventListener("click", () => selectProfile("hiba"));
   profileCardAadil.addEventListener("click", () => selectProfile("aadil"));
-  logoutBtnHiba.addEventListener("click", logout);
-  logoutBtnAadil.addEventListener("click", logout);
+
+  // --- SETTINGS MODAL ENGINE ---
+  function openSettingsModal() {
+    settingsModal.classList.remove("hidden");
+    checkAPIHealth();
+    
+    // Toggle Aadil specific admin buttons in settings
+    if (currentProfile === "aadil") {
+      settingsClearServerLogsBtn.classList.remove("hidden");
+    } else {
+      settingsClearServerLogsBtn.classList.add("hidden");
+    }
+  }
+
+  function closeSettingsModal() {
+    settingsModal.classList.add("hidden");
+  }
+
+  async function checkAPIHealth() {
+    connectionStatus.className = "connection-status status-checking";
+    connectionStatus.querySelector(".status-text").textContent = "Checking Server Connection...";
+    
+    try {
+      const response = await fetch('/api/questions');
+      if (response.ok) {
+        connectionStatus.className = "connection-status status-online";
+        connectionStatus.querySelector(".status-text").textContent = "Online (FastAPI Connected) 🟢";
+      } else {
+        throw new Error("HTTP error");
+      }
+    } catch (e) {
+      connectionStatus.className = "connection-status status-offline";
+      connectionStatus.querySelector(".status-text").textContent = "Offline (Vercel Local Mode) 🔴";
+    }
+  }
+
+  // Hook Gear Buttons
+  dashSettingsBtn.addEventListener("click", openSettingsModal);
+  mentorSettingsBtn.addEventListener("click", openSettingsModal);
+  examSettingsBtn.addEventListener("click", openSettingsModal);
+  settingsCloseBtn.addEventListener("click", closeSettingsModal);
+
+  // Close modal when clicking outer backdrop area
+  settingsModal.addEventListener("click", (e) => {
+    if (e.target === settingsModal) {
+      closeSettingsModal();
+    }
+  });
+
+  // Wire Modal Buttons
+  settingsSwitchProfileBtn.addEventListener("click", () => {
+    closeSettingsModal();
+    logout();
+  });
+
+  settingsResetBtn.addEventListener("click", () => {
+    closeSettingsModal();
+    if (confirm("Reset current session statistics and shuffle the question bank?")) {
+      performResetAndShuffle();
+      if (!examPanel.classList.contains("hidden")) {
+        initExamApp();
+      }
+    }
+  });
+
+  settingsHardResetBtn.addEventListener("click", () => {
+    if (confirm("⚠️ WARNING: This will permanently delete all your local scores, progress history, and accuracy rates. Are you sure you want to wipe local storage?")) {
+      closeSettingsModal();
+      localStorage.clear();
+      resetStatsObject();
+      logout();
+    }
+  });
+
+  settingsClearServerLogsBtn.addEventListener("click", async () => {
+    if (confirm("Clear Hiba's answer history and activity records on the server database? This will clear the mentor portal timeline.")) {
+      try {
+        const response = await fetch('/api/reset', { method: 'POST' });
+        if (response.ok) {
+          closeSettingsModal();
+          loadAadilAnalytics();
+        }
+      } catch (e) {
+        alert("Failed to wipe server records.");
+      }
+    }
+  });
+
 
   // --- HIBA'S DASHBOARD HANDLERS ---
   function updateHibaDashboardUI() {
@@ -285,15 +382,6 @@ document.addEventListener("DOMContentLoaded", () => {
     examPanel.classList.remove("hidden");
     initExamApp();
   }
-
-  // Exit Exam (Go back to Hiba's dashboard)
-  function exitExamToDashboard() {
-    examPanel.classList.add("hidden");
-    hibaDashboard.classList.remove("hidden");
-    updateHibaDashboardUI();
-  }
-  exitExamBtn.addEventListener("click", exitExamToDashboard);
-  examHomeBtn.addEventListener("click", exitExamToDashboard);
 
   // --- MENTOR AADIL'S PORTAL HANDLERS ---
   async function loadAadilAnalytics() {
@@ -419,19 +507,6 @@ document.addEventListener("DOMContentLoaded", () => {
     mentorActivityList.innerHTML = "<p class='no-data-text'>Activity logging is offline.</p>";
     mentorHistoryBody.innerHTML = "<tr><td colspan='4' class='center-text no-data-text'>Attempt history is stored on the server.</td</tr>";
   }
-
-  btnClearDb.addEventListener("click", async () => {
-    if (confirm("Are you sure you want to delete Hiba's server activity logs?")) {
-      try {
-        const response = await fetch('/api/reset', { method: 'POST' });
-        if (response.ok) {
-          loadAadilAnalytics();
-        }
-      } catch (e) {
-        alert("Failed to clear logs on server.");
-      }
-    }
-  });
 
 
   // --- EXAM SIDEBAR NAVIGATION ---
@@ -842,7 +917,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (storedProfile) {
       selectProfile(storedProfile);
     } else {
-      profileScreen.classList.remove("hidden");
+      profileScreen.remove("hidden");
       hibaDashboard.classList.add("hidden");
       aadilDashboard.classList.add("hidden");
       examPanel.classList.add("hidden");

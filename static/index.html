@@ -51,7 +51,9 @@
         <p class="badge-sub">CPL Cockpit Deck</p>
       </div>
     </div>
-    <button class="logout-btn" id="logoutBtnHiba">Switch User ⇄</button>
+    <div class="header-actions">
+      <button class="settings-gear-btn" id="dashSettingsBtn" title="Settings">⚙️ Settings</button>
+    </div>
   </header>
 
   <main class="dash-main">
@@ -159,7 +161,9 @@
         <p class="badge-sub">Flight Analytics Console</p>
       </div>
     </div>
-    <button class="logout-btn" id="logoutBtnAadil">Switch User ⇄</button>
+    <div class="header-actions">
+      <button class="settings-gear-btn" id="mentorSettingsBtn" title="Settings">⚙️ Settings</button>
+    </div>
   </header>
 
   <main class="dash-main">
@@ -216,11 +220,6 @@
         </table>
       </div>
     </section>
-
-    <!-- Administrative Controls -->
-    <section class="admin-controls">
-      <button class="btn-clear-db" id="btnClearDb">⚠️ Clear Server Activity Logs</button>
-    </section>
   </main>
 </div>
 
@@ -237,7 +236,8 @@
       <span class="divider">/</span>
       <span id="sectionLabel">All Chapters</span>
     </div>
-    <button class="home-icon-btn" id="exitExamBtn" title="Back to Dashboard">📋</button>
+    <button class="home-icon-btn" id="exitExamBtn" title="Back to Dashboard">🏠</button>
+    <button class="settings-gear-btn icon-only" id="examSettingsBtn" title="Settings">⚙️</button>
     <div class="topbar-score">
       <span id="topScore">0/0</span>
     </div>
@@ -305,6 +305,44 @@
 
   <!-- Floating Reset & Shuffle Button -->
   <button class="float-reset-btn" id="floatResetBtn" title="Reset & Shuffle Session">🔄 Reset &amp; Shuffle</button>
+</div>
+
+<!-- ───────── 5. COCKPIT SETTINGS MODAL ───────── -->
+<div class="modal-overlay hidden" id="settingsModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>🛠️ Cockpit Settings</h3>
+      <button class="modal-close" id="settingsCloseBtn">✕</button>
+    </div>
+    <div class="modal-body">
+      <!-- Connection Status -->
+      <div class="setting-item">
+        <span class="setting-label">API Server Status</span>
+        <div class="connection-status status-checking" id="connectionStatus">
+          <span class="status-dot"></span>
+          <span class="status-text">Checking...</span>
+        </div>
+      </div>
+      
+      <!-- General actions -->
+      <div class="setting-item">
+        <span class="setting-label">Profile Operations</span>
+        <button class="setting-action-btn" id="settingsSwitchProfileBtn">⇄ Switch User Profile</button>
+      </div>
+
+      <div class="setting-item">
+        <span class="setting-label">Session Operations</span>
+        <button class="setting-action-btn" id="settingsResetBtn">🔄 Reset &amp; Shuffle Active Session</button>
+      </div>
+
+      <!-- Danger zone -->
+      <div class="setting-item danger-zone">
+        <span class="setting-label">Danger Zone</span>
+        <button class="setting-action-btn btn-danger" id="settingsHardResetBtn">⚠️ Hard Reset Local Progress</button>
+        <button class="setting-action-btn btn-danger hidden" id="settingsClearServerLogsBtn">⚠️ Clear Server Activity Logs</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ───────── OVERLAY NAVIGATION FOR EXAM SIDEBAR ───────── -->
