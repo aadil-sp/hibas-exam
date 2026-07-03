@@ -969,6 +969,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function onQuestionsReady() {
+    runExamCountdown();
     if (window.location.hash && window.location.hash !== "#/") {
       handleRoute();
     } else {
@@ -979,6 +980,56 @@ document.addEventListener("DOMContentLoaded", () => {
         handleRoute();
       }
     }
+  }
+
+  function runExamCountdown() {
+    const examStart = new Date("2026-07-04T09:00:00+05:30").getTime();
+    const examEnd = new Date("2026-07-04T11:00:00+05:30").getTime();
+    const countdownEl = document.getElementById("examCountdown");
+    const badgeEl = document.querySelector("#batch8NoticeCard .nc-badge");
+
+    if (!countdownEl) return;
+
+    function update() {
+      const now = Date.now();
+      
+      if (now < examStart) {
+        // Before exam: countdown to start
+        const diff = examStart - now;
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("cdHours").textContent = String(hours).padStart(2, "0");
+        document.getElementById("cdMins").textContent = String(minutes).padStart(2, "0");
+        document.getElementById("cdSecs").textContent = String(seconds).padStart(2, "0");
+        
+        badgeEl.textContent = "📅 TODAY'S FLIGHT TEST";
+        badgeEl.className = "nc-badge";
+      } else if (now >= examStart && now < examEnd) {
+        // During exam
+        countdownEl.innerHTML = `
+          <div class="exam-active-banner">
+            <span class="active-dot"></span>
+            <span class="active-text">TEST IN PROGRESS — CLEAR FOR TAKE-OFF!</span>
+          </div>
+        `;
+        badgeEl.textContent = "🟢 ACTIVE FLIGHT TEST";
+        badgeEl.className = "nc-badge status-online";
+      } else {
+        // After exam
+        countdownEl.innerHTML = `
+          <div class="exam-complete-banner">
+            <span>✅ MISSION ACCOMPLISHED</span>
+          </div>
+        `;
+        badgeEl.textContent = "🏁 EXAM COMPLETED";
+        badgeEl.className = "nc-badge status-offline";
+      }
+    }
+
+    update();
+    setInterval(update, 1000);
   }
 
   loadQuestions();

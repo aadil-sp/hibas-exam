@@ -60,9 +60,29 @@
   <main class="dash-main">
     <!-- TARGETED BATCH 8 EXAM NOTICE (Top Notification) -->
     <section class="notification-card" id="batch8NoticeCard">
-      <div class="nc-badge">📅 TOMORROW'S FLIGHT TEST</div>
+      <div class="nc-badge">📅 TODAY'S FLIGHT TEST</div>
       <h2>Batch 8 Portion Exam</h2>
-      <p class="nc-time">Time: July 4, 2026 | 09:00 AM - 11:00 AM</p>
+      <p class="nc-time">Time: July 4, 2026 | 09:00 AM - 11:00 AM (IST)</p>
+      
+      <div class="exam-countdown-wrapper">
+        <p class="cd-title">COUNTDOWN TO DEPARTURE</p>
+        <div class="exam-countdown" id="examCountdown">
+          <div class="countdown-unit">
+            <span class="countdown-val" id="cdHours">00</span>
+            <span class="countdown-lbl">Hours</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-val" id="cdMins">00</span>
+            <span class="countdown-lbl">Mins</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-val" id="cdSecs">00</span>
+            <span class="countdown-lbl">Secs</span>
+          </div>
+        </div>
+      </div>
       <div class="nc-divider"></div>
       
       <div class="nc-portion-grid">
