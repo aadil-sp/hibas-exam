@@ -98,6 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const settingsModal = document.getElementById("settingsModal");
   const dashSettingsBtn = document.getElementById("dashSettingsBtn");
   const mentorSettingsBtn = document.getElementById("mentorSettingsBtn");
+  const dashHomeBtn = document.getElementById("dashHomeBtn");
+  const mentorHomeBtn = document.getElementById("mentorHomeBtn");
   const examSettingsBtn = document.getElementById("examSettingsBtn");
   const settingsCloseBtn = document.getElementById("settingsCloseBtn");
   const connectionStatus = document.getElementById("connectionStatus");
@@ -177,6 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   profileCardHiba.addEventListener("click", () => selectProfile("hiba"));
   profileCardAadil.addEventListener("click", () => selectProfile("aadil"));
+  dashHomeBtn.addEventListener("click", logout);
+  mentorHomeBtn.addEventListener("click", logout);
 
   // --- SETTINGS MODAL ENGINE ---
   function openSettingsModal() {
@@ -884,9 +888,22 @@ document.addEventListener("DOMContentLoaded", () => {
   examResetBtn.addEventListener("click", handleResetClick);
   floatResetBtn.addEventListener("click", handleResetClick);
 
+  exitExamBtn.addEventListener("click", () => {
+    examPanel.classList.add("hidden");
+    hibaDashboard.classList.remove("hidden");
+    updateHibaDashboardUI();
+  });
+
+  examHomeBtn.addEventListener("click", () => {
+    closeSidebar();
+    examPanel.classList.add("hidden");
+    hibaDashboard.classList.remove("hidden");
+    updateHibaDashboardUI();
+  });
+
 
   // --- BACKEND QUESTIONS LOADING ---
-  let QUESTIONS = [];
+  let QUESTIONS = window.QUESTIONS || [];
 
   async function loadQuestions() {
     try {
@@ -896,19 +913,25 @@ document.addEventListener("DOMContentLoaded", () => {
       onQuestionsReady();
     } catch (e) {
       console.warn("Failed to load questions from backend, falling back to local questions.js", e);
-      const script = document.createElement("script");
-      script.src = "questions.js";
-      script.onload = () => {
-        if (typeof QUESTIONS !== "undefined" && QUESTIONS.length > 0) {
-          onQuestionsReady();
-        } else {
+      if (window.QUESTIONS && window.QUESTIONS.length > 0) {
+        QUESTIONS = window.QUESTIONS;
+        onQuestionsReady();
+      } else {
+        const script = document.createElement("script");
+        script.src = "questions.js";
+        script.onload = () => {
+          if (window.QUESTIONS && window.QUESTIONS.length > 0) {
+            QUESTIONS = window.QUESTIONS;
+            onQuestionsReady();
+          } else {
+            document.getElementById("questionText").textContent = "⚠️ Error loading questions. Please refresh the page.";
+          }
+        };
+        script.onerror = () => {
           document.getElementById("questionText").textContent = "⚠️ Error loading questions. Please refresh the page.";
-        }
-      };
-      script.onerror = () => {
-        document.getElementById("questionText").textContent = "⚠️ Error loading questions. Please refresh the page.";
-      };
-      document.body.appendChild(script);
+        };
+        document.body.appendChild(script);
+      }
     }
   }
 
