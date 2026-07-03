@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     correct: 0,
     wrong: 0,
     skipped: 0,
-    answeredIndices: {} // map of question key to status ('correct', 'wrong', 'skipped')
+    answeredIndices: {}, // map of question key to status ('correct', 'wrong', 'skipped')
+    historyLog: []
   };
 
   // Load Hiba's local stats
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       stats = JSON.parse(savedStats);
       if (!stats.answeredIndices) stats.answeredIndices = {};
+      if (!stats.historyLog) stats.historyLog = [];
     } catch (e) {
       console.error("Error reading saved stats", e);
       resetStatsObject();
@@ -40,7 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
       correct: 0,
       wrong: 0,
       skipped: 0,
-      answeredIndices: {}
+      answeredIndices: {},
+      historyLog: []
     };
   }
 
@@ -150,6 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- PROFILE SELECTOR ROUTING ---
   function selectProfile(profile) {
     if (profile === "hiba") {
+      if (typeof QUESTIONS !== "undefined" && QUESTIONS.length > 0) {
+        shuffleQuestions(QUESTIONS);
+      }
       window.location.hash = "#/hiba";
     } else if (profile === "aadil") {
       window.location.hash = "#/aadil";
@@ -529,9 +535,123 @@ document.addEventListener("DOMContentLoaded", () => {
     mentorTotalAttempts.textContent = totalAttempted + stats.skipped;
     mentorCorrectAnswers.textContent = stats.correct;
 
-    mentorSubjectList.innerHTML = "<p class='no-data-text'>Subject breakdown requires a running FastAPI backend.</p>";
-    mentorActivityList.innerHTML = "<p class='no-data-text'>Activity logging is offline.</p>";
-    mentorHistoryBody.innerHTML = "<tr><td colspan='4' class='center-text no-data-text'>Attempt history is stored on the server.</td</tr>";
+    // 1. Accuracy by Subject
+    mentorSubjectList.innerHTML = "";
+    const subjectLabelNames = {
+      nav: "🧭 General Navigation",
+      reg: "📜 Air Regulations",
+      met: "🌦️ Aviation Meteorology",
+      tech: "🔧 Technical General"
+    };
+
+    const subjectStats = {
+      nav: { total: 0, correct: 0 },
+      reg: { total: 0, correct: 0 },
+      met: { total: 0, correct: 0 },
+      tech: { total: 0, correct: 0 }
+    };
+
+    if (stats.answeredIndices) {
+      for (const [key, status] of Object.entries(stats.answeredIndices)) {
+        if (status === "skipped") continue;
+        const subject = key.split('_')[0];
+        if (subjectStats[subject]) {
+          subjectStats[subject].total++;
+          if (status === "correct") {
+            subjectStats[subject].correct++;
+          }
+        }
+      }
+    }
+
+    const subjects = ['nav', 'reg', 'met', 'tech'];
+    subjects.forEach(sub => {
+      const subData = subjectStats[sub];
+      const subAcc = subData.total > 0 ? Math.round((subData.correct / subData.total) * 100) : 0;
+      
+      const row = document.createElement("div");
+      row.className = "progress-row";
+      
+      const details = document.createElement("div");
+      details.className = "progress-details";
+      details.innerHTML = `<span>${subjectLabelNames[sub]}</span><span>${subAcc}% (${subData.total} Qs)</span>`;
+      
+      const track = document.createElement("div");
+      track.className = "progress-track";
+      
+      const bar = document.createElement("div");
+      bar.className = "progress-fill";
+      bar.style.width = `${subAcc}%`;
+      
+      track.appendChild(bar);
+      row.appendChild(details);
+      row.appendChild(track);
+      mentorSubjectList.appendChild(row);
+    });
+
+    // 2. Daily efforts
+    mentorActivityList.innerHTML = "";
+    if (!stats.historyLog || stats.historyLog.length === 0) {
+      mentorActivityList.innerHTML = "<p class='no-data-text'>No local history recorded.</p>";
+    } else {
+      // Group by local date string
+      const dateCounts = {};
+      stats.historyLog.forEach(log => {
+        if (log.timestamp) {
+          const dateStr = log.timestamp.split('T')[0];
+          dateCounts[dateStr] = (dateCounts[dateStr] || 0) + 1;
+        }
+      });
+
+      const sortedDates = Object.keys(dateCounts).sort((a,b) => new Date(b) - new Date(a));
+      sortedDates.forEach(dateStr => {
+        const item = document.createElement("div");
+        item.className = "activity-item";
+        
+        const dateObj = new Date(dateStr);
+        const options = { month: 'short', day: 'numeric', year: 'numeric' };
+        const dateFormatted = isNaN(dateObj) ? dateStr : dateObj.toLocaleDateString('en-US', options);
+
+        item.innerHTML = `<span>📅 ${dateFormatted}</span><span class='activity-badge'>${dateCounts[dateStr]} questions</span>`;
+        mentorActivityList.appendChild(item);
+      });
+    }
+
+    // 3. Chronological History table
+    mentorHistoryBody.innerHTML = "";
+    if (!stats.historyLog || stats.historyLog.length === 0) {
+      mentorHistoryBody.innerHTML = "<tr><td colspan='4' class='center-text no-data-text'>No local attempts recorded yet.</td></tr>";
+    } else {
+      const subjectIconNames = {
+        nav: "🧭 Navigation",
+        reg: "📜 Regulations",
+        met: "🌦️ Meteorology",
+        tech: "🔧 Technical"
+      };
+
+      // Show last 100 items, newest first
+      const displayLog = [...stats.historyLog].reverse().slice(0, 100);
+      displayLog.forEach(log => {
+        const tr = document.createElement("tr");
+        
+        const timeObj = new Date(log.timestamp);
+        const timeFormatted = isNaN(timeObj) ? log.timestamp.substring(11, 19) : timeObj.toLocaleTimeString('en-US', { hour12: false });
+        const dateFormatted = isNaN(timeObj) ? log.timestamp.substring(5, 10) : timeObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        
+        const subName = subjectIconNames[log.subject] || log.subject;
+        const statusBadge = log.status === "correct" ? "<span class='log-badge correct'>Correct ✓</span>" : 
+                            log.status === "wrong" ? "<span class='log-badge wrong'>Wrong ✗</span>" : 
+                            "<span class='log-badge skip'>Skipped</span>";
+        
+        tr.innerHTML = `
+          <td class="date-col">${dateFormatted} ${timeFormatted}</td>
+          <td class="chap-col">${subName}</td>
+          <td class="question-col">${log.question}</td>
+          <td class="status-col">${statusBadge}</td>
+        `;
+        mentorHistoryBody.appendChild(tr);
+      });
+    }
   }
 
 
@@ -798,6 +918,16 @@ document.addEventListener("DOMContentLoaded", () => {
       stats.answeredIndices[qKey] = "wrong";
     }
 
+    if (!stats.historyLog) stats.historyLog = [];
+    stats.historyLog.push({
+      timestamp: new Date().toISOString(),
+      subject: q.subject,
+      section: q.section,
+      topic: q.topic,
+      question: q.question,
+      status: status
+    });
+
     saveStats();
     revealExplanation(q, isCorrect);
     
@@ -860,6 +990,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!stats.answeredIndices[qKey]) {
       stats.skipped++;
       stats.answeredIndices[qKey] = "skipped";
+      
+      if (!stats.historyLog) stats.historyLog = [];
+      stats.historyLog.push({
+        timestamp: new Date().toISOString(),
+        subject: q.subject,
+        section: q.section,
+        topic: q.topic,
+        question: q.question,
+        status: "skipped"
+      });
+      
       saveStats();
       
       try {
@@ -884,17 +1025,21 @@ document.addEventListener("DOMContentLoaded", () => {
     notesPanel.style.display = "none";
   });
 
+  function shuffleQuestions(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  }
+
   // Reset and Shuffle
   function performResetAndShuffle() {
     resetStatsObject();
     saveStats();
 
-    for (let i = QUESTIONS.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = QUESTIONS[i];
-      QUESTIONS[i] = QUESTIONS[j];
-      QUESTIONS[j] = temp;
-    }
+    shuffleQuestions(QUESTIONS);
 
     currentQuestionIndex = 0;
     initExamApp();
@@ -970,6 +1115,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function onQuestionsReady() {
+    shuffleQuestions(QUESTIONS);
     runExamCountdown();
     if (window.location.hash && window.location.hash !== "#/") {
       handleRoute();
