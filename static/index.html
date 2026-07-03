@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Hiba's CPL Meteorology Prep Portal</title>
-  <meta name="description" content="Dedicated CPL Meteorology exam training dashboard for Captain Hiba." />
+  <title>Hiba's CPL Multi-Subject Prep Portal</title>
+  <meta name="description" content="Dedicated CPL exam training dashboard for Captain Hiba." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="profile-footer">
-      <p>CPL Meteorology Examination Portal</p>
+      <p>CPL Multi-Subject Examination Portal</p>
     </div>
   </div>
 </div>
@@ -48,13 +48,54 @@
       <span class="badge-avatar">👩‍✈️</span>
       <div>
         <p class="badge-title">Captain Hiba</p>
-        <p class="badge-sub">CPL Meteorology</p>
+        <p class="badge-sub">CPL Cockpit Deck</p>
       </div>
     </div>
     <button class="logout-btn" id="logoutBtnHiba">Switch User ⇄</button>
   </header>
 
   <main class="dash-main">
+    <!-- TARGETED BATCH 8 EXAM NOTICE (Top Notification) -->
+    <section class="notification-card" id="batch8NoticeCard">
+      <div class="nc-badge">📅 TOMORROW'S FLIGHT TEST</div>
+      <h2>Batch 8 Portion Exam</h2>
+      <p class="nc-time">Time: July 4, 2026 | 09:00 AM - 11:00 AM</p>
+      <div class="nc-divider"></div>
+      
+      <div class="nc-portion-grid">
+        <div class="nc-portion-item">
+          <span class="nc-icon">🧭</span>
+          <div>
+            <h4>General Navigation (Nav)</h4>
+            <p>Sensors &amp; Pressure Instruments, Earth Geometry, Departure, Time, Convergency</p>
+          </div>
+        </div>
+        <div class="nc-portion-item">
+          <span class="nc-icon">📜</span>
+          <div>
+            <h4>Air Regulations (Reg)</h4>
+            <p>ICAO Orgs, Conventions, Airworthiness, Personnel Licensing, Rules of the Air, Aerodromes</p>
+          </div>
+        </div>
+        <div class="nc-portion-item">
+          <span class="nc-icon">🌦️</span>
+          <div>
+            <h4>Aviation Meteorology (Met)</h4>
+            <p>Atmosphere, Temperature, Air Density</p>
+          </div>
+        </div>
+        <div class="nc-portion-item">
+          <span class="nc-icon">🔧</span>
+          <div>
+            <h4>Technical General (Tech)</h4>
+            <p>Vortices, Induced Drag, Wake Turbulence, Ground Effect, Drag Curves, Boundary Layer</p>
+          </div>
+        </div>
+      </div>
+      
+      <button class="targeted-prep-btn" id="btnTargetedPrep">⚡ Start Targeted Exam Prep</button>
+    </section>
+
     <!-- Quick Overall Metrics -->
     <section class="metrics-grid">
       <div class="metric-card">
@@ -63,30 +104,46 @@
       </div>
       <div class="metric-card">
         <span class="metric-val" id="dashHibaMastery">0 / 0</span>
-        <span class="metric-lbl">Questions Completed</span>
+        <span class="metric-lbl">Total Completed</span>
       </div>
     </section>
 
-    <!-- Large Start Test Call-To-Action -->
-    <section class="action-card">
-      <div class="ac-glow"></div>
-      <div class="ac-content">
-        <h2>Start Practice Flight</h2>
-        <p>Answer questions from the CPL Meteorology syllabus. Expands your knowledge base with immediate log feedback.</p>
-        <button class="flight-btn" id="btnStartFlight">🚀 Take Practice Flight</button>
+    <!-- SELECT STUDY SUBJECT -->
+    <section class="subjects-section">
+      <h3 class="section-title">Select Study Subject</h3>
+      <div class="subjects-grid">
+        <!-- Navigation Card -->
+        <div class="subject-card" data-subject="nav" id="subCardNav">
+          <div class="sc-avatar nav-subject">🧭</div>
+          <h4>Navigation</h4>
+          <p class="sc-count" id="subCountNav">30 Questions</p>
+        </div>
+        <!-- Regulations Card -->
+        <div class="subject-card" data-subject="reg" id="subCardReg">
+          <div class="sc-avatar reg-subject">📜</div>
+          <h4>Regulations</h4>
+          <p class="sc-count" id="subCountReg">30 Questions</p>
+        </div>
+        <!-- Meteorology Card -->
+        <div class="subject-card" data-subject="met" id="subCardMet">
+          <div class="sc-avatar met-subject">🌦️</div>
+          <h4>Meteorology</h4>
+          <p class="sc-count" id="subCountMet">126 Questions</p>
+        </div>
+        <!-- Technical Card -->
+        <div class="subject-card" data-subject="tech" id="subCardTech">
+          <div class="sc-avatar tech-subject">🔧</div>
+          <h4>Technical</h4>
+          <p class="sc-count" id="subCountTech">20 Questions</p>
+        </div>
       </div>
     </section>
 
-    <!-- Chapters & Topics Filter -->
-    <section class="chapters-section">
-      <h3 class="section-title">Select Chapter focus</h3>
-      <div class="chapter-chips-grid">
-        <button class="chip active" data-section="all">🌐 All Chapters</button>
-        <button class="chip" data-section="composition">📘 Composition &amp; Structure</button>
-        <button class="chip" data-section="heating">☀️ Heating &amp; Thermal Structure</button>
-        <button class="chip" data-section="troposphere">⛈️ Troposphere &amp; Tropopause</button>
-        <button class="chip" data-section="upper">🚀 Stratosphere &amp; Upper Layers</button>
-        <button class="chip" data-section="standard">✈️ Standard Atmosphere (ISA/JSA)</button>
+    <!-- CHAPTERS ACCORDION (Revealed when a subject is clicked) -->
+    <section class="chapters-section hidden" id="chaptersSection">
+      <h3 class="section-title" id="chaptersTitle">Chapter focus</h3>
+      <div class="chapter-chips-grid" id="chapterChipsContainer">
+        <!-- Dynamically injected chips -->
       </div>
     </section>
   </main>
@@ -123,10 +180,10 @@
     </section>
 
     <div class="mentor-details-grid">
-      <!-- Chapter-wise Performance -->
+      <!-- Performance by Subject -->
       <section class="mentor-section">
-        <h3 class="section-title">Accuracy by Chapter</h3>
-        <div class="chapter-progress-list" id="mentorChapterList">
+        <h3 class="section-title">Accuracy by Subject</h3>
+        <div class="chapter-progress-list" id="mentorSubjectList">
           <!-- Dynamically populated by JS -->
         </div>
       </section>
@@ -148,7 +205,7 @@
           <thead>
             <tr>
               <th>Timestamp</th>
-              <th>Chapter</th>
+              <th>Subject</th>
               <th>Question</th>
               <th>Status</th>
             </tr>
@@ -256,7 +313,7 @@
   <div class="sidebar-header">
     <div class="logo-mark">🌦️</div>
     <div>
-      <p class="sidebar-title">CPL Meteorology Prep</p>
+      <p class="sidebar-title">CPL Prep Deck</p>
       <p class="sidebar-sub">Captain Hiba's Flight Deck</p>
     </div>
     <button class="close-btn" id="examSidebarClose" aria-label="Close menu">✕</button>
@@ -277,12 +334,7 @@
   <div id="sectionContainer">
     <p class="section-label" id="sectionHeader">CHAPTERS</p>
     <ul class="nav-list" id="examNavList">
-      <li class="nav-item active" data-section="all">🌐 All Chapters</li>
-      <li class="nav-item" data-section="composition">📘 Composition &amp; Structure</li>
-      <li class="nav-item" data-section="heating">☀️ Heating &amp; Thermal Structure</li>
-      <li class="nav-item" data-section="troposphere">⛈️ Troposphere &amp; Tropopause</li>
-      <li class="nav-item" data-section="upper">🚀 Stratosphere &amp; Upper Layers</li>
-      <li class="nav-item" data-section="standard">✈️ Standard Atmosphere (ISA/JSA)</li>
+      <!-- Injected programmatically based on active subject -->
     </ul>
   </div>
 

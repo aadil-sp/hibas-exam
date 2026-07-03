@@ -9,7 +9,8 @@
       "1:5"
     ],
     "answer": 0,
-    "notes": "By weight, the ratio of Oxygen to Nitrogen is approximately 1:3 (Q18 textbook question)."
+    "notes": "By weight, the ratio of Oxygen to Nitrogen is approximately 1:3 (Q18 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -21,7 +22,8 @@
       "1:5"
     ],
     "answer": 1,
-    "notes": "By volume, the ratio of Oxygen to Nitrogen is approximately 1:4 (representing 21% Oxygen and 78% Nitrogen) (Q19 textbook question)."
+    "notes": "By volume, the ratio of Oxygen to Nitrogen is approximately 1:4 (representing 21% Oxygen and 78% Nitrogen) (Q19 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -33,7 +35,8 @@
       "0.03%"
     ],
     "answer": 2,
-    "notes": "By volume, Carbon Dioxide constitutes approximately 0.03% (specifically 0.035%) of clean, dry air (Q20 textbook question)."
+    "notes": "By volume, Carbon Dioxide constitutes approximately 0.03% (specifically 0.035%) of clean, dry air (Q20 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -45,7 +48,8 @@
       "10000 ft"
     ],
     "answer": 2,
-    "notes": "Due to the rapid decrease of atmospheric pressure and density with height, supplementary oxygen is required above 10,000 ft (Q23 textbook question)."
+    "notes": "Due to the rapid decrease of atmospheric pressure and density with height, supplementary oxygen is required above 10,000 ft (Q23 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -57,7 +61,8 @@
       "Have no effect"
     ],
     "answer": 0,
-    "notes": "Carbon Dioxide and Water Vapour are greenhouse gases that absorb terrestrial radiation, keeping the atmosphere warm (Q24 textbook question)."
+    "notes": "Carbon Dioxide and Water Vapour are greenhouse gases that absorb terrestrial radiation, keeping the atmosphere warm (Q24 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -69,7 +74,8 @@
       "Mixing due to turbulence"
     ],
     "answer": 1,
-    "notes": "Earth's gravitation and mixing keep the gaseous composition uniform up to 80 km, forming the Homosphere (Q30 textbook question)."
+    "notes": "Earth's gravitation and mixing keep the gaseous composition uniform up to 80 km, forming the Homosphere (Q30 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -81,7 +87,8 @@
       "10,000 ft"
     ],
     "answer": 0,
-    "notes": "Due to gravity, approximately half (50%) of the atmospheric mass lies below 6 km (20,000 ft) (Q31 textbook question)."
+    "notes": "Due to gravity, approximately half (50%) of the atmospheric mass lies below 6 km (20,000 ft) (Q31 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -94,7 +101,8 @@
       "lower troposphere"
     ],
     "answer": 1,
-    "notes": "Water vapour decreases rapidly with height due to low temperatures; it is almost negligible above 30,000 ft (Q37 textbook question)."
+    "notes": "Water vapour decreases rapidly with height due to low temperatures; it is almost negligible above 30,000 ft (Q37 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -107,7 +115,8 @@
       "Density is constant above 8 km"
     ],
     "answer": 0,
-    "notes": "Air is a poor conductor of heat and electricity (Q40 textbook question)."
+    "notes": "Air is a poor conductor of heat and electricity (Q40 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -119,7 +128,8 @@
       "Heterosphere"
     ],
     "answer": 0,
-    "notes": "The troposphere contains approximately 75% of the total atmospheric mass and 99% of its water vapour (Q13 textbook question)."
+    "notes": "The troposphere contains approximately 75% of the total atmospheric mass and 99% of its water vapour (Q13 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -130,7 +140,8 @@
       "Rare Earth Gases"
     ],
     "answer": 0,
-    "notes": "Carbon Dioxide and Water Vapour are greenhouse gases because they absorb outgoing terrestrial radiation (Q9 textbook question)."
+    "notes": "Carbon Dioxide and Water Vapour are greenhouse gases because they absorb outgoing terrestrial radiation (Q9 textbook question).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -142,7 +153,8 @@
       "0.93%"
     ],
     "answer": 0,
-    "notes": "Nitrogen is the most abundant gas in the atmosphere, making up 78.09% of clean, dry air."
+    "notes": "Nitrogen is the most abundant gas in the atmosphere, making up 78.09% of clean, dry air.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -154,7 +166,8 @@
       "0.035%"
     ],
     "answer": 1,
-    "notes": "Oxygen is the second most abundant gas in the atmosphere, making up 20.95% of clean, dry air (commonly rounded to 21%)."
+    "notes": "Oxygen is the second most abundant gas in the atmosphere, making up 20.95% of clean, dry air (commonly rounded to 21%).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -166,7 +179,8 @@
       "16 km"
     ],
     "answer": 1,
-    "notes": "The Homosphere extends from the surface up to about 80 km. Above 80 km is the Heterosphere, where gases are layered by molecular weight."
+    "notes": "The Homosphere extends from the surface up to about 80 km. Above 80 km is the Heterosphere, where gases are layered by molecular weight.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -178,7 +192,8 @@
       "Argon"
     ],
     "answer": 1,
-    "notes": "Water vapour, methane, carbon monoxide, sulfur dioxide, and nitrogen dioxide vary in concentration from place to place and are variable gases."
+    "notes": "Water vapour, methane, carbon monoxide, sulfur dioxide, and nitrogen dioxide vary in concentration from place to place and are variable gases.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -190,7 +205,8 @@
       "Above 30,000 ft"
     ],
     "answer": 1,
-    "notes": "Variable gases vary in amount and are concentrated more in industrial areas, cities, and near water bodies."
+    "notes": "Variable gases vary in amount and are concentrated more in industrial areas, cities, and near water bodies.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -202,7 +218,8 @@
       "UV; Infrared"
     ],
     "answer": 0,
-    "notes": "Greenhouse gases are transparent to incoming solar short-wave radiation, but absorb outgoing long-wave terrestrial radiation, causing the greenhouse effect."
+    "notes": "Greenhouse gases are transparent to incoming solar short-wave radiation, but absorb outgoing long-wave terrestrial radiation, causing the greenhouse effect.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -214,7 +231,8 @@
       "Constant at 1%"
     ],
     "answer": 1,
-    "notes": "Due to very low temperatures, water vapour content is almost negligible at the poles and at altitudes above 30,000 ft."
+    "notes": "Due to very low temperatures, water vapour content is almost negligible at the poles and at altitudes above 30,000 ft.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -226,7 +244,8 @@
       "Absolute Air"
     ],
     "answer": 1,
-    "notes": "Air is saturated and has 100% RH when it holds 4% water vapour by volume (in tropics). If RH is < 100%, the air is unsaturated and called Dry Air."
+    "notes": "Air is saturated and has 100% RH when it holds 4% water vapour by volume (in tropics). If RH is < 100%, the air is unsaturated and called Dry Air.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -238,7 +257,8 @@
       "99%"
     ],
     "answer": 1,
-    "notes": "Due to gravitational attraction, approximately 3/4 (75%) of the total air mass lies below 10 km."
+    "notes": "Due to gravitational attraction, approximately 3/4 (75%) of the total air mass lies below 10 km.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -250,7 +270,8 @@
       "99%"
     ],
     "answer": 2,
-    "notes": "Approximately 99% of the total atmospheric air mass is contained below 35 km."
+    "notes": "Approximately 99% of the total atmospheric air mass is contained below 35 km.",
+    "subject": "met"
   },
   {
     "section": "heating",
@@ -262,7 +283,8 @@
       "From above"
     ],
     "answer": 1,
-    "notes": "The atmosphere is heated from below, not from above. Solar radiation heats the Earth, which in turn heats the atmosphere (Q7 textbook question)."
+    "notes": "The atmosphere is heated from below, not from above. Solar radiation heats the Earth, which in turn heats the atmosphere (Q7 textbook question).",
+    "subject": "met"
   },
   {
     "section": "heating",
@@ -275,7 +297,8 @@
       "solar radiation; convection"
     ],
     "answer": 1,
-    "notes": "Lapse rate in the troposphere is produced by rising air (convective cooling), and in the stratosphere by solar radiation absorption (Q36 textbook question)."
+    "notes": "Lapse rate in the troposphere is produced by rising air (convective cooling), and in the stratosphere by solar radiation absorption (Q36 textbook question).",
+    "subject": "met"
   },
   {
     "section": "heating",
@@ -288,7 +311,8 @@
       "latent heat"
     ],
     "answer": 3,
-    "notes": "Heat transfer in the atmosphere is maximum due to latent heat (evaporation, condensation, sublimation), which accounts for 77% of the flow (Q41 textbook question)."
+    "notes": "Heat transfer in the atmosphere is maximum due to latent heat (evaporation, condensation, sublimation), which accounts for 77% of the flow (Q41 textbook question).",
+    "subject": "met"
   },
   {
     "section": "heating",
@@ -301,7 +325,8 @@
       "sublimation and radiation"
     ],
     "answer": 2,
-    "notes": "Condensation, sublimation, and freezing release latent heat, which constitutes 77% of the atmospheric heat transfer (Q44 textbook question)."
+    "notes": "Condensation, sublimation, and freezing release latent heat, which constitutes 77% of the atmospheric heat transfer (Q44 textbook question).",
+    "subject": "met"
   },
   {
     "section": "heating",
@@ -313,7 +338,8 @@
       "Sensible 77%, Latent 23%"
     ],
     "answer": 1,
-    "notes": "Heat flow to the atmosphere consists of 23% Sensible Heat (conduction, convection, radiation) and 77% Latent Heat (evaporation, condensation, sublimation)."
+    "notes": "Heat flow to the atmosphere consists of 23% Sensible Heat (conduction, convection, radiation) and 77% Latent Heat (evaporation, condensation, sublimation).",
+    "subject": "met"
   },
   {
     "section": "heating",
@@ -325,7 +351,8 @@
       "Direct absorption of solar short-wave radiation by dry air"
     ],
     "answer": 2,
-    "notes": "Dry air is transparent to solar short-wave radiation; the atmosphere is heated from below by the Earth's surface via conduction, convection, radiation, and latent heat."
+    "notes": "Dry air is transparent to solar short-wave radiation; the atmosphere is heated from below by the Earth's surface via conduction, convection, radiation, and latent heat.",
+    "subject": "met"
   },
   {
     "section": "heating",
@@ -337,7 +364,8 @@
       "Because solar radiation is weaker near the surface"
     ],
     "answer": 0,
-    "notes": "Since the atmosphere is heated from below by the Earth's surface, the temperature falls with height up to the tropopause."
+    "notes": "Since the atmosphere is heated from below by the Earth's surface, the temperature falls with height up to the tropopause.",
+    "subject": "met"
   },
   {
     "section": "heating",
@@ -349,7 +377,8 @@
       "Sublimation of ice"
     ],
     "answer": 1,
-    "notes": "Condensation of water vapour releases latent heat, warming the surrounding air. Evaporation absorbs heat, cooling the surface."
+    "notes": "Condensation of water vapour releases latent heat, warming the surrounding air. Evaporation absorbs heat, cooling the surface.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -361,7 +390,8 @@
       "Stratosphere"
     ],
     "answer": 0,
-    "notes": "The Troposphere is the lowest layer of the atmosphere (Q1 textbook question)."
+    "notes": "The Troposphere is the lowest layer of the atmosphere (Q1 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -373,7 +403,8 @@
       "14 km"
     ],
     "answer": 1,
-    "notes": "The tropopause is higher at the equator (16-18 km) due to strong rising hot convection currents (Q2 textbook question)."
+    "notes": "The tropopause is higher at the equator (16-18 km) due to strong rising hot convection currents (Q2 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -385,7 +416,8 @@
       "08 km"
     ],
     "answer": 2,
-    "notes": "At the poles, the tropopause is at its lowest height, around 8-10 km (specifically 8 km in this question) (Q3 textbook question)."
+    "notes": "At the poles, the tropopause is at its lowest height, around 8-10 km (specifically 8 km in this question) (Q3 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -397,7 +429,8 @@
       "Same"
     ],
     "answer": 0,
-    "notes": "Higher surface temperatures drive stronger convective currents, pushing the tropopause higher (Q4 textbook question)."
+    "notes": "Higher surface temperatures drive stronger convective currents, pushing the tropopause higher (Q4 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -409,7 +442,8 @@
       "Varies with Latitude"
     ],
     "answer": 2,
-    "notes": "The height of the tropopause varies with latitude: 16-18 km at the equator and 8-10 km at the poles (Q5 textbook question)."
+    "notes": "The height of the tropopause varies with latitude: 16-18 km at the equator and 8-10 km at the poles (Q5 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -421,7 +455,8 @@
       "Poles"
     ],
     "answer": 0,
-    "notes": "Because the troposphere is thicker at the equator and cooling continues up to 16-18 km, temperatures above 8 km are lower over the equator (-70\u00b0C to -75\u00b0C) than the poles (-40\u00b0C to -45\u00b0C) (Q6 textbook question)."
+    "notes": "Because the troposphere is thicker at the equator and cooling continues up to 16-18 km, temperatures above 8 km are lower over the equator (-70\u00b0C to -75\u00b0C) than the poles (-40\u00b0C to -45\u00b0C) (Q6 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -433,7 +468,8 @@
       "Neutral"
     ],
     "answer": 1,
-    "notes": "The troposphere is characterized by active weather, mixing, and convective currents, making it generally unstable (Q10 textbook question)."
+    "notes": "The troposphere is characterized by active weather, mixing, and convective currents, making it generally unstable (Q10 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -445,7 +481,8 @@
       "80\u00b0lat"
     ],
     "answer": 1,
-    "notes": "The tropopause breaks or folds occur near 40\u00b0 and 60\u00b0 latitude. The break at 40\u00b0 latitude is more prominent (Q12 textbook question)."
+    "notes": "The tropopause breaks or folds occur near 40\u00b0 and 60\u00b0 latitude. The break at 40\u00b0 latitude is more prominent (Q12 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -457,7 +494,8 @@
       "16-16.5 km"
     ],
     "answer": 2,
-    "notes": "Over India, the Tropical Tropopause is found at a height of 16-16.5 km at the 100 hPa level (Q35 textbook question)."
+    "notes": "Over India, the Tropical Tropopause is found at a height of 16-16.5 km at the 100 hPa level (Q35 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -469,7 +507,8 @@
       "stratosphere starts at this height where all solar radiation are absorbed"
     ],
     "answer": 0,
-    "notes": "Practically all weather, turbulence, and clouds are confined within the troposphere, making its boundary (tropopause) crucial for flight planning (Q42 textbook question)."
+    "notes": "Practically all weather, turbulence, and clouds are confined within the troposphere, making its boundary (tropopause) crucial for flight planning (Q42 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -481,7 +520,8 @@
       "16-18 km"
     ],
     "answer": 1,
-    "notes": "The International Standard Atmosphere assumes the tropopause occurs at exactly 11 km (36,090 ft) (Q43 textbook question)."
+    "notes": "The International Standard Atmosphere assumes the tropopause occurs at exactly 11 km (36,090 ft) (Q43 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -494,7 +534,8 @@
       "Lapse rate reverses at poles and becomes negative"
     ],
     "answer": 3,
-    "notes": "Above 8 km, the polar tropopause has already been reached and temperature stops falling, whereas temperature continues to fall over the equator. Thus, the poles become warmer and the lapse rate reverses at the poles (Q45 textbook question)."
+    "notes": "Above 8 km, the polar tropopause has already been reached and temperature stops falling, whereas temperature continues to fall over the equator. Thus, the poles become warmer and the lapse rate reverses at the poles (Q45 textbook question).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -506,7 +547,8 @@
       "7.6 km to Tropopause"
     ],
     "answer": 1,
-    "notes": "The Troposphere is classified into: Lower (Surface to 2.1 km), Mid (2.1 to 7.6 km), and Upper (7.6 km to Tropopause)."
+    "notes": "The Troposphere is classified into: Lower (Surface to 2.1 km), Mid (2.1 to 7.6 km), and Upper (7.6 km to Tropopause).",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -518,7 +560,8 @@
       "The presence of trace greenhouse gases like Neon"
     ],
     "answer": 2,
-    "notes": "The height of the tropopause is controlled by: Surface Temperature, Latitude, Season, Land-Sea distribution, and Synoptic Situation."
+    "notes": "The height of the tropopause is controlled by: Surface Temperature, Latitude, Season, Land-Sea distribution, and Synoptic Situation.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -530,7 +573,8 @@
       "It remains constant throughout the year"
     ],
     "answer": 0,
-    "notes": "Because surface temperatures are colder in winter, the tropopause height is lower in winter than in summer."
+    "notes": "Because surface temperatures are colder in winter, the tropopause height is lower in winter than in summer.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -542,7 +586,8 @@
       "Three"
     ],
     "answer": 1,
-    "notes": "There are two regions where the tropopause abruptly changes height, at about 40\u00b0 Latitude and 60\u00b0 Latitude."
+    "notes": "There are two regions where the tropopause abruptly changes height, at about 40\u00b0 Latitude and 60\u00b0 Latitude.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -554,7 +599,8 @@
       "100 hPa"
     ],
     "answer": 1,
-    "notes": "The Middle Tropopause occurs near the 200 hPa pressure level, at a height of 11.5 km over India."
+    "notes": "The Middle Tropopause occurs near the 200 hPa pressure level, at a height of 11.5 km over India.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -566,7 +612,8 @@
       "100 hPa"
     ],
     "answer": 0,
-    "notes": "The Polar Tropopause occurs near the 300 hPa level, polewards of Lat. 45\u00b0 to 60\u00b0."
+    "notes": "The Polar Tropopause occurs near the 300 hPa level, polewards of Lat. 45\u00b0 to 60\u00b0.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -578,7 +625,8 @@
       "Srinagar"
     ],
     "answer": 2,
-    "notes": "Polar tropopause may be noticed occasionally over Srinagar in winters when polar air incursions occur."
+    "notes": "Polar tropopause may be noticed occasionally over Srinagar in winters when polar air incursions occur.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -590,7 +638,8 @@
       "Tropical Easterly Jet"
     ],
     "answer": 1,
-    "notes": "The Polar Front Jet Stream is located at the southern end of the Polar Tropopause."
+    "notes": "The Polar Front Jet Stream is located at the southern end of the Polar Tropopause.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -602,7 +651,8 @@
       "At the Stratopause"
     ],
     "answer": 0,
-    "notes": "Jet streams, maximum wind speeds, and Clear Air Turbulence (CAT) occur just below the tropopause."
+    "notes": "Jet streams, maximum wind speeds, and Clear Air Turbulence (CAT) occur just below the tropopause.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -614,7 +664,8 @@
       "-137\u00b0C"
     ],
     "answer": 0,
-    "notes": "At 80 km (the Mesopause), the temperature is approximately -100\u00b0C, which is 173.15 K (Q8 textbook question)."
+    "notes": "At 80 km (the Mesopause), the temperature is approximately -100\u00b0C, which is 173.15 K (Q8 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -626,7 +677,8 @@
       "Stable"
     ],
     "answer": 2,
-    "notes": "The stratosphere is characterized by a temperature inversion and low moisture, making it highly stable (Q11 textbook question)."
+    "notes": "The stratosphere is characterized by a temperature inversion and low moisture, making it highly stable (Q11 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -638,7 +690,8 @@
       "40 km"
     ],
     "answer": 0,
-    "notes": "The Stratosphere extends from the tropopause up to a height of 50 km from the Earth's surface (Q14 textbook question)."
+    "notes": "The Stratosphere extends from the tropopause up to a height of 50 km from the Earth's surface (Q14 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -650,7 +703,8 @@
       "Stratosphere"
     ],
     "answer": 2,
-    "notes": "The Stratosphere features a temperature inversion (increasing temp with height) and high stability (Q15 textbook question)."
+    "notes": "The Stratosphere features a temperature inversion (increasing temp with height) and high stability (Q15 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -662,7 +716,8 @@
       "Stratosphere"
     ],
     "answer": 2,
-    "notes": "Mother of Pearl (Nacreous) clouds are sometimes seen in the upper stratosphere at higher latitudes in winter (Q16 textbook question)."
+    "notes": "Mother of Pearl (Nacreous) clouds are sometimes seen in the upper stratosphere at higher latitudes in winter (Q16 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -674,7 +729,8 @@
       "30-35 km"
     ],
     "answer": 1,
-    "notes": "Ozone is found between 10 and 50 km, but its maximum concentration is between 20 and 25 km (Q22 textbook question)."
+    "notes": "Ozone is found between 10 and 50 km, but its maximum concentration is between 20 and 25 km (Q22 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -686,7 +742,8 @@
       "Stratosphere"
     ],
     "answer": 1,
-    "notes": "Noctilucent clouds are rare clouds observed in the polar regions of the upper Mesosphere (Q25 textbook question)."
+    "notes": "Noctilucent clouds are rare clouds observed in the polar regions of the upper Mesosphere (Q25 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -698,7 +755,8 @@
       "Upper Stratosphere"
     ],
     "answer": 2,
-    "notes": "Nacreous clouds, also known as Mother of Pearl clouds, occur in the upper stratosphere (Q29 textbook question)."
+    "notes": "Nacreous clouds, also known as Mother of Pearl clouds, occur in the upper stratosphere (Q29 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -710,7 +768,8 @@
       "Lapse Rate"
     ],
     "answer": 2,
-    "notes": "The rate at which temperature falls with height is defined as the Lapse Rate (Q33 textbook question)."
+    "notes": "The rate at which temperature falls with height is defined as the Lapse Rate (Q33 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -722,7 +781,8 @@
       "rise up to 50 km"
     ],
     "answer": 0,
-    "notes": "Unlike the standard atmosphere, the actual atmosphere's lapse rate can vary widely and assume any value, including negative values (Q34 textbook question)."
+    "notes": "Unlike the standard atmosphere, the actual atmosphere's lapse rate can vary widely and assume any value, including negative values (Q34 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -735,7 +795,8 @@
       "temperature fall with height"
     ],
     "answer": 2,
-    "notes": "A negative lapse rate means temperature increases with height (an inversion) (Q38 textbook question)."
+    "notes": "A negative lapse rate means temperature increases with height (an inversion) (Q38 textbook question).",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -747,7 +808,8 @@
       "Temperatures rise sharply"
     ],
     "answer": 0,
-    "notes": "The lower part of the Stratosphere (first 8-10 km) is isothermal, meaning temperature remains constant with height."
+    "notes": "The lower part of the Stratosphere (first 8-10 km) is isothermal, meaning temperature remains constant with height.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -759,7 +821,8 @@
       "Latent heat released by cloud formation"
     ],
     "answer": 1,
-    "notes": "Ozone absorbs solar UV radiation, heating the stratosphere and causing temperature to rise with height."
+    "notes": "Ozone absorbs solar UV radiation, heating the stratosphere and causing temperature to rise with height.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -771,7 +834,8 @@
       "Carbon monoxide poisoning"
     ],
     "answer": 0,
-    "notes": "Ozone absorbs harmful UV radiation, protecting life from skin cancer, sunburn, and cataracts."
+    "notes": "Ozone absorbs harmful UV radiation, protecting life from skin cancer, sunburn, and cataracts.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -783,7 +847,8 @@
       "Nitrogen and Argon"
     ],
     "answer": 1,
-    "notes": "CFCs, halocarbons, and solvents release halogen atoms in the stratosphere when broken down by light, destroying ozone molecules."
+    "notes": "CFCs, halocarbons, and solvents release halogen atoms in the stratosphere when broken down by light, destroying ozone molecules.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -795,7 +860,8 @@
       "Air density is higher, providing more lift"
     ],
     "answer": 0,
-    "notes": "The stratosphere is stable, cloud-free (above stormy weather), dry, and has steady horizontal winds, which provides advantages for flights."
+    "notes": "The stratosphere is stable, cloud-free (above stormy weather), dry, and has steady horizontal winds, which provides advantages for flights.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -807,7 +873,8 @@
       "Increased concentrations of Carbon Dioxide"
     ],
     "answer": 0,
-    "notes": "Due to a lack of solar radiation absorption and weak vertical mixing, temperatures decrease with height in the Mesosphere."
+    "notes": "Due to a lack of solar radiation absorption and weak vertical mixing, temperatures decrease with height in the Mesosphere.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -819,7 +886,8 @@
       "Mesosphere"
     ],
     "answer": 2,
-    "notes": "The Mesosphere contains the coldest area (Mesopause, -100\u00b0C) and is the layer where meteors burn up."
+    "notes": "The Mesosphere contains the coldest area (Mesopause, -100\u00b0C) and is the layer where meteors burn up.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -831,7 +899,8 @@
       "Exosphere"
     ],
     "answer": 1,
-    "notes": "The Ionosphere, located above 60 km, reflects radio waves back to Earth. Solar disturbances can cause serious radio interference here due to wave absorption."
+    "notes": "The Ionosphere, located above 60 km, reflects radio waves back to Earth. Solar disturbances can cause serious radio interference here due to wave absorption.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -843,7 +912,8 @@
       "Because gravity destroys thermal energy"
     ],
     "answer": 1,
-    "notes": "In the Exosphere, molecules are so far apart that although individual particles have high kinetic energy (temperature), very little actual heat is present."
+    "notes": "In the Exosphere, molecules are so far apart that although individual particles have high kinetic energy (temperature), very little actual heat is present.",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -855,7 +925,8 @@
       "-35.5\u00b0C"
     ],
     "answer": 0,
-    "notes": "In ISA, from 11 to 20 km is isothermal at -56.5\u00b0C. Thus, at 17 km, the temperature is -56.5\u00b0C (Q17 textbook question)."
+    "notes": "In ISA, from 11 to 20 km is isothermal at -56.5\u00b0C. Thus, at 17 km, the temperature is -56.5\u00b0C (Q17 textbook question).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -867,7 +938,8 @@
       "25\u00b0C"
     ],
     "answer": 0,
-    "notes": "The standard Mean Sea Level temperature in ISA is specified as 15\u00b0C (288.15 K) (Q21 textbook question)."
+    "notes": "The standard Mean Sea Level temperature in ISA is specified as 15\u00b0C (288.15 K) (Q21 textbook question).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -879,7 +951,8 @@
       "03\u00b0C"
     ],
     "answer": 2,
-    "notes": "ISA temp at 2 km is 15 - (6.5 * 2) = 2\u00b0C. Actual is 5\u00b0C. Deviation = Actual - ISA = 5 - 2 = +3\u00b0C (Q26 textbook question)."
+    "notes": "ISA temp at 2 km is 15 - (6.5 * 2) = 2\u00b0C. Actual is 5\u00b0C. Deviation = Actual - ISA = 5 - 2 = +3\u00b0C (Q26 textbook question).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -891,7 +964,8 @@
       "12 hPa"
     ],
     "answer": 0,
-    "notes": "ISA MSL pressure is 1013.25 hPa. Actual is 1002.25 hPa. Deviation = Actual - ISA = 1002.25 - 1013.25 = -11 hPa (Q27 textbook question)."
+    "notes": "ISA MSL pressure is 1013.25 hPa. Actual is 1002.25 hPa. Deviation = Actual - ISA = 1002.25 - 1013.25 = -11 hPa (Q27 textbook question).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -903,7 +977,8 @@
       "-03.5\u00b0C"
     ],
     "answer": 2,
-    "notes": "ISA temp at 19 km is -56.5\u00b0C (isothermal layer). Actual is -60\u00b0C. Deviation = Actual - ISA = -60 - (-56.5) = -3.5\u00b0C (Q28 textbook question)."
+    "notes": "ISA temp at 19 km is -56.5\u00b0C (isothermal layer). Actual is -60\u00b0C. Deviation = Actual - ISA = -60 - (-56.5) = -3.5\u00b0C (Q28 textbook question).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -915,7 +990,8 @@
       "5\u00b0C/km"
     ],
     "answer": 0,
-    "notes": "The Jet Standard Atmosphere (JSA) specifies a constant lapse rate of 2\u00b0C/1000 ft throughout (Q32 textbook question)."
+    "notes": "The Jet Standard Atmosphere (JSA) specifies a constant lapse rate of 2\u00b0C/1000 ft throughout (Q32 textbook question).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -928,7 +1004,8 @@
       "11 to 32 km"
     ],
     "answer": 2,
-    "notes": "ISA assumes an isothermal layer of -56.5\u00b0C between 11 km (36,090 ft) and 20 km (65,617 ft) (Q39 textbook question)."
+    "notes": "ISA assumes an isothermal layer of -56.5\u00b0C between 11 km (36,090 ft) and 20 km (65,617 ft) (Q39 textbook question).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -940,7 +1017,8 @@
       "1020.50 hPa"
     ],
     "answer": 0,
-    "notes": "Standard MSL pressure in the International Standard Atmosphere (ISA) is 1013.25 hPa (hectopascals) or millibars."
+    "notes": "Standard MSL pressure in the International Standard Atmosphere (ISA) is 1013.25 hPa (hectopascals) or millibars.",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -952,7 +1030,8 @@
       "1.225 g/m\u00b3"
     ],
     "answer": 1,
-    "notes": "Standard MSL air density in the ISA model is 1225 g/m\u00b3 (equivalent to 1.225 kg/m\u00b3)."
+    "notes": "Standard MSL air density in the ISA model is 1225 g/m\u00b3 (equivalent to 1.225 kg/m\u00b3).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -964,7 +1043,8 @@
       "9.78 m/s\u00b2"
     ],
     "answer": 0,
-    "notes": "Standard gravity in the ISA model is specified as 980.665 cm/s\u00b2 (or 9.80665 m/s\u00b2)."
+    "notes": "Standard gravity in the ISA model is specified as 980.665 cm/s\u00b2 (or 9.80665 m/s\u00b2).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -976,7 +1056,8 @@
       "A fall of 1.5\u00b0C per km"
     ],
     "answer": 1,
-    "notes": "Between 20 km and 30 km, the ISA model assumes a temperature rise of 1\u00b0C/km (0.3\u00b0C/1000 ft), reaching -44.5\u00b0C at 32 km."
+    "notes": "Between 20 km and 30 km, the ISA model assumes a temperature rise of 1\u00b0C/km (0.3\u00b0C/1000 ft), reaching -44.5\u00b0C at 32 km.",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -988,7 +1069,8 @@
       "There is no Tropopause"
     ],
     "answer": 2,
-    "notes": "Unlike the ICAO ISA, the Jet Standard Atmosphere (JSA) has no tropopause; the temperature continues to decrease at 2\u00b0C/1000 ft indefinitely."
+    "notes": "Unlike the ICAO ISA, the Jet Standard Atmosphere (JSA) has no tropopause; the temperature continues to decrease at 2\u00b0C/1000 ft indefinitely.",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1000,7 +1082,8 @@
       "0\u00b0C"
     ],
     "answer": 0,
-    "notes": "Like the ICAO ISA, the Jet Standard Atmosphere (JSA) specifies an MSL temperature of 15\u00b0C (288.15 K)."
+    "notes": "Like the ICAO ISA, the Jet Standard Atmosphere (JSA) specifies an MSL temperature of 15\u00b0C (288.15 K).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1012,7 +1095,8 @@
       "ISA + 15\u00b0C"
     ],
     "answer": 0,
-    "notes": "ISA MSL temp is 15\u00b0C. Actual is 23\u00b0C. Deviation = 23 - 15 = +8\u00b0C, written as ISA + 8."
+    "notes": "ISA MSL temp is 15\u00b0C. Actual is 23\u00b0C. Deviation = 23 - 15 = +8\u00b0C, written as ISA + 8.",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1024,7 +1108,8 @@
       "ISA + 2.5\u00b0C"
     ],
     "answer": 0,
-    "notes": "Standard ISA temp at 3 km is: 15 - (6.5 * 3) = -4.5\u00b0C. Actual is -10\u00b0C. Deviation = Actual - ISA = -10 - (-4.5) = -5.5\u00b0C."
+    "notes": "Standard ISA temp at 3 km is: 15 - (6.5 * 3) = -4.5\u00b0C. Actual is -10\u00b0C. Deviation = Actual - ISA = -10 - (-4.5) = -5.5\u00b0C.",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1036,7 +1121,8 @@
       "ISA Deviation = Actual Value / ISA Value"
     ],
     "answer": 0,
-    "notes": "ISA Deviation is calculated by subtracting the standard ISA value from the actual observed value: Deviation = Actual - ISA."
+    "notes": "ISA Deviation is calculated by subtracting the standard ISA value from the actual observed value: Deviation = Actual - ISA.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -1048,7 +1134,8 @@
       "Ozone depleting catalysts"
     ],
     "answer": 1,
-    "notes": "These particles act as condensation nuclei, attracting water vapour and promoting condensation prematurely."
+    "notes": "These particles act as condensation nuclei, attracting water vapour and promoting condensation prematurely.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -1060,7 +1147,8 @@
       "A mixture of methane and water vapour"
     ],
     "answer": 1,
-    "notes": "Smog is a combination of the words 'fog' and 'smoke' (a mixture of fog and smoke) common in industrial areas with high particle concentration."
+    "notes": "Smog is a combination of the words 'fog' and 'smoke' (a mixture of fog and smoke) common in industrial areas with high particle concentration.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -1072,7 +1160,8 @@
       "Carbon Dioxide (CO2)"
     ],
     "answer": 2,
-    "notes": "Carbon dioxide is produced by combustion, dissolved in oceans, and absorbed by plants for photosynthesis (carbon for food, releasing oxygen)."
+    "notes": "Carbon dioxide is produced by combustion, dissolved in oceans, and absorbed by plants for photosynthesis (carbon for food, releasing oxygen).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -1084,7 +1173,8 @@
       "Decompose immediately into Nitrogen"
     ],
     "answer": 1,
-    "notes": "Ozone forms in the upper levels but is heavier, causing molecules to sink and accumulate in the lower Stratosphere (concentrated between 10-50 km, max at 20-25 km)."
+    "notes": "Ozone forms in the upper levels but is heavier, causing molecules to sink and accumulate in the lower Stratosphere (concentrated between 10-50 km, max at 20-25 km).",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -1096,7 +1186,8 @@
       "Extreme cooling in the Mesosphere"
     ],
     "answer": 1,
-    "notes": "CFCs and halocarbons reach the stratosphere and release halogen atoms via photodissociation, which breaks down O3 into O2."
+    "notes": "CFCs and halocarbons reach the stratosphere and release halogen atoms via photodissociation, which breaks down O3 into O2.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -1108,7 +1199,8 @@
       "99%"
     ],
     "answer": 1,
-    "notes": "80% of the total atmospheric mass is concentrated within 16 km due to gravity compressing air near the surface."
+    "notes": "80% of the total atmospheric mass is concentrated within 16 km due to gravity compressing air near the surface.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -1120,7 +1212,8 @@
       "Because ozone concentration becomes toxic"
     ],
     "answer": 1,
-    "notes": "The proportion of Oxygen remains at ~21%, but the total pressure and density of air decrease rapidly, making it harder to breathe without extra pressure/oxygen."
+    "notes": "The proportion of Oxygen remains at ~21%, but the total pressure and density of air decrease rapidly, making it harder to breathe without extra pressure/oxygen.",
+    "subject": "met"
   },
   {
     "section": "heating",
@@ -1132,7 +1225,8 @@
       "77%"
     ],
     "answer": 2,
-    "notes": "Latent heat processes account for 77% of the total heat flow from the Earth's surface to the atmosphere."
+    "notes": "Latent heat processes account for 77% of the total heat flow from the Earth's surface to the atmosphere.",
+    "subject": "met"
   },
   {
     "section": "heating",
@@ -1144,7 +1238,8 @@
       "50%"
     ],
     "answer": 0,
-    "notes": "Sensible heat accounts for 23% of the total heat flow from the Earth's surface to the atmosphere."
+    "notes": "Sensible heat accounts for 23% of the total heat flow from the Earth's surface to the atmosphere.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -1156,7 +1251,8 @@
       "99%"
     ],
     "answer": 2,
-    "notes": "About 99% of all water vapour and aerosols are found within the troposphere, which is why almost all clouds and weather occur here."
+    "notes": "About 99% of all water vapour and aerosols are found within the troposphere, which is why almost all clouds and weather occur here.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -1168,7 +1264,8 @@
       "11 km"
     ],
     "answer": 1,
-    "notes": "Above 8 km, the polar tropopause is reached and cooling stops, whereas cooling continues over the equator. This causes temperature and density to reverse above 8 km."
+    "notes": "Above 8 km, the polar tropopause is reached and cooling stops, whereas cooling continues over the equator. This causes temperature and density to reverse above 8 km.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -1180,7 +1277,8 @@
       "30\u00b0N"
     ],
     "answer": 1,
-    "notes": "In winters, the Middle Tropopause over India may be noticed as far south as 23\u00b0N latitude."
+    "notes": "In winters, the Middle Tropopause over India may be noticed as far south as 23\u00b0N latitude.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -1192,7 +1290,8 @@
       "The equatorial break"
     ],
     "answer": 0,
-    "notes": "The tropopause break at 40\u00b0 Latitude is more prominent than the one at 60\u00b0 Latitude."
+    "notes": "The tropopause break at 40\u00b0 Latitude is more prominent than the one at 60\u00b0 Latitude.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1204,7 +1303,8 @@
       "50 to 80 km"
     ],
     "answer": 1,
-    "notes": "Appreciable ozone concentration is found between 10 and 50 km, with its maximum at 20-25 km."
+    "notes": "Appreciable ozone concentration is found between 10 and 50 km, with its maximum at 20-25 km.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1216,7 +1316,8 @@
       "Polar regions"
     ],
     "answer": 2,
-    "notes": "Noctilucent clouds occur on rare occasions in the upper Mesosphere specifically in Polar regions."
+    "notes": "Noctilucent clouds occur on rare occasions in the upper Mesosphere specifically in Polar regions.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1228,7 +1329,8 @@
       "Mesopause"
     ],
     "answer": 2,
-    "notes": "The Mesopause (at 80 km) is the coldest area of the atmosphere, with temperatures dropping to about -100\u00b0C."
+    "notes": "The Mesopause (at 80 km) is the coldest area of the atmosphere, with temperatures dropping to about -100\u00b0C.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1240,7 +1342,8 @@
       "Temperatures increase"
     ],
     "answer": 2,
-    "notes": "In the Thermosphere (extending from the Mesopause to the outer edge of the atmosphere), temperatures increase with height."
+    "notes": "In the Thermosphere (extending from the Mesopause to the outer edge of the atmosphere), temperatures increase with height.",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1252,7 +1355,8 @@
       "980.66 mb"
     ],
     "answer": 0,
-    "notes": "L'ISA MSL pressure is 1013.25 hPa (which is equivalent to 1013.25 mb)."
+    "notes": "L'ISA MSL pressure is 1013.25 hPa (which is equivalent to 1013.25 mb).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1264,7 +1368,8 @@
       "2.0\u00b0C/km"
     ],
     "answer": 1,
-    "notes": "In the upper layers of ISA (from 20 to 30 km), there is a rise of temperature at the rate of 1.0\u00b0C/km (or 0.3\u00b0C/1000 ft)."
+    "notes": "In the upper layers of ISA (from 20 to 30 km), there is a rise of temperature at the rate of 1.0\u00b0C/km (or 0.3\u00b0C/1000 ft).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1276,7 +1381,8 @@
       "0\u00b0C"
     ],
     "answer": 1,
-    "notes": "Following the temp rise of 1\u00b0C/km above 20 km, the ISA temperature reaches -44.5\u00b0C at a height of 32 km."
+    "notes": "Following the temp rise of 1\u00b0C/km above 20 km, the ISA temperature reaches -44.5\u00b0C at a height of 32 km.",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1288,7 +1394,8 @@
       "ISA + 3\u00b0C"
     ],
     "answer": 0,
-    "notes": "ISA temperature at 4 km is: 15 - (6.5 * 4) = -11\u00b0C. Actual is -20\u00b0C. Deviation = Actual - ISA = -20 - (-11) = -9\u00b0C (written as ISA - 9)."
+    "notes": "ISA temperature at 4 km is: 15 - (6.5 * 4) = -11\u00b0C. Actual is -20\u00b0C. Deviation = Actual - ISA = -20 - (-11) = -9\u00b0C (written as ISA - 9).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1300,7 +1407,8 @@
       "ISA + 10 hPa"
     ],
     "answer": 0,
-    "notes": "ISA MSL pressure is 1013.25 hPa. Actual is 1025.25 hPa. Deviation = Actual - ISA = 1025.25 - 1013.25 = +12 hPa (written as ISA + 12)."
+    "notes": "ISA MSL pressure is 1013.25 hPa. Actual is 1025.25 hPa. Deviation = Actual - ISA = 1025.25 - 1013.25 = +12 hPa (written as ISA + 12).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1312,7 +1420,8 @@
       "ISA + 10\u00b0C"
     ],
     "answer": 0,
-    "notes": "ISA temperature at 15 km is constant at -56.5\u00b0C. Actual is -50\u00b0C. Deviation = Actual - ISA = -50 - (-56.5) = +6.5\u00b0C (written as ISA + 6.5)."
+    "notes": "ISA temperature at 15 km is constant at -56.5\u00b0C. Actual is -50\u00b0C. Deviation = Actual - ISA = -50 - (-56.5) = +6.5\u00b0C (written as ISA + 6.5).",
+    "subject": "met"
   },
   {
     "section": "standard",
@@ -1324,7 +1433,8 @@
       "173.15 K"
     ],
     "answer": 1,
-    "notes": "Like the ISA, the JSA specifies an MSL temperature of 15\u00b0C, which is equal to 288.15 Kelvin."
+    "notes": "Like the ISA, the JSA specifies an MSL temperature of 15\u00b0C, which is equal to 288.15 Kelvin.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -1336,7 +1446,8 @@
       "Methane"
     ],
     "answer": 1,
-    "notes": "Nitrogen is a permanent gas (78.09%), while water vapour and methane vary in concentration and are variable gases."
+    "notes": "Nitrogen is a permanent gas (78.09%), while water vapour and methane vary in concentration and are variable gases.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -1348,7 +1459,8 @@
       "99%"
     ],
     "answer": 1,
-    "notes": "80% of the total atmospheric mass is contained within the lowest 16 km due to gravity compression."
+    "notes": "80% of the total atmospheric mass is contained within the lowest 16 km due to gravity compression.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -1360,7 +1472,8 @@
       "Poles have higher concentrations of heavy gases"
     ],
     "answer": 0,
-    "notes": "Cold temperatures at the poles cause descending air and weak convection currents, resulting in a lower tropopause height."
+    "notes": "Cold temperatures at the poles cause descending air and weak convection currents, resulting in a lower tropopause height.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -1372,7 +1485,8 @@
       "8 km"
     ],
     "answer": 1,
-    "notes": "The Tropical Tropopause over India occurs at a height of 16-16.5 km at the 100 hPa level."
+    "notes": "The Tropical Tropopause over India occurs at a height of 16-16.5 km at the 100 hPa level.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -1384,7 +1498,8 @@
       "100 hPa"
     ],
     "answer": 0,
-    "notes": "The Polar Tropopause occurs near the 300 hPa level, polewards of 45\u00b0 to 60\u00b0 latitude."
+    "notes": "The Polar Tropopause occurs near the 300 hPa level, polewards of 45\u00b0 to 60\u00b0 latitude.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1396,7 +1511,8 @@
       "Cirrocumulus Clouds"
     ],
     "answer": 1,
-    "notes": "Mother of Pearl clouds are scientifically known as Nacreous Clouds and occur in the upper stratosphere."
+    "notes": "Mother of Pearl clouds are scientifically known as Nacreous Clouds and occur in the upper stratosphere.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1408,7 +1524,8 @@
       "Thermosphere"
     ],
     "answer": 1,
-    "notes": "Noctilucent clouds occur in the upper Mesosphere, near polar regions, on rare occasions."
+    "notes": "Noctilucent clouds occur in the upper Mesosphere, near polar regions, on rare occasions.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -1420,7 +1537,8 @@
       "-90\u00b0C"
     ],
     "answer": 1,
-    "notes": "Figure 1.1 shows that the temperature remains constant at -56.5\u00b0C at the Tropopause level before rising in the Stratosphere."
+    "notes": "Figure 1.1 shows that the temperature remains constant at -56.5\u00b0C at the Tropopause level before rising in the Stratosphere.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1432,7 +1550,8 @@
       "80 km"
     ],
     "answer": 1,
-    "notes": "Figure 1.1 shows that the Stratosphere ends and the Stratopause is located at a height of 50 km."
+    "notes": "Figure 1.1 shows that the Stratosphere ends and the Stratopause is located at a height of 50 km.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1444,7 +1563,8 @@
       "100 km"
     ],
     "answer": 1,
-    "notes": "Figure 1.1 shows that the Mesosphere ends and the Mesopause is located at a height of 80 km."
+    "notes": "Figure 1.1 shows that the Mesosphere ends and the Mesopause is located at a height of 80 km.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1456,7 +1576,8 @@
       "Cirrocumulus Clouds"
     ],
     "answer": 1,
-    "notes": "The handwritten notes on the Mesosphere section of Figure 1.1 draw and label 'Noctilucent' clouds."
+    "notes": "The handwritten notes on the Mesosphere section of Figure 1.1 draw and label 'Noctilucent' clouds.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1468,7 +1589,8 @@
       "Altocumulus Clouds"
     ],
     "answer": 0,
-    "notes": "The handwritten notes on the Stratosphere section of Figure 1.1 draw and label 'Nacreous' clouds."
+    "notes": "The handwritten notes on the Stratosphere section of Figure 1.1 draw and label 'Nacreous' clouds.",
+    "subject": "met"
   },
   {
     "section": "composition",
@@ -1480,7 +1602,8 @@
       "Above 100 km"
     ],
     "answer": 1,
-    "notes": "Figure 1.1 shows the Homosphere extends from the Earth's surface up to the Mesopause level at 80 km."
+    "notes": "Figure 1.1 shows the Homosphere extends from the Earth's surface up to the Mesopause level at 80 km.",
+    "subject": "met"
   },
   {
     "section": "upper",
@@ -1492,7 +1615,8 @@
       "Above 11 km"
     ],
     "answer": 0,
-    "notes": "Figure 1.1 shows the Ionosphere layer starts above 60 km, overlapping the upper Homosphere and extending into the Heterosphere."
+    "notes": "Figure 1.1 shows the Ionosphere layer starts above 60 km, overlapping the upper Homosphere and extending into the Heterosphere.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -1504,7 +1628,8 @@
       "constant; variable"
     ],
     "answer": 1,
-    "notes": "The handwritten notes on the diagram mark the Troposphere as 'unstable' (weather-active) and the Stratosphere as 'stable'."
+    "notes": "The handwritten notes on the diagram mark the Troposphere as 'unstable' (weather-active) and the Stratosphere as 'stable'.",
+    "subject": "met"
   },
   {
     "section": "troposphere",
@@ -1516,6 +1641,1047 @@
       "30 to 35 km"
     ],
     "answer": 0,
-    "notes": "The handwritten notes in the Stratosphere section of the diagram show 'OZONE 20 to 25' indicating the altitude range of maximum concentration."
+    "notes": "The handwritten notes in the Stratosphere section of the diagram show 'OZONE 20 to 25' indicating the altitude range of maximum concentration.",
+    "subject": "met"
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "If the static port of an aircraft becomes completely blocked during a climb, what will the altimeter display?",
+    "options": [
+      "It will freeze and remain at the altitude where the blockage occurred.",
+      "It will continue to climb but at a much slower rate.",
+      "It will immediately drop to sea level (zero feet)."
+    ],
+    "answer": 0,
+    "notes": "The altimeter works by measuring static pressure. If the static port is blocked, the trapped static pressure remains constant, causing the altimeter to freeze at that value."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "A blockage of both the pitot tube entry and its drain hole during a descent will cause the Airspeed Indicator (ASI) to:",
+    "options": [
+      "Over-read, indicating a higher speed than actual.",
+      "Under-read, behaving like an altimeter and showing a decrease in speed as altitude decreases.",
+      "Freeze at the speed where the blockage occurred."
+    ],
+    "answer": 1,
+    "notes": "If the pitot tube (entry and drain) is blocked, the pressure inside the pitot lines is trapped. During descent, ambient static pressure increases, compressing the capsule and causing the ASI to under-read (decrease) like an altimeter."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "If the static port is blocked, the Vertical Speed Indicator (VSI) will show:",
+    "options": [
+      "A constant rate of climb or descent depending on the pitch.",
+      "Zero rate of climb/descent, regardless of vertical movement.",
+      "Fluctuating indications between up and down."
+    ],
+    "answer": 1,
+    "notes": "The VSI operates on the differential pressure between the capsule and the case (via a metering unit). If static pressure is blocked, both pressures equalize, resulting in a zero reading."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "Altimeter setting QNH is defined as:",
+    "options": [
+      "The atmospheric pressure at aerodrome elevation.",
+      "The pressure reduced to mean sea level (MSL) using the standard atmosphere lapse rate.",
+      "The standard pressure setting of 1013.25 hPa."
+    ],
+    "answer": 1,
+    "notes": "QNH is the station pressure reduced to Mean Sea Level (MSL) according to the ISA lapse rate. When set, the altimeter reads elevation when on the ground."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "When flying from an area of high pressure to an area of low pressure without adjusting the altimeter setting, the aircraft will be:",
+    "options": [
+      "Higher than the altimeter indicates.",
+      "Lower than the altimeter indicates ('High to Low, look out below').",
+      "At the exact altitude indicated."
+    ],
+    "answer": 1,
+    "notes": "When flying into lower pressure, the altimeter senses lower pressure and interprets it as climb, indicating a higher altitude than actual. The pilot will descend to maintain the indicated altitude, flying lower than target."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "Which of the following altimeter settings is standard for flight levels (FL) above the transition altitude?",
+    "options": [
+      "QNH",
+      "QNE (1013.25 hPa / 29.92 inHg)",
+      "QFE"
+    ],
+    "answer": 1,
+    "notes": "QNE is the standard altimeter setting of 1013.25 hPa (or 29.92 inHg). It is used by all aircraft above the transition altitude to ensure vertical separation."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "What is the purpose of the alternate static source in an unpressurized aircraft?",
+    "options": [
+      "To provide static air from inside the cabin if the external ports freeze.",
+      "To feed standard pressure (1013.2 hPa) to the instruments during an emergency.",
+      "To measure dynamic pressure from the pitot tube."
+    ],
+    "answer": 0,
+    "notes": "If external static ports are blocked by ice or dirt, the alternate static source vents inside the cabin to keep the instruments working (though showing a slight error due to cabin low pressure)."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "When utilizing the alternate static source inside the cabin of an unpressurized aircraft, the altimeter will generally:",
+    "options": [
+      "Under-read slightly.",
+      "Over-read slightly due to lower cabin pressure.",
+      "Remain completely unchanged."
+    ],
+    "answer": 1,
+    "notes": "Cabin air pressure in flight is slightly lower than outside pressure due to Venturi effects around the fuselage. Low pressure causes the altimeter to over-read slightly."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "Density altitude is defined as:",
+    "options": [
+      "Indicated altitude corrected for instrument and position errors.",
+      "Pressure altitude corrected for non-standard temperature deviations.",
+      "The altitude read on the altimeter when set to QFE."
+    ],
+    "answer": 1,
+    "notes": "Density altitude is pressure altitude corrected for non-standard temperature. High temperature reduces density, increasing density altitude and reducing aircraft performance."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "What pressure instrument contains a diaphragm exposed to pitot pressure on the inside and static pressure on the outside?",
+    "options": [
+      "Altimeter",
+      "Airspeed Indicator (ASI)",
+      "Vertical Speed Indicator (VSI)"
+    ],
+    "answer": 1,
+    "notes": "The ASI measures the difference between total pressure (pitot) and static pressure. Pitot feeds the inside of the capsule, static feeds the case."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Earth Geometry",
+    "question": "A great circle on the Earth is defined as:",
+    "options": [
+      "A line of constant compass heading.",
+      "A circle on the Earth's surface whose plane passes through the Earth's center.",
+      "Any line running parallel to the Equator."
+    ],
+    "answer": 1,
+    "notes": "A great circle is a circle whose plane passes through the center of the sphere, dividing it into two equal halves. It represents the shortest distance between two points."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Earth Geometry",
+    "question": "A Rhumb Line (Loxodrome) is defined as:",
+    "options": [
+      "The shortest distance route between any two points.",
+      "A line cutting all meridians at the same angle.",
+      "A line running perpendicular to the Earth's rotation axis."
+    ],
+    "answer": 1,
+    "notes": "A Rhumb line cuts all meridians at a constant angle. While easy to steer with a compass, it is not the shortest distance route (except along meridians or the equator)."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Departure Calculations",
+    "question": "What is the formula used to calculate Departure (the distance along a parallel of latitude between two meridians)?",
+    "options": [
+      "Departure (NM) = Change of Longitude (minutes) x sin(Mean Latitude)",
+      "Departure (NM) = Change of Longitude (minutes) x cos(Mean Latitude)",
+      "Departure (NM) = Change of Latitude (minutes) x cos(Mean Longitude)"
+    ],
+    "answer": 1,
+    "notes": "Departure (distance east-west in nautical miles) is calculated by: Departure = Ch.Long (in minutes) x cos(Latitude). Parallel lines shrink towards the poles."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Departure Calculations",
+    "question": "An aircraft flies along the parallel of 60\u00b0N from longitude 010\u00b0W to 020\u00b0W. Calculate the Departure distance flown.",
+    "options": [
+      "600 NM",
+      "300 NM",
+      "520 NM"
+    ],
+    "answer": 1,
+    "notes": "Ch.Long is 10\u00b0 = 600 minutes. Latitude is 60\u00b0. Departure = 600 x cos(60\u00b0) = 600 x 0.5 = 300 NM."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Convergency",
+    "question": "Earth Convergency is defined as the angle between two meridians. What is the formula to calculate it?",
+    "options": [
+      "Convergency = Change of Longitude x cos(Mean Latitude)",
+      "Convergency = Change of Longitude x sin(Mean Latitude)",
+      "Convergency = Change of Latitude x sin(Mean Longitude)"
+    ],
+    "answer": 1,
+    "notes": "Convergency = Ch.Long x sin(Mean Latitude). It is zero at the equator (meridians parallel) and maximum (equal to Ch.Long) at the poles."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Convergency",
+    "question": "What is the conversion angle used in navigation grid calculations relative to Earth convergency?",
+    "options": [
+      "Conversion Angle = Convergency x 2",
+      "Conversion Angle = 1/2 x Convergency",
+      "Conversion Angle = Convergency - 90\u00b0"
+    ],
+    "answer": 1,
+    "notes": "Conversion angle is the difference between the Great Circle track and the Rhumb Line track, equal to half of the Earth convergency."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Time Calculations",
+    "question": "The Earth rotates at a rate of 15\u00b0 of longitude per hour. How many minutes of time correspond to a change of 1\u00b0 of longitude?",
+    "options": [
+      "4 minutes",
+      "15 minutes",
+      "1 minute"
+    ],
+    "answer": 0,
+    "notes": "360 degrees / 24 hours = 15 degrees per hour. Therefore, 1 degree of longitude equals 4 minutes of time (60 min / 15 deg = 4 min/deg)."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Time Calculations",
+    "question": "If the UTC time is 12:00, what is the Local Mean Time (LMT) at longitude 075\u00b0E?",
+    "options": [
+      "07:00 LMT",
+      "17:00 LMT",
+      "15:00 LMT"
+    ],
+    "answer": 1,
+    "notes": "East is ahead. Longitude is 75\u00b0E. Time difference = 75\u00b0 / 15\u00b0 per hour = 5 hours ahead. LMT = 12:00 + 5 hours = 17:00."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Time Calculations",
+    "question": "If UTC is 06:00, what is the Local Mean Time (LMT) at longitude 045\u00b0W?",
+    "options": [
+      "03:00 LMT",
+      "09:00 LMT",
+      "04:30 LMT"
+    ],
+    "answer": 0,
+    "notes": "West is behind. Longitude is 45\u00b0W. Time difference = 45\u00b0 / 15\u00b0 per hour = 3 hours behind. LMT = 06:00 - 3 hours = 03:00."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Earth Geometry",
+    "question": "The shape of the Earth is best described as:",
+    "options": [
+      "A perfect sphere.",
+      "An oblate spheroid, flattened at the poles.",
+      "A prolate spheroid, stretched at the equator."
+    ],
+    "answer": 1,
+    "notes": "Centrifugal forces from rotation cause the Earth to bulge at the equator and flatten at the poles, forming an oblate spheroid."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Time Calculations",
+    "question": "Crossing the International Date Line (180\u00b0 Meridian) heading Westward requires a pilot to:",
+    "options": [
+      "Advance the date by 1 day (add a day).",
+      "Retard the date by 1 day (subtract a day).",
+      "Keep the same date but add 12 hours."
+    ],
+    "answer": 0,
+    "notes": "When flying Westward across the Date Line, you enter the next calendar day. When flying Eastward, you go back one day."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Departure Calculations",
+    "question": "On the Equator (0\u00b0 Latitude), 1 degree of longitude is equivalent to a departure of:",
+    "options": [
+      "60 Nautical Miles",
+      "30 Nautical Miles",
+      "45 Nautical Miles"
+    ],
+    "answer": 0,
+    "notes": "On the equator, 1 degree of longitude is equal to 60 NM, which matches 60 minutes of arc."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Convergency",
+    "question": "Calculate the Earth convergency between A (50\u00b0N 020\u00b0W) and B (50\u00b0N 030\u00b0W).",
+    "options": [
+      "7.66\u00b0",
+      "6.43\u00b0",
+      "10\u00b0"
+    ],
+    "answer": 0,
+    "notes": "Ch.Long = 10\u00b0. Mean Latitude = 50\u00b0N. Convergency = 10 x sin(50\u00b0) = 10 x 0.766 = 7.66\u00b0."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "The altimeter setting QFE indicates:",
+    "options": [
+      "Altitude above Mean Sea Level.",
+      "Height above the aerodrome elevation reference point.",
+      "Flight Level based on standard pressure."
+    ],
+    "answer": 1,
+    "notes": "QFE is the station atmospheric pressure. When set, the altimeter will read zero on the runway threshold."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "The Pitot-Static system measures static pressure to drive which instrument(s)?",
+    "options": [
+      "Only the Altimeter.",
+      "The Altimeter, VSI, and ASI.",
+      "Only the airspeed indicator."
+    ],
+    "answer": 1,
+    "notes": "Static pressure is fed to all three pressure instruments: Altimeter, VSI, and Airspeed Indicator."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "In standard conditions, the atmospheric pressure decreases at a rate of approximately:",
+    "options": [
+      "1 hPa per 30 feet near sea level.",
+      "1 hPa per 100 feet near sea level.",
+      "3 hPa per 10 feet near sea level."
+    ],
+    "answer": 0,
+    "notes": "In the lower atmosphere, pressure drops at approximately 1 hPa per 30 feet (or 1 inch Hg per 1,000 feet)."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "Which error in pressure altimeters is caused by the difference between actual ambient temperature and standard temperature?",
+    "options": [
+      "Barometric Error",
+      "Temperature Error (or Density Error)",
+      "Hysteresis Error"
+    ],
+    "answer": 1,
+    "notes": "If the temperature is lower than standard, the air column is denser and pressure drops faster with height, causing the altimeter to over-read."
+  },
+  {
+    "subject": "nav",
+    "section": "sensors",
+    "topic": "Pressure Instruments",
+    "question": "What is the primary function of the bimetallic strip in a pressure altimeter?",
+    "options": [
+      "To correct for instrument temperature expansion errors inside the mechanism.",
+      "To measure ambient temperature outside the cockpit.",
+      "To electrical heat the altimeter casing."
+    ],
+    "answer": 0,
+    "notes": "Altimeter mechanisms expand/contract with temperature changes. A bimetallic strip compensates for this expansion error inside the device."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Earth Geometry",
+    "question": "Which parallel of latitude is the only parallel that forms a Great Circle?",
+    "options": [
+      "The Equator",
+      "60\u00b0N Parallel",
+      "30\u00b0S Parallel"
+    ],
+    "answer": 0,
+    "notes": "The Equator is the only parallel of latitude whose plane passes directly through the Earth's center, making it a Great Circle."
+  },
+  {
+    "subject": "nav",
+    "section": "general_nav",
+    "topic": "Time Calculations",
+    "question": "The apparent movement of the sun around the Earth is from East to West. This implies that places to the East experience sunrise:",
+    "options": [
+      "Earlier than places to the West.",
+      "Later than places to the West.",
+      "At the exact same time."
+    ],
+    "answer": 0,
+    "notes": "Because the Earth rotates from West to East, Eastern longitudes rotate into daylight first, experiencing sunrise earlier."
+  },
+  {
+    "subject": "reg",
+    "section": "agreements",
+    "topic": "International Organisations",
+    "question": "Which international agreement established the International Civil Aviation Organization (ICAO) in 1944?",
+    "options": [
+      "The Warsaw Convention.",
+      "The Chicago Convention.",
+      "The Rome Convention."
+    ],
+    "answer": 1,
+    "notes": "The Convention on International Civil Aviation (Chicago Convention) signed on December 7, 1944, established ICAO to promote safe international flight."
+  },
+  {
+    "subject": "reg",
+    "section": "agreements",
+    "topic": "Conventions",
+    "question": "The Warsaw Convention of 1929 primarily governs which aspect of international aviation?",
+    "options": [
+      "Registration of civil aircraft markings.",
+      "Liability of air carriers for passenger injury, death, and baggage loss.",
+      "Rules of the air over international waters."
+    ],
+    "answer": 1,
+    "notes": "The Warsaw Convention sets the legal liability framework for international air transport, protecting passengers and carriers."
+  },
+  {
+    "subject": "reg",
+    "section": "agreements",
+    "topic": "International Organisations",
+    "question": "Under the Chicago Convention, which body has the authority to adopt Standards and Recommended Practices (SARPs)?",
+    "options": [
+      "The ICAO Council",
+      "The ICAO Assembly",
+      "The United Nations Security Council"
+    ],
+    "answer": 0,
+    "notes": "The ICAO Council (a permanent governing body) adopts Annex SARPs which member states incorporate into national regulations."
+  },
+  {
+    "subject": "reg",
+    "section": "agreements",
+    "topic": "Conventions",
+    "question": "Which ICAO Annex contains the Standards and Recommended Practices (SARPs) for Personnel Licensing?",
+    "options": [
+      "Annex 1",
+      "Annex 2",
+      "Annex 8"
+    ],
+    "answer": 0,
+    "notes": "ICAO Annex 1 contains licensing standards for flight crew, maintenance personnel, and air traffic controllers."
+  },
+  {
+    "subject": "reg",
+    "section": "agreements",
+    "topic": "Conventions",
+    "question": "Which ICAO Annex contains the international Standards for Rules of the Air?",
+    "options": [
+      "Annex 1",
+      "Annex 2",
+      "Annex 14"
+    ],
+    "answer": 1,
+    "notes": "ICAO Annex 2 details the Rules of the Air, defining flight procedures, VFR/IFR minima, and right-of-way rules."
+  },
+  {
+    "subject": "reg",
+    "section": "agreements",
+    "topic": "Conventions",
+    "question": "ICAO Annex 14 defines the Standards and Recommended Practices for:",
+    "options": [
+      "Meteorological Services",
+      "Aerodromes",
+      "Airworthiness of Aircraft"
+    ],
+    "answer": 1,
+    "notes": "Annex 14 sets standards for aerodrome design, markings, lights, runway safety, and physical characteristics."
+  },
+  {
+    "subject": "reg",
+    "section": "licensing",
+    "topic": "Airworthiness",
+    "question": "Which document must be carried on board an international flight to prove the aircraft is safe to fly?",
+    "options": [
+      "Certificate of Registration.",
+      "Certificate of Airworthiness.",
+      "Aircraft logbook."
+    ],
+    "answer": 1,
+    "notes": "The Certificate of Airworthiness (C of A) proves the aircraft is maintained and compliant with airworthiness regulations."
+  },
+  {
+    "subject": "reg",
+    "section": "licensing",
+    "topic": "Personnel Licensing",
+    "question": "What is the minimum class of medical certificate required for a Commercial Pilot License (CPL) holder?",
+    "options": [
+      "Class 1 Medical Certificate",
+      "Class 2 Medical Certificate",
+      "Class 3 Medical Certificate"
+    ],
+    "answer": 0,
+    "notes": "A Class 1 Medical Certificate is the standard required for commercial pilot licenses (CPL) and airline transport pilot licenses (ATPL)."
+  },
+  {
+    "subject": "reg",
+    "section": "licensing",
+    "topic": "Personnel Licensing",
+    "question": "A Type Rating on a pilot license is required for:",
+    "options": [
+      "Any aircraft carrying more than 2 passengers.",
+      "Each type of aircraft certified for multi-crew operations, or single-pilot complex high-performance aircraft.",
+      "Every individual aircraft registration number flown."
+    ],
+    "answer": 1,
+    "notes": "Type ratings are required for complex, turbine-powered, or multi-pilot aircraft, whereas class ratings cover simpler single-pilot aircraft classes."
+  },
+  {
+    "subject": "reg",
+    "section": "licensing",
+    "topic": "Personnel Licensing",
+    "question": "How often must a commercial pilot (under 40 years of age) re-validate their Class 1 Medical certificate?",
+    "options": [
+      "Every 12 months",
+      "Every 6 months",
+      "Every 24 months"
+    ],
+    "answer": 0,
+    "notes": "For commercial pilots under 40, a Class 1 Medical is valid for 12 months. It drops to 6 months for pilots aged 40 and older."
+  },
+  {
+    "subject": "reg",
+    "section": "rules_air",
+    "topic": "Right of Way",
+    "question": "When two aircraft are converging at approximately the same level, which aircraft has the right of way?",
+    "options": [
+      "The faster aircraft.",
+      "The aircraft that has the other on its right.",
+      "The aircraft that has the other on its left."
+    ],
+    "answer": 2,
+    "notes": "According to right-of-way rules, when two aircraft converge, the aircraft that has the other on its right must give way (so the one on the left gives way, and the one on the right has right of way)."
+  },
+  {
+    "subject": "reg",
+    "section": "rules_air",
+    "topic": "Right of Way",
+    "question": "An overtaking aircraft must keep out of the way of the overtaken aircraft by:",
+    "options": [
+      "Altering its heading to the left.",
+      "Altering its heading to the right.",
+      "Climbing at least 500 feet above."
+    ],
+    "answer": 1,
+    "notes": "The overtaking aircraft must keep clear of the overtaken aircraft by altering its heading to the right (passing on the right side)."
+  },
+  {
+    "subject": "reg",
+    "section": "rules_air",
+    "topic": "VFR Minima",
+    "question": "What is the standard VMC visibility requirement for VFR flights in class G airspace at or above 10,000 feet AMSL?",
+    "options": [
+      "5 km",
+      "8 km",
+      "1.5 km"
+    ],
+    "answer": 1,
+    "notes": "At or above 10,000 feet AMSL, the flight visibility limit for VMC is 8 km. Below 10,000 feet AMSL, it is 5 km."
+  },
+  {
+    "subject": "reg",
+    "section": "rules_air",
+    "topic": "Airspace",
+    "question": "Under ICAO rules, in which airspace class are both IFR and VFR flights permitted, and all flights receive air traffic control service and separation?",
+    "options": [
+      "Class A",
+      "Class B",
+      "Class E"
+    ],
+    "answer": 1,
+    "notes": "In Class B airspace, both IFR and VFR flights are permitted, and all flights are separated from each other by ATC."
+  },
+  {
+    "subject": "reg",
+    "section": "rules_air",
+    "topic": "Right of Way",
+    "question": "If a glider and a powered aircraft are converging, which one must give way?",
+    "options": [
+      "The glider must give way to the powered aircraft.",
+      "The powered aircraft must give way to the glider.",
+      "Both must alter heading to the right."
+    ],
+    "answer": 1,
+    "notes": "Powered aircraft must give way to airships, gliders, and balloons. Gliders have right of way over powered aircraft."
+  },
+  {
+    "subject": "reg",
+    "section": "aerodromes",
+    "topic": "Aerodrome Markings",
+    "question": "A runway threshold marking consists of a pattern of longitudinal white stripes. How does a pilot identify the runway width from these stripes?",
+    "options": [
+      "By the thickness of the stripes.",
+      "By the number of stripes (e.g., 8 stripes indicates a 30-meter wide runway).",
+      "By the length of the runway centerline."
+    ],
+    "answer": 1,
+    "notes": "Runway threshold stripes indicate width: 4 stripes = 18m, 6 stripes = 23m, 8 stripes = 30m, 12 stripes = 45m, 16 stripes = 60m."
+  },
+  {
+    "subject": "reg",
+    "section": "aerodromes",
+    "topic": "Aerodrome Lighting",
+    "question": "Runway edge lights are typically what color?",
+    "options": [
+      "White",
+      "Green",
+      "Blue"
+    ],
+    "answer": 0,
+    "notes": "Runway edge lights are white, except on instrument runways where they show yellow for the last 600m to warn of runway end."
+  },
+  {
+    "subject": "reg",
+    "section": "aerodromes",
+    "topic": "Aerodrome Lighting",
+    "question": "Runway threshold lights, which mark the beginning of the usable runway, are colored:",
+    "options": [
+      "Red",
+      "Green",
+      "Yellow"
+    ],
+    "answer": 1,
+    "notes": "Runway threshold lights are green (indicating start of usable landing runway), while runway end lights are red."
+  },
+  {
+    "subject": "reg",
+    "section": "aerodromes",
+    "topic": "Aerodrome Signs",
+    "question": "A taxiway location sign consists of:",
+    "options": [
+      "Black letters on a yellow background.",
+      "Yellow letters on a black background with a yellow border.",
+      "White letters on a red background."
+    ],
+    "answer": 1,
+    "notes": "Location signs identify the taxiway you are currently on. They have yellow letters on a black background (Black Square, You're There)."
+  },
+  {
+    "subject": "reg",
+    "section": "aerodromes",
+    "topic": "Aerodrome Signs",
+    "question": "A mandatory runway holding position sign consists of:",
+    "options": [
+      "White characters on a red background.",
+      "Black characters on a yellow background.",
+      "Yellow characters on a black background."
+    ],
+    "answer": 0,
+    "notes": "Mandatory instruction signs (like runway holding points) have white characters on a red background, requiring immediate pilot compliance (Red = Stop/Hold)."
+  },
+  {
+    "subject": "reg",
+    "section": "rules_air",
+    "topic": "General Rules",
+    "question": "An aircraft is not permitted to fly closer than what distance to any person, vessel, vehicle, or structure, except during take-off or landing?",
+    "options": [
+      "500 feet",
+      "1,000 feet",
+      "2,000 feet"
+    ],
+    "answer": 0,
+    "notes": "Under general safety rules, aircraft must not fly closer than 500 feet to any person, vessel, vehicle, or structure."
+  },
+  {
+    "subject": "reg",
+    "section": "rules_air",
+    "topic": "VFR Minima",
+    "question": "What are the lateral and vertical cloud clearance requirements for VFR flights in controlled airspace (Class C, D, E)?",
+    "options": [
+      "1,500m horizontally and 1,000 feet vertically.",
+      "1,000m horizontally and 500 feet vertically.",
+      "Clear of cloud and in sight of the surface."
+    ],
+    "answer": 0,
+    "notes": "In controlled airspace, VFR flights must remain 1,500 meters horizontally and 1,000 feet vertically clear of clouds."
+  },
+  {
+    "subject": "reg",
+    "section": "licensing",
+    "topic": "Airworthiness",
+    "question": "Who is responsible for ensuring that an aircraft is airworthy and that its Certificate of Airworthiness remains valid before flight?",
+    "options": [
+      "The owner of the aircraft.",
+      "The pilot-in-command (PIC).",
+      "The maintenance manager."
+    ],
+    "answer": 1,
+    "notes": "The Pilot-in-Command is legally responsible for verifying that the aircraft is in airworthy condition and all documents are valid prior to departure."
+  },
+  {
+    "subject": "reg",
+    "section": "rules_air",
+    "topic": "General Rules",
+    "question": "When two powered aircraft are approaching head-on, how should they alter their headings to avoid a collision?",
+    "options": [
+      "Both must alter heading to the left.",
+      "Both must alter heading to the right.",
+      "The smaller aircraft must climb while the larger climbs to the right."
+    ],
+    "answer": 1,
+    "notes": "When approaching head-on, both aircraft must alter their headings to the right to pass each other safely."
+  },
+  {
+    "subject": "reg",
+    "section": "agreements",
+    "topic": "Conventions",
+    "question": "The Warsaw Convention of 1929 was amended and replaced in many aspects by which modern treaty regarding air carrier liability?",
+    "options": [
+      "The Montreal Convention of 1999",
+      "The Tokyo Convention",
+      "The Hague Protocol"
+    ],
+    "answer": 0,
+    "notes": "The Montreal Convention of 1999 modernized the carrier liability rules of the Warsaw Convention, introducing a two-tier liability system."
+  },
+  {
+    "subject": "reg",
+    "section": "licensing",
+    "topic": "Personnel Licensing",
+    "question": "To act as pilot-in-command of an aircraft carrying passengers at night, what recent flight experience is required?",
+    "options": [
+      "3 take-offs and landings in the last 90 days.",
+      "3 take-offs and landings at night in the last 90 days.",
+      "A flight check with an instructor every 30 days."
+    ],
+    "answer": 1,
+    "notes": "To carry passengers at night, the pilot must have logged at least 3 take-offs and 3 landings at night within the preceding 90 days."
+  },
+  {
+    "subject": "reg",
+    "section": "rules_air",
+    "topic": "General Rules",
+    "question": "In Class A airspace, VFR flights are:",
+    "options": [
+      "Permitted but require a special clearance.",
+      "Not permitted under any circumstances (IFR only).",
+      "Permitted during daytime only."
+    ],
+    "answer": 1,
+    "notes": "Class A airspace is strictly IFR (Instrument Flight Rules) only. VFR flights are not permitted unless specifically authorized by state exemption."
+  },
+  {
+    "subject": "reg",
+    "section": "aerodromes",
+    "topic": "Aerodrome Visual Aids",
+    "question": "A wind direction indicator (windsock) must be located at an aerodrome. Why?",
+    "options": [
+      "To indicate wind direction and give a rough estimate of wind speed.",
+      "To show if the runway lights are active.",
+      "To measure barometric pressure."
+    ],
+    "answer": 0,
+    "notes": "The windsock indicates wind direction and provides an estimate of speed by how inflated and horizontal the sock appears."
+  },
+  {
+    "subject": "reg",
+    "section": "aerodromes",
+    "topic": "Aerodrome Lighting",
+    "question": "The visual landing aid PAPI stands for:",
+    "options": [
+      "Precision Approach Path Indicator",
+      "Pilot Altitude Positioning Indicator",
+      "Path Angle Precision Indicator"
+    ],
+    "answer": 0,
+    "notes": "PAPI stands for Precision Approach Path Indicator. It uses a row of four lights (red/white) to show the glide path angle."
+  },
+  {
+    "subject": "reg",
+    "section": "rules_air",
+    "topic": "General Rules",
+    "question": "What is the meaning of the signal of a red pyrotechnic (flare) fired from an aerodrome tower to an aircraft in flight?",
+    "options": [
+      "Give way to other aircraft and continue circling.",
+      "Do not land, the aerodrome is unsafe.",
+      "Notwithstanding any previous instructions, do not land for the time being."
+    ],
+    "answer": 2,
+    "notes": "Under ICAO visual signals, a red flare fired from the ground means: 'Notwithstanding any previous instructions, do not land for the time being.'"
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Induced Drag",
+    "question": "Induced drag is defined as drag that is:",
+    "options": [
+      "Caused by skin friction along the fuselage surface.",
+      "An unavoidable byproduct of lift generation, caused by downwash tilting the lift vector backward.",
+      "Created by external antennas and landing gear."
+    ],
+    "answer": 1,
+    "notes": "Induced drag results from lift production. High pressure under the wing flows around the tips to the low pressure top, creating vortices and downwash that tilt the lift vector backward, creating a drag component."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Induced Drag",
+    "question": "How does induced drag vary with the airspeed of the aircraft?",
+    "options": [
+      "It increases directly with the square of the speed (D_i \u221d V\u00b2).",
+      "It decreases inversely with the square of the speed (D_i \u221d 1/V\u00b2).",
+      "It remains constant at all airspeeds."
+    ],
+    "answer": 1,
+    "notes": "Induced drag decreases as airspeed increases. At high speeds, the wing meets more air per second, requiring a lower angle of attack and producing weaker vortices."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Wingtip Vortices",
+    "question": "Wingtip vortices are created because of the pressure difference between the upper and lower surfaces of the wing. This causes air to flow:",
+    "options": [
+      "From the lower surface (high pressure) outward and upward around the wingtips to the upper surface (low pressure).",
+      "From the upper surface (high pressure) outward and downward around the wingtips to the lower surface.",
+      "Directly from the leading edge to the trailing edge along the tips."
+    ],
+    "answer": 0,
+    "notes": "Air flows from high pressure underneath the wing, outward, and upward around the wingtip to the low pressure above the wing, creating a vortex."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Wake Turbulence",
+    "question": "Wake turbulence (wingtip vortices) is strongest when the generating aircraft is:",
+    "options": [
+      "Light, clean, and fast.",
+      "Heavy, clean, and slow.",
+      "Heavy, in landing configuration (flaps out), and fast."
+    ],
+    "answer": 1,
+    "notes": "Vortices are strongest when the aircraft is Heavy (requires more lift), Clean (flaps up concentrate vortices at the tip), and Slow (high angle of attack increases pressure differential)."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Wake Turbulence",
+    "question": "In calm wind conditions, wingtip vortices generated by a heavy aircraft will:",
+    "options": [
+      "Rise slowly above the flight path.",
+      "Sink slowly at a rate of 400 to 500 feet per minute.",
+      "Disperse immediately within 5 seconds."
+    ],
+    "answer": 1,
+    "notes": "Vortices sink slowly behind the aircraft at 400-500 fpm and can persist in stable air, posing a hazard to trailing aircraft."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Ground Effect",
+    "question": "When an aircraft flies within one wingspan height of the ground, 'Ground Effect' occurs. This is characterized by:",
+    "options": [
+      "A sudden increase in induced drag and downwash.",
+      "A reduction in induced drag and downwash, causing the aircraft to float.",
+      "A decrease in lift and an increase in parasite drag."
+    ],
+    "answer": 1,
+    "notes": "Ground effect occurs when the ground restricts the vertical development of tip vortices, decreasing downwash and reducing induced drag."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Ground Effect",
+    "question": "An aircraft taking off or landing in ground effect requires:",
+    "options": [
+      "A higher angle of attack to produce the same lift.",
+      "A lower angle of attack to produce the same lift, due to reduced downwash.",
+      "Significantly more thrust to overcome drag."
+    ],
+    "answer": 1,
+    "notes": "Because ground effect reduces downwash, the effective angle of attack increases. The wing produces more lift at a lower geometric angle of attack."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Drag Curves",
+    "question": "Parasite drag consists of skin friction, form drag, and interference drag. How does parasite drag vary with airspeed?",
+    "options": [
+      "It decreases as speed increases.",
+      "It increases with the square of the airspeed (D_p \u221d V\u00b2).",
+      "It remains constant regardless of airspeed."
+    ],
+    "answer": 1,
+    "notes": "Parasite drag is caused by displacement of air. It increases with the square of the speed, meaning it is very high at high speeds."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Drag Curves",
+    "question": "At the minimum drag speed (V_md), which of the following is true?",
+    "options": [
+      "Parasite drag is equal to induced drag, and total drag is minimized.",
+      "Induced drag is zero, and parasite drag is at its maximum.",
+      "Parasite drag is zero, and induced drag is at its maximum."
+    ],
+    "answer": 0,
+    "notes": "V_md is the speed of minimum total drag, where the parasite drag curve and the induced drag curve intersect (they are equal)."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Boundary Layer",
+    "question": "The boundary layer is defined as:",
+    "options": [
+      "The layer of air that flows over the cabin windshield.",
+      "The very thin layer of air close to the airfoil surface where viscous forces slow the airflow.",
+      "The boundary line between subsonic and supersonic airflow."
+    ],
+    "answer": 1,
+    "notes": "The boundary layer is the thin layer of air immediately adjacent to the wing where friction forces slow the velocity from zero at the wall to free-stream velocity."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Boundary Layer",
+    "question": "Compared to a turbulent boundary layer, a laminar boundary layer has:",
+    "options": [
+      "Lower skin friction drag but is less stable and separates more easily.",
+      "Higher skin friction drag and separates more easily.",
+      "Higher skin friction drag but resists separation better."
+    ],
+    "answer": 0,
+    "notes": "Laminar flow is smooth and produces low skin-friction drag. However, it is low energy, making it prone to flow separation (stalling) at high angles of attack."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Boundary Layer",
+    "question": "A turbulent boundary layer is characterized by:",
+    "options": [
+      "Smooth, parallel layers of airflow.",
+      "Swirling eddies and mixing, which creates higher skin friction drag but delays flow separation.",
+      "No drag whatsoever."
+    ],
+    "answer": 1,
+    "notes": "Turbulent boundary layers are chaotic and mix with high-energy air above, creating higher friction drag but resisting separation (stalling) much better than laminar layers."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Wake Turbulence",
+    "question": "To avoid wake turbulence when landing behind a large aircraft, a pilot should:",
+    "options": [
+      "Plan a glide path below the large aircraft's path and land early.",
+      "Stay at or above the large aircraft's glide path and land beyond its touchdown point.",
+      "Land at the exact same touchdown point."
+    ],
+    "answer": 1,
+    "notes": "Vortices sink behind an aircraft and stop once it touches down. To avoid them, stay above the lead aircraft's path and touch down past its touchdown point."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Wake Turbulence",
+    "question": "To avoid wake turbulence when taking off behind a large aircraft, the pilot should:",
+    "options": [
+      "Lift off prior to the large aircraft's rotation point and climb above its path.",
+      "Lift off past the large aircraft's rotation point and stay below its path.",
+      "Wait at least 30 seconds before starting the take-off roll."
+    ],
+    "answer": 0,
+    "notes": "Vortices start at rotation (when lift begins). Lift off before the lead aircraft's rotation point and climb above its path to remain clear."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Boundary Layer",
+    "question": "Vortex generators are small airfoils placed on the upper wing surface. Their purpose is to:",
+    "options": [
+      "Increase induced drag to slow the aircraft down.",
+      "Re-energize the boundary layer by mixing high-energy air into it, delaying flow separation.",
+      "Block wingtip vortices from forming."
+    ],
+    "answer": 1,
+    "notes": "Vortex generators create mini-vortices that draw high-speed, high-energy air down into the boundary layer, preventing flow separation at low speeds or high angles."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Drag Curves",
+    "question": "Interference drag is a type of parasite drag caused by:",
+    "options": [
+      "Friction between air molecules and the metal skin.",
+      "The mixing of airflow currents at junctions where aircraft parts meet (e.g., wing and fuselage).",
+      "The frontal area of the aircraft obstructing air."
+    ],
+    "answer": 1,
+    "notes": "Interference drag occurs where airflows around different components collide (such as the wing root meeting the fuselage), causing turbulence and drag."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Ground Effect",
+    "question": "During landing, entering ground effect can cause 'floating'. This occurs because:",
+    "options": [
+      "The thrust increases due to denser air.",
+      "The induced drag drops dramatically, reducing deceleration while lift remains high.",
+      "The boundary layer becomes laminar."
+    ],
+    "answer": 1,
+    "notes": "As induced drag decreases near the ground, the aircraft loses speed much slower, causing it to float along the runway if entering too fast."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Boundary Layer",
+    "question": "Flow separation occurs when the boundary layer becomes depleted of energy and separates from the surface. This leads directly to:",
+    "options": [
+      "An aerodynamic stall.",
+      "An increase in cruise speed.",
+      "A decrease in parasite drag."
+    ],
+    "answer": 0,
+    "notes": "Flow separation causes a dramatic loss of lift and a massive increase in pressure drag, resulting in an aerodynamic stall."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Boundary Layer",
+    "question": "Which type of drag is directly related to the physical shape of the aircraft and the pressure difference between its front and rear surfaces?",
+    "options": [
+      "Form Drag (or Pressure Drag)",
+      "Skin Friction Drag",
+      "Induced Drag"
+    ],
+    "answer": 0,
+    "notes": "Form drag is caused by the shape of the structure. Air separating behind a blunt body creates low pressure behind it, creating drag."
+  },
+  {
+    "subject": "tech",
+    "section": "aerodynamics",
+    "topic": "Drag Curves",
+    "question": "If an aircraft speed is doubled, the parasite drag increases by a factor of:",
+    "options": [
+      "2 times",
+      "4 times",
+      "16 times"
+    ],
+    "answer": 1,
+    "notes": "Parasite drag increases with the square of the speed. Doubling speed increases drag by 2 squared = 4 times."
   }
 ]

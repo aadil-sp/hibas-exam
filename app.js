@@ -1,17 +1,19 @@
 // ────────────────────────────────────────────────────────
-// CAPTAIN HIBA'S CPL METEOROLOGY PREP — APPLICATION ENGINE
+// CAPTAIN HIBA'S CPL PREP — MULTI-SUBJECT APPLICATION ENGINE
 // ────────────────────────────────────────────────────────
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- STATE ---
+  let activeSubject = "all";
   let activeSection = "all";
   let activeTopic = "all";
+  let isTargetedPrep = false; // true if training for tomorrow's Batch 8 exam
   let currentQuestionIndex = 0;
   let filteredQuestions = [];
   let currentProfile = null; // 'hiba', 'aadil', or null
   
   // Storage keys
-  const STATS_KEY = "cpl_meteorology_stats";
+  const STATS_KEY = "cpl_meteorology_stats"; // Keep the same local storage key for convenience
   
   // Hiba's local training stats
   let stats = {
@@ -77,9 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const hibaDashboard = document.getElementById("hibaDashboard");
   const dashHibaAccuracy = document.getElementById("dashHibaAccuracy");
   const dashHibaMastery = document.getElementById("dashHibaMastery");
-  const btnStartFlight = document.getElementById("btnStartFlight");
+  const btnTargetedPrep = document.getElementById("btnTargetedPrep");
   const logoutBtnHiba = document.getElementById("logoutBtnHiba");
-  const chapterChips = document.querySelectorAll(".chapter-chips-grid .chip");
+  const subjectCards = document.querySelectorAll(".subjects-grid .subject-card");
+  const chaptersSection = document.getElementById("chaptersSection");
+  const chaptersTitle = document.getElementById("chaptersTitle");
+  const chapterChipsContainer = document.getElementById("chapterChipsContainer");
 
   // Aadil's Dashboard
   const aadilDashboard = document.getElementById("aadilDashboard");
@@ -87,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mentorAccuracy = document.getElementById("mentorAccuracy");
   const mentorTotalAttempts = document.getElementById("mentorTotalAttempts");
   const mentorCorrectAnswers = document.getElementById("mentorCorrectAnswers");
-  const mentorChapterList = document.getElementById("mentorChapterList");
+  const mentorSubjectList = document.getElementById("mentorSubjectList");
   const mentorActivityList = document.getElementById("mentorActivityList");
   const mentorHistoryBody = document.getElementById("mentorHistoryBody");
   const btnClearDb = document.getElementById("btnClearDb");
@@ -100,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const examSidebarClose = document.getElementById("examSidebarClose");
   const examNavList = document.getElementById("examNavList");
   const examTopicFilters = document.getElementById("examTopicFilters");
+  const subjectLabel = document.getElementById("subjectLabel");
   const sectionLabel = document.getElementById("sectionLabel");
   const topScore = document.getElementById("topScore");
   const navScore = document.getElementById("nav-score");
@@ -134,8 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function selectProfile(profile) {
     currentProfile = profile;
     localStorage.setItem("cpl_current_profile", profile);
-    
-    // Hide profile selection screen
     profileScreen.classList.add("hidden");
     
     if (profile === "hiba") {
@@ -176,47 +180,113 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const answeredCount = Object.keys(stats.answeredIndices).length;
-    dashHibaMastery.textContent = `${answeredCount} / ${QUESTIONS.length || 126}`;
-  }
+    dashHibaMastery.textContent = `${answeredCount} / ${QUESTIONS.length || 206}`;
 
-  // Chapter filter chips on dashboard
-  chapterChips.forEach(chip => {
-    chip.addEventListener("click", () => {
-      chapterChips.forEach(c => c.classList.remove("active"));
-      chip.classList.add("active");
-      activeSection = chip.dataset.section;
-      activeTopic = "all";
-    });
-  });
-
-  // Start Practice Flight button
-  btnStartFlight.addEventListener("click", () => {
-    hibaDashboard.classList.add("hidden");
-    examPanel.classList.remove("hidden");
-    
-    // Update active highlight in exam sidebar to match selected dashboard chapter
-    examNavList.querySelectorAll(".nav-item").forEach(item => {
-      if (item.dataset.section === activeSection) {
-        item.classList.add("active");
-      } else {
-        item.classList.remove("active");
+    // Update question counts in Subject Cards
+    const counts = { nav: 0, reg: 0, met: 0, tech: 0 };
+    QUESTIONS.forEach(q => {
+      if (counts[q.subject] !== undefined) {
+        counts[q.subject]++;
       }
     });
 
-    const secLabels = {
-      all: "All Chapters",
-      composition: "Composition & Structure",
-      heating: "Heating & Thermal Structure",
-      troposphere: "Troposphere & Tropopause",
-      upper: "Stratosphere & Upper Layers",
-      standard: "Standard Atmosphere (ISA/JSA)"
-    };
-    sectionLabel.textContent = secLabels[activeSection] || "All Chapters";
+    document.getElementById("subCountNav").textContent = `${counts.nav} Questions`;
+    document.getElementById("subCountReg").textContent = `${counts.reg} Questions`;
+    document.getElementById("subCountMet").textContent = `${counts.met} Questions`;
+    document.getElementById("subCountTech").textContent = `${counts.tech} Questions`;
+  }
 
-    initExamApp();
+  // Handle Subject Card Click (Toggles Chapters panel)
+  subjectCards.forEach(card => {
+    card.addEventListener("click", () => {
+      subjectCards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+      
+      const subject = card.dataset.subject;
+      activeSubject = subject;
+      isTargetedPrep = false;
+
+      showChaptersPanel(subject);
+    });
   });
 
-  // Exit Exam buttons (Go back to Hiba's dashboard)
+  const subjectTitles = {
+    nav: "General Navigation",
+    reg: "Air Regulations",
+    met: "Aviation Meteorology",
+    tech: "Technical General"
+  };
+
+  const subjectChapters = {
+    nav: [
+      { id: "all", label: "🌐 All Chapters" },
+      { id: "sensors", label: "⏱️ Sensors & Pressure Instruments" },
+      { id: "general_nav", label: "🗺️ General Navigation (Earth/Time)" }
+    ],
+    reg: [
+      { id: "all", label: "🌐 All Chapters" },
+      { id: "agreements", label: "🌍 Conventions & agreements" },
+      { id: "licensing", label: "🪪 Licensing & Airworthiness" },
+      { id: "rules_air", label: "✈️ Rules of the Air" },
+      { id: "aerodromes", label: "🏁 Aerodromes & Lighting" }
+    ],
+    met: [
+      { id: "all", label: "🌐 All Chapters" },
+      { id: "composition", label: "📘 Composition & Structure" },
+      { id: "heating", label: "☀️ Heating & Thermal Structure" },
+      { id: "troposphere", label: "⛈️ Troposphere & Tropopause" },
+      { id: "upper", label: "🚀 Stratosphere & Upper Layers" },
+      { id: "standard", label: "✈️ Standard Atmosphere (ISA/JSA)" }
+    ],
+    tech: [
+      { id: "all", label: "🌐 All Chapters" },
+      { id: "aerodynamics", label: "🔧 Aerodynamics & Flight Dynamics" }
+    ]
+  };
+
+  function showChaptersPanel(subject) {
+    chaptersTitle.textContent = `${subjectTitles[subject]} Chapters`;
+    chapterChipsContainer.innerHTML = "";
+
+    const chapters = subjectChapters[subject] || [];
+    chapters.forEach(ch => {
+      const btn = document.createElement("button");
+      btn.className = "chip";
+      btn.textContent = ch.label;
+      btn.dataset.section = ch.id;
+      
+      btn.addEventListener("click", () => {
+        activeSection = ch.id;
+        activeTopic = "all";
+        startExamFlight();
+      });
+      chapterChipsContainer.appendChild(btn);
+    });
+
+    chaptersSection.classList.remove("hidden");
+    
+    // Smooth scroll down to chapters
+    setTimeout(() => {
+      chaptersSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+  }
+
+  // Targeted Prep button click
+  btnTargetedPrep.addEventListener("click", () => {
+    isTargetedPrep = true;
+    activeSubject = "all";
+    activeSection = "all";
+    activeTopic = "all";
+    startExamFlight();
+  });
+
+  function startExamFlight() {
+    hibaDashboard.classList.add("hidden");
+    examPanel.classList.remove("hidden");
+    initExamApp();
+  }
+
+  // Exit Exam (Go back to Hiba's dashboard)
   function exitExamToDashboard() {
     examPanel.classList.add("hidden");
     hibaDashboard.classList.remove("hidden");
@@ -228,11 +298,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- MENTOR AADIL'S PORTAL HANDLERS ---
   async function loadAadilAnalytics() {
     try {
-      // Display loading state
       mentorAccuracy.textContent = "...";
       mentorTotalAttempts.textContent = "...";
       mentorCorrectAnswers.textContent = "...";
-      mentorChapterList.innerHTML = "<p class='loading-text'>Loading analytics...</p>";
+      mentorSubjectList.innerHTML = "<p class='loading-text'>Loading analytics...</p>";
       mentorActivityList.innerHTML = "";
       mentorHistoryBody.innerHTML = "<tr><td colspan='4' class='center-text'>Fetching history...</td></tr>";
 
@@ -242,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       renderAadilDashboard(data);
     } catch (e) {
-      console.warn("FastAPI backend not responding, calculating analytics locally", e);
+      console.warn("FastAPI backend connection failed, fallback to local details", e);
       renderLocalAnalytics();
     }
   }
@@ -253,40 +322,39 @@ document.addEventListener("DOMContentLoaded", () => {
     mentorTotalAttempts.textContent = data.stats.total;
     mentorCorrectAnswers.textContent = data.stats.correct;
 
-    // 2. Chapter performance list
-    mentorChapterList.innerHTML = "";
-    const chapterNames = {
-      composition: "📘 Composition & Structure",
-      heating: "☀️ Heating & Thermal Structure",
-      troposphere: "⛈️ Troposphere & Tropopause",
-      upper: "🚀 Stratosphere & Upper Layers",
-      standard: "✈️ Standard Atmosphere (ISA/JSA)"
+    // 2. Subject performance progress list
+    mentorSubjectList.innerHTML = "";
+    const subjectLabelNames = {
+      nav: "🧭 General Navigation",
+      reg: "📜 Air Regulations",
+      met: "🌦️ Aviation Meteorology",
+      tech: "🔧 Technical General"
     };
 
-    const sections = ['composition', 'heating', 'troposphere', 'upper', 'standard'];
-    sections.forEach(sec => {
-      const stats = data.chapters[sec] || { total: 0, accuracy: 0 };
+    const subjects = ['nav', 'reg', 'met', 'tech'];
+    subjects.forEach(sub => {
+      const subStats = data.chapters[sub] || { total: 0, accuracy: 0 };
       const row = document.createElement("div");
       row.className = "progress-row";
       
       const details = document.createElement("div");
       details.className = "progress-details";
-      details.innerHTML = `<span>${chapterNames[sec]}</span><span>${stats.accuracy}% (${stats.total} Qs)</span>`;
+      details.innerHTML = `<span>${subjectLabelNames[sub]}</span><span>${subStats.accuracy}% (${subStats.total} Qs)</span>`;
       
       const track = document.createElement("div");
       track.className = "progress-track";
       
       const bar = document.createElement("div");
       bar.className = "progress-fill";
-      bar.style.width = `${stats.accuracy}%`;
+      bar.style.width = `${subStats.accuracy}%`;
       
       track.appendChild(bar);
       row.appendChild(details);
       row.appendChild(track);
-      mentorChapterList.appendChild(row);
+      mentorSubjectList.appendChild(row);
     });
 
-    // 3. Daily effort levels
+    // 3. Daily activity
     mentorActivityList.innerHTML = "";
     if (data.activity.length === 0) {
       mentorActivityList.innerHTML = "<p class='no-data-text'>No recent activity recorded.</p>";
@@ -295,37 +363,42 @@ document.addEventListener("DOMContentLoaded", () => {
         const item = document.createElement("div");
         item.className = "activity-item";
         
-        // Format YYYY-MM-DD to readable date
         const options = { month: 'short', day: 'numeric', year: 'numeric' };
         const dateObj = new Date(act.date);
         const dateFormatted = isNaN(dateObj) ? act.date : dateObj.toLocaleDateString('en-US', options);
         
-        item.innerHTML = `<span>📅 ${dateFormatted}</span><span class='activity-badge'>${act.count} questions answered</span>`;
+        item.innerHTML = `<span>📅 ${dateFormatted}</span><span class='activity-badge'>${act.count} questions</span>`;
         mentorActivityList.appendChild(item);
       });
     }
 
-    // 4. Chronological attempt logs
+    // 4. History log
     mentorHistoryBody.innerHTML = "";
     if (data.history.length === 0) {
       mentorHistoryBody.innerHTML = "<tr><td colspan='4' class='center-text no-data-text'>No attempts logged yet.</td></tr>";
     } else {
+      const subjectIconNames = {
+        nav: "🧭 Navigation",
+        reg: "📜 Regulations",
+        met: "🌦️ Meteorology",
+        tech: "🔧 Technical"
+      };
+
       data.history.forEach(log => {
         const tr = document.createElement("tr");
         
-        // Format timestamp
         const timeObj = new Date(log.timestamp);
         const timeFormatted = isNaN(timeObj) ? log.timestamp.substring(11, 19) : timeObj.toLocaleTimeString('en-US', { hour12: false });
         const dateFormatted = isNaN(timeObj) ? log.timestamp.substring(5, 10) : timeObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
         
-        const chapName = chapterNames[log.chapter] ? chapterNames[log.chapter].split(" ")[1] : log.chapter;
+        const subName = subjectIconNames[log.chapter] || log.chapter;
         const statusBadge = log.status === "correct" ? "<span class='log-badge correct'>Correct ✓</span>" : 
                             log.status === "wrong" ? "<span class='log-badge wrong'>Wrong ✗</span>" : 
                             "<span class='log-badge skip'>Skipped</span>";
         
         tr.innerHTML = `
           <td class="date-col">${dateFormatted} ${timeFormatted}</td>
-          <td class="chap-col">${chapName}</td>
+          <td class="chap-col">${subName}</td>
           <td class="question-col">${log.question}</td>
           <td class="status-col">${statusBadge}</td>
         `;
@@ -335,7 +408,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderLocalAnalytics() {
-    // If backend isn't running (like on Vercel), calculate analytics from local stats
     const totalAttempted = stats.correct + stats.wrong;
     const accuracy = totalAttempted > 0 ? Math.round((stats.correct / totalAttempted) * 100) : 0;
     
@@ -343,28 +415,26 @@ document.addEventListener("DOMContentLoaded", () => {
     mentorTotalAttempts.textContent = totalAttempted + stats.skipped;
     mentorCorrectAnswers.textContent = stats.correct;
 
-    // Build static progress list
-    mentorChapterList.innerHTML = "<p class='no-data-text'>Detailed chapter progress is only available when running on the FastAPI backend.</p>";
-    mentorActivityList.innerHTML = "<p class='no-data-text'>Activity logging is currently offline. Deploy backend to Hugging Face to record study habits.</p>";
-    mentorHistoryBody.innerHTML = "<tr><td colspan='4' class='center-text no-data-text'>Attempt history is stored on the server. Connect a backend to display this log.</td></tr>";
+    mentorSubjectList.innerHTML = "<p class='no-data-text'>Subject breakdown requires a running FastAPI backend.</p>";
+    mentorActivityList.innerHTML = "<p class='no-data-text'>Activity logging is offline.</p>";
+    mentorHistoryBody.innerHTML = "<tr><td colspan='4' class='center-text no-data-text'>Attempt history is stored on the server.</td</tr>";
   }
 
-  // Clear Activity Database
   btnClearDb.addEventListener("click", async () => {
-    if (confirm("Are you sure you want to delete Hiba's server activity logs? This will wipe the mentor history panel but won't change her local scores.")) {
+    if (confirm("Are you sure you want to delete Hiba's server activity logs?")) {
       try {
         const response = await fetch('/api/reset', { method: 'POST' });
         if (response.ok) {
           loadAadilAnalytics();
         }
       } catch (e) {
-        alert("Failed to clear logs on server: backend connection issue.");
+        alert("Failed to clear logs on server.");
       }
     }
   });
 
 
-  // --- EXAM SYSTEM NAVIGATION & INTERACTION ---
+  // --- EXAM SIDEBAR NAVIGATION ---
   function toggleSidebar() {
     sidebar.classList.toggle("open");
     overlay.classList.toggle("active");
@@ -381,22 +451,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- DATA FILTERING & INITIALIZATION ---
   function initExamApp() {
+    buildExamSidebarNav();
     buildTopicFilters();
     filterQuestions();
     updateUI();
   }
 
+  // Programmatically inject chapters list based on active subject or targeted prep
+  function buildExamSidebarNav() {
+    examNavList.innerHTML = "";
+
+    if (isTargetedPrep) {
+      const li = document.createElement("li");
+      li.className = "nav-item active";
+      li.textContent = "⚡ Batch 8 Portions Only";
+      li.dataset.section = "all";
+      examNavList.appendChild(li);
+      subjectLabel.textContent = "CPL Prep";
+      sectionLabel.textContent = "Batch 8 Portion";
+      return;
+    }
+
+    // Set header labels
+    subjectLabel.textContent = subjectTitles[activeSubject] || "CPL Prep";
+    
+    const chapters = subjectChapters[activeSubject] || [];
+    chapters.forEach(ch => {
+      const li = document.createElement("li");
+      li.className = `nav-item ${activeSection === ch.id ? "active" : ""}`;
+      li.textContent = ch.label;
+      li.dataset.section = ch.id;
+
+      li.addEventListener("click", () => {
+        examNavList.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active"));
+        li.classList.add("active");
+        
+        activeSection = ch.id;
+        activeTopic = "all";
+        sectionLabel.textContent = ch.label;
+        
+        initExamApp();
+        closeSidebar();
+      });
+      examNavList.appendChild(li);
+    });
+
+    const activeCh = chapters.find(ch => ch.id === activeSection);
+    sectionLabel.textContent = activeCh ? activeCh.label : "All Chapters";
+  }
+
   function buildTopicFilters() {
     const topics = new Set();
+    const targetSections = ["sensors", "general_nav", "agreements", "licensing", "rules_air", "aerodromes", "composition", "heating", "troposphere", "aerodynamics"];
+    
     QUESTIONS.forEach(q => {
-      if (activeSection === "all" || q.section === activeSection) {
-        topics.add(q.topic);
+      if (isTargetedPrep) {
+        if (targetSections.includes(q.section)) {
+          topics.add(q.topic);
+        }
+      } else {
+        const matchesSub = activeSubject === "all" || q.subject === activeSubject;
+        const matchesSec = activeSection === "all" || q.section === activeSection;
+        if (matchesSub && matchesSec) {
+          topics.add(q.topic);
+        }
       }
     });
 
     examTopicFilters.innerHTML = "";
     
-    // Add "All Topics" chip
+    // "All Topics" chip
     const allChip = document.createElement("div");
     allChip.className = `chip ${activeTopic === "all" ? "active" : ""}`;
     allChip.textContent = "🏷️ All Topics";
@@ -410,7 +534,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     examTopicFilters.appendChild(allChip);
 
-    // Add individual topic chips
+    // Topic chips
     Array.from(topics).sort().forEach(topic => {
       const chip = document.createElement("div");
       chip.className = `chip ${activeTopic === topic ? "active" : ""}`;
@@ -428,13 +552,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function filterQuestions() {
+    const targetSections = ["sensors", "general_nav", "agreements", "licensing", "rules_air", "aerodromes", "composition", "heating", "troposphere", "aerodynamics"];
+
     filteredQuestions = QUESTIONS.filter(q => {
-      const matchesSec = activeSection === "all" || q.section === activeSection;
-      const matchesTop = activeTopic === "all" || q.topic === activeTopic;
-      return matchesSec && matchesTop;
+      if (isTargetedPrep) {
+        const matchesSection = targetSections.includes(q.section);
+        const matchesTopic = activeTopic === "all" || q.topic === activeTopic;
+        return matchesSection && matchesTopic;
+      } else {
+        const matchesSub = activeSubject === "all" || q.subject === activeSubject;
+        const matchesSec = activeSection === "all" || q.section === activeSection;
+        const matchesTop = activeTopic === "all" || q.topic === activeTopic;
+        return matchesSub && matchesSec && matchesTop;
+      }
     });
 
-    // Reset current question index to first unanswered question in this filter, or 0 if all are answered
+    // Reset current index to first unanswered
     currentQuestionIndex = 0;
     for (let i = 0; i < filteredQuestions.length; i++) {
       const q = filteredQuestions[i];
@@ -447,25 +580,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getQuestionKey(q) {
-    return `${q.section}_${q.topic}_${q.question.substring(0, 30)}`;
+    return `${q.subject}_${q.section}_${q.topic}_${q.question.substring(0, 30)}`;
   }
 
   // --- STATS & LOGS UI UPDATE ---
   function updateUI() {
-    // Update Stats Display
     const answeredCount = Object.keys(stats.answeredIndices).length;
     statAnswered.textContent = answeredCount;
     statCorrect.textContent = stats.correct;
     statWrong.textContent = stats.wrong;
     statSkipped.textContent = stats.skipped;
 
-    // Top & Nav score
     const totalAttempted = stats.correct + stats.wrong;
     const scoreStr = `${stats.correct} / ${totalAttempted || 0}`;
     topScore.textContent = scoreStr;
     navScore.textContent = scoreStr;
 
-    // Accuracy
     if (totalAttempted > 0) {
       const pct = Math.round((stats.correct / totalAttempted) * 100);
       navAcc.textContent = `${pct}%`;
@@ -473,11 +603,9 @@ document.addEventListener("DOMContentLoaded", () => {
       navAcc.textContent = "—";
     }
 
-    // Progress bar (across all questions)
     const progressPct = QUESTIONS.length > 0 ? (answeredCount / QUESTIONS.length) * 100 : 0;
     progressBar.style.width = `${progressPct}%`;
 
-    // Render current question
     renderQuestion();
   }
 
@@ -489,14 +617,14 @@ document.addEventListener("DOMContentLoaded", () => {
     notesPanel.style.display = "none";
 
     if (filteredQuestions.length === 0) {
-      questionText.textContent = "No questions found matching this chapter.";
+      questionText.textContent = "No questions found matching this category.";
       optionsList.innerHTML = "";
       skipBtn.style.display = "none";
       return;
     }
 
     if (currentQuestionIndex >= filteredQuestions.length) {
-      questionText.textContent = "🎉 Chapter complete! You have completed all questions in this category. Back to dashboard or reset to shuffle and start again.";
+      questionText.textContent = "🎉 Portion complete! You have completed all questions in this category. Back to dashboard or reset to shuffle and start again.";
       optionsList.innerHTML = "";
       skipBtn.style.display = "none";
       return;
@@ -509,7 +637,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     optionsList.innerHTML = "";
     
-    // Check if already answered
     const qKey = getQuestionKey(q);
     const existingAnswer = stats.answeredIndices[qKey];
 
@@ -519,7 +646,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       const letterSpan = document.createElement("span");
       letterSpan.className = "option-letter";
-      letterSpan.textContent = String.fromCharCode(65 + idx); // A, B, C
+      letterSpan.textContent = String.fromCharCode(65 + idx);
       
       const textNode = document.createTextNode(optText);
       
@@ -551,7 +678,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const isCorrect = selectedIdx === q.answer;
     const status = isCorrect ? "correct" : "wrong";
 
-    // Disable all options
     document.querySelectorAll(".option-btn").forEach((btn, idx) => {
       btn.disabled = true;
       if (idx === q.answer) {
@@ -574,7 +700,7 @@ document.addEventListener("DOMContentLoaded", () => {
     saveStats();
     revealExplanation(q, isCorrect);
     
-    // POST attempt to backend server log
+    // POST attempt (we pass the subject as chapter so Aadil's stats grouping maps correctly)
     try {
       fetch('/api/log', {
         method: 'POST',
@@ -582,13 +708,12 @@ document.addEventListener("DOMContentLoaded", () => {
         body: json_log_payload(q, qKey, status)
       });
     } catch (e) {
-      console.warn("Offline attempt log: failed to reach backend API");
+      console.warn("Offline attempt log.");
     }
 
     skipBtn.style.display = "none";
     nextBtn.style.display = "block";
 
-    // Immediate bottom stats update
     statAnswered.textContent = Object.keys(stats.answeredIndices).length;
     statCorrect.textContent = stats.correct;
     statWrong.textContent = stats.wrong;
@@ -597,7 +722,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function json_log_payload(q, key, status) {
     return JSON.stringify({
       "question_key": key,
-      "chapter": q.section,
+      "chapter": q.subject, // Map subject field to the backend "chapter" parameter for clean grouping
       "question": q.question,
       "status": status
     });
@@ -615,7 +740,7 @@ document.addEventListener("DOMContentLoaded", () => {
       feedbackStrip.innerHTML = `<strong>✗ Incorrect</strong><br>${randomEncouragement}`;
     }
 
-    notesBody.innerHTML = q.notes || "No explanation notes available for this question.";
+    notesBody.innerHTML = q.notes || "No explanation notes available.";
     notesPanel.style.display = "block";
 
     if (window.innerWidth < 768) {
@@ -636,7 +761,6 @@ document.addEventListener("DOMContentLoaded", () => {
       stats.answeredIndices[qKey] = "skipped";
       saveStats();
       
-      // Post skip to backend
       try {
         fetch('/api/log', {
           method: 'POST',
@@ -659,27 +783,11 @@ document.addEventListener("DOMContentLoaded", () => {
     notesPanel.style.display = "none";
   });
 
-  // Exam Sidebar navigation list (Chapters)
-  examNavList.querySelectorAll(".nav-item").forEach(item => {
-    item.addEventListener("click", () => {
-      examNavList.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
-      item.classList.add("active");
-      
-      activeSection = item.dataset.section;
-      activeTopic = "all"; // Reset topic
-      sectionLabel.textContent = item.textContent;
-      
-      initExamApp();
-      closeSidebar();
-    });
-  });
-
-  // Reset and Shuffle Logic
+  // Reset and Shuffle
   function performResetAndShuffle() {
     resetStatsObject();
     saveStats();
 
-    // Shuffle questions
     for (let i = QUESTIONS.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = QUESTIONS[i];
@@ -687,15 +795,7 @@ document.addEventListener("DOMContentLoaded", () => {
       QUESTIONS[j] = temp;
     }
 
-    activeSection = "all";
-    activeTopic = "all";
     currentQuestionIndex = 0;
-    
-    // Reset sidebar highlights
-    examNavList.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
-    examNavList.querySelector('[data-section="all"]').classList.add("active");
-    sectionLabel.textContent = "All Chapters";
-    
     initExamApp();
   }
 
@@ -710,7 +810,7 @@ document.addEventListener("DOMContentLoaded", () => {
   floatResetBtn.addEventListener("click", handleResetClick);
 
 
-  // --- BACKEND LOADING & INITIAL RUN ---
+  // --- BACKEND QUESTIONS LOADING ---
   let QUESTIONS = [];
 
   async function loadQuestions() {
@@ -721,7 +821,6 @@ document.addEventListener("DOMContentLoaded", () => {
       onQuestionsReady();
     } catch (e) {
       console.warn("Failed to load questions from backend, falling back to local questions.js", e);
-      // Dynamically load questions.js script
       const script = document.createElement("script");
       script.src = "questions.js";
       script.onload = () => {
@@ -739,12 +838,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function onQuestionsReady() {
-    // Check if there is an active session
     const storedProfile = localStorage.getItem("cpl_current_profile");
     if (storedProfile) {
       selectProfile(storedProfile);
     } else {
-      // Show profile selection screen
       profileScreen.classList.remove("hidden");
       hibaDashboard.classList.add("hidden");
       aadilDashboard.classList.add("hidden");
@@ -752,6 +849,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Trigger loading
   loadQuestions();
 });
