@@ -135,25 +135,21 @@
     <section class="subjects-section">
       <h3 class="section-title">Select Study Subject</h3>
       <div class="subjects-grid">
-        <!-- Navigation Card -->
         <div class="subject-card" data-subject="nav" id="subCardNav">
           <div class="sc-avatar nav-subject">🧭</div>
           <h4>Navigation</h4>
           <p class="sc-count" id="subCountNav">30 Questions</p>
         </div>
-        <!-- Regulations Card -->
         <div class="subject-card" data-subject="reg" id="subCardReg">
           <div class="sc-avatar reg-subject">📜</div>
           <h4>Regulations</h4>
           <p class="sc-count" id="subCountReg">30 Questions</p>
         </div>
-        <!-- Meteorology Card -->
         <div class="subject-card" data-subject="met" id="subCardMet">
           <div class="sc-avatar met-subject">🌦️</div>
           <h4>Meteorology</h4>
           <p class="sc-count" id="subCountMet">126 Questions</p>
         </div>
-        <!-- Technical Card -->
         <div class="subject-card" data-subject="tech" id="subCardTech">
           <div class="sc-avatar tech-subject">🔧</div>
           <h4>Technical</h4>
@@ -162,7 +158,7 @@
       </div>
     </section>
 
-    <!-- CHAPTERS ACCORDION (Revealed when a subject is clicked) -->
+    <!-- CHAPTERS ACCORDION (for non-met subjects) -->
     <section class="chapters-section hidden" id="chaptersSection">
       <h3 class="section-title" id="chaptersTitle">Chapter focus</h3>
       <div class="chapter-chips-grid" id="chapterChipsContainer">
@@ -171,6 +167,65 @@
     </section>
   </main>
 </div>
+
+<!-- ───────── 2b. SUBJECT DETAIL VIEW (Met Chapters) ───────── -->
+<div class="dashboard-layout hidden" id="subjectDetailPanel">
+  <header class="dash-header">
+    <button class="back-nav-btn" id="subjectBackBtn">← Back</button>
+    <div class="header-profile-badge">
+      <span class="badge-avatar" id="subjectDetailIcon">🌦️</span>
+      <div>
+        <p class="badge-title" id="subjectDetailTitle">Aviation Meteorology</p>
+        <p class="badge-sub" id="subjectDetailSub">Select a chapter to study</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="settings-gear-btn" id="subjectDetailHomeBtn">🏠</button>
+    </div>
+  </header>
+
+  <main class="dash-main subject-detail-main">
+    <!-- MODE SLIDER -->
+    <div class="mode-slider-wrapper">
+      <div class="mode-slider" id="modeSlider">
+        <button class="mode-btn active" id="modeTestBtn" data-mode="test">
+          <span class="mode-icon">🎯</span>
+          <span>Take a Test</span>
+        </button>
+        <button class="mode-btn" id="modeNotesBtn" data-mode="notes">
+          <span class="mode-icon">📖</span>
+          <span>Read Notes</span>
+        </button>
+        <div class="mode-slider-thumb" id="modeSliderThumb"></div>
+      </div>
+      <p class="mode-hint" id="modeHint">Click a chapter to start a practice test</p>
+    </div>
+
+    <!-- CHAPTER TILES GRID -->
+    <div class="chapter-tiles-grid" id="chapterTilesGrid">
+      <!-- Dynamically injected by JS -->
+    </div>
+  </main>
+</div>
+
+<!-- ───────── 2c. NOTES READER PANEL ───────── -->
+<div class="notes-reader-overlay hidden" id="notesReaderPanel">
+  <div class="notes-reader-header">
+    <button class="notes-reader-back" id="notesReaderBack">← Back to Chapters</button>
+    <div class="notes-reader-title-wrap">
+      <span class="notes-reader-icon" id="notesReaderIcon">💧</span>
+      <div>
+        <h2 class="notes-reader-title" id="notesReaderTitle">Humidity</h2>
+        <p class="notes-reader-sub">Aviation Meteorology</p>
+      </div>
+    </div>
+    <button class="notes-reader-test-btn" id="notesReaderStartTest">🎯 Take Test on This Chapter</button>
+  </div>
+  <div class="notes-reader-body" id="notesReaderBody">
+    <!-- Content injected by JS -->
+  </div>
+</div>
+
 
 <!-- ───────── 3. MENTOR AADIL'S PORTAL ───────── -->
 <div class="dashboard-layout hidden" id="aadilDashboard">

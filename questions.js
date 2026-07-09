@@ -1,7 +1,4 @@
-// CAPTAIN HIBA'S CPL PREPARATION DATABASE
-// Unified question bank (Met, Nav, Reg, Tech)
-
-const QUESTIONS = [
+window.QUESTIONS = [
   {
     "section": "composition",
     "topic": "Atmosphere Constituents",
@@ -458,7 +455,7 @@ const QUESTIONS = [
       "Poles"
     ],
     "answer": 0,
-    "notes": "Because the troposphere is thicker at the equator and cooling continues up to 16-18 km, temperatures above 8 km are lower over the equator (-70\u00b0C to -75\u00b0C) than the poles (-40\u00b0C to -45\u00b0C) (Q6 textbook question).",
+    "notes": "Because the troposphere is thicker at the equator and cooling continues up to 16-18 km, temperatures above 8 km are lower over the equator (-70°C to -75°C) than the poles (-40°C to -45°C) (Q6 textbook question).",
     "subject": "met"
   },
   {
@@ -479,18 +476,18 @@ const QUESTIONS = [
     "topic": "Tropopause Breaks",
     "question": "Tropopause is discontinuous at about ..........",
     "options": [
-      "30\u00b0lat",
-      "40\u00b0lat",
-      "80\u00b0lat"
+      "30°lat",
+      "40°lat",
+      "80°lat"
     ],
     "answer": 1,
-    "notes": "The tropopause breaks or folds occur near 40\u00b0 and 60\u00b0 latitude. The break at 40\u00b0 latitude is more prominent (Q12 textbook question).",
+    "notes": "The tropopause breaks or folds occur near 40° and 60° latitude. The break at 40° latitude is more prominent (Q12 textbook question).",
     "subject": "met"
   },
   {
     "section": "troposphere",
     "topic": "Tropopause Height",
-    "question": "Tropical Tropopause extends from the equator to Lat. 35\u00b0-40\u00b0. Over India it is at",
+    "question": "Tropical Tropopause extends from the equator to Lat. 35°-40°. Over India it is at",
     "options": [
       "20-21 km",
       "14-15 km",
@@ -589,7 +586,7 @@ const QUESTIONS = [
       "Three"
     ],
     "answer": 1,
-    "notes": "There are two regions where the tropopause abruptly changes height, at about 40\u00b0 Latitude and 60\u00b0 Latitude.",
+    "notes": "There are two regions where the tropopause abruptly changes height, at about 40° Latitude and 60° Latitude.",
     "subject": "met"
   },
   {
@@ -615,7 +612,7 @@ const QUESTIONS = [
       "100 hPa"
     ],
     "answer": 0,
-    "notes": "The Polar Tropopause occurs near the 300 hPa level, polewards of Lat. 45\u00b0 to 60\u00b0.",
+    "notes": "The Polar Tropopause occurs near the 300 hPa level, polewards of Lat. 45° to 60°.",
     "subject": "met"
   },
   {
@@ -664,10 +661,10 @@ const QUESTIONS = [
     "options": [
       "173 K",
       "100 K",
-      "-137\u00b0C"
+      "-137°C"
     ],
     "answer": 0,
-    "notes": "At 80 km (the Mesopause), the temperature is approximately -100\u00b0C, which is 173.15 K (Q8 textbook question).",
+    "notes": "At 80 km (the Mesopause), the temperature is approximately -100°C, which is 173.15 K (Q8 textbook question).",
     "subject": "met"
   },
   {
@@ -889,7 +886,7 @@ const QUESTIONS = [
       "Mesosphere"
     ],
     "answer": 2,
-    "notes": "The Mesosphere contains the coldest area (Mesopause, -100\u00b0C) and is the layer where meteors burn up.",
+    "notes": "The Mesosphere contains the coldest area (Mesopause, -100°C) and is the layer where meteors burn up.",
     "subject": "met"
   },
   {
@@ -923,12 +920,12 @@ const QUESTIONS = [
     "topic": "ISA Temperatures",
     "question": "The temperature in ISA at 17 km is ..........",
     "options": [
-      "-56.5\u00b0C",
-      "-65.5\u00b0C",
-      "-35.5\u00b0C"
+      "-56.5°C",
+      "-65.5°C",
+      "-35.5°C"
     ],
     "answer": 0,
-    "notes": "In ISA, from 11 to 20 km is isothermal at -56.5\u00b0C. Thus, at 17 km, the temperature is -56.5\u00b0C (Q17 textbook question).",
+    "notes": "In ISA, from 11 to 20 km is isothermal at -56.5°C. Thus, at 17 km, the temperature is -56.5°C (Q17 textbook question).",
     "subject": "met"
   },
   {
@@ -936,31 +933,31 @@ const QUESTIONS = [
     "topic": "ISA MSL Values",
     "question": "In ISA, the mean sea level temperature is ..........",
     "options": [
-      "15\u00b0C",
-      "10\u00b0C",
-      "25\u00b0C"
+      "15°C",
+      "10°C",
+      "25°C"
     ],
     "answer": 0,
-    "notes": "The standard Mean Sea Level temperature in ISA is specified as 15\u00b0C (288.15 K) (Q21 textbook question).",
+    "notes": "The standard Mean Sea Level temperature in ISA is specified as 15°C (288.15 K) (Q21 textbook question).",
     "subject": "met"
   },
   {
     "section": "standard",
     "topic": "ISA Temperature Deviation",
-    "question": "Temperature at 2 km is 05\u00b0C what is ISA deviation. Hint: (Actual \u2013 ISA)",
+    "question": "Temperature at 2 km is 05°C what is ISA deviation. Hint: (Actual – ISA)",
     "options": [
-      "-05\u00b0C",
-      "-02\u00b0C",
-      "03\u00b0C"
+      "-05°C",
+      "-02°C",
+      "03°C"
     ],
     "answer": 2,
-    "notes": "ISA temp at 2 km is 15 - (6.5 * 2) = 2\u00b0C. Actual is 5\u00b0C. Deviation = Actual - ISA = 5 - 2 = +3\u00b0C (Q26 textbook question).",
+    "notes": "ISA temp at 2 km is 15 - (6.5 * 2) = 2°C. Actual is 5°C. Deviation = Actual - ISA = 5 - 2 = +3°C (Q26 textbook question).",
     "subject": "met"
   },
   {
     "section": "standard",
     "topic": "ISA Pressure Deviation",
-    "question": "Pressure at MSL is 1002.25 hPa. Find the ISA deviation Hint: (Actual \u2013 ISA)",
+    "question": "Pressure at MSL is 1002.25 hPa. Find the ISA deviation Hint: (Actual – ISA)",
     "options": [
       "-11 hPa",
       "10 hPa",
@@ -973,14 +970,14 @@ const QUESTIONS = [
   {
     "section": "standard",
     "topic": "ISA Temperature Deviation",
-    "question": "In actual atmosphere temp. at 19 km is -60\u00b0C. Find the ISA deviation?",
+    "question": "In actual atmosphere temp. at 19 km is -60°C. Find the ISA deviation?",
     "options": [
-      "-4.5\u00b0C",
-      "-05.5\u00b0C",
-      "-03.5\u00b0C"
+      "-4.5°C",
+      "-05.5°C",
+      "-03.5°C"
     ],
     "answer": 2,
-    "notes": "ISA temp at 19 km is -56.5\u00b0C (isothermal layer). Actual is -60\u00b0C. Deviation = Actual - ISA = -60 - (-56.5) = -3.5\u00b0C (Q28 textbook question).",
+    "notes": "ISA temp at 19 km is -56.5°C (isothermal layer). Actual is -60°C. Deviation = Actual - ISA = -60 - (-56.5) = -3.5°C (Q28 textbook question).",
     "subject": "met"
   },
   {
@@ -988,12 +985,12 @@ const QUESTIONS = [
     "topic": "JSA Lapse Rate",
     "question": "In jet standard atmosphere the Lapse Rate is",
     "options": [
-      "2\u00b0C/1000 ft",
-      "2\u00b0C/km",
-      "5\u00b0C/km"
+      "2°C/1000 ft",
+      "2°C/km",
+      "5°C/km"
     ],
     "answer": 0,
-    "notes": "The Jet Standard Atmosphere (JSA) specifies a constant lapse rate of 2\u00b0C/1000 ft throughout (Q32 textbook question).",
+    "notes": "The Jet Standard Atmosphere (JSA) specifies a constant lapse rate of 2°C/1000 ft throughout (Q32 textbook question).",
     "subject": "met"
   },
   {
@@ -1007,7 +1004,7 @@ const QUESTIONS = [
       "11 to 32 km"
     ],
     "answer": 2,
-    "notes": "ISA assumes an isothermal layer of -56.5\u00b0C between 11 km (36,090 ft) and 20 km (65,617 ft) (Q39 textbook question).",
+    "notes": "ISA assumes an isothermal layer of -56.5°C between 11 km (36,090 ft) and 20 km (65,617 ft) (Q39 textbook question).",
     "subject": "met"
   },
   {
@@ -1028,12 +1025,12 @@ const QUESTIONS = [
     "topic": "ISA MSL Values",
     "question": "What is the standard Mean Sea Level (MSL) air density in the ICAO ISA model?",
     "options": [
-      "1000 g/m\u00b3",
-      "1225 g/m\u00b3",
-      "1.225 g/m\u00b3"
+      "1000 g/m³",
+      "1225 g/m³",
+      "1.225 g/m³"
     ],
     "answer": 1,
-    "notes": "Standard MSL air density in the ISA model is 1225 g/m\u00b3 (equivalent to 1.225 kg/m\u00b3).",
+    "notes": "Standard MSL air density in the ISA model is 1225 g/m³ (equivalent to 1.225 kg/m³).",
     "subject": "met"
   },
   {
@@ -1041,12 +1038,12 @@ const QUESTIONS = [
     "topic": "ISA Constants",
     "question": "What is the standard acceleration due to gravity (g) at MSL in the ICAO ISA model?",
     "options": [
-      "9.80665 m/s\u00b2 (980.665 cm/s\u00b2)",
-      "10.0 m/s\u00b2",
-      "9.78 m/s\u00b2"
+      "9.80665 m/s² (980.665 cm/s²)",
+      "10.0 m/s²",
+      "9.78 m/s²"
     ],
     "answer": 0,
-    "notes": "Standard gravity in the ISA model is specified as 980.665 cm/s\u00b2 (or 9.80665 m/s\u00b2).",
+    "notes": "Standard gravity in the ISA model is specified as 980.665 cm/s² (or 9.80665 m/s²).",
     "subject": "met"
   },
   {
@@ -1054,12 +1051,12 @@ const QUESTIONS = [
     "topic": "ISA Upper Layers",
     "question": "In the ICAO ISA model, what is the temperature lapse rate between 20 km and 30 km?",
     "options": [
-      "It is isothermal (0\u00b0C/km)",
-      "A rise of 1\u00b0C per km (0.3\u00b0C per 1000 ft)",
-      "A fall of 1.5\u00b0C per km"
+      "It is isothermal (0°C/km)",
+      "A rise of 1°C per km (0.3°C per 1000 ft)",
+      "A fall of 1.5°C per km"
     ],
     "answer": 1,
-    "notes": "Between 20 km and 30 km, the ISA model assumes a temperature rise of 1\u00b0C/km (0.3\u00b0C/1000 ft), reaching -44.5\u00b0C at 32 km.",
+    "notes": "Between 20 km and 30 km, the ISA model assumes a temperature rise of 1°C/km (0.3°C/1000 ft), reaching -44.5°C at 32 km.",
     "subject": "met"
   },
   {
@@ -1072,7 +1069,7 @@ const QUESTIONS = [
       "There is no Tropopause"
     ],
     "answer": 2,
-    "notes": "Unlike the ICAO ISA, the Jet Standard Atmosphere (JSA) has no tropopause; the temperature continues to decrease at 2\u00b0C/1000 ft indefinitely.",
+    "notes": "Unlike the ICAO ISA, the Jet Standard Atmosphere (JSA) has no tropopause; the temperature continues to decrease at 2°C/1000 ft indefinitely.",
     "subject": "met"
   },
   {
@@ -1080,38 +1077,38 @@ const QUESTIONS = [
     "topic": "JSA MSL Values",
     "question": "What is the Mean Sea Level (MSL) temperature specified in the Jet Standard Atmosphere (JSA)?",
     "options": [
-      "15\u00b0C (288.15 K)",
-      "10\u00b0C",
-      "0\u00b0C"
+      "15°C (288.15 K)",
+      "10°C",
+      "0°C"
     ],
     "answer": 0,
-    "notes": "Like the ICAO ISA, the Jet Standard Atmosphere (JSA) specifies an MSL temperature of 15\u00b0C (288.15 K).",
+    "notes": "Like the ICAO ISA, the Jet Standard Atmosphere (JSA) specifies an MSL temperature of 15°C (288.15 K).",
     "subject": "met"
   },
   {
     "section": "standard",
     "topic": "ISA Temperature Deviation",
-    "question": "If the actual temperature at MSL is 23\u00b0C, what is the ISA deviation?",
+    "question": "If the actual temperature at MSL is 23°C, what is the ISA deviation?",
     "options": [
-      "ISA + 8\u00b0C",
-      "ISA - 8\u00b0C",
-      "ISA + 15\u00b0C"
+      "ISA + 8°C",
+      "ISA - 8°C",
+      "ISA + 15°C"
     ],
     "answer": 0,
-    "notes": "ISA MSL temp is 15\u00b0C. Actual is 23\u00b0C. Deviation = 23 - 15 = +8\u00b0C, written as ISA + 8.",
+    "notes": "ISA MSL temp is 15°C. Actual is 23°C. Deviation = 23 - 15 = +8°C, written as ISA + 8.",
     "subject": "met"
   },
   {
     "section": "standard",
     "topic": "ISA Temperature Deviation",
-    "question": "If the actual temperature at 3 km is -10\u00b0C, what is the ISA deviation?",
+    "question": "If the actual temperature at 3 km is -10°C, what is the ISA deviation?",
     "options": [
-      "ISA - 5.5\u00b0C",
-      "ISA - 0.5\u00b0C",
-      "ISA + 2.5\u00b0C"
+      "ISA - 5.5°C",
+      "ISA - 0.5°C",
+      "ISA + 2.5°C"
     ],
     "answer": 0,
-    "notes": "Standard ISA temp at 3 km is: 15 - (6.5 * 3) = -4.5\u00b0C. Actual is -10\u00b0C. Deviation = Actual - ISA = -10 - (-4.5) = -5.5\u00b0C.",
+    "notes": "Standard ISA temp at 3 km is: 15 - (6.5 * 3) = -4.5°C. Actual is -10°C. Deviation = Actual - ISA = -10 - (-4.5) = -5.5°C.",
     "subject": "met"
   },
   {
@@ -1275,12 +1272,12 @@ const QUESTIONS = [
     "topic": "Middle Tropopause",
     "question": "In winter over India, the Middle Tropopause (200 hPa level) may descend to what latitude?",
     "options": [
-      "8\u00b0N",
-      "23\u00b0N",
-      "30\u00b0N"
+      "8°N",
+      "23°N",
+      "30°N"
     ],
     "answer": 1,
-    "notes": "In winters, the Middle Tropopause over India may be noticed as far south as 23\u00b0N latitude.",
+    "notes": "In winters, the Middle Tropopause over India may be noticed as far south as 23°N latitude.",
     "subject": "met"
   },
   {
@@ -1288,12 +1285,12 @@ const QUESTIONS = [
     "topic": "Tropopause breaks",
     "question": "Which tropopause break is more prominent and associated with strong jet streams?",
     "options": [
-      "The break at 40\u00b0 Latitude",
-      "The break at 60\u00b0 Latitude",
+      "The break at 40° Latitude",
+      "The break at 60° Latitude",
       "The equatorial break"
     ],
     "answer": 0,
-    "notes": "The tropopause break at 40\u00b0 Latitude is more prominent than the one at 60\u00b0 Latitude.",
+    "notes": "The tropopause break at 40° Latitude is more prominent than the one at 60° Latitude.",
     "subject": "met"
   },
   {
@@ -1332,7 +1329,7 @@ const QUESTIONS = [
       "Mesopause"
     ],
     "answer": 2,
-    "notes": "The Mesopause (at 80 km) is the coldest area of the atmosphere, with temperatures dropping to about -100\u00b0C.",
+    "notes": "The Mesopause (at 80 km) is the coldest area of the atmosphere, with temperatures dropping to about -100°C.",
     "subject": "met"
   },
   {
@@ -1366,12 +1363,12 @@ const QUESTIONS = [
     "topic": "ISA Upper Layers",
     "question": "In the ICAO ISA, at what rate does temperature rise between 20 km and 30 km?",
     "options": [
-      "0.5\u00b0C/km",
-      "1.0\u00b0C/km",
-      "2.0\u00b0C/km"
+      "0.5°C/km",
+      "1.0°C/km",
+      "2.0°C/km"
     ],
     "answer": 1,
-    "notes": "In the upper layers of ISA (from 20 to 30 km), there is a rise of temperature at the rate of 1.0\u00b0C/km (or 0.3\u00b0C/1000 ft).",
+    "notes": "In the upper layers of ISA (from 20 to 30 km), there is a rise of temperature at the rate of 1.0°C/km (or 0.3°C/1000 ft).",
     "subject": "met"
   },
   {
@@ -1379,25 +1376,25 @@ const QUESTIONS = [
     "topic": "ISA Upper Layers",
     "question": "In the ISA model, the temperature at 32 km is assumed to be:",
     "options": [
-      "-56.5\u00b0C",
-      "-44.5\u00b0C",
-      "0\u00b0C"
+      "-56.5°C",
+      "-44.5°C",
+      "0°C"
     ],
     "answer": 1,
-    "notes": "Following the temp rise of 1\u00b0C/km above 20 km, the ISA temperature reaches -44.5\u00b0C at a height of 32 km.",
+    "notes": "Following the temp rise of 1°C/km above 20 km, the ISA temperature reaches -44.5°C at a height of 32 km.",
     "subject": "met"
   },
   {
     "section": "standard",
     "topic": "ISA Temperature Deviation",
-    "question": "If the actual temperature at 4 km is -20\u00b0C, what is the ISA deviation?",
+    "question": "If the actual temperature at 4 km is -20°C, what is the ISA deviation?",
     "options": [
-      "ISA - 9\u00b0C",
-      "ISA - 11\u00b0C",
-      "ISA + 3\u00b0C"
+      "ISA - 9°C",
+      "ISA - 11°C",
+      "ISA + 3°C"
     ],
     "answer": 0,
-    "notes": "ISA temperature at 4 km is: 15 - (6.5 * 4) = -11\u00b0C. Actual is -20\u00b0C. Deviation = Actual - ISA = -20 - (-11) = -9\u00b0C (written as ISA - 9).",
+    "notes": "ISA temperature at 4 km is: 15 - (6.5 * 4) = -11°C. Actual is -20°C. Deviation = Actual - ISA = -20 - (-11) = -9°C (written as ISA - 9).",
     "subject": "met"
   },
   {
@@ -1416,14 +1413,14 @@ const QUESTIONS = [
   {
     "section": "standard",
     "topic": "ISA Temperature Deviation",
-    "question": "If the actual temperature at 15 km is -50\u00b0C, what is the ISA deviation?",
+    "question": "If the actual temperature at 15 km is -50°C, what is the ISA deviation?",
     "options": [
-      "ISA + 6.5\u00b0C",
-      "ISA - 6.5\u00b0C",
-      "ISA + 10\u00b0C"
+      "ISA + 6.5°C",
+      "ISA - 6.5°C",
+      "ISA + 10°C"
     ],
     "answer": 0,
-    "notes": "ISA temperature at 15 km is constant at -56.5\u00b0C. Actual is -50\u00b0C. Deviation = Actual - ISA = -50 - (-56.5) = +6.5\u00b0C (written as ISA + 6.5).",
+    "notes": "ISA temperature at 15 km is constant at -56.5°C. Actual is -50°C. Deviation = Actual - ISA = -50 - (-56.5) = +6.5°C (written as ISA + 6.5).",
     "subject": "met"
   },
   {
@@ -1436,7 +1433,7 @@ const QUESTIONS = [
       "173.15 K"
     ],
     "answer": 1,
-    "notes": "Like the ISA, the JSA specifies an MSL temperature of 15\u00b0C, which is equal to 288.15 Kelvin.",
+    "notes": "Like the ISA, the JSA specifies an MSL temperature of 15°C, which is equal to 288.15 Kelvin.",
     "subject": "met"
   },
   {
@@ -1501,7 +1498,7 @@ const QUESTIONS = [
       "100 hPa"
     ],
     "answer": 0,
-    "notes": "The Polar Tropopause occurs near the 300 hPa level, polewards of 45\u00b0 to 60\u00b0 latitude.",
+    "notes": "The Polar Tropopause occurs near the 300 hPa level, polewards of 45° to 60° latitude.",
     "subject": "met"
   },
   {
@@ -1535,12 +1532,12 @@ const QUESTIONS = [
     "topic": "Thermal Structure Diagram",
     "question": "According to the thermal structure diagram (Figure 1.1), what is the constant temperature at the Tropopause?",
     "options": [
-      "15\u00b0C",
-      "-56.5\u00b0C",
-      "-90\u00b0C"
+      "15°C",
+      "-56.5°C",
+      "-90°C"
     ],
     "answer": 1,
-    "notes": "Figure 1.1 shows that the temperature remains constant at -56.5\u00b0C at the Tropopause level before rising in the Stratosphere.",
+    "notes": "Figure 1.1 shows that the temperature remains constant at -56.5°C at the Tropopause level before rising in the Stratosphere.",
     "subject": "met"
   },
   {
@@ -1820,14 +1817,14 @@ const QUESTIONS = [
     "subject": "nav",
     "section": "general_nav",
     "topic": "Departure Calculations",
-    "question": "An aircraft flies along the parallel of 60\u00b0N from longitude 010\u00b0W to 020\u00b0W. Calculate the Departure distance flown.",
+    "question": "An aircraft flies along the parallel of 60°N from longitude 010°W to 020°W. Calculate the Departure distance flown.",
     "options": [
       "600 NM",
       "300 NM",
       "520 NM"
     ],
     "answer": 1,
-    "notes": "Ch.Long is 10\u00b0 = 600 minutes. Latitude is 60\u00b0. Departure = 600 x cos(60\u00b0) = 600 x 0.5 = 300 NM."
+    "notes": "Ch.Long is 10° = 600 minutes. Latitude is 60°. Departure = 600 x cos(60°) = 600 x 0.5 = 300 NM."
   },
   {
     "subject": "nav",
@@ -1850,7 +1847,7 @@ const QUESTIONS = [
     "options": [
       "Conversion Angle = Convergency x 2",
       "Conversion Angle = 1/2 x Convergency",
-      "Conversion Angle = Convergency - 90\u00b0"
+      "Conversion Angle = Convergency - 90°"
     ],
     "answer": 1,
     "notes": "Conversion angle is the difference between the Great Circle track and the Rhumb Line track, equal to half of the Earth convergency."
@@ -1859,7 +1856,7 @@ const QUESTIONS = [
     "subject": "nav",
     "section": "general_nav",
     "topic": "Time Calculations",
-    "question": "The Earth rotates at a rate of 15\u00b0 of longitude per hour. How many minutes of time correspond to a change of 1\u00b0 of longitude?",
+    "question": "The Earth rotates at a rate of 15° of longitude per hour. How many minutes of time correspond to a change of 1° of longitude?",
     "options": [
       "4 minutes",
       "15 minutes",
@@ -1872,27 +1869,27 @@ const QUESTIONS = [
     "subject": "nav",
     "section": "general_nav",
     "topic": "Time Calculations",
-    "question": "If the UTC time is 12:00, what is the Local Mean Time (LMT) at longitude 075\u00b0E?",
+    "question": "If the UTC time is 12:00, what is the Local Mean Time (LMT) at longitude 075°E?",
     "options": [
       "07:00 LMT",
       "17:00 LMT",
       "15:00 LMT"
     ],
     "answer": 1,
-    "notes": "East is ahead. Longitude is 75\u00b0E. Time difference = 75\u00b0 / 15\u00b0 per hour = 5 hours ahead. LMT = 12:00 + 5 hours = 17:00."
+    "notes": "East is ahead. Longitude is 75°E. Time difference = 75° / 15° per hour = 5 hours ahead. LMT = 12:00 + 5 hours = 17:00."
   },
   {
     "subject": "nav",
     "section": "general_nav",
     "topic": "Time Calculations",
-    "question": "If UTC is 06:00, what is the Local Mean Time (LMT) at longitude 045\u00b0W?",
+    "question": "If UTC is 06:00, what is the Local Mean Time (LMT) at longitude 045°W?",
     "options": [
       "03:00 LMT",
       "09:00 LMT",
       "04:30 LMT"
     ],
     "answer": 0,
-    "notes": "West is behind. Longitude is 45\u00b0W. Time difference = 45\u00b0 / 15\u00b0 per hour = 3 hours behind. LMT = 06:00 - 3 hours = 03:00."
+    "notes": "West is behind. Longitude is 45°W. Time difference = 45° / 15° per hour = 3 hours behind. LMT = 06:00 - 3 hours = 03:00."
   },
   {
     "subject": "nav",
@@ -1911,7 +1908,7 @@ const QUESTIONS = [
     "subject": "nav",
     "section": "general_nav",
     "topic": "Time Calculations",
-    "question": "Crossing the International Date Line (180\u00b0 Meridian) heading Westward requires a pilot to:",
+    "question": "Crossing the International Date Line (180° Meridian) heading Westward requires a pilot to:",
     "options": [
       "Advance the date by 1 day (add a day).",
       "Retard the date by 1 day (subtract a day).",
@@ -1924,7 +1921,7 @@ const QUESTIONS = [
     "subject": "nav",
     "section": "general_nav",
     "topic": "Departure Calculations",
-    "question": "On the Equator (0\u00b0 Latitude), 1 degree of longitude is equivalent to a departure of:",
+    "question": "On the Equator (0° Latitude), 1 degree of longitude is equivalent to a departure of:",
     "options": [
       "60 Nautical Miles",
       "30 Nautical Miles",
@@ -1937,14 +1934,14 @@ const QUESTIONS = [
     "subject": "nav",
     "section": "general_nav",
     "topic": "Convergency",
-    "question": "Calculate the Earth convergency between A (50\u00b0N 020\u00b0W) and B (50\u00b0N 030\u00b0W).",
+    "question": "Calculate the Earth convergency between A (50°N 020°W) and B (50°N 030°W).",
     "options": [
-      "7.66\u00b0",
-      "6.43\u00b0",
-      "10\u00b0"
+      "7.66°",
+      "6.43°",
+      "10°"
     ],
     "answer": 0,
-    "notes": "Ch.Long = 10\u00b0. Mean Latitude = 50\u00b0N. Convergency = 10 x sin(50\u00b0) = 10 x 0.766 = 7.66\u00b0."
+    "notes": "Ch.Long = 10°. Mean Latitude = 50°N. Convergency = 10 x sin(50°) = 10 x 0.766 = 7.66°."
   },
   {
     "subject": "nav",
@@ -2018,8 +2015,8 @@ const QUESTIONS = [
     "question": "Which parallel of latitude is the only parallel that forms a Great Circle?",
     "options": [
       "The Equator",
-      "60\u00b0N Parallel",
-      "30\u00b0S Parallel"
+      "60°N Parallel",
+      "30°S Parallel"
     ],
     "answer": 0,
     "notes": "The Equator is the only parallel of latitude whose plane passes directly through the Earth's center, making it a Great Circle."
@@ -2446,8 +2443,8 @@ const QUESTIONS = [
     "topic": "Induced Drag",
     "question": "How does induced drag vary with the airspeed of the aircraft?",
     "options": [
-      "It increases directly with the square of the speed (D_i \u221d V\u00b2).",
-      "It decreases inversely with the square of the speed (D_i \u221d 1/V\u00b2).",
+      "It increases directly with the square of the speed (D_i ∝ V²).",
+      "It decreases inversely with the square of the speed (D_i ∝ 1/V²).",
       "It remains constant at all airspeeds."
     ],
     "answer": 1,
@@ -2525,7 +2522,7 @@ const QUESTIONS = [
     "question": "Parasite drag consists of skin friction, form drag, and interference drag. How does parasite drag vary with airspeed?",
     "options": [
       "It decreases as speed increases.",
-      "It increases with the square of the airspeed (D_p \u221d V\u00b2).",
+      "It increases with the square of the airspeed (D_p ∝ V²).",
       "It remains constant regardless of airspeed."
     ],
     "answer": 1,
@@ -2686,5 +2683,330 @@ const QUESTIONS = [
     ],
     "answer": 1,
     "notes": "Parasite drag increases with the square of the speed. Doubling speed increases drag by 2 squared = 4 times."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Relative Humidity",
+    "question": "The ratio in percentage between the amount of water vapour present in the air to the amount of water vapour it can hold at the same temperature is:",
+    "options": [
+      "Absolute Humidity",
+      "Relative Humidity",
+      "Dew Point"
+    ],
+    "answer": 1,
+    "notes": "Relative Humidity (RH) is defined as the ratio, in percentage, of the actual water vapour present in the air to the maximum it can contain at the same temperature and pressure. RH(%) = (HMR × 100) / (HMR for Saturated Air) = (VP of Air × 100) / (SV of Air)."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Dew Point",
+    "question": "The temperature to which air must be cooled at constant pressure to become saturated is called:",
+    "options": [
+      "Wet Bulb Temperature",
+      "Dry Bulb Temperature",
+      "Dew Point"
+    ],
+    "answer": 2,
+    "notes": "Dew Point Temperature (Td) is the lowest temperature to which air should be cooled at constant pressure to saturate it with respect to water. Cooling below Dew Point (DP) causes condensation. DP is only affected by change in water content — NOT by temperature change."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Saturated Air",
+    "question": "Free air temperature, Wet bulb temperature and Dew point temperature are equal when:",
+    "options": [
+      "Air temperature is 0°C",
+      "Relative humidity is 100%",
+      "Air temperature is not below 0°C"
+    ],
+    "answer": 1,
+    "notes": "When air is saturated (RH = 100%), the air temperature (TT), wet bulb temperature (Tw), and dew point temperature (Td) are all equal: TT = Tw = Td. This condition occurs in fog or during rain."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Runway Performance",
+    "question": "On a rainy day compared to a sunny day, the length of runway required is:",
+    "options": [
+      "More",
+      "Less",
+      "Same"
+    ],
+    "answer": 0,
+    "notes": "On a rainy day, the runway surface is wet and slippery, increasing the landing distance and braking distance required. Additionally, high humidity reduces engine efficiency, requiring more runway for takeoff. Hence, runway length required is MORE on a rainy day."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Saturation",
+    "question": "The spread (difference) between Free air temperature and Dew point temperature is ......... when air is saturated:",
+    "options": [
+      "Large",
+      "Least",
+      "Same"
+    ],
+    "answer": 1,
+    "notes": "When air is fully saturated (RH = 100%), TT = Tw = Td. Therefore, the spread between FAT (Free Air Temperature) and Dew Point is LEAST (practically zero). A large spread means the air is dry and far from saturation."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Saturation Vapour Pressure",
+    "question": "The saturation vapour pressure over water is ......... than over ice:",
+    "options": [
+      "More",
+      "Less",
+      "Same"
+    ],
+    "answer": 0,
+    "notes": "At subzero temperatures, water molecules have more energy than ice, so the saturation vapour pressure over water drops is MORE than over ice particles. This causes water drops to evaporate and condense on ice particles in mixed clouds, explaining rainfall from clouds above 0°C (Bergeron process)."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Saturation",
+    "question": "As the temperature of the air increases, the amount of water vapour required to saturate it:",
+    "options": [
+      "Decreases",
+      "Increases",
+      "Remains same"
+    ],
+    "answer": 1,
+    "notes": "It is important to note that as the temperature of the air increases, the amount of water vapour required to saturate it also INCREASES. Warmer air can hold more moisture. The saturation humidity mixing ratio also increases with temperature."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Absolute Humidity",
+    "question": "The actual amount of water vapour contained in a given volume of air at a given temperature is termed as:",
+    "options": [
+      "Relative Humidity",
+      "Specific Humidity",
+      "Absolute Humidity"
+    ],
+    "answer": 2,
+    "notes": "Absolute Humidity is defined as the actual amount of water vapour contained in a given volume of air at a given temperature. It is expressed in g/m³ (grams per cubic metre)."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Humidity Mixing Ratio",
+    "question": "Humidity Mixing Ratio (HMR) ......... when air is lifted adiabatically:",
+    "options": [
+      "Decreases",
+      "Remains constant",
+      "Increases"
+    ],
+    "answer": 1,
+    "notes": "If there is no addition or removal of water vapour, the HMR remains CONSTANT when air is lifted adiabatically. HMR is defined as the mass of water vapour contained in a given mass of air, expressed in g/kg of dry air."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Wet Bulb Temperature",
+    "question": "The lowest temperature which air would attain by evaporating water into it to saturate it is called:",
+    "options": [
+      "Wet Bulb Temperature",
+      "Dry Bulb Temperature",
+      "Dew Point"
+    ],
+    "answer": 0,
+    "notes": "Wet Bulb Temperature (Tw) is the lowest temperature which air would attain by evaporating water into it to saturate it. Desert coolers work on this principle — drier the air, the more effective the cooling. For saturated air: TT = Tw = Td."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Dew Point",
+    "question": "Dew Point (DP) is affected by:",
+    "options": [
+      "Temperature change only",
+      "Change in water content only",
+      "Both temperature and water content"
+    ],
+    "answer": 1,
+    "notes": "DP is ONLY affected by change in water content, whereas RH is affected by change in water content AND temperature both. By cooling or warming the air, RH changes but DP does NOT change. DP is higher if air contains more water vapour."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Relative Humidity",
+    "question": "If air is warmed (heated) without adding any moisture, the Relative Humidity will:",
+    "options": [
+      "Increase",
+      "Decrease",
+      "Remain the same"
+    ],
+    "answer": 1,
+    "notes": "Warming air increases its capacity to hold moisture. If no water vapour is added, the actual moisture content stays the same while the maximum capacity increases, so RH DECREASES. The Dew Point remains unchanged since no water vapour was added or removed."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Cloud Base",
+    "question": "The theoretical height of the base of a cloud can be determined using the empirical formula:",
+    "options": [
+      "(Temperature – Dew Point) × 400 ft",
+      "(Temperature + Dew Point) × 400 ft",
+      "(Temperature – Dew Point) × 300 ft"
+    ],
+    "answer": 0,
+    "notes": "Cloud Base (theoretically) = (Temperature – DP) × 400 ft, where temperatures are in °C. This formula uses the spread between surface temperature and dew point. A larger spread means a higher cloud base."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Frost Point",
+    "question": "Cooling below the Frost Point causes formation of:",
+    "options": [
+      "Dew",
+      "Hoar Frost",
+      "Freezing Rain"
+    ],
+    "answer": 1,
+    "notes": "Frost Point is the temperature to which air must be cooled to reach saturation with respect to ICE. Cooling below the frost point causes the formation of hoar frost (the white ice crystals found on surfaces in cold weather). It is different from dew point which relates to saturation with respect to water."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Saturation Vapour Pressure",
+    "question": "Super-cooled water droplets can exist in clouds down to approximately:",
+    "options": [
+      "–10°C",
+      "–40°C",
+      "–60°C"
+    ],
+    "answer": 1,
+    "notes": "Small water droplets can exist in super-cooled state in clouds up to –40°C, and in Cumulonimbus (CB) clouds up to –45°C. Below these temperatures, only ice crystals exist. This super-cooled state is a major factor in aircraft icing."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Humidity Measurement",
+    "question": "Humidity is measured by the instruments:",
+    "options": [
+      "Barometer and Altimeter",
+      "Psychrometer and Hygrometer",
+      "Anemometer and Thermometer"
+    ],
+    "answer": 1,
+    "notes": "Humidity is measured by two main instruments: Psychrometer (which uses wet and dry bulb thermometers to calculate relative humidity) and Hygrometer (which directly measures humidity, often using a hair element that changes length with moisture content). Humidity is recorded by a Hygrograph."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Vapour Pressure",
+    "question": "The partial pressure exerted by water vapour in the air is called:",
+    "options": [
+      "Atmospheric Pressure",
+      "Vapour Pressure",
+      "Saturation Vapour Pressure"
+    ],
+    "answer": 1,
+    "notes": "Vapour Pressure (VP) is the partial pressure exerted by water vapour in the air. If p is the total pressure of air and e is the vapour pressure, then (p-e) is the pressure of dry air. Saturation Vapour Pressure (SVP) is the pressure exerted by water vapour when the air is saturated."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "HMR Saturated Air",
+    "question": "The maximum mass of water vapour that can be contained in a given mass of air at a particular temperature and pressure is called:",
+    "options": [
+      "Absolute Humidity",
+      "HMR for Saturated Air",
+      "Relative Humidity"
+    ],
+    "answer": 1,
+    "notes": "HMR for Saturated Air is defined as the maximum mass of water vapour that can be contained in a given mass of air at a particular temperature and pressure. It is expressed in g/kg of dry air. With an increase of temperature, the saturation HMR also increases."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "States of Water",
+    "question": "Water exists in the atmosphere in how many phases?",
+    "options": [
+      "Two phases",
+      "Three phases",
+      "Four phases"
+    ],
+    "answer": 1,
+    "notes": "Water exists in THREE phases in the atmosphere: Gas (water vapour), Liquid (rain, drizzle, shower), and Solid (snow, hail). The capacity of dry air to hold water vapour depends largely on temperature and to some extent on pressure. Higher the temperature, higher is the capacity."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Unsaturated Air",
+    "question": "For unsaturated air, which of the following relationships is correct?",
+    "options": [
+      "TT = Tw = Td",
+      "TT > Tw > Td",
+      "TT < Tw < Td"
+    ],
+    "answer": 1,
+    "notes": "For unsaturated air: TT > Tw Tw > Td Td — i.e., Free Air Temperature is greater than Wet Bulb Temperature, which is greater than Dew Point Temperature. For saturated air (fog, rain): TT = Tw = Td (all three are equal)."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Dry Air",
+    "question": "Air that contains no water vapour is called:",
+    "options": [
+      "Moist Air",
+      "Saturated Air",
+      "Dry Air"
+    ],
+    "answer": 2,
+    "notes": "Dry Air contains NO water vapour. Such air may exist in the upper troposphere or stratosphere. Moist Air is the normal air we breathe. Saturated Air is like a sponge at maximum capacity — when the air holds maximum water vapour, it is called saturated air."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Relative Humidity",
+    "question": "Relative Humidity (RH) can also be expressed as:",
+    "options": [
+      "(VP of Air × 100) / (SV of Air)",
+      "(SV of Air × 100) / (VP of Air)",
+      "(HMR × 100) / (VP of Air)"
+    ],
+    "answer": 0,
+    "notes": "Relative Humidity has two equivalent formulas: RH(%) = (HMR × 100) / (HMR for Saturated Air), and equivalently, RH(%) = (VP of Air × 100) / (SV of Air), where VP is Vapour Pressure and SV is Saturation Vapour Pressure."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Dew Point",
+    "question": "Which statement about Dew Point (DP) is CORRECT?",
+    "options": [
+      "DP increases when air is warmed",
+      "DP is higher if air contains more water vapour",
+      "DP changes when air temperature changes"
+    ],
+    "answer": 1,
+    "notes": "DP is HIGHER if air contains more water vapour. Dew Point is only affected by a change in actual water content, not by temperature. Warming or cooling the air does not change the DP, but it does change the RH. To change DP, you must add or remove moisture."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Humidity Mixing Ratio",
+    "question": "Humidity Mixing Ratio (HMR) is expressed in:",
+    "options": [
+      "g/m³",
+      "g/kg",
+      "g/litre"
+    ],
+    "answer": 1,
+    "notes": "HMR (Humidity Mixing Ratio) is defined as the mass of water vapour contained in a given mass of air. It is expressed in g/kg (grams per kilogram of dry air). Absolute Humidity, by contrast, is expressed in g/m³ (grams per cubic metre)."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Absolute Humidity",
+    "question": "Absolute Humidity is expressed in:",
+    "options": [
+      "g/kg",
+      "Percentage (%)",
+      "g/m³"
+    ],
+    "answer": 2,
+    "notes": "Absolute Humidity is defined as the actual amount of water vapour contained in a given volume of air at a given temperature. It is expressed in g/m³ (grams per cubic metre). HMR, on the other hand, is expressed in g/kg (grams per kilogram of dry air)."
   }
 ];

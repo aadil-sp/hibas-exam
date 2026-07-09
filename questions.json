@@ -2683,5 +2683,330 @@
     ],
     "answer": 1,
     "notes": "Parasite drag increases with the square of the speed. Doubling speed increases drag by 2 squared = 4 times."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Relative Humidity",
+    "question": "The ratio in percentage between the amount of water vapour present in the air to the amount of water vapour it can hold at the same temperature is:",
+    "options": [
+      "Absolute Humidity",
+      "Relative Humidity",
+      "Dew Point"
+    ],
+    "answer": 1,
+    "notes": "Relative Humidity (RH) is defined as the ratio, in percentage, of the actual water vapour present in the air to the maximum it can contain at the same temperature and pressure. RH(%) = (HMR × 100) / (HMR for Saturated Air) = (VP of Air × 100) / (SV of Air)."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Dew Point",
+    "question": "The temperature to which air must be cooled at constant pressure to become saturated is called:",
+    "options": [
+      "Wet Bulb Temperature",
+      "Dry Bulb Temperature",
+      "Dew Point"
+    ],
+    "answer": 2,
+    "notes": "Dew Point Temperature (Td) is the lowest temperature to which air should be cooled at constant pressure to saturate it with respect to water. Cooling below Dew Point (DP) causes condensation. DP is only affected by change in water content — NOT by temperature change."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Saturated Air",
+    "question": "Free air temperature, Wet bulb temperature and Dew point temperature are equal when:",
+    "options": [
+      "Air temperature is 0°C",
+      "Relative humidity is 100%",
+      "Air temperature is not below 0°C"
+    ],
+    "answer": 1,
+    "notes": "When air is saturated (RH = 100%), the air temperature (TT), wet bulb temperature (Tw), and dew point temperature (Td) are all equal: TT = Tw = Td. This condition occurs in fog or during rain."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Runway Performance",
+    "question": "On a rainy day compared to a sunny day, the length of runway required is:",
+    "options": [
+      "More",
+      "Less",
+      "Same"
+    ],
+    "answer": 0,
+    "notes": "On a rainy day, the runway surface is wet and slippery, increasing the landing distance and braking distance required. Additionally, high humidity reduces engine efficiency, requiring more runway for takeoff. Hence, runway length required is MORE on a rainy day."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Saturation",
+    "question": "The spread (difference) between Free air temperature and Dew point temperature is ......... when air is saturated:",
+    "options": [
+      "Large",
+      "Least",
+      "Same"
+    ],
+    "answer": 1,
+    "notes": "When air is fully saturated (RH = 100%), TT = Tw = Td. Therefore, the spread between FAT (Free Air Temperature) and Dew Point is LEAST (practically zero). A large spread means the air is dry and far from saturation."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Saturation Vapour Pressure",
+    "question": "The saturation vapour pressure over water is ......... than over ice:",
+    "options": [
+      "More",
+      "Less",
+      "Same"
+    ],
+    "answer": 0,
+    "notes": "At subzero temperatures, water molecules have more energy than ice, so the saturation vapour pressure over water drops is MORE than over ice particles. This causes water drops to evaporate and condense on ice particles in mixed clouds, explaining rainfall from clouds above 0°C (Bergeron process)."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Saturation",
+    "question": "As the temperature of the air increases, the amount of water vapour required to saturate it:",
+    "options": [
+      "Decreases",
+      "Increases",
+      "Remains same"
+    ],
+    "answer": 1,
+    "notes": "It is important to note that as the temperature of the air increases, the amount of water vapour required to saturate it also INCREASES. Warmer air can hold more moisture. The saturation humidity mixing ratio also increases with temperature."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Absolute Humidity",
+    "question": "The actual amount of water vapour contained in a given volume of air at a given temperature is termed as:",
+    "options": [
+      "Relative Humidity",
+      "Specific Humidity",
+      "Absolute Humidity"
+    ],
+    "answer": 2,
+    "notes": "Absolute Humidity is defined as the actual amount of water vapour contained in a given volume of air at a given temperature. It is expressed in g/m³ (grams per cubic metre)."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Humidity Mixing Ratio",
+    "question": "Humidity Mixing Ratio (HMR) ......... when air is lifted adiabatically:",
+    "options": [
+      "Decreases",
+      "Remains constant",
+      "Increases"
+    ],
+    "answer": 1,
+    "notes": "If there is no addition or removal of water vapour, the HMR remains CONSTANT when air is lifted adiabatically. HMR is defined as the mass of water vapour contained in a given mass of air, expressed in g/kg of dry air."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Wet Bulb Temperature",
+    "question": "The lowest temperature which air would attain by evaporating water into it to saturate it is called:",
+    "options": [
+      "Wet Bulb Temperature",
+      "Dry Bulb Temperature",
+      "Dew Point"
+    ],
+    "answer": 0,
+    "notes": "Wet Bulb Temperature (Tw) is the lowest temperature which air would attain by evaporating water into it to saturate it. Desert coolers work on this principle — drier the air, the more effective the cooling. For saturated air: TT = Tw = Td."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Dew Point",
+    "question": "Dew Point (DP) is affected by:",
+    "options": [
+      "Temperature change only",
+      "Change in water content only",
+      "Both temperature and water content"
+    ],
+    "answer": 1,
+    "notes": "DP is ONLY affected by change in water content, whereas RH is affected by change in water content AND temperature both. By cooling or warming the air, RH changes but DP does NOT change. DP is higher if air contains more water vapour."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Relative Humidity",
+    "question": "If air is warmed (heated) without adding any moisture, the Relative Humidity will:",
+    "options": [
+      "Increase",
+      "Decrease",
+      "Remain the same"
+    ],
+    "answer": 1,
+    "notes": "Warming air increases its capacity to hold moisture. If no water vapour is added, the actual moisture content stays the same while the maximum capacity increases, so RH DECREASES. The Dew Point remains unchanged since no water vapour was added or removed."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Cloud Base",
+    "question": "The theoretical height of the base of a cloud can be determined using the empirical formula:",
+    "options": [
+      "(Temperature – Dew Point) × 400 ft",
+      "(Temperature + Dew Point) × 400 ft",
+      "(Temperature – Dew Point) × 300 ft"
+    ],
+    "answer": 0,
+    "notes": "Cloud Base (theoretically) = (Temperature – DP) × 400 ft, where temperatures are in °C. This formula uses the spread between surface temperature and dew point. A larger spread means a higher cloud base."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Frost Point",
+    "question": "Cooling below the Frost Point causes formation of:",
+    "options": [
+      "Dew",
+      "Hoar Frost",
+      "Freezing Rain"
+    ],
+    "answer": 1,
+    "notes": "Frost Point is the temperature to which air must be cooled to reach saturation with respect to ICE. Cooling below the frost point causes the formation of hoar frost (the white ice crystals found on surfaces in cold weather). It is different from dew point which relates to saturation with respect to water."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Saturation Vapour Pressure",
+    "question": "Super-cooled water droplets can exist in clouds down to approximately:",
+    "options": [
+      "–10°C",
+      "–40°C",
+      "–60°C"
+    ],
+    "answer": 1,
+    "notes": "Small water droplets can exist in super-cooled state in clouds up to –40°C, and in Cumulonimbus (CB) clouds up to –45°C. Below these temperatures, only ice crystals exist. This super-cooled state is a major factor in aircraft icing."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Humidity Measurement",
+    "question": "Humidity is measured by the instruments:",
+    "options": [
+      "Barometer and Altimeter",
+      "Psychrometer and Hygrometer",
+      "Anemometer and Thermometer"
+    ],
+    "answer": 1,
+    "notes": "Humidity is measured by two main instruments: Psychrometer (which uses wet and dry bulb thermometers to calculate relative humidity) and Hygrometer (which directly measures humidity, often using a hair element that changes length with moisture content). Humidity is recorded by a Hygrograph."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Vapour Pressure",
+    "question": "The partial pressure exerted by water vapour in the air is called:",
+    "options": [
+      "Atmospheric Pressure",
+      "Vapour Pressure",
+      "Saturation Vapour Pressure"
+    ],
+    "answer": 1,
+    "notes": "Vapour Pressure (VP) is the partial pressure exerted by water vapour in the air. If p is the total pressure of air and e is the vapour pressure, then (p-e) is the pressure of dry air. Saturation Vapour Pressure (SVP) is the pressure exerted by water vapour when the air is saturated."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "HMR Saturated Air",
+    "question": "The maximum mass of water vapour that can be contained in a given mass of air at a particular temperature and pressure is called:",
+    "options": [
+      "Absolute Humidity",
+      "HMR for Saturated Air",
+      "Relative Humidity"
+    ],
+    "answer": 1,
+    "notes": "HMR for Saturated Air is defined as the maximum mass of water vapour that can be contained in a given mass of air at a particular temperature and pressure. It is expressed in g/kg of dry air. With an increase of temperature, the saturation HMR also increases."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "States of Water",
+    "question": "Water exists in the atmosphere in how many phases?",
+    "options": [
+      "Two phases",
+      "Three phases",
+      "Four phases"
+    ],
+    "answer": 1,
+    "notes": "Water exists in THREE phases in the atmosphere: Gas (water vapour), Liquid (rain, drizzle, shower), and Solid (snow, hail). The capacity of dry air to hold water vapour depends largely on temperature and to some extent on pressure. Higher the temperature, higher is the capacity."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Unsaturated Air",
+    "question": "For unsaturated air, which of the following relationships is correct?",
+    "options": [
+      "TT = Tw = Td",
+      "TT > Tw > Td",
+      "TT < Tw < Td"
+    ],
+    "answer": 1,
+    "notes": "For unsaturated air: TT > Tw Tw > Td Td — i.e., Free Air Temperature is greater than Wet Bulb Temperature, which is greater than Dew Point Temperature. For saturated air (fog, rain): TT = Tw = Td (all three are equal)."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Dry Air",
+    "question": "Air that contains no water vapour is called:",
+    "options": [
+      "Moist Air",
+      "Saturated Air",
+      "Dry Air"
+    ],
+    "answer": 2,
+    "notes": "Dry Air contains NO water vapour. Such air may exist in the upper troposphere or stratosphere. Moist Air is the normal air we breathe. Saturated Air is like a sponge at maximum capacity — when the air holds maximum water vapour, it is called saturated air."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Relative Humidity",
+    "question": "Relative Humidity (RH) can also be expressed as:",
+    "options": [
+      "(VP of Air × 100) / (SV of Air)",
+      "(SV of Air × 100) / (VP of Air)",
+      "(HMR × 100) / (VP of Air)"
+    ],
+    "answer": 0,
+    "notes": "Relative Humidity has two equivalent formulas: RH(%) = (HMR × 100) / (HMR for Saturated Air), and equivalently, RH(%) = (VP of Air × 100) / (SV of Air), where VP is Vapour Pressure and SV is Saturation Vapour Pressure."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Dew Point",
+    "question": "Which statement about Dew Point (DP) is CORRECT?",
+    "options": [
+      "DP increases when air is warmed",
+      "DP is higher if air contains more water vapour",
+      "DP changes when air temperature changes"
+    ],
+    "answer": 1,
+    "notes": "DP is HIGHER if air contains more water vapour. Dew Point is only affected by a change in actual water content, not by temperature. Warming or cooling the air does not change the DP, but it does change the RH. To change DP, you must add or remove moisture."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Humidity Mixing Ratio",
+    "question": "Humidity Mixing Ratio (HMR) is expressed in:",
+    "options": [
+      "g/m³",
+      "g/kg",
+      "g/litre"
+    ],
+    "answer": 1,
+    "notes": "HMR (Humidity Mixing Ratio) is defined as the mass of water vapour contained in a given mass of air. It is expressed in g/kg (grams per kilogram of dry air). Absolute Humidity, by contrast, is expressed in g/m³ (grams per cubic metre)."
+  },
+  {
+    "subject": "met",
+    "section": "humidity",
+    "topic": "Absolute Humidity",
+    "question": "Absolute Humidity is expressed in:",
+    "options": [
+      "g/kg",
+      "Percentage (%)",
+      "g/m³"
+    ],
+    "answer": 2,
+    "notes": "Absolute Humidity is defined as the actual amount of water vapour contained in a given volume of air at a given temperature. It is expressed in g/m³ (grams per cubic metre). HMR, on the other hand, is expressed in g/kg (grams per kilogram of dry air)."
   }
 ]

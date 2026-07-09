@@ -110,6 +110,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const settingsHardResetBtn = document.getElementById("settingsHardResetBtn");
   const settingsClearServerLogsBtn = document.getElementById("settingsClearServerLogsBtn");
 
+  // Subject Detail Panel
+  const subjectDetailPanel = document.getElementById("subjectDetailPanel");
+  const subjectBackBtn = document.getElementById("subjectBackBtn");
+  const subjectDetailHomeBtn = document.getElementById("subjectDetailHomeBtn");
+  const subjectDetailIcon = document.getElementById("subjectDetailIcon");
+  const subjectDetailTitle = document.getElementById("subjectDetailTitle");
+  const subjectDetailSub = document.getElementById("subjectDetailSub");
+  const modeTestBtn = document.getElementById("modeTestBtn");
+  const modeNotesBtn = document.getElementById("modeNotesBtn");
+  const modeSliderThumb = document.getElementById("modeSliderThumb");
+  const modeHint = document.getElementById("modeHint");
+  const chapterTilesGrid = document.getElementById("chapterTilesGrid");
+
+  // Notes Reader Panel
+  const notesReaderPanel = document.getElementById("notesReaderPanel");
+  const notesReaderBack = document.getElementById("notesReaderBack");
+  const notesReaderIcon = document.getElementById("notesReaderIcon");
+  const notesReaderTitle = document.getElementById("notesReaderTitle");
+  const notesReaderBody = document.getElementById("notesReaderBody");
+  const notesReaderStartTest = document.getElementById("notesReaderStartTest");
+
+  // Mode state
+  let currentMode = "test"; // "test" or "notes"
+  let activeSubjectForDetail = null;
+
   // Exam Screen
   const examPanel = document.getElementById("examPanel");
   const hamburger = document.getElementById("hamburger");
@@ -173,12 +198,16 @@ document.addEventListener("DOMContentLoaded", () => {
     hibaDashboard.classList.add("hidden");
     aadilDashboard.classList.add("hidden");
     examPanel.classList.add("hidden");
+    subjectDetailPanel.classList.add("hidden");
+    notesReaderPanel.classList.add("hidden");
 
     if (hash === "#/hiba") {
       currentProfile = "hiba";
       localStorage.setItem("cpl_current_profile", "hiba");
       hibaDashboard.classList.remove("hidden");
       updateHibaDashboardUI();
+      subjectCards.forEach(c => c.classList.remove("active"));
+      chaptersSection.classList.add("hidden");
     } else if (hash === "#/aadil") {
       currentProfile = "aadil";
       localStorage.setItem("cpl_current_profile", "aadil");
@@ -336,15 +365,170 @@ document.addEventListener("DOMContentLoaded", () => {
       activeSubject = subject;
       isTargetedPrep = false;
 
-      showChaptersPanel(subject);
+      if (subject === "met") {
+        // Open the new Subject Detail Panel for Met
+        openSubjectDetailPanel(subject);
+      } else {
+        showChaptersPanel(subject);
+      }
     });
   });
+
+  const subjectMeta = {
+    nav: { title: "General Navigation", icon: "🧭", sub: "Select a chapter to practice" },
+    reg: { title: "Air Regulations", icon: "📜", sub: "Select a chapter to practice" },
+    met: { title: "Aviation Meteorology", icon: "🌦️", sub: "Select a chapter to study" },
+    tech: { title: "Technical General", icon: "🔧", sub: "Select a chapter to practice" }
+  };
 
   const subjectTitles = {
     nav: "General Navigation",
     reg: "Air Regulations",
     met: "Aviation Meteorology",
     tech: "Technical General"
+  };
+
+  // Full authentic DGCA CPL Met chapter list
+  const MET_CHAPTERS = [
+    { id: "composition", icon: "📘", name: "Composition & Structure of Atmosphere", hasNotes: false },
+    { id: "heating", icon: "☀️", name: "Heating, Cooling & Temperature", hasNotes: false },
+    { id: "humidity", icon: "💧", name: "Humidity", hasNotes: true },
+    { id: "pressure", icon: "🌡️", name: "Pressure, Wind & General Circulation", hasNotes: false },
+    { id: "clouds", icon: "⛅", name: "Clouds & Precipitation", hasNotes: false },
+    { id: "fog", icon: "🌫️", name: "Fog, Mist & Haze", hasNotes: false },
+    { id: "thunderstorms", icon: "⛈️", name: "Thunderstorms", hasNotes: false },
+    { id: "icing", icon: "🧊", name: "Icing", hasNotes: false },
+    { id: "turbulence", icon: "🌊", name: "Turbulence", hasNotes: false },
+    { id: "reports", icon: "📡", name: "Aviation Weather Reports (METAR/TAF)", hasNotes: false }
+  ];
+
+  // Full chapter notes content
+  const CHAPTER_NOTES = {
+    humidity: `
+<div class="notes-content">
+  <h3>Introduction to Atmospheric Moisture</h3>
+  <p>Water vapour is always present in the air to a greater or lesser extent in the troposphere. This water vapour plays a very important role in all atmospheric processes.</p>
+  <p>Water evaporates into the air from oceans, lakes, rivers, vegetation, etc. It ascends and forms clouds which cause precipitation. The <strong>water cycle</strong> is thus completed.</p>
+  <p>Water exists in <strong>three phases</strong>:</p>
+  <div class="definition-grid">
+    <div class="def-item"><div class="def-term">Gas Phase</div><div class="def-desc">Water vapour — always present in the atmosphere</div></div>
+    <div class="def-item"><div class="def-term">Liquid Phase</div><div class="def-desc">Rain, drizzle, shower</div></div>
+    <div class="def-item"><div class="def-term">Solid Phase</div><div class="def-desc">Snow, hail</div></div>
+  </div>
+  <div class="key-rule">The capacity of dry air to hold water vapour depends largely on <strong>temperature</strong> and to some extent on <strong>pressure</strong>. Higher the temperature, higher is the capacity of air to hold water vapour.</div>
+
+  <h3>Types of Air by Water Content</h3>
+  <div class="definition-grid">
+    <div class="def-item">
+      <div class="def-term">Dry Air</div>
+      <div class="def-desc">Air that contains <strong>no water vapour</strong>. May exist in the upper troposphere or stratosphere.</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Moist Air</div>
+      <div class="def-desc">The normal air we breathe — also called unsaturated or dry air at the existing temperature and pressure.</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Saturated Air</div>
+      <div class="def-desc">Air is like a sponge which can absorb a certain amount of water and no more. When air holds <strong>maximum water vapour</strong>, it is called saturated air.</div>
+    </div>
+  </div>
+
+  <h3>Pressure Terms</h3>
+  <div class="definition-grid">
+    <div class="def-item">
+      <div class="def-term">Vapour Pressure (VP)</div>
+      <div class="def-desc">The partial pressure exerted by water vapour in the air. If <em>p</em> is the total pressure and <em>e</em> is the vapour pressure, then <em>(p-e)</em> is the pressure of dry air.</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Saturation Vapour Pressure (SVP)</div>
+      <div class="def-desc">The pressure exerted by water vapour when air is saturated. SVP increases with increasing temperature.</div>
+    </div>
+  </div>
+
+  <h3>Humidity Terms & Definitions</h3>
+  <div class="definition-grid">
+    <div class="def-item">
+      <div class="def-term">Absolute Humidity</div>
+      <div class="def-desc">The actual amount of water vapour contained in a given <strong>volume</strong> of air at a given temperature.</div>
+      <div class="def-unit">Unit: g/m³ (grams per cubic metre)</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Humidity Mixing Ratio (HMR)</div>
+      <div class="def-desc">The mass of water vapour contained in a given <strong>mass</strong> of air.</div>
+      <div class="def-unit">Unit: g/kg (grams per kilogram of dry air)</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">HMR for Saturated Air</div>
+      <div class="def-desc">The <strong>maximum</strong> mass of water vapour that can be contained in a given mass of air at a particular temperature and pressure. Increases with temperature.</div>
+      <div class="def-unit">Unit: g/kg of dry air</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Relative Humidity (RH)</div>
+      <div class="def-desc">The ratio, in percentage, of the actual water vapour present in the air to the maximum it can contain at the same temperature and pressure.</div>
+    </div>
+  </div>
+
+  <h3>Relative Humidity Formulas</h3>
+  <div class="formula-box">RH (%) = (HMR × 100) / (HMR for Saturated Air)</div>
+  <div class="formula-box">RH (%) = (VP of Air × 100) / (SV of Air)</div>
+
+  <h3>Measurement of Humidity</h3>
+  <p>Humidity is measured by two instruments:</p>
+  <div class="definition-grid">
+    <div class="def-item"><div class="def-term">Psychrometer</div><div class="def-desc">Uses wet and dry bulb thermometers to calculate relative humidity by comparing the two readings.</div></div>
+    <div class="def-item"><div class="def-term">Hygrometer</div><div class="def-desc">Directly measures humidity, often using a hair element that changes length with moisture content. Humidity is recorded by a <strong>Hygrograph</strong>.</div></div>
+  </div>
+
+  <h3>Temperature Terms Related to Humidity</h3>
+  <div class="definition-grid">
+    <div class="def-item">
+      <div class="def-term">Wet Bulb Temperature (Tw)</div>
+      <div class="def-desc">The lowest temperature which air would attain by evaporating water into it to saturate it. Desert coolers work on this principle — <strong>drier the air, more effective the cooling</strong>.</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Dew Point Temperature (Td)</div>
+      <div class="def-desc">The lowest temperature to which air should be cooled at <strong>constant pressure</strong> to saturate it with respect to water. Cooling below Dew Point (DP) causes condensation.</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Frost Point</div>
+      <div class="def-desc">The temperature to which air must be cooled to reach saturation with respect to <strong>ICE</strong>. Cooling below frost point causes formation of <strong>hoar frost</strong>.</div>
+    </div>
+  </div>
+
+  <h3>Key Rules — Saturation vs Unsaturation</h3>
+  <div class="warning-box">
+    ⚠️ <strong>For SATURATED air</strong> (Fog, during rain):<br><br>
+    <strong>Air Temperature (TT) = Wet Bulb (Tw) = Dew Point (Td)</strong>
+  </div>
+  <div class="key-rule">
+    For <strong>UNSATURATED air</strong>:<br><br>
+    <strong>TT &gt; Tw &gt; Td</strong><br><br>
+    i.e., Free Air Temp &gt; Wet Bulb Temp &gt; Dew Point Temp
+  </div>
+
+  <h3>Important Rules about Dew Point (DP) and RH</h3>
+  <div class="key-rule">
+    ✦ <strong>DP is ONLY affected by change in water content</strong>, whereas RH is affected by change in water content AND temperature both.<br><br>
+    ✦ <strong>By cooling or warming the air, RH changes but DP does NOT change.</strong><br><br>
+    ✦ <strong>DP is higher if air contains more water vapour.</strong>
+  </div>
+
+  <h3>Cloud Base Formula</h3>
+  <p>Theoretically, the height of the base of a cloud can be determined using surface temperatures in °C by the empirical formula:</p>
+  <div class="formula-box">Cloud Base Height = (Temperature – Dew Point) × 400 ft</div>
+  <p>A larger spread between Temp and DP → higher cloud base. A smaller spread (near-saturated air) → low cloud base.</p>
+
+  <h3>HMR During Adiabatic Lifting</h3>
+  <div class="key-rule">If there is no addition or removal of water vapour, the <strong>HMR remains CONSTANT when air is lifted adiabatically</strong>. With increase of temperature, the saturation HMR increases.</div>
+
+  <h3>Saturation Vapour Pressure: Water vs Ice</h3>
+  <div class="warning-box">
+    ⚠️ At subzero temperatures, water molecules have more energy than ice molecules. Therefore, the <strong>saturation vapour pressure over water drops is MORE than over ice particles</strong>.<br><br>
+    If water drops and ice particles co-exist, water drops will evaporate and condense on ice particles. This principle explains rainfall from clouds which extend above 0°C (Bergeron–Findeisen Process).<br><br>
+    Super-cooled water droplets can exist in clouds up to <strong>–40°C</strong> and in CB clouds up to <strong>–45°C</strong>.
+  </div>
+</div>
+`
   };
 
   const subjectChapters = {
@@ -360,19 +544,158 @@ document.addEventListener("DOMContentLoaded", () => {
       { id: "rules_air", label: "✈️ Rules of the Air" },
       { id: "aerodromes", label: "🏁 Aerodromes & Lighting" }
     ],
-    met: [
-      { id: "all", label: "🌐 All Chapters" },
-      { id: "composition", label: "📘 Composition & Structure" },
-      { id: "heating", label: "☀️ Heating & Thermal Structure" },
-      { id: "troposphere", label: "⛈️ Troposphere & Tropopause" },
-      { id: "upper", label: "🚀 Stratosphere & Upper Layers" },
-      { id: "standard", label: "✈️ Standard Atmosphere (ISA/JSA)" }
-    ],
     tech: [
       { id: "all", label: "🌐 All Chapters" },
       { id: "aerodynamics", label: "🔧 Aerodynamics & Flight Dynamics" }
     ]
   };
+
+  // ── SUBJECT DETAIL PANEL (Met tiles view) ──
+  function openSubjectDetailPanel(subject) {
+    activeSubjectForDetail = subject;
+    currentMode = "test";
+
+    const meta = subjectMeta[subject];
+    subjectDetailIcon.textContent = meta.icon;
+    subjectDetailTitle.textContent = meta.title;
+    subjectDetailSub.textContent = meta.sub;
+
+    // Reset slider
+    modeTestBtn.classList.add("active");
+    modeNotesBtn.classList.remove("active");
+    modeSliderThumb.classList.remove("notes-mode");
+    modeHint.textContent = "Click a chapter to start a practice test";
+
+    // Render chapter tiles
+    renderChapterTiles(subject);
+
+    // Show the panel
+    hibaDashboard.classList.add("hidden");
+    subjectDetailPanel.classList.remove("hidden");
+    window.scrollTo(0, 0);
+  }
+
+  function renderChapterTiles(subject) {
+    chapterTilesGrid.innerHTML = "";
+
+    const chapters = subject === "met" ? MET_CHAPTERS : [];
+
+    // Count questions per section
+    const sectionCounts = {};
+    QUESTIONS.forEach(q => {
+      if (q.subject === subject) {
+        const key = q.section || "all";
+        sectionCounts[key] = (sectionCounts[key] || 0) + 1;
+      }
+    });
+    const totalSubjectQs = QUESTIONS.filter(q => q.subject === subject).length;
+
+    // "All chapters" tile first
+    const allTile = document.createElement("div");
+    allTile.className = "chapter-tile";
+    allTile.innerHTML = `
+      <span class="ct-icon">🌐</span>
+      <span class="ct-name">All Chapters</span>
+      <div class="ct-badges">
+        <span class="ct-qcount">${totalSubjectQs} Questions</span>
+      </div>
+    `;
+    allTile.addEventListener("click", () => handleChapterTileClick("all", null));
+    chapterTilesGrid.appendChild(allTile);
+
+    chapters.forEach(ch => {
+      const qCount = sectionCounts[ch.id] || 0;
+      const tile = document.createElement("div");
+      tile.className = "chapter-tile" + (ch.hasNotes ? " has-notes" : "");
+      tile.innerHTML = `
+        <span class="ct-icon">${ch.icon}</span>
+        <span class="ct-name">${ch.name}</span>
+        <div class="ct-badges">
+          <span class="ct-qcount">${qCount > 0 ? qCount + " Questions" : "No questions yet"}</span>
+          ${ch.hasNotes
+            ? '<span class="ct-notes-badge">📖 Notes Available</span>'
+            : '<span class="ct-no-notes">Notes Coming Soon</span>'
+          }
+        </div>
+      `;
+      tile.addEventListener("click", () => handleChapterTileClick(ch.id, ch));
+      chapterTilesGrid.appendChild(tile);
+    });
+  }
+
+  function handleChapterTileClick(sectionId, chapterData) {
+    activeSection = sectionId;
+    activeTopic = "all";
+
+    if (currentMode === "notes") {
+      if (chapterData && chapterData.hasNotes && CHAPTER_NOTES[sectionId]) {
+        openNotesReader(chapterData);
+      } else if (sectionId === "all") {
+        alert("Please select a specific chapter to read notes.");
+      } else {
+        alert("Notes for this chapter are coming soon! Switch to 'Take a Test' mode to practice questions.");
+      }
+    } else {
+      // Test mode
+      startExamFlight();
+    }
+  }
+
+  // Mode slider
+  modeTestBtn.addEventListener("click", () => {
+    currentMode = "test";
+    modeTestBtn.classList.add("active");
+    modeNotesBtn.classList.remove("active");
+    modeSliderThumb.classList.remove("notes-mode");
+    modeHint.textContent = "Click a chapter to start a practice test";
+  });
+
+  modeNotesBtn.addEventListener("click", () => {
+    currentMode = "notes";
+    modeNotesBtn.classList.add("active");
+    modeTestBtn.classList.remove("active");
+    modeSliderThumb.classList.add("notes-mode");
+    modeHint.textContent = "Click a chapter with 📖 Notes Available to read";
+  });
+
+  // Back button from subject detail to hiba dashboard
+  subjectBackBtn.addEventListener("click", () => {
+    subjectDetailPanel.classList.add("hidden");
+    hibaDashboard.classList.remove("hidden");
+    subjectCards.forEach(c => c.classList.remove("active"));
+    chaptersSection.classList.add("hidden");
+    window.scrollTo(0, 0);
+  });
+
+  subjectDetailHomeBtn.addEventListener("click", () => {
+    window.location.hash = "#/";
+  });
+
+  // ── NOTES READER ──
+  function openNotesReader(chapterData) {
+    notesReaderIcon.textContent = chapterData.icon;
+    notesReaderTitle.textContent = chapterData.name;
+    notesReaderBody.innerHTML = CHAPTER_NOTES[chapterData.id] || "<p>Notes not available.</p>";
+    notesReaderPanel.classList.remove("hidden");
+    notesReaderBody.scrollTop = 0;
+
+    // Wire the "Take Test on This Chapter" button
+    notesReaderStartTest.onclick = () => {
+      notesReaderPanel.classList.add("hidden");
+      currentMode = "test";
+      modeTestBtn.classList.add("active");
+      modeNotesBtn.classList.remove("active");
+      modeSliderThumb.classList.remove("notes-mode");
+      modeHint.textContent = "Click a chapter to start a practice test";
+      activeSection = chapterData.id;
+      activeTopic = "all";
+      startExamFlight();
+    };
+  }
+
+  notesReaderBack.addEventListener("click", () => {
+    notesReaderPanel.classList.add("hidden");
+  });
 
   function showChaptersPanel(subject) {
     chaptersTitle.textContent = `${subjectTitles[subject]} Chapters`;
