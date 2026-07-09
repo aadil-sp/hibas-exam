@@ -48,125 +48,72 @@
       <span class="badge-avatar">👩‍✈️</span>
       <div>
         <p class="badge-title">Captain Hiba</p>
-        <p class="badge-sub">CPL Cockpit Deck</p>
+        <p class="badge-sub">CPL Study Portal</p>
       </div>
     </div>
     <div class="header-actions">
-      <button class="settings-gear-btn" id="dashHomeBtn" title="Switch User">🏠 Switch User</button>
-      <button class="settings-gear-btn" id="dashSettingsBtn" title="Settings">⚙️ Settings</button>
+      <button class="settings-gear-btn" id="dashHomeBtn" title="Switch User">🏠 Switch</button>
+      <button class="settings-gear-btn" id="dashSettingsBtn" title="Settings">⚙️</button>
     </div>
   </header>
 
   <main class="dash-main">
-    <!-- TARGETED BATCH 8 EXAM NOTICE (Top Notification) -->
-    <section class="notification-card" id="batch8NoticeCard">
-      <div class="nc-badge">📅 TODAY'S FLIGHT TEST</div>
-      <h2>Batch 8 Portion Exam</h2>
-      <p class="nc-time">Time: July 4, 2026 | 09:00 AM - 11:00 AM (IST)</p>
-      
-      <div class="exam-countdown-wrapper">
-        <p class="cd-title">COUNTDOWN TO DEPARTURE</p>
-        <div class="exam-countdown" id="examCountdown">
-          <div class="countdown-unit">
-            <span class="countdown-val" id="cdHours">00</span>
-            <span class="countdown-lbl">Hours</span>
-          </div>
-          <span class="countdown-separator">:</span>
-          <div class="countdown-unit">
-            <span class="countdown-val" id="cdMins">00</span>
-            <span class="countdown-lbl">Mins</span>
-          </div>
-          <span class="countdown-separator">:</span>
-          <div class="countdown-unit">
-            <span class="countdown-val" id="cdSecs">00</span>
-            <span class="countdown-lbl">Secs</span>
-          </div>
-        </div>
-      </div>
-      <div class="nc-divider"></div>
-      
-      <div class="nc-portion-grid">
-        <div class="nc-portion-item">
-          <span class="nc-icon">🧭</span>
-          <div>
-            <h4>General Navigation (Nav)</h4>
-            <p>Sensors &amp; Pressure Instruments, Earth Geometry, Departure, Time, Convergency</p>
-          </div>
-        </div>
-        <div class="nc-portion-item">
-          <span class="nc-icon">📜</span>
-          <div>
-            <h4>Air Regulations (Reg)</h4>
-            <p>ICAO Orgs, Conventions, Airworthiness, Personnel Licensing, Rules of the Air, Aerodromes</p>
-          </div>
-        </div>
-        <div class="nc-portion-item">
-          <span class="nc-icon">🌦️</span>
-          <div>
-            <h4>Aviation Meteorology (Met)</h4>
-            <p>Atmosphere, Temperature, Air Density</p>
-          </div>
-        </div>
-        <div class="nc-portion-item">
-          <span class="nc-icon">🔧</span>
-          <div>
-            <h4>Technical General (Tech)</h4>
-            <p>Vortices, Induced Drag, Wake Turbulence, Ground Effect, Drag Curves, Boundary Layer</p>
-          </div>
-        </div>
-      </div>
-      
-      <button class="targeted-prep-btn" id="btnTargetedPrep">⚡ Start Targeted Exam Prep</button>
-    </section>
 
-    <!-- Quick Overall Metrics -->
-    <section class="metrics-grid">
-      <div class="metric-card">
-        <span class="metric-val" id="dashHibaAccuracy">—</span>
-        <span class="metric-lbl">Overall Accuracy</span>
+    <!-- Greeting + Stats Row -->
+    <section class="hiba-hero-section">
+      <div class="hiba-greeting">
+        <h2 class="hiba-hello">Ready to fly, Captain? ✈️</h2>
+        <p class="hiba-sub">Pick a subject to start studying</p>
       </div>
-      <div class="metric-card">
-        <span class="metric-val" id="dashHibaMastery">0 / 0</span>
-        <span class="metric-lbl">Total Completed</span>
+      <div class="hiba-stats-row">
+        <div class="hiba-stat">
+          <span class="hiba-stat-val" id="dashHibaAccuracy">—</span>
+          <span class="hiba-stat-lbl">Accuracy</span>
+        </div>
+        <div class="hiba-stat-divider"></div>
+        <div class="hiba-stat">
+          <span class="hiba-stat-val" id="dashHibaMastery">0</span>
+          <span class="hiba-stat-lbl">Answered</span>
+        </div>
       </div>
     </section>
 
-    <!-- SELECT STUDY SUBJECT -->
+    <!-- SUBJECT TILES — HERO -->
     <section class="subjects-section">
-      <h3 class="section-title">Select Study Subject</h3>
-      <div class="subjects-grid">
-        <div class="subject-card" data-subject="nav" id="subCardNav">
+      <h3 class="section-title">Choose Your Subject</h3>
+      <div class="subjects-grid hero-grid">
+        <div class="subject-card hero-card" data-subject="nav" id="subCardNav">
           <div class="sc-avatar nav-subject">🧭</div>
           <h4>Navigation</h4>
-          <p class="sc-count" id="subCountNav">30 Questions</p>
+          <p class="sc-count" id="subCountNav">— Questions</p>
         </div>
-        <div class="subject-card" data-subject="reg" id="subCardReg">
+        <div class="subject-card hero-card" data-subject="reg" id="subCardReg">
           <div class="sc-avatar reg-subject">📜</div>
           <h4>Regulations</h4>
-          <p class="sc-count" id="subCountReg">30 Questions</p>
+          <p class="sc-count" id="subCountReg">— Questions</p>
         </div>
-        <div class="subject-card" data-subject="met" id="subCardMet">
+        <div class="subject-card hero-card" data-subject="met" id="subCardMet">
           <div class="sc-avatar met-subject">🌦️</div>
           <h4>Meteorology</h4>
-          <p class="sc-count" id="subCountMet">126 Questions</p>
+          <p class="sc-count" id="subCountMet">— Questions</p>
         </div>
-        <div class="subject-card" data-subject="tech" id="subCardTech">
+        <div class="subject-card hero-card" data-subject="tech" id="subCardTech">
           <div class="sc-avatar tech-subject">🔧</div>
           <h4>Technical</h4>
-          <p class="sc-count" id="subCountTech">20 Questions</p>
+          <p class="sc-count" id="subCountTech">— Questions</p>
         </div>
       </div>
     </section>
 
-    <!-- CHAPTERS ACCORDION (for non-met subjects) -->
+    <!-- CHAPTERS (for non-met subjects only) -->
     <section class="chapters-section hidden" id="chaptersSection">
       <h3 class="section-title" id="chaptersTitle">Chapter focus</h3>
-      <div class="chapter-chips-grid" id="chapterChipsContainer">
-        <!-- Dynamically injected chips -->
-      </div>
+      <div class="chapter-chips-grid" id="chapterChipsContainer"></div>
     </section>
+
   </main>
 </div>
+
 
 <!-- ───────── 2b. SUBJECT DETAIL VIEW (Met Chapters) ───────── -->
 <div class="dashboard-layout hidden" id="subjectDetailPanel">

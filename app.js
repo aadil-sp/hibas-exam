@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const hibaDashboard = document.getElementById("hibaDashboard");
   const dashHibaAccuracy = document.getElementById("dashHibaAccuracy");
   const dashHibaMastery = document.getElementById("dashHibaMastery");
-  const btnTargetedPrep = document.getElementById("btnTargetedPrep");
+  const btnTargetedPrep = document.getElementById("btnTargetedPrep"); // may be null (removed from home)
   const subjectCards = document.querySelectorAll(".subjects-grid .subject-card");
   const chaptersSection = document.getElementById("chaptersSection");
   const chaptersTitle = document.getElementById("chaptersTitle");
@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const answeredCount = Object.keys(stats.answeredIndices).length;
-    dashHibaMastery.textContent = `${answeredCount} / ${QUESTIONS.length || 206}`;
+    dashHibaMastery.textContent = `${answeredCount}`;
 
     // Update question counts in Subject Cards
     const counts = { nav: 0, reg: 0, met: 0, tech: 0 };
@@ -724,14 +724,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   }
 
-  // Targeted Prep button click
-  btnTargetedPrep.addEventListener("click", () => {
-    isTargetedPrep = true;
-    activeSubject = "all";
-    activeSection = "all";
-    activeTopic = "all";
-    startExamFlight();
-  });
+  // Targeted Prep button click (element may not exist if removed from HTML)
+  if (btnTargetedPrep) {
+    btnTargetedPrep.addEventListener("click", () => {
+      isTargetedPrep = true;
+      activeSubject = "all";
+      activeSection = "all";
+      activeTopic = "all";
+      startExamFlight();
+    });
+  }
 
   function startExamFlight() {
     window.location.hash = "#/exam";

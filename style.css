@@ -1,6 +1,90 @@
-/* ────────────────────────────────────────────────────────
-   CAPTAIN HIBA'S CPL PREP — SLEEK GLASSMORPHIC STYLES
-   ──────────────────────────────────────────────────────── */
+/* ── HIBA HERO HOME SECTION ── */
+.hiba-hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 0 4px;
+  flex-wrap: wrap;
+}
+.hiba-greeting {
+  flex: 1;
+  min-width: 0;
+}
+.hiba-hello {
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+}
+.hiba-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.hiba-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  flex-shrink: 0;
+}
+.hiba-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.hiba-stat-val {
+  font-family: var(--font-title);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+.hiba-stat-lbl {
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.hiba-stat-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+}
+
+/* ── HERO SUBJECT GRID ── */
+.hero-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.hero-card {
+  padding: 26px 16px 22px;
+  aspect-ratio: 1 / 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.hero-card .sc-avatar {
+  font-size: 38px;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 10px;
+}
+.hero-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.hero-card .sc-count {
+  font-size: 12px;
+}
+
+
 
 *, *::before, *::after { 
   box-sizing: border-box; 
