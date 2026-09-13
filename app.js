@@ -1,16 +1,18 @@
 /**
- * MET MOCK 2 — Aviation Meteorology Exam Simulator
- * Pure client-side application with Bootstrap 5
+ * CPL EXAM PREP PORTAL — MULTI-SUBJECT ENGINE
+ * Pure client-side modular architecture
  */
 
 (function () {
   'use strict';
 
-  // ── CONSTANTS & STATE ──
-  const TOTAL_QUESTIONS = window.EXAM_QUESTIONS ? window.EXAM_QUESTIONS.length : 100;
-  const STORAGE_KEY = 'met_mock_2_state_v2';
-  const SETTINGS_KEY = 'met_mock_2_settings_v2';
+  // ── REGISTRY & GLOBAL STATE ──
+  const REGISTRY = window.EXAM_REGISTRY || {};
+  const SETTINGS_KEY = 'cpl_global_settings_v1';
   const DEFAULT_DURATION_SECS = 2 * 60 * 60; // 2 Hours (7200s)
+
+  let activeSubjectId = null;
+  let activeExamMeta = null;
 
   let state = {
     currentIndex: 0,
@@ -36,19 +38,31 @@
 
   // ── DOM ELEMENTS ──
   const elements = {
-    // Header
+    // Header & Brand
+    navBackToHubBtn: document.getElementById('navBackToHubBtn'),
+    navBrandLink: document.getElementById('navBrandLink'),
+    navHeaderTitle: document.getElementById('navHeaderTitle'),
+    navHeaderSubtitle: document.getElementById('navHeaderSubtitle'),
+    navProgressBarWrap: document.getElementById('navProgressBarWrap'),
+    progressBar: document.getElementById('progressBar'),
     timerBadge: document.getElementById('timerBadge'),
     timerDisplay: document.getElementById('timerDisplay'),
     themeToggleBtn: document.getElementById('themeToggleBtn'),
     themeIcon: document.getElementById('themeIcon'),
     settingsToggleBtn: document.getElementById('settingsToggleBtn'),
+    mobileGridBtn: document.getElementById('mobileGridBtn'),
     mobileAnsweredCount: document.getElementById('mobileAnsweredCount'),
     topSubmitBtn: document.getElementById('topSubmitBtn'),
-    progressBar: document.getElementById('progressBar'),
 
-    // Quiz View
+    // Views
+    hubView: document.getElementById('hubView'),
+    subjectCardsGrid: document.getElementById('subjectCardsGrid'),
     quizView: document.getElementById('quizView'),
+    resultsView: document.getElementById('resultsView'),
+
+    // Quiz Pane
     currentQNum: document.getElementById('currentQNum'),
+    totalQuestionsLabel: document.getElementById('totalQuestionsLabel'),
     qStatusPill: document.getElementById('qStatusPill'),
     markBtn: document.getElementById('markBtn'),
     markBtnText: document.getElementById('markBtnText'),
@@ -58,13 +72,14 @@
     expResultBadge: document.getElementById('expResultBadge'),
     instantExpText: document.getElementById('instantExpText'),
 
-    // Quiz Navigation
+    // Quiz Nav
     prevBtn: document.getElementById('prevBtn'),
     clearBtn: document.getElementById('clearBtn'),
     nextBtn: document.getElementById('nextBtn'),
     finishBtn: document.getElementById('finishBtn'),
 
-    // Palette Panes
+    // Palette
+    sidebarTotalBadge: document.getElementById('sidebarTotalBadge'),
     statAnsweredCount: document.getElementById('statAnsweredCount'),
     statMarkedCount: document.getElementById('statMarkedCount'),
     statUnansweredCount: document.getElementById('statUnansweredCount'),
@@ -77,20 +92,23 @@
     mobilePaletteSubmitBtn: document.getElementById('mobilePaletteSubmitBtn'),
     pFilterBtns: document.querySelectorAll('.p-filter-btn'),
 
-    // Results View
-    resultsView: document.getElementById('resultsView'),
+    // Results
     resultsVerdictBadge: document.getElementById('resultsVerdictBadge'),
+    resultsExamTitle: document.getElementById('resultsExamTitle'),
+    resultsExamSubtitle: document.getElementById('resultsExamSubtitle'),
     scorePercent: document.getElementById('scorePercent'),
     scoreFraction: document.getElementById('scoreFraction'),
     resCorrectCount: document.getElementById('resCorrectCount'),
     resIncorrectCount: document.getElementById('resIncorrectCount'),
     resSkippedCount: document.getElementById('resSkippedCount'),
     resTimeSpent: document.getElementById('resTimeSpent'),
+    returnToHubFromResultsBtn: document.getElementById('returnToHubFromResultsBtn'),
     retakeAllBtn: document.getElementById('retakeAllBtn'),
     retakeMistakesBtn: document.getElementById('retakeMistakesBtn'),
     jumpToReviewBtn: document.getElementById('jumpToReviewBtn'),
     reviewSection: document.getElementById('reviewSection'),
     reviewList: document.getElementById('reviewList'),
+    revTotalCount: document.getElementById('revTotalCount'),
     revWrongCount: document.getElementById('revWrongCount'),
     revRightCount: document.getElementById('revRightCount'),
     revMarkedCount: document.getElementById('revMarkedCount'),
@@ -112,7 +130,6 @@
     resetExamBtn: document.getElementById('resetExamBtn')
   };
 
-  // Bootstrap modal instances
   let submitModalInstance = null;
   let settingsModalInstance = null;
 
@@ -121,40 +138,22 @@
     loadSettings();
     applyTheme(settings.theme);
 
-    const savedState = loadState();
-    if (savedState && savedState.questionDeck && savedState.questionDeck.length > 0) {
-      state = savedState;
-    } else {
-      buildDeck();
-    }
-
     if (window.bootstrap) {
       if (elements.submitModalEl) submitModalInstance = new bootstrap.Modal(elements.submitModalEl);
       if (elements.settingsModalEl) settingsModalInstance = new bootstrap.Modal(elements.settingsModalEl);
     }
 
     setupEventListeners();
-    buildPaletteGrids();
-    startTimer();
-
-    if (state.isSubmitted) {
-      showResults();
-    } else {
-      renderCurrentQuestion();
-      updatePaletteUI();
-    }
+    renderSubjectHub();
+    showHubView();
   }
 
   // ── SETTINGS & THEME ──
   function loadSettings() {
     try {
       const saved = localStorage.getItem(SETTINGS_KEY);
-      if (saved) {
-        settings = Object.assign(settings, JSON.parse(saved));
-      }
-    } catch (e) {
-      console.error('Failed to parse settings:', e);
-    }
+      if (saved) settings = Object.assign(settings, JSON.parse(saved));
+    } catch (e) {}
 
     if (elements.settingPracticeMode) elements.settingPracticeMode.checked = settings.practiceMode;
     if (elements.settingShuffleOptions) elements.settingShuffleOptions.checked = settings.shuffleOptions;
@@ -177,48 +176,177 @@
   }
 
   function toggleTheme() {
-    const nextTheme = settings.theme === 'light' ? 'dark' : 'light';
-    applyTheme(nextTheme);
+    applyTheme(settings.theme === 'light' ? 'dark' : 'light');
   }
 
-  // ── PERSISTENCE ──
-  function saveState() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch (e) {}
-  }
+  // ── SUBJECT HUB RENDERING ──
+  function renderSubjectHub() {
+    elements.subjectCardsGrid.innerHTML = '';
+    const subjectKeys = Object.keys(REGISTRY);
 
-  function loadState() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : null;
-    } catch (e) {
-      return null;
+    if (subjectKeys.length === 0) {
+      elements.subjectCardsGrid.innerHTML = '<div class="col-12 text-center text-secondary py-4">No exam subjects found.</div>';
+      return;
     }
+
+    subjectKeys.forEach((key, index) => {
+      const subject = REGISTRY[key];
+      const qCount = subject.questions ? subject.questions.length : 0;
+      const colorClass = subject.badgeColor || 'info';
+      const iconClass = subject.icon || 'bi-airplane-fill';
+
+      // Load previous high score from localStorage if any
+      const savedScore = localStorage.getItem(`cpl_score_${key}`);
+      let scoreBadgeHtml = '';
+      if (savedScore !== null) {
+        scoreBadgeHtml = `<span class="badge bg-success-subtle text-success border border-success-subtle">Best: ${savedScore}%</span>`;
+      }
+
+      const col = document.createElement('div');
+      col.className = 'col-12 col-md-6';
+      col.innerHTML = `
+        <div class="subject-card shadow-sm">
+          <div>
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="subject-icon-box bg-${colorClass}-subtle text-${colorClass}">
+                <i class="bi ${iconClass}"></i>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                ${scoreBadgeHtml}
+                <span class="badge bg-secondary-subtle text-secondary border">Section ${index + 1}</span>
+              </div>
+            </div>
+
+            <h3 class="subject-title mb-1">${escapeHtml(subject.title)}</h3>
+            <p class="subject-desc mb-3">${escapeHtml(subject.subtitle)}</p>
+
+            <div class="d-flex align-items-center gap-3 text-secondary small mb-4">
+              <span><i class="bi bi-card-list me-1"></i> ${qCount} Questions</span>
+              <span><i class="bi bi-clock me-1"></i> ${subject.durationMinutes || 120} Mins</span>
+              <span><i class="bi bi-award me-1"></i> Pass: 70%</span>
+            </div>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary flex-grow-1 fw-semibold py-2 start-exam-btn" data-subject-id="${key}" data-mode="exam">
+              <i class="bi bi-play-circle-fill me-1"></i> Start Mock Exam
+            </button>
+            <button class="btn btn-outline-secondary fw-semibold py-2 start-exam-btn" data-subject-id="${key}" data-mode="practice" title="Instant practice feedback mode">
+              <i class="bi bi-lightning-charge-fill text-warning"></i> Practice
+            </button>
+          </div>
+        </div>
+      `;
+
+      elements.subjectCardsGrid.appendChild(col);
+    });
+
+    // Attach click listeners to Start buttons
+    document.querySelectorAll('.start-exam-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const subId = btn.dataset.subjectId;
+        const mode = btn.dataset.mode;
+        startSubjectExam(subId, mode === 'practice');
+      });
+    });
   }
 
-  function resetState() {
-    localStorage.removeItem(STORAGE_KEY);
-    state = {
-      currentIndex: 0,
-      answers: {},
-      marked: {},
-      startTime: Date.now(),
-      elapsedSeconds: 0,
-      isSubmitted: false,
-      submittedAt: null,
-      questionDeck: []
-    };
-    buildDeck();
-    saveState();
+  // ── VIEW SWITCHING ──
+  function showHubView() {
+    if (timerInterval) clearInterval(timerInterval);
+    activeSubjectId = null;
+    activeExamMeta = null;
+
+    elements.hubView.classList.remove('d-none');
+    elements.quizView.classList.add('d-none');
+    elements.resultsView.classList.add('d-none');
+
+    // Navbar controls
+    elements.navBackToHubBtn.classList.add('d-none');
+    elements.timerBadge.classList.add('d-none');
+    elements.timerBadge.classList.remove('d-flex');
+    elements.settingsToggleBtn.classList.add('d-none');
+    elements.mobileGridBtn.classList.add('d-none');
+    elements.mobileGridBtn.classList.remove('d-flex');
+    elements.topSubmitBtn.classList.add('d-none');
+    elements.navProgressBarWrap.classList.add('d-none');
+
+    elements.navHeaderTitle.textContent = 'CPL Exam Hub';
+    elements.navHeaderSubtitle.textContent = 'Select a Mock Test';
+
+    renderSubjectHub();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // ── QUESTION DECK PREPARATION ──
-  function buildDeck(customQuestionList) {
-    const sourceList = customQuestionList || (window.EXAM_QUESTIONS || []);
+  function startSubjectExam(subjectId, isPracticeMode = false) {
+    activeSubjectId = subjectId;
+    activeExamMeta = REGISTRY[subjectId];
+    if (!activeExamMeta) return;
+
+    if (isPracticeMode) {
+      settings.practiceMode = true;
+      if (elements.settingPracticeMode) elements.settingPracticeMode.checked = true;
+      saveSettings();
+    }
+
+    // Check if there is saved progress for this specific subject
+    const stateKey = `cpl_state_${subjectId}`;
+    const saved = localStorage.getItem(stateKey);
+    let loadedState = null;
+    if (saved) {
+      try {
+        loadedState = JSON.parse(saved);
+      } catch (e) {}
+    }
+
+    if (loadedState && loadedState.questionDeck && loadedState.questionDeck.length > 0) {
+      state = loadedState;
+    } else {
+      buildDeck(activeExamMeta.questions);
+    }
+
+    // Update Header
+    elements.navBackToHubBtn.classList.remove('d-none');
+    elements.timerBadge.classList.remove('d-none');
+    elements.timerBadge.classList.add('d-flex');
+    elements.settingsToggleBtn.classList.remove('d-none');
+    elements.mobileGridBtn.classList.remove('d-none');
+    elements.mobileGridBtn.classList.add('d-flex');
+    elements.topSubmitBtn.classList.remove('d-none');
+    elements.topSubmitBtn.classList.add('d-lg-inline-flex');
+    elements.navProgressBarWrap.classList.remove('d-none');
+
+    elements.navHeaderTitle.textContent = activeExamMeta.title;
+    elements.navHeaderSubtitle.textContent = `${state.questionDeck.length} Questions • CPL Exam`;
+    elements.totalQuestionsLabel.textContent = `of ${state.questionDeck.length}`;
+    if (elements.sidebarTotalBadge) {
+      elements.sidebarTotalBadge.textContent = `${state.questionDeck.length} Questions`;
+    }
+
+    elements.hubView.classList.add('d-none');
+    elements.resultsView.classList.add('d-none');
+    elements.quizView.classList.remove('d-none');
+
+    buildPaletteGrids();
+    startTimer();
+
+    if (state.isSubmitted) {
+      showResults();
+    } else {
+      renderCurrentQuestion();
+      updatePaletteUI();
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── DECK GENERATION & PERSISTENCE ──
+  function buildDeck(sourceList) {
+    const questions = sourceList || (activeExamMeta ? activeExamMeta.questions : []);
     
-    state.questionDeck = sourceList.map((q) => {
-      const correctText = q.options[q.answer];
+    state.questionDeck = questions.map((q) => {
+      const correctIdx = q.answer !== undefined ? q.answer : 0;
+      const correctText = q.options[correctIdx] !== undefined ? q.options[correctIdx] : q.options[0];
       let optionsList = [...q.options];
 
       if (settings.shuffleOptions) {
@@ -233,7 +361,7 @@
         question: q.question,
         options: optionsList,
         correctText: correctText,
-        explanation: q.explanation || `Correct answer is: ${correctText}`
+        explanation: q.explanation || `Correct Answer: ${correctText}`
       };
     });
 
@@ -243,6 +371,20 @@
     state.startTime = Date.now();
     state.elapsedSeconds = 0;
     state.isSubmitted = false;
+    saveState();
+  }
+
+  function saveState() {
+    if (!activeSubjectId) return;
+    try {
+      localStorage.setItem(`cpl_state_${activeSubjectId}`, JSON.stringify(state));
+    } catch (e) {}
+  }
+
+  function resetExamState() {
+    if (!activeSubjectId) return;
+    localStorage.removeItem(`cpl_state_${activeSubjectId}`);
+    buildDeck(activeExamMeta.questions);
     saveState();
   }
 
@@ -294,7 +436,7 @@
     }
   }
 
-  // ── RENDER CURRENT QUESTION ──
+  // ── RENDER QUESTION ──
   function renderCurrentQuestion() {
     if (!state.questionDeck || state.questionDeck.length === 0) return;
 
@@ -333,9 +475,7 @@
       optionBtn.className = 'option-card-btn';
       const isSelected = state.answers[q.id] === optText;
 
-      if (isSelected) {
-        optionBtn.classList.add('selected');
-      }
+      if (isSelected) optionBtn.classList.add('selected');
 
       optionBtn.innerHTML = `
         <span class="option-letter-badge">${letters[optIdx] || optIdx + 1}</span>
@@ -367,7 +507,6 @@
 
   function selectOption(qId, optionText) {
     if (state.isSubmitted) return;
-
     state.answers[qId] = optionText;
     saveState();
     renderCurrentQuestion();
@@ -377,7 +516,6 @@
   function clearOption() {
     const q = state.questionDeck[state.currentIndex];
     if (!q || state.isSubmitted) return;
-
     delete state.answers[q.id];
     saveState();
     renderCurrentQuestion();
@@ -387,7 +525,6 @@
   function toggleMark() {
     const q = state.questionDeck[state.currentIndex];
     if (!q || state.isSubmitted) return;
-
     state.marked[q.id] = !state.marked[q.id];
     saveState();
     renderCurrentQuestion();
@@ -401,7 +538,6 @@
     renderCurrentQuestion();
     updatePaletteUI();
 
-    // Close offcanvas if opened
     const offcanvasEl = document.getElementById('paletteOffcanvas');
     if (offcanvasEl && window.bootstrap) {
       const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
@@ -409,12 +545,12 @@
     }
   }
 
-  // ── PALETTE GRID & STATS ──
+  // ── PALETTE GRID ──
   function buildPaletteGrids() {
     [elements.questionsGridDesktop, elements.questionsGridMobile].forEach(gridEl => {
       if (!gridEl) return;
       gridEl.innerHTML = '';
-      const total = state.questionDeck.length || TOTAL_QUESTIONS;
+      const total = state.questionDeck.length;
 
       for (let i = 0; i < total; i++) {
         const btn = document.createElement('button');
@@ -506,15 +642,11 @@
       elements.unansweredWarning.classList.add('d-none');
     }
 
-    if (submitModalInstance) {
-      submitModalInstance.show();
-    }
+    if (submitModalInstance) submitModalInstance.show();
   }
 
   function submitExam() {
-    if (submitModalInstance) {
-      submitModalInstance.hide();
-    }
+    if (submitModalInstance) submitModalInstance.hide();
 
     state.isSubmitted = true;
     state.submittedAt = Date.now();
@@ -547,8 +679,19 @@
     const percentage = Math.round((correct / total) * 100);
     const passed = percentage >= 70;
 
+    // Save best score to localStorage
+    if (activeSubjectId) {
+      const prevBest = parseInt(localStorage.getItem(`cpl_score_${activeSubjectId}`) || '0', 10);
+      if (percentage > prevBest) {
+        localStorage.setItem(`cpl_score_${activeSubjectId}`, String(percentage));
+      }
+    }
+
     elements.resultsVerdictBadge.textContent = passed ? 'PASSED 🎉' : 'NEEDS REVIEW ⚠️';
     elements.resultsVerdictBadge.className = `badge rounded-pill px-3 py-2 fs-6 fw-bold ${passed ? 'bg-success' : 'bg-danger'}`;
+
+    elements.resultsExamTitle.textContent = `${activeExamMeta ? activeExamMeta.title : 'Mock Exam'} Completed`;
+    elements.resultsExamSubtitle.textContent = `${activeExamMeta ? activeExamMeta.subtitle : 'Summary'}`;
 
     elements.scorePercent.textContent = `${percentage}%`;
     elements.scoreFraction.textContent = `${correct} / ${total} Correct`;
@@ -561,6 +704,7 @@
     const secs = state.elapsedSeconds % 60;
     elements.resTimeSpent.textContent = `${mins}m ${secs}s`;
 
+    elements.revTotalCount.textContent = total;
     elements.revWrongCount.textContent = incorrect;
     elements.revRightCount.textContent = correct;
     elements.revMarkedCount.textContent = Object.keys(state.marked).filter(k => state.marked[k]).length;
@@ -640,8 +784,8 @@
 
   // ── RETAKE FUNCTIONS ──
   function retakeFullExam() {
-    if (confirm('Are you sure you want to retake MET Mock 2 from the beginning?')) {
-      resetState();
+    if (confirm(`Retake ${activeExamMeta ? activeExamMeta.title : 'this mock'} from the beginning?`)) {
+      resetExamState();
       elements.resultsView.classList.add('d-none');
       elements.quizView.classList.remove('d-none');
       buildPaletteGrids();
@@ -678,6 +822,12 @@
   // ── EVENT LISTENERS ──
   function setupEventListeners() {
     elements.themeToggleBtn.addEventListener('click', toggleTheme);
+    elements.navBackToHubBtn.addEventListener('click', showHubView);
+    elements.navBrandLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      showHubView();
+    });
+    elements.returnToHubFromResultsBtn.addEventListener('click', showHubView);
     
     elements.settingsToggleBtn.addEventListener('click', () => {
       if (settingsModalInstance) settingsModalInstance.show();
@@ -701,9 +851,9 @@
     });
 
     elements.resetExamBtn.addEventListener('click', () => {
-      if (confirm('This will erase all your progress and restart the mock exam. Proceed?')) {
+      if (confirm('This will erase your progress on this mock test and restart. Proceed?')) {
         if (settingsModalInstance) settingsModalInstance.hide();
-        resetState();
+        resetExamState();
         elements.resultsView.classList.add('d-none');
         elements.quizView.classList.remove('d-none');
         buildPaletteGrids();
@@ -724,7 +874,6 @@
     elements.clearBtn.addEventListener('click', clearOption);
     elements.markBtn.addEventListener('click', toggleMark);
 
-    // Submitting
     if (elements.topSubmitBtn) elements.topSubmitBtn.addEventListener('click', openSubmitModal);
     if (elements.finishBtn) elements.finishBtn.addEventListener('click', openSubmitModal);
     if (elements.paletteSubmitBtn) elements.paletteSubmitBtn.addEventListener('click', openSubmitModal);
@@ -732,14 +881,12 @@
 
     elements.modalConfirmBtn.addEventListener('click', submitExam);
 
-    // Results Actions
     elements.retakeAllBtn.addEventListener('click', retakeFullExam);
     elements.retakeMistakesBtn.addEventListener('click', practiceMistakesOnly);
     elements.jumpToReviewBtn.addEventListener('click', () => {
       elements.reviewSection.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Palette Filter buttons
     elements.pFilterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         elements.pFilterBtns.forEach(b => b.classList.remove('active'));
@@ -749,7 +896,6 @@
       });
     });
 
-    // Review Filter buttons
     elements.revFilterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         elements.revFilterBtns.forEach(b => b.classList.remove('active'));
@@ -759,12 +905,11 @@
       });
     });
 
-    // Keyboard navigation
     document.addEventListener('keydown', handleKeyboardShortcuts);
   }
 
   function handleKeyboardShortcuts(e) {
-    if (state.isSubmitted) return;
+    if (state.isSubmitted || elements.quizView.classList.contains('d-none')) return;
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
     const q = state.questionDeck[state.currentIndex];
@@ -782,7 +927,6 @@
     if (key === 'c') clearOption();
   }
 
-  // ── UTILITIES ──
   function escapeHtml(str) {
     if (!str) return '';
     return str

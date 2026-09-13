@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>MET Mock 2 — Meteorology Exam Prep</title>
-  <meta name="description" content="100-Question CPL Meteorology Mock Examination 2 with interactive practice and exam modes." />
+  <title>CPL Exam Prep Portal — Multi-Subject Mock Tests</title>
+  <meta name="description" content="Aviation CPL multi-subject mock examination portal. Practice MET, Air Law & Regulations with full 100-question test engines." />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,20 +24,26 @@
   <nav class="navbar navbar-expand bg-surface border-bottom sticky-top py-2 px-3 shadow-sm">
     <div class="container-fluid px-0 justify-content-between">
       
-      <!-- Brand -->
-      <a class="navbar-brand d-flex align-items-center gap-2 m-0 text-decoration-none" href="#">
-        <span class="brand-badge"><i class="bi bi-airplane-engines-fill text-info"></i></span>
-        <div>
-          <div class="brand-title">MET Mock 2</div>
-          <div class="brand-subtitle d-none d-sm-block">100 Questions • CPL Exam</div>
-        </div>
-      </a>
+      <!-- Brand & Hub Navigation -->
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-outline-secondary btn-sm rounded-pill d-none" id="navBackToHubBtn" title="Back to Subject Hub">
+          <i class="bi bi-arrow-left"></i> <span class="d-none d-sm-inline">Hub</span>
+        </button>
+
+        <a class="navbar-brand d-flex align-items-center gap-2 m-0 text-decoration-none" href="#" id="navBrandLink">
+          <span class="brand-badge"><i class="bi bi-airplane-engines-fill text-info"></i></span>
+          <div>
+            <div class="brand-title" id="navHeaderTitle">CPL Exam Hub</div>
+            <div class="brand-subtitle d-none d-sm-block" id="navHeaderSubtitle">Select a Mock Test</div>
+          </div>
+        </a>
+      </div>
 
       <!-- Center / Right: Timer & Tools -->
       <div class="d-flex align-items-center gap-2">
         
-        <!-- Timer Badge -->
-        <div class="timer-pill d-flex align-items-center gap-1 px-3 py-1 rounded-pill" id="timerBadge">
+        <!-- Timer Badge (Quiz active only) -->
+        <div class="timer-pill d-none align-items-center gap-1 px-3 py-1 rounded-pill" id="timerBadge">
           <i class="bi bi-stopwatch text-info"></i>
           <span class="font-mono fw-bold" id="timerDisplay">02:00:00</span>
         </div>
@@ -47,19 +53,19 @@
           <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
         </button>
 
-        <!-- Settings Toggle -->
-        <button class="btn btn-outline-secondary btn-icon" id="settingsToggleBtn" type="button" title="Exam Settings">
+        <!-- Settings Toggle (Quiz active only) -->
+        <button class="btn btn-outline-secondary btn-icon d-none" id="settingsToggleBtn" type="button" title="Exam Settings">
           <i class="bi bi-gear-fill"></i>
         </button>
 
         <!-- Question Grid Offcanvas Toggle (Mobile only) -->
-        <button class="btn btn-outline-info d-lg-none d-flex align-items-center gap-1 px-2 py-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#paletteOffcanvas">
+        <button class="btn btn-outline-info d-none d-flex align-items-center gap-1 px-2 py-1" id="mobileGridBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#paletteOffcanvas">
           <i class="bi bi-grid-3x3-gap-fill"></i>
           <span class="small fw-semibold"><span id="mobileAnsweredCount">0</span>/100</span>
         </button>
 
-        <!-- Desktop Submit Button -->
-        <button class="btn btn-primary d-none d-lg-inline-flex align-items-center gap-1 fw-semibold" id="topSubmitBtn" type="button">
+        <!-- Desktop Submit Button (Quiz active only) -->
+        <button class="btn btn-primary d-none align-items-center gap-1 fw-semibold" id="topSubmitBtn" type="button">
           <i class="bi bi-check2-circle"></i>
           <span>Submit Exam</span>
         </button>
@@ -68,16 +74,54 @@
     </div>
   </nav>
 
-  <!-- PROGRESS BAR -->
-  <div class="progress rounded-0" style="height: 4px;">
+  <!-- PROGRESS BAR (Quiz active only) -->
+  <div class="progress rounded-0 d-none" id="navProgressBarWrap" style="height: 4px;">
     <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" id="progressBar" role="progressbar" style="width: 0%;"></div>
   </div>
 
   <!-- MAIN CONTAINER -->
   <div class="container-xl py-3 py-md-4">
     
-    <!-- 1. QUIZ SCREEN -->
-    <div class="row g-4" id="quizView">
+    <!-- ══════════════════════════════════════════════════════════
+         VIEW 1: SUBJECT HUB / HOME (Scalable Sections)
+         ══════════════════════════════════════════════════════════ -->
+    <div class="hub-layout" id="hubView">
+      
+      <!-- Hub Hero Header -->
+      <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 mb-4 text-center bg-surface">
+        <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-info-subtle text-info fw-bold small mb-3">
+          <i class="bi bi-shield-check"></i> CPL Multi-Subject Examination Portal
+        </div>
+        <h1 class="display-6 fw-bold font-display mb-2">Select Your Mock Examination</h1>
+        <p class="text-secondary max-w-700 mx-auto mb-0">
+          Choose a subject section below to begin your full 100-question practice test or timed examination simulation.
+        </p>
+      </div>
+
+      <!-- Scalable Subject Sections Grid -->
+      <div class="row g-4" id="subjectCardsGrid">
+        <!-- Rendered dynamically from EXAM_REGISTRY in questions.js -->
+      </div>
+
+      <!-- Quick Info / Add Section Guide for User -->
+      <div class="card border-0 shadow-sm rounded-4 p-4 mt-4 bg-surface">
+        <div class="d-flex align-items-start gap-3">
+          <div class="fs-3 text-info"><i class="bi bi-plus-circle-dotted"></i></div>
+          <div>
+            <h2 class="h6 fw-bold mb-1">Adding More Subjects Is Completely Plug & Play</h2>
+            <p class="small text-secondary mb-0">
+              Each test section runs independently on the same modular engine. To add another subject (like Navigation or Technical), simply append a new block to <code>window.EXAM_REGISTRY</code> in <code>questions.js</code>!
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         VIEW 2: ACTIVE QUIZ EXAM
+         ══════════════════════════════════════════════════════════ -->
+    <div class="row g-4 d-none" id="quizView">
       
       <!-- MAIN QUESTION COLUMN -->
       <div class="col-12 col-lg-8 col-xl-8">
@@ -87,7 +131,7 @@
           <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pb-3 mb-3 border-bottom">
             <div class="d-flex align-items-baseline gap-2">
               <span class="fs-4 fw-bold text-info" id="currentQNum">Question 1</span>
-              <span class="text-secondary small fw-medium">of 100</span>
+              <span class="text-secondary small fw-medium" id="totalQuestionsLabel">of 100</span>
             </div>
 
             <div class="d-flex align-items-center gap-2">
@@ -158,7 +202,7 @@
           
           <div class="d-flex align-items-center justify-content-between mb-3">
             <h3 class="h6 fw-bold mb-0">Question Grid</h3>
-            <span class="badge bg-info-subtle text-info">100 Questions</span>
+            <span class="badge bg-info-subtle text-info" id="sidebarTotalBadge">100 Questions</span>
           </div>
 
           <!-- Quick Stats -->
@@ -208,18 +252,20 @@
 
     </div>
 
-    <!-- 2. RESULTS & REVIEW SCREEN (Hidden initially) -->
+    <!-- ══════════════════════════════════════════════════════════
+         VIEW 3: RESULTS & SOLUTIONS SCREEN
+         ══════════════════════════════════════════════════════════ -->
     <div class="d-none" id="resultsView">
       
       <!-- HERO SCORE CARD -->
-      <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 text-center mb-4">
+      <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 text-center mb-4 bg-surface">
         
         <div class="mb-2">
           <span class="badge rounded-pill px-3 py-2 fs-6 fw-bold" id="resultsVerdictBadge">PASSED 🎉</span>
         </div>
 
-        <h1 class="h3 fw-bold mb-1">MET Mock 2 Completed</h1>
-        <p class="text-secondary small mb-4">Meteorology Examination Summary</p>
+        <h1 class="h3 fw-bold mb-1" id="resultsExamTitle">MET Mock 2 Completed</h1>
+        <p class="text-secondary small mb-4" id="resultsExamSubtitle">Examination Summary</p>
 
         <!-- Big Score Display -->
         <div class="score-display-box my-2">
@@ -257,11 +303,14 @@
 
         <!-- Action Buttons -->
         <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+          <button class="btn btn-outline-secondary px-3 py-2 fw-semibold" id="returnToHubFromResultsBtn" type="button">
+            <i class="bi bi-house-door-fill"></i> Subject Hub
+          </button>
           <button class="btn btn-primary px-4 py-2 fw-semibold" id="retakeAllBtn" type="button">
-            <i class="bi bi-arrow-repeat"></i> Retake Full Exam
+            <i class="bi bi-arrow-repeat"></i> Retake This Mock
           </button>
           <button class="btn btn-outline-danger px-4 py-2 fw-semibold" id="retakeMistakesBtn" type="button">
-            <i class="bi bi-bullseye"></i> Practice Mistakes Only
+            <i class="bi bi-bullseye"></i> Practice Mistakes
           </button>
           <button class="btn btn-outline-secondary px-3 py-2 fw-semibold" id="jumpToReviewBtn" type="button">
             <i class="bi bi-card-checklist"></i> View Solutions
@@ -271,13 +320,13 @@
       </div>
 
       <!-- DETAILED REVIEW SECTION -->
-      <div class="card border-0 shadow-sm rounded-4 p-3 p-md-4" id="reviewSection">
+      <div class="card border-0 shadow-sm rounded-4 p-3 p-md-4 bg-surface" id="reviewSection">
         
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pb-3 mb-3 border-bottom">
           <h2 class="h5 fw-bold mb-0">Solutions & Explanations</h2>
 
           <div class="btn-group btn-group-sm" role="group">
-            <button type="button" class="btn btn-outline-secondary rev-filter-btn active" data-rev-filter="all">All (100)</button>
+            <button type="button" class="btn btn-outline-secondary rev-filter-btn active" data-rev-filter="all">All (<span id="revTotalCount">100</span>)</button>
             <button type="button" class="btn btn-outline-danger rev-filter-btn" data-rev-filter="incorrect">Wrong (<span id="revWrongCount">0</span>)</button>
             <button type="button" class="btn btn-outline-success rev-filter-btn" data-rev-filter="correct">Correct (<span id="revRightCount">0</span>)</button>
             <button type="button" class="btn btn-outline-warning rev-filter-btn" data-rev-filter="marked">Marked (<span id="revMarkedCount">0</span>)</button>
@@ -353,7 +402,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 border-0 shadow">
         <div class="modal-header border-0 pb-0">
-          <h5 class="modal-title fw-bold" id="submitModalLabel">Submit MET Mock 2?</h5>
+          <h5 class="modal-title fw-bold" id="submitModalLabel">Submit Exam?</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body py-3">

@@ -1,5 +1,6 @@
 /* ══════════════════════════════════════════════════════════
-   MET MOCK 2 — BOOTSTRAP 5 AVIATION EXAM THEME
+   CPL EXAM PREP PORTAL — MULTI-SUBJECT STYLESHEET
+   Bootstrap 5.3 + Custom Responsive Aero Design
    ══════════════════════════════════════════════════════════ */
 
 :root {
@@ -15,6 +16,7 @@
   --border-item: rgba(255, 255, 255, 0.08);
   --border-active: #38bdf8;
   --text-active: #38bdf8;
+  --hub-card-bg: #131d33;
 }
 
 [data-bs-theme="light"] {
@@ -24,6 +26,7 @@
   --border-item: #e2e8f0;
   --border-active: #0284c7;
   --text-active: #0284c7;
+  --hub-card-bg: #ffffff;
 }
 
 body {
@@ -42,6 +45,10 @@ body {
 
 .bg-surface {
   background-color: var(--bg-surface) !important;
+}
+
+.max-w-700 {
+  max-width: 700px;
 }
 
 /* ═══════════ NAVBAR ═══════════ */
@@ -94,6 +101,47 @@ body {
 @keyframes pulse-danger {
   0% { box-shadow: 0 0 2px var(--bs-danger); }
   100% { box-shadow: 0 0 10px var(--bs-danger); }
+}
+
+/* ═══════════ SUBJECT HUB CARDS ═══════════ */
+.subject-card {
+  background: var(--hub-card-bg);
+  border: 1.5px solid var(--border-item);
+  border-radius: 20px;
+  padding: 24px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.subject-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-active);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.subject-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.subject-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.subject-desc {
+  font-size: 0.88rem;
+  color: var(--bs-secondary-color);
+  line-height: 1.5;
 }
 
 /* ═══════════ QUESTION CARD ═══════════ */
@@ -222,10 +270,6 @@ body {
 }
 
 /* ═══════════ RESULTS & REVIEW ═══════════ */
-.max-w-700 {
-  max-width: 700px;
-}
-
 .rev-item-card {
   background: var(--bg-card-item);
   border: 1px solid var(--border-item);
