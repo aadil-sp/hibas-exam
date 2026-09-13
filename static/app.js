@@ -1,6 +1,6 @@
 /**
  * MET MOCK 2 — Aviation Meteorology Exam Simulator
- * Pure client-side application (No backend required)
+ * Pure client-side application with Bootstrap 5
  */
 
 (function () {
@@ -8,8 +8,8 @@
 
   // ── CONSTANTS & STATE ──
   const TOTAL_QUESTIONS = window.EXAM_QUESTIONS ? window.EXAM_QUESTIONS.length : 100;
-  const STORAGE_KEY = 'met_mock_2_state_v1';
-  const SETTINGS_KEY = 'met_mock_2_settings_v1';
+  const STORAGE_KEY = 'met_mock_2_state_v2';
+  const SETTINGS_KEY = 'met_mock_2_settings_v2';
   const DEFAULT_DURATION_SECS = 2 * 60 * 60; // 2 Hours (7200s)
 
   let state = {
@@ -20,7 +20,6 @@
     elapsedSeconds: 0,
     isSubmitted: false,
     submittedAt: null,
-    // Prepared questions with shuffled options if enabled
     questionDeck: []
   };
 
@@ -43,14 +42,12 @@
     themeToggleBtn: document.getElementById('themeToggleBtn'),
     themeIcon: document.getElementById('themeIcon'),
     settingsToggleBtn: document.getElementById('settingsToggleBtn'),
-    mobilePaletteBtn: document.getElementById('mobilePaletteBtn'),
     mobileAnsweredCount: document.getElementById('mobileAnsweredCount'),
     topSubmitBtn: document.getElementById('topSubmitBtn'),
     progressBar: document.getElementById('progressBar'),
 
     // Quiz View
     quizView: document.getElementById('quizView'),
-    qNumberPill: document.getElementById('qNumberPill'),
     currentQNum: document.getElementById('currentQNum'),
     qStatusPill: document.getElementById('qStatusPill'),
     markBtn: document.getElementById('markBtn'),
@@ -67,14 +64,17 @@
     nextBtn: document.getElementById('nextBtn'),
     finishBtn: document.getElementById('finishBtn'),
 
-    // Palette Pane
-    palettePane: document.getElementById('palettePane'),
-    closeMobilePaletteBtn: document.getElementById('closeMobilePaletteBtn'),
+    // Palette Panes
     statAnsweredCount: document.getElementById('statAnsweredCount'),
     statMarkedCount: document.getElementById('statMarkedCount'),
     statUnansweredCount: document.getElementById('statUnansweredCount'),
-    questionsGrid: document.getElementById('questionsGrid'),
+    statAnsweredCountMobile: document.getElementById('statAnsweredCountMobile'),
+    statMarkedCountMobile: document.getElementById('statMarkedCountMobile'),
+    statUnansweredCountMobile: document.getElementById('statUnansweredCountMobile'),
+    questionsGridDesktop: document.getElementById('questionsGridDesktop'),
+    questionsGridMobile: document.getElementById('questionsGridMobile'),
     paletteSubmitBtn: document.getElementById('paletteSubmitBtn'),
+    mobilePaletteSubmitBtn: document.getElementById('mobilePaletteSubmitBtn'),
     pFilterBtns: document.querySelectorAll('.p-filter-btn'),
 
     // Results View
@@ -97,22 +97,24 @@
     revFilterBtns: document.querySelectorAll('.rev-filter-btn'),
 
     // Modals
-    submitModal: document.getElementById('submitModal'),
+    submitModalEl: document.getElementById('submitModal'),
     modalAnsweredCount: document.getElementById('modalAnsweredCount'),
     modalMarkedCount: document.getElementById('modalMarkedCount'),
     modalUnansweredCount: document.getElementById('modalUnansweredCount'),
     unansweredWarning: document.getElementById('unansweredWarning'),
     modalUnansweredWarnCount: document.getElementById('modalUnansweredWarnCount'),
-    modalCancelBtn: document.getElementById('modalCancelBtn'),
     modalConfirmBtn: document.getElementById('modalConfirmBtn'),
 
-    settingsModal: document.getElementById('settingsModal'),
+    settingsModalEl: document.getElementById('settingsModal'),
     settingPracticeMode: document.getElementById('settingPracticeMode'),
     settingShuffleOptions: document.getElementById('settingShuffleOptions'),
     settingCountdownTimer: document.getElementById('settingCountdownTimer'),
-    resetExamBtn: document.getElementById('resetExamBtn'),
-    closeSettingsBtn: document.getElementById('closeSettingsBtn')
+    resetExamBtn: document.getElementById('resetExamBtn')
   };
+
+  // Bootstrap modal instances
+  let submitModalInstance = null;
+  let settingsModalInstance = null;
 
   // ── INITIALIZATION ──
   function init() {
@@ -126,8 +128,13 @@
       buildDeck();
     }
 
+    if (window.bootstrap) {
+      if (elements.submitModalEl) submitModalInstance = new bootstrap.Modal(elements.submitModalEl);
+      if (elements.settingsModalEl) settingsModalInstance = new bootstrap.Modal(elements.settingsModalEl);
+    }
+
     setupEventListeners();
-    buildPaletteGrid();
+    buildPaletteGrids();
     startTimer();
 
     if (state.isSubmitted) {
@@ -162,9 +169,9 @@
 
   function applyTheme(theme) {
     settings.theme = theme;
-    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-bs-theme', theme);
     if (elements.themeIcon) {
-      elements.themeIcon.textContent = theme === 'light' ? '☀️' : '🌙';
+      elements.themeIcon.className = theme === 'light' ? 'bi bi-sun-fill text-warning' : 'bi bi-moon-stars-fill text-info';
     }
     saveSettings();
   }
@@ -211,12 +218,10 @@
     const sourceList = customQuestionList || (window.EXAM_QUESTIONS || []);
     
     state.questionDeck = sourceList.map((q) => {
-      // Correct option is always options[q.answer] in source
       const correctText = q.options[q.answer];
       let optionsList = [...q.options];
 
       if (settings.shuffleOptions) {
-        // Fisher-Yates shuffle
         for (let i = optionsList.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [optionsList[i], optionsList[j]] = [optionsList[j], optionsList[i]];
@@ -255,7 +260,6 @@
       saveState();
       renderTimer();
 
-      // Auto-submit if countdown reaches 0
       if (settings.countdownTimer && state.elapsedSeconds >= DEFAULT_DURATION_SECS) {
         clearInterval(timerInterval);
         submitExam();
@@ -276,10 +280,10 @@
       elements.timerDisplay.textContent = 
         `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 
-      if (remaining <= 600) { // < 10 mins
-        elements.timerBadge.classList.add('warning');
+      if (remaining <= 600) {
+        elements.timerBadge.classList.add('timer-warning');
       } else {
-        elements.timerBadge.classList.remove('warning');
+        elements.timerBadge.classList.remove('timer-warning');
       }
     } else {
       const hours = Math.floor(state.elapsedSeconds / 3600);
@@ -298,67 +302,63 @@
     const qNum = state.currentIndex + 1;
     const total = state.questionDeck.length;
 
-    elements.currentQNum.textContent = qNum;
+    elements.currentQNum.textContent = `Question ${qNum}`;
     elements.questionText.textContent = q.question;
 
-    // Status pill
     const isAnswered = state.answers[q.id] !== undefined;
     const isMarked = !!state.marked[q.id];
 
     if (isAnswered) {
       elements.qStatusPill.textContent = 'Answered';
-      elements.qStatusPill.className = 'status-pill status-answered';
+      elements.qStatusPill.className = 'badge rounded-pill bg-success-subtle text-success border border-success-subtle px-2 py-1 small';
     } else {
       elements.qStatusPill.textContent = 'Unanswered';
-      elements.qStatusPill.className = 'status-pill status-unanswered';
+      elements.qStatusPill.className = 'badge rounded-pill bg-secondary-subtle text-secondary border px-2 py-1 small';
     }
 
-    // Mark button
     if (isMarked) {
-      elements.markBtn.classList.add('marked');
+      elements.markBtn.className = 'btn btn-sm btn-warning rounded-pill px-3 py-1 d-flex align-items-center gap-1';
       elements.markBtnText.textContent = 'Marked';
     } else {
-      elements.markBtn.classList.remove('marked');
+      elements.markBtn.className = 'btn btn-sm btn-outline-warning rounded-pill px-3 py-1 d-flex align-items-center gap-1';
       elements.markBtnText.textContent = 'Mark for Review';
     }
 
-    // Options rendering
     const letters = ['A', 'B', 'C', 'D'];
     elements.optionsContainer.innerHTML = '';
 
     q.options.forEach((optText, optIdx) => {
-      const optionCard = document.createElement('button');
-      optionCard.className = 'option-card';
+      const optionBtn = document.createElement('button');
+      optionBtn.type = 'button';
+      optionBtn.className = 'option-card-btn';
       const isSelected = state.answers[q.id] === optText;
 
       if (isSelected) {
-        optionCard.classList.add('selected');
+        optionBtn.classList.add('selected');
       }
 
-      optionCard.innerHTML = `
-        <div class="option-letter">${letters[optIdx] || optIdx + 1}</div>
-        <div class="option-label">${escapeHtml(optText)}</div>
+      optionBtn.innerHTML = `
+        <span class="option-letter-badge">${letters[optIdx] || optIdx + 1}</span>
+        <span class="option-text">${escapeHtml(optText)}</span>
       `;
 
-      optionCard.addEventListener('click', () => {
+      optionBtn.addEventListener('click', () => {
         selectOption(q.id, optText);
       });
 
-      elements.optionsContainer.appendChild(optionCard);
+      elements.optionsContainer.appendChild(optionBtn);
     });
 
-    // Instant explanation box (practice mode)
     if (settings.practiceMode && isAnswered) {
-      elements.instantExplanationBox.classList.remove('hidden');
+      elements.instantExplanationBox.classList.remove('d-none');
       const isCorrect = state.answers[q.id] === q.correctText;
       elements.expResultBadge.textContent = isCorrect ? 'Correct ✓' : 'Incorrect ✗';
-      elements.expResultBadge.className = `exp-badge ${isCorrect ? 'correct' : 'incorrect'}`;
+      elements.expResultBadge.className = `badge ${isCorrect ? 'bg-success' : 'bg-danger'}`;
       elements.instantExpText.textContent = q.explanation;
     } else {
-      elements.instantExplanationBox.classList.add('hidden');
+      elements.instantExplanationBox.classList.add('d-none');
     }
 
-    // Navigation buttons
     elements.prevBtn.disabled = state.currentIndex === 0;
     elements.nextBtn.disabled = state.currentIndex === total - 1;
 
@@ -401,27 +401,35 @@
     renderCurrentQuestion();
     updatePaletteUI();
 
-    // Close mobile palette if open
-    elements.palettePane.classList.remove('open');
+    // Close offcanvas if opened
+    const offcanvasEl = document.getElementById('paletteOffcanvas');
+    if (offcanvasEl && window.bootstrap) {
+      const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+      if (bsOffcanvas) bsOffcanvas.hide();
+    }
   }
 
   // ── PALETTE GRID & STATS ──
-  function buildPaletteGrid() {
-    elements.questionsGrid.innerHTML = '';
-    const total = state.questionDeck.length || TOTAL_QUESTIONS;
+  function buildPaletteGrids() {
+    [elements.questionsGridDesktop, elements.questionsGridMobile].forEach(gridEl => {
+      if (!gridEl) return;
+      gridEl.innerHTML = '';
+      const total = state.questionDeck.length || TOTAL_QUESTIONS;
 
-    for (let i = 0; i < total; i++) {
-      const btn = document.createElement('button');
-      btn.className = 'q-grid-btn';
-      btn.textContent = i + 1;
-      btn.dataset.index = i;
+      for (let i = 0; i < total; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'q-grid-item-btn';
+        btn.textContent = i + 1;
+        btn.dataset.index = i;
 
-      btn.addEventListener('click', () => {
-        goToQuestion(i);
-      });
+        btn.addEventListener('click', () => {
+          goToQuestion(i);
+        });
 
-      elements.questionsGrid.appendChild(btn);
-    }
+        gridEl.appendChild(btn);
+      }
+    });
   }
 
   function updatePaletteUI() {
@@ -429,7 +437,8 @@
     let answeredCount = 0;
     let markedCount = 0;
 
-    const gridButtons = elements.questionsGrid.querySelectorAll('.q-grid-btn');
+    const desktopBtns = elements.questionsGridDesktop ? elements.questionsGridDesktop.querySelectorAll('.q-grid-item-btn') : [];
+    const mobileBtns = elements.questionsGridMobile ? elements.questionsGridMobile.querySelectorAll('.q-grid-item-btn') : [];
 
     state.questionDeck.forEach((q, i) => {
       const isAnswered = state.answers[q.id] !== undefined;
@@ -439,29 +448,33 @@
       if (isAnswered) answeredCount++;
       if (isMarked) markedCount++;
 
-      const btn = gridButtons[i];
-      if (btn) {
-        btn.className = 'q-grid-btn';
-        if (isCurrent) btn.classList.add('current');
-        if (isAnswered) btn.classList.add('answered');
-        if (isMarked) btn.classList.add('marked');
+      let isVisible = true;
+      if (activeFilter === 'answered' && !isAnswered) isVisible = false;
+      if (activeFilter === 'marked' && !isMarked) isVisible = false;
+      if (activeFilter === 'unanswered' && isAnswered) isVisible = false;
 
-        // Apply filter visibility
-        let isVisible = true;
-        if (activeFilter === 'answered' && !isAnswered) isVisible = false;
-        if (activeFilter === 'marked' && !isMarked) isVisible = false;
-        if (activeFilter === 'unanswered' && isAnswered) isVisible = false;
-
-        btn.style.display = isVisible ? 'flex' : 'none';
-      }
+      [desktopBtns[i], mobileBtns[i]].forEach(btn => {
+        if (btn) {
+          btn.className = 'q-grid-item-btn';
+          if (isCurrent) btn.classList.add('current');
+          if (isAnswered) btn.classList.add('answered');
+          if (isMarked) btn.classList.add('marked');
+          btn.style.display = isVisible ? 'flex' : 'none';
+        }
+      });
     });
 
     const unansweredCount = total - answeredCount;
 
-    elements.statAnsweredCount.textContent = answeredCount;
-    elements.statMarkedCount.textContent = markedCount;
-    elements.statUnansweredCount.textContent = unansweredCount;
-    elements.mobileAnsweredCount.textContent = answeredCount;
+    if (elements.statAnsweredCount) elements.statAnsweredCount.textContent = answeredCount;
+    if (elements.statMarkedCount) elements.statMarkedCount.textContent = markedCount;
+    if (elements.statUnansweredCount) elements.statUnansweredCount.textContent = unansweredCount;
+
+    if (elements.statAnsweredCountMobile) elements.statAnsweredCountMobile.textContent = answeredCount;
+    if (elements.statMarkedCountMobile) elements.statMarkedCountMobile.textContent = markedCount;
+    if (elements.statUnansweredCountMobile) elements.statUnansweredCountMobile.textContent = unansweredCount;
+
+    if (elements.mobileAnsweredCount) elements.mobileAnsweredCount.textContent = answeredCount;
 
     updateProgressBar();
   }
@@ -470,7 +483,9 @@
     const total = state.questionDeck.length;
     const answeredCount = Object.keys(state.answers).length;
     const percent = total > 0 ? Math.round((answeredCount / total) * 100) : 0;
-    elements.progressBar.style.width = `${percent}%`;
+    if (elements.progressBar) {
+      elements.progressBar.style.width = `${percent}%`;
+    }
   }
 
   // ── SUBMISSION & RESULTS ──
@@ -485,21 +500,22 @@
     elements.modalUnansweredCount.textContent = unansweredCount;
 
     if (unansweredCount > 0) {
-      elements.unansweredWarning.classList.remove('hidden');
+      elements.unansweredWarning.classList.remove('d-none');
       elements.modalUnansweredWarnCount.textContent = unansweredCount;
     } else {
-      elements.unansweredWarning.classList.add('hidden');
+      elements.unansweredWarning.classList.add('d-none');
     }
 
-    elements.submitModal.classList.remove('hidden');
-  }
-
-  function closeSubmitModal() {
-    elements.submitModal.classList.add('hidden');
+    if (submitModalInstance) {
+      submitModalInstance.show();
+    }
   }
 
   function submitExam() {
-    closeSubmitModal();
+    if (submitModalInstance) {
+      submitModalInstance.hide();
+    }
+
     state.isSubmitted = true;
     state.submittedAt = Date.now();
     saveState();
@@ -509,10 +525,9 @@
   }
 
   function showResults() {
-    elements.quizView.classList.add('hidden');
-    elements.resultsView.classList.remove('hidden');
+    elements.quizView.classList.add('d-none');
+    elements.resultsView.classList.remove('d-none');
 
-    // Calculate metrics
     let correct = 0;
     let incorrect = 0;
     let skipped = 0;
@@ -530,10 +545,10 @@
 
     const total = state.questionDeck.length;
     const percentage = Math.round((correct / total) * 100);
-    const passed = percentage >= 70; // 70% CPL Passing Grade
+    const passed = percentage >= 70;
 
     elements.resultsVerdictBadge.textContent = passed ? 'PASSED 🎉' : 'NEEDS REVIEW ⚠️';
-    elements.resultsVerdictBadge.className = `results-badge ${passed ? '' : 'fail'}`;
+    elements.resultsVerdictBadge.className = `badge rounded-pill px-3 py-2 fs-6 fw-bold ${passed ? 'bg-success' : 'bg-danger'}`;
 
     elements.scorePercent.textContent = `${percentage}%`;
     elements.scoreFraction.textContent = `${correct} / ${total} Correct`;
@@ -564,7 +579,6 @@
       const isSkipped = userAns === undefined;
       const isMarked = !!state.marked[q.id];
 
-      // Filter check
       if (activeRevFilter === 'incorrect' && (isCorrect || isSkipped)) return;
       if (activeRevFilter === 'correct' && !isCorrect) return;
       if (activeRevFilter === 'marked' && !isMarked) return;
@@ -574,11 +588,11 @@
 
       let badgeHtml = '';
       if (isSkipped) {
-        badgeHtml = '<span class="rev-item-badge skipped">Skipped</span>';
+        badgeHtml = '<span class="badge bg-secondary-subtle text-secondary border">Skipped</span>';
       } else if (isCorrect) {
-        badgeHtml = '<span class="rev-item-badge correct">Correct ✓</span>';
+        badgeHtml = '<span class="badge bg-success-subtle text-success border border-success-subtle">Correct ✓</span>';
       } else {
-        badgeHtml = '<span class="rev-item-badge incorrect">Incorrect ✗</span>';
+        badgeHtml = '<span class="badge bg-danger-subtle text-danger border border-danger-subtle">Incorrect ✗</span>';
       }
 
       let optionsHtml = '';
@@ -608,13 +622,13 @@
       });
 
       card.innerHTML = `
-        <div class="rev-item-header">
-          <span class="rev-item-num">Question ${idx + 1} ${isMarked ? '★' : ''}</span>
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <span class="fw-bold text-info font-display">Question ${idx + 1} ${isMarked ? '★' : ''}</span>
           ${badgeHtml}
         </div>
-        <div class="rev-item-question">${escapeHtml(q.question)}</div>
-        <div class="rev-options-list">${optionsHtml}</div>
-        <div class="rev-exp-box">
+        <div class="fw-semibold text-body mb-3">${escapeHtml(q.question)}</div>
+        <div class="d-flex flex-column gap-2 mb-3">${optionsHtml}</div>
+        <div class="alert alert-info py-2 px-3 mb-0 small border-info">
           <strong>💡 Key Concept & Explanation:</strong><br />
           ${escapeHtml(q.explanation)}
         </div>
@@ -628,9 +642,9 @@
   function retakeFullExam() {
     if (confirm('Are you sure you want to retake MET Mock 2 from the beginning?')) {
       resetState();
-      elements.resultsView.classList.add('hidden');
-      elements.quizView.classList.remove('hidden');
-      buildPaletteGrid();
+      elements.resultsView.classList.add('d-none');
+      elements.quizView.classList.remove('d-none');
+      buildPaletteGrids();
       startTimer();
       renderCurrentQuestion();
       updatePaletteUI();
@@ -651,9 +665,9 @@
 
     if (confirm(`Start targeted practice with the ${mistakes.length} question(s) you missed or skipped?`)) {
       buildDeck(mistakes);
-      elements.resultsView.classList.add('hidden');
-      elements.quizView.classList.remove('hidden');
-      buildPaletteGrid();
+      elements.resultsView.classList.add('d-none');
+      elements.quizView.classList.remove('d-none');
+      buildPaletteGrids();
       startTimer();
       renderCurrentQuestion();
       updatePaletteUI();
@@ -663,15 +677,10 @@
 
   // ── EVENT LISTENERS ──
   function setupEventListeners() {
-    // Header actions
     elements.themeToggleBtn.addEventListener('click', toggleTheme);
     
     elements.settingsToggleBtn.addEventListener('click', () => {
-      elements.settingsModal.classList.remove('hidden');
-    });
-
-    elements.closeSettingsBtn.addEventListener('click', () => {
-      elements.settingsModal.classList.add('hidden');
+      if (settingsModalInstance) settingsModalInstance.show();
     });
 
     elements.settingPracticeMode.addEventListener('change', (e) => {
@@ -693,27 +702,17 @@
 
     elements.resetExamBtn.addEventListener('click', () => {
       if (confirm('This will erase all your progress and restart the mock exam. Proceed?')) {
-        elements.settingsModal.classList.add('hidden');
+        if (settingsModalInstance) settingsModalInstance.hide();
         resetState();
-        elements.resultsView.classList.add('hidden');
-        elements.quizView.classList.remove('hidden');
-        buildPaletteGrid();
+        elements.resultsView.classList.add('d-none');
+        elements.quizView.classList.remove('d-none');
+        buildPaletteGrids();
         startTimer();
         renderCurrentQuestion();
         updatePaletteUI();
       }
     });
 
-    // Mobile palette
-    elements.mobilePaletteBtn.addEventListener('click', () => {
-      elements.palettePane.classList.add('open');
-    });
-
-    elements.closeMobilePaletteBtn.addEventListener('click', () => {
-      elements.palettePane.classList.remove('open');
-    });
-
-    // Question navigation
     elements.prevBtn.addEventListener('click', () => {
       goToQuestion(state.currentIndex - 1);
     });
@@ -726,11 +725,11 @@
     elements.markBtn.addEventListener('click', toggleMark);
 
     // Submitting
-    elements.topSubmitBtn.addEventListener('click', openSubmitModal);
-    elements.finishBtn.addEventListener('click', openSubmitModal);
-    elements.paletteSubmitBtn.addEventListener('click', openSubmitModal);
+    if (elements.topSubmitBtn) elements.topSubmitBtn.addEventListener('click', openSubmitModal);
+    if (elements.finishBtn) elements.finishBtn.addEventListener('click', openSubmitModal);
+    if (elements.paletteSubmitBtn) elements.paletteSubmitBtn.addEventListener('click', openSubmitModal);
+    if (elements.mobilePaletteSubmitBtn) elements.mobilePaletteSubmitBtn.addEventListener('click', openSubmitModal);
 
-    elements.modalCancelBtn.addEventListener('click', closeSubmitModal);
     elements.modalConfirmBtn.addEventListener('click', submitExam);
 
     // Results Actions
@@ -768,7 +767,6 @@
     if (state.isSubmitted) return;
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-    // A/B/C/D or 1/2/3/4 for options
     const q = state.questionDeck[state.currentIndex];
     if (!q) return;
 
@@ -795,7 +793,6 @@
       .replace(/'/g, '&#039;');
   }
 
-  // Start on page ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

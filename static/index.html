@@ -1,323 +1,454 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>MET Mock 2 — Meteorology Exam Prep</title>
   <meta name="description" content="100-Question CPL Meteorology Mock Examination 2 with interactive practice and exam modes." />
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  
+  <!-- Bootstrap 5.3 & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <!-- TOP APP BAR -->
-  <header class="app-header">
-    <div class="header-left">
-      <div class="logo-icon">✈️</div>
-      <div class="logo-text">
-        <h1 class="exam-title">MET Mock 2</h1>
-        <span class="exam-sub">Meteorology • 100 Questions</span>
+<body class="bg-body-tertiary">
+
+  <!-- TOP NAVBAR -->
+  <nav class="navbar navbar-expand bg-surface border-bottom sticky-top py-2 px-3 shadow-sm">
+    <div class="container-fluid px-0 justify-content-between">
+      
+      <!-- Brand -->
+      <a class="navbar-brand d-flex align-items-center gap-2 m-0 text-decoration-none" href="#">
+        <span class="brand-badge"><i class="bi bi-airplane-engines-fill text-info"></i></span>
+        <div>
+          <div class="brand-title">MET Mock 2</div>
+          <div class="brand-subtitle d-none d-sm-block">100 Questions • CPL Exam</div>
+        </div>
+      </a>
+
+      <!-- Center / Right: Timer & Tools -->
+      <div class="d-flex align-items-center gap-2">
+        
+        <!-- Timer Badge -->
+        <div class="timer-pill d-flex align-items-center gap-1 px-3 py-1 rounded-pill" id="timerBadge">
+          <i class="bi bi-stopwatch text-info"></i>
+          <span class="font-mono fw-bold" id="timerDisplay">02:00:00</span>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="btn btn-outline-secondary btn-icon" id="themeToggleBtn" type="button" title="Toggle theme">
+          <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+        </button>
+
+        <!-- Settings Toggle -->
+        <button class="btn btn-outline-secondary btn-icon" id="settingsToggleBtn" type="button" title="Exam Settings">
+          <i class="bi bi-gear-fill"></i>
+        </button>
+
+        <!-- Question Grid Offcanvas Toggle (Mobile only) -->
+        <button class="btn btn-outline-info d-lg-none d-flex align-items-center gap-1 px-2 py-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#paletteOffcanvas">
+          <i class="bi bi-grid-3x3-gap-fill"></i>
+          <span class="small fw-semibold"><span id="mobileAnsweredCount">0</span>/100</span>
+        </button>
+
+        <!-- Desktop Submit Button -->
+        <button class="btn btn-primary d-none d-lg-inline-flex align-items-center gap-1 fw-semibold" id="topSubmitBtn" type="button">
+          <i class="bi bi-check2-circle"></i>
+          <span>Submit Exam</span>
+        </button>
+
       </div>
     </div>
+  </nav>
 
-    <div class="header-center">
-      <div class="timer-badge" id="timerBadge" title="Exam Timer">
-        <span class="timer-icon">⏱️</span>
-        <span class="timer-display" id="timerDisplay">02:00:00</span>
-      </div>
-    </div>
-
-    <div class="header-right">
-      <button class="icon-btn" id="themeToggleBtn" title="Toggle Theme">
-        <span id="themeIcon">🌙</span>
-      </button>
-      <button class="icon-btn" id="settingsToggleBtn" title="Exam Settings">
-        <span>⚙️</span>
-      </button>
-      <button class="btn btn-secondary palette-toggle-mobile" id="mobilePaletteBtn">
-        <span>📋 Grid (<span id="mobileAnsweredCount">0</span>/100)</span>
-      </button>
-      <button class="btn btn-primary submit-top-btn" id="topSubmitBtn">
-        <span>Submit Exam</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- PROGRESS LINE -->
-  <div class="progress-track">
-    <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+  <!-- PROGRESS BAR -->
+  <div class="progress rounded-0" style="height: 4px;">
+    <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" id="progressBar" role="progressbar" style="width: 0%;"></div>
   </div>
 
-  <!-- MAIN APP CONTAINER -->
-  <main class="main-container">
+  <!-- MAIN CONTAINER -->
+  <div class="container-xl py-3 py-md-4">
     
-    <!-- 1. QUIZ VIEW -->
-    <div class="quiz-layout" id="quizView">
+    <!-- 1. QUIZ SCREEN -->
+    <div class="row g-4" id="quizView">
       
-      <!-- LEFT: QUESTION DISPLAY AREA -->
-      <section class="question-pane">
-        
-        <!-- Header Info within Question Pane -->
-        <div class="q-header-row">
-          <div class="q-number-pill" id="qNumberPill">
-            <span class="q-index-highlight">Question <span id="currentQNum">1</span></span>
-            <span class="q-total-label">of 100</span>
-          </div>
-
-          <div class="q-status-tags">
-            <span class="status-pill status-unanswered" id="qStatusPill">Unanswered</span>
-            <button class="mark-btn" id="markBtn" title="Mark this question to review later">
-              <span class="mark-icon">⭐</span>
-              <span id="markBtnText">Mark for Review</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Question Body Card -->
-        <div class="question-card">
-          <div class="q-text" id="questionText">Loading question...</div>
-
-          <!-- Options List -->
-          <div class="options-container" id="optionsContainer">
-            <!-- Options dynamically rendered by JavaScript -->
-          </div>
-
-          <!-- Instant Feedback (Practice Mode only) -->
-          <div class="explanation-box hidden" id="instantExplanationBox">
-            <div class="exp-header">
-              <span class="exp-badge" id="expResultBadge">Correct</span>
-              <strong>Explanation & Key Concept:</strong>
+      <!-- MAIN QUESTION COLUMN -->
+      <div class="col-12 col-lg-8 col-xl-8">
+        <div class="card border-0 shadow-sm rounded-4 question-card p-3 p-md-4">
+          
+          <!-- Card Header Info -->
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pb-3 mb-3 border-bottom">
+            <div class="d-flex align-items-baseline gap-2">
+              <span class="fs-4 fw-bold text-info" id="currentQNum">Question 1</span>
+              <span class="text-secondary small fw-medium">of 100</span>
             </div>
-            <p class="exp-text" id="instantExpText"></p>
-          </div>
-        </div>
 
-        <!-- Bottom Navigation Controls -->
-        <div class="quiz-nav-bar">
-          <div class="nav-left">
-            <button class="btn btn-secondary" id="prevBtn" disabled>
-              <span>← Previous</span>
-            </button>
-            <button class="btn btn-ghost" id="clearBtn">
-              <span>Clear Choice</span>
-            </button>
+            <div class="d-flex align-items-center gap-2">
+              <span class="badge rounded-pill bg-secondary-subtle text-secondary border px-2 py-1 small" id="qStatusPill">Unanswered</span>
+              <button class="btn btn-sm btn-outline-warning rounded-pill px-3 py-1 d-flex align-items-center gap-1" id="markBtn" type="button">
+                <i class="bi bi-star-fill text-warning"></i>
+                <span id="markBtnText">Mark for Review</span>
+              </button>
+            </div>
           </div>
 
-          <div class="nav-right">
-            <button class="btn btn-secondary" id="nextBtn">
-              <span>Next →</span>
-            </button>
-            <button class="btn btn-accent" id="finishBtn">
-              <span>Submit & Finish 🏁</span>
-            </button>
+          <!-- Question Text -->
+          <div class="question-text-wrap mb-4">
+            <h2 class="h5 fw-semibold lh-base mb-0" id="questionText">Loading question...</h2>
           </div>
-        </div>
 
-      </section>
-
-      <!-- RIGHT: QUESTION PALETTE SIDEBAR -->
-      <aside class="palette-pane" id="palettePane">
-        <div class="palette-header">
-          <h2 class="palette-title">Question Grid</h2>
-          <button class="close-palette-mobile" id="closeMobilePaletteBtn">&times;</button>
-        </div>
-
-        <!-- Stats Chips -->
-        <div class="palette-stats-row">
-          <div class="stat-pill stat-answered">
-            <span class="stat-dot green"></span>
-            <span class="stat-val" id="statAnsweredCount">0</span>
-            <span class="stat-lbl">Done</span>
+          <!-- Options Container -->
+          <div class="d-flex flex-column gap-2 mb-4" id="optionsContainer">
+            <!-- Options populated dynamically -->
           </div>
-          <div class="stat-pill stat-marked">
-            <span class="stat-dot amber"></span>
-            <span class="stat-val" id="statMarkedCount">0</span>
-            <span class="stat-lbl">Marked</span>
+
+          <!-- Instant Feedback (Practice Mode) -->
+          <div class="alert alert-info border-info d-none mb-4" id="instantExplanationBox" role="alert">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge" id="expResultBadge">Correct</span>
+              <strong class="small">Explanation & Concept:</strong>
+            </div>
+            <p class="small mb-0 lh-base text-secondary-emphasis" id="instantExpText"></p>
           </div>
-          <div class="stat-pill stat-unanswered">
-            <span class="stat-dot grey"></span>
-            <span class="stat-val" id="statUnansweredCount">100</span>
-            <span class="stat-lbl">Pending</span>
+
+          <!-- Bottom Actions -->
+          <div class="pt-3 border-top">
+            <div class="row g-2">
+              
+              <div class="col-6 col-sm-3 order-1">
+                <button class="btn btn-outline-secondary w-100 py-2 fw-semibold d-flex align-items-center justify-content-center gap-1" id="prevBtn" type="button" disabled>
+                  <i class="bi bi-arrow-left"></i> Prev
+                </button>
+              </div>
+
+              <div class="col-6 col-sm-3 order-2 order-sm-3">
+                <button class="btn btn-primary w-100 py-2 fw-semibold d-flex align-items-center justify-content-center gap-1" id="nextBtn" type="button">
+                  Next <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+
+              <div class="col-6 col-sm-3 order-3 order-sm-2">
+                <button class="btn btn-light border w-100 py-2 small fw-medium text-secondary" id="clearBtn" type="button">
+                  Clear Choice
+                </button>
+              </div>
+
+              <div class="col-6 col-sm-3 order-4">
+                <button class="btn btn-success w-100 py-2 fw-semibold d-flex align-items-center justify-content-center gap-1" id="finishBtn" type="button">
+                  <i class="bi bi-flag-fill"></i> Finish
+                </button>
+              </div>
+
+            </div>
           </div>
-        </div>
 
-        <!-- Palette Filter Tabs -->
-        <div class="palette-filters">
-          <button class="p-filter-btn active" data-filter="all">All (100)</button>
-          <button class="p-filter-btn" data-filter="answered">Answered</button>
-          <button class="p-filter-btn" data-filter="marked">Marked</button>
-          <button class="p-filter-btn" data-filter="unanswered">Pending</button>
         </div>
+      </div>
 
-        <!-- 100 Grid -->
-        <div class="questions-grid" id="questionsGrid">
-          <!-- 1 to 100 generated by JS -->
-        </div>
+      <!-- DESKTOP SIDEBAR QUESTION PALETTE -->
+      <div class="col-12 col-lg-4 col-xl-4 d-none d-lg-block">
+        <div class="card border-0 shadow-sm rounded-4 p-3 sticky-top" style="top: 84px;">
+          
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h3 class="h6 fw-bold mb-0">Question Grid</h3>
+            <span class="badge bg-info-subtle text-info">100 Questions</span>
+          </div>
 
-        <!-- Quick Submit in Sidebar -->
-        <div class="palette-footer">
-          <button class="btn btn-primary btn-block" id="paletteSubmitBtn">
+          <!-- Quick Stats -->
+          <div class="row g-2 mb-3 text-center">
+            <div class="col-4">
+              <div class="p-2 rounded-3 bg-success-subtle border border-success-subtle">
+                <div class="fs-6 fw-bold text-success" id="statAnsweredCount">0</div>
+                <div class="text-secondary" style="font-size: 11px;">Done</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="p-2 rounded-3 bg-warning-subtle border border-warning-subtle">
+                <div class="fs-6 fw-bold text-warning" id="statMarkedCount">0</div>
+                <div class="text-secondary" style="font-size: 11px;">Marked</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="p-2 rounded-3 bg-secondary-subtle border">
+                <div class="fs-6 fw-bold text-secondary" id="statUnansweredCount">100</div>
+                <div class="text-secondary" style="font-size: 11px;">Pending</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="btn-group btn-group-sm w-100 mb-3" role="group">
+            <button type="button" class="btn btn-outline-secondary p-filter-btn active" data-filter="all">All</button>
+            <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="answered">Done</button>
+            <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="marked">Marked</button>
+            <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="unanswered">Pending</button>
+          </div>
+
+          <!-- 100 Button Grid -->
+          <div class="palette-grid-scroll mb-3">
+            <div class="d-grid grid-cols-5 gap-2" id="questionsGridDesktop">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Finish Button in Sidebar -->
+          <button class="btn btn-primary w-100 fw-semibold py-2" id="paletteSubmitBtn" type="button">
             Finish & Review Score
           </button>
+
         </div>
-      </aside>
+      </div>
 
     </div>
 
-    <!-- 2. RESULTS & REVIEW VIEW (HIDDEN INITIALLY) -->
-    <section class="results-layout hidden" id="resultsView">
+    <!-- 2. RESULTS & REVIEW SCREEN (Hidden initially) -->
+    <div class="d-none" id="resultsView">
       
       <!-- HERO SCORE CARD -->
-      <div class="results-hero-card">
-        <div class="results-badge" id="resultsVerdictBadge">PASSED 🎉</div>
-        <h2 class="results-title">MET Mock 2 Completed</h2>
-        <p class="results-subtitle">Meteorology 100-Question Exam Summary</p>
-
-        <div class="score-circle-wrap">
-          <div class="score-percentage" id="scorePercent">0%</div>
-          <div class="score-fraction" id="scoreFraction">0 / 100 Correct</div>
+      <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 text-center mb-4">
+        
+        <div class="mb-2">
+          <span class="badge rounded-pill px-3 py-2 fs-6 fw-bold" id="resultsVerdictBadge">PASSED 🎉</span>
         </div>
 
-        <!-- Detailed Metrics Grid -->
-        <div class="results-metrics-grid">
-          <div class="res-metric-box metric-correct">
-            <div class="metric-val" id="resCorrectCount">0</div>
-            <div class="metric-lbl">Correct (🟢)</div>
+        <h1 class="h3 fw-bold mb-1">MET Mock 2 Completed</h1>
+        <p class="text-secondary small mb-4">Meteorology Examination Summary</p>
+
+        <!-- Big Score Display -->
+        <div class="score-display-box my-2">
+          <div class="display-3 fw-bolder text-info font-display" id="scorePercent">0%</div>
+          <div class="h5 fw-semibold text-secondary" id="scoreFraction">0 / 100 Correct</div>
+        </div>
+
+        <!-- Metrics Row -->
+        <div class="row g-3 justify-content-center my-3 max-w-700 mx-auto w-100">
+          <div class="col-6 col-sm-3">
+            <div class="p-3 rounded-4 bg-success-subtle border border-success-subtle">
+              <div class="h4 fw-bold text-success mb-0" id="resCorrectCount">0</div>
+              <div class="small text-secondary fw-semibold">Correct (🟢)</div>
+            </div>
           </div>
-          <div class="res-metric-box metric-incorrect">
-            <div class="metric-val" id="resIncorrectCount">0</div>
-            <div class="metric-lbl">Incorrect (🔴)</div>
+          <div class="col-6 col-sm-3">
+            <div class="p-3 rounded-4 bg-danger-subtle border border-danger-subtle">
+              <div class="h4 fw-bold text-danger mb-0" id="resIncorrectCount">0</div>
+              <div class="small text-secondary fw-semibold">Incorrect (🔴)</div>
+            </div>
           </div>
-          <div class="res-metric-box metric-skipped">
-            <div class="metric-val" id="resSkippedCount">0</div>
-            <div class="metric-lbl">Skipped (⚪)</div>
+          <div class="col-6 col-sm-3">
+            <div class="p-3 rounded-4 bg-secondary-subtle border">
+              <div class="h4 fw-bold text-secondary mb-0" id="resSkippedCount">0</div>
+              <div class="small text-secondary fw-semibold">Skipped (⚪)</div>
+            </div>
           </div>
-          <div class="res-metric-box metric-time">
-            <div class="metric-val" id="resTimeSpent">0m 0s</div>
-            <div class="metric-lbl">Time Spent (⏱️)</div>
+          <div class="col-6 col-sm-3">
+            <div class="p-3 rounded-4 bg-info-subtle border border-info-subtle">
+              <div class="h4 fw-bold text-info mb-0" id="resTimeSpent">0m 0s</div>
+              <div class="small text-secondary fw-semibold">Time Spent (⏱️)</div>
+            </div>
           </div>
         </div>
 
-        <!-- Hero Actions -->
-        <div class="results-actions">
-          <button class="btn btn-primary" id="retakeAllBtn">
-            <span>🔄 Retake Full Exam</span>
+        <!-- Action Buttons -->
+        <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+          <button class="btn btn-primary px-4 py-2 fw-semibold" id="retakeAllBtn" type="button">
+            <i class="bi bi-arrow-repeat"></i> Retake Full Exam
           </button>
-          <button class="btn btn-secondary" id="retakeMistakesBtn">
-            <span>🎯 Practice Mistakes Only</span>
+          <button class="btn btn-outline-danger px-4 py-2 fw-semibold" id="retakeMistakesBtn" type="button">
+            <i class="bi bi-bullseye"></i> Practice Mistakes Only
           </button>
-          <button class="btn btn-ghost" id="jumpToReviewBtn">
-            <span>⬇️ Jump to Explanations</span>
+          <button class="btn btn-outline-secondary px-3 py-2 fw-semibold" id="jumpToReviewBtn" type="button">
+            <i class="bi bi-card-checklist"></i> View Solutions
           </button>
+        </div>
+
+      </div>
+
+      <!-- DETAILED REVIEW SECTION -->
+      <div class="card border-0 shadow-sm rounded-4 p-3 p-md-4" id="reviewSection">
+        
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pb-3 mb-3 border-bottom">
+          <h2 class="h5 fw-bold mb-0">Solutions & Explanations</h2>
+
+          <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-outline-secondary rev-filter-btn active" data-rev-filter="all">All (100)</button>
+            <button type="button" class="btn btn-outline-danger rev-filter-btn" data-rev-filter="incorrect">Wrong (<span id="revWrongCount">0</span>)</button>
+            <button type="button" class="btn btn-outline-success rev-filter-btn" data-rev-filter="correct">Correct (<span id="revRightCount">0</span>)</button>
+            <button type="button" class="btn btn-outline-warning rev-filter-btn" data-rev-filter="marked">Marked (<span id="revMarkedCount">0</span>)</button>
+          </div>
+        </div>
+
+        <!-- Review list cards -->
+        <div class="d-flex flex-column gap-3" id="reviewList">
+          <!-- Populated by JS -->
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MOBILE OFFCANVAS QUESTION PALETTE -->
+  <div class="offcanvas offcanvas-end bg-surface" tabindex="-1" id="paletteOffcanvas" aria-labelledby="paletteOffcanvasLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title fw-bold" id="paletteOffcanvasLabel">Question Grid</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    
+    <div class="offcanvas-body d-flex flex-column">
+      
+      <!-- Quick Stats -->
+      <div class="row g-2 mb-3 text-center">
+        <div class="col-4">
+          <div class="p-2 rounded-3 bg-success-subtle border border-success-subtle">
+            <div class="fs-6 fw-bold text-success" id="statAnsweredCountMobile">0</div>
+            <div class="text-secondary" style="font-size: 11px;">Done</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="p-2 rounded-3 bg-warning-subtle border border-warning-subtle">
+            <div class="fs-6 fw-bold text-warning" id="statMarkedCountMobile">0</div>
+            <div class="text-secondary" style="font-size: 11px;">Marked</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="p-2 rounded-3 bg-secondary-subtle border">
+            <div class="fs-6 fw-bold text-secondary" id="statUnansweredCountMobile">100</div>
+            <div class="text-secondary" style="font-size: 11px;">Pending</div>
+          </div>
         </div>
       </div>
 
-      <!-- DETAILED QUESTION-BY-QUESTION REVIEW -->
-      <div class="review-section" id="reviewSection">
-        <div class="review-header">
-          <h3>Question-by-Question Solutions & Explanations</h3>
-          
-          <div class="review-filters">
-            <button class="rev-filter-btn active" data-rev-filter="all">All (100)</button>
-            <button class="rev-filter-btn filter-wrong" data-rev-filter="incorrect">Incorrect Only (<span id="revWrongCount">0</span>)</button>
-            <button class="rev-filter-btn filter-correct" data-rev-filter="correct">Correct (<span id="revRightCount">0</span>)</button>
-            <button class="rev-filter-btn filter-marked" data-rev-filter="marked">Marked (<span id="revMarkedCount">0</span>)</button>
-          </div>
-        </div>
+      <!-- Filter Buttons -->
+      <div class="btn-group btn-group-sm w-100 mb-3" role="group">
+        <button type="button" class="btn btn-outline-secondary p-filter-btn active" data-filter="all">All</button>
+        <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="answered">Done</button>
+        <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="marked">Marked</button>
+        <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="unanswered">Pending</button>
+      </div>
 
-        <div class="review-list" id="reviewList">
-          <!-- Solutions dynamically populated by JS -->
+      <!-- Grid Buttons -->
+      <div class="flex-grow-1 overflow-y-auto mb-3">
+        <div class="d-grid grid-cols-5 gap-2" id="questionsGridMobile">
+          <!-- Rendered by JS -->
         </div>
       </div>
 
-    </section>
+      <button class="btn btn-primary w-100 fw-semibold py-2" id="mobilePaletteSubmitBtn" type="button" data-bs-dismiss="offcanvas">
+        Submit Exam
+      </button>
 
-  </main>
+    </div>
+  </div>
 
   <!-- CONFIRM SUBMISSION MODAL -->
-  <div class="modal-backdrop hidden" id="submitModal">
-    <div class="modal-card">
-      <div class="modal-icon">📝</div>
-      <h3 class="modal-title">Ready to submit MET Mock 2?</h3>
-      <p class="modal-desc">Please review your test status before finalizing:</p>
-
-      <div class="modal-summary-grid">
-        <div class="modal-summary-item sum-answered">
-          <span class="sum-num" id="modalAnsweredCount">0</span>
-          <span class="sum-label">Answered</span>
+  <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold" id="submitModalLabel">Submit MET Mock 2?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-summary-item sum-marked">
-          <span class="sum-num" id="modalMarkedCount">0</span>
-          <span class="sum-label">Marked for Review</span>
-        </div>
-        <div class="modal-summary-item sum-unanswered">
-          <span class="sum-num" id="modalUnansweredCount">0</span>
-          <span class="sum-label">Unanswered</span>
-        </div>
-      </div>
+        <div class="modal-body py-3">
+          <p class="text-secondary small mb-3">Review your exam status before final score evaluation:</p>
 
-      <div class="modal-alert hidden" id="unansweredWarning">
-        ⚠️ You still have <strong id="modalUnansweredWarnCount">0</strong> unanswered question(s)!
-      </div>
+          <div class="row g-2 text-center mb-3">
+            <div class="col-4">
+              <div class="p-2 rounded-3 bg-success-subtle border border-success-subtle">
+                <div class="h5 fw-bold text-success mb-0" id="modalAnsweredCount">0</div>
+                <div class="text-secondary" style="font-size: 11px;">Answered</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="p-2 rounded-3 bg-warning-subtle border border-warning-subtle">
+                <div class="h5 fw-bold text-warning mb-0" id="modalMarkedCount">0</div>
+                <div class="text-secondary" style="font-size: 11px;">Marked</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="p-2 rounded-3 bg-secondary-subtle border">
+                <div class="h5 fw-bold text-secondary mb-0" id="modalUnansweredCount">0</div>
+                <div class="text-secondary" style="font-size: 11px;">Unanswered</div>
+              </div>
+            </div>
+          </div>
 
-      <div class="modal-buttons">
-        <button class="btn btn-secondary" id="modalCancelBtn">Keep Answering</button>
-        <button class="btn btn-primary" id="modalConfirmBtn">Yes, Submit Exam</button>
+          <div class="alert alert-warning py-2 px-3 small d-none" id="unansweredWarning" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> You still have <strong id="modalUnansweredWarnCount">0</strong> unanswered question(s)!
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keep Answering</button>
+          <button type="button" class="btn btn-primary fw-semibold" id="modalConfirmBtn">Yes, Submit Exam</button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- SETTINGS MODAL -->
-  <div class="modal-backdrop hidden" id="settingsModal">
-    <div class="modal-card">
-      <div class="modal-icon">⚙️</div>
-      <h3 class="modal-title">Exam Settings</h3>
-      <p class="modal-desc">Customize your testing experience:</p>
-
-      <div class="settings-list">
-        <div class="setting-row">
-          <div class="setting-info">
-            <div class="setting-name">Practice / Instant Feedback Mode</div>
-            <div class="setting-desc">Reveal explanations immediately upon choosing an answer</div>
-          </div>
-          <label class="switch">
-            <input type="checkbox" id="settingPracticeMode" />
-            <span class="slider"></span>
-          </label>
+  <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-bottom">
+          <h5 class="modal-title fw-bold" id="settingsModalLabel"><i class="bi bi-gear-fill me-2"></i>Exam Settings</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body py-3">
+          
+          <div class="d-flex flex-column gap-3">
+            
+            <div class="d-flex align-items-center justify-content-between p-2 rounded-3 border">
+              <div>
+                <div class="fw-semibold small">Practice Mode (Instant Feedback)</div>
+                <div class="text-secondary" style="font-size: 11px;">Show explanations immediately upon choosing</div>
+              </div>
+              <div class="form-check form-switch m-0">
+                <input class="form-check-input" type="checkbox" id="settingPracticeMode" role="switch" />
+              </div>
+            </div>
 
-        <div class="setting-row">
-          <div class="setting-info">
-            <div class="setting-name">Randomize / Shuffle Option Order</div>
-            <div class="setting-desc">Mix option choices (A, B, C, D) to prevent position bias</div>
+            <div class="d-flex align-items-center justify-content-between p-2 rounded-3 border">
+              <div>
+                <div class="fw-semibold small">Shuffle Options (A, B, C, D)</div>
+                <div class="text-secondary" style="font-size: 11px;">Randomize choices to test true recall</div>
+              </div>
+              <div class="form-check form-switch m-0">
+                <input class="form-check-input" type="checkbox" id="settingShuffleOptions" role="switch" checked />
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between p-2 rounded-3 border">
+              <div>
+                <div class="fw-semibold small">Countdown Timer (2 Hours)</div>
+                <div class="text-secondary" style="font-size: 11px;">Enforce 120-minute CPL exam timing</div>
+              </div>
+              <div class="form-check form-switch m-0">
+                <input class="form-check-input" type="checkbox" id="settingCountdownTimer" role="switch" checked />
+              </div>
+            </div>
+
           </div>
-          <label class="switch">
-            <input type="checkbox" id="settingShuffleOptions" checked />
-            <span class="slider"></span>
-          </label>
-        </div>
 
-        <div class="setting-row">
-          <div class="setting-info">
-            <div class="setting-name">Count Down Timer (2 Hours)</div>
-            <div class="setting-desc">Simulate realistic CPL 120-minute time constraint</div>
-          </div>
-          <label class="switch">
-            <input type="checkbox" id="settingCountdownTimer" checked />
-            <span class="slider"></span>
-          </label>
         </div>
-      </div>
-
-      <div class="modal-buttons">
-        <button class="btn btn-ghost danger-text" id="resetExamBtn">Reset All Answers</button>
-        <button class="btn btn-primary" id="closeSettingsBtn">Done</button>
+        <div class="modal-footer border-0 justify-content-between">
+          <button type="button" class="btn btn-outline-danger btn-sm" id="resetExamBtn">Reset Progress</button>
+          <button type="button" class="btn btn-primary btn-sm px-3" data-bs-dismiss="modal">Done</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- QUESTIONS DATA & SCRIPT -->
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- App Data & Scripts -->
   <script src="questions.js"></script>
   <script src="app.js"></script>
 </body>
