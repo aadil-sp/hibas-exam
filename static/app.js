@@ -1,6 +1,6 @@
 /**
  * CPL EXAM PREP PORTAL — MULTI-SUBJECT ENGINE
- * Pure client-side modular architecture
+ * Pure client-side modular architecture with In-Depth Explanations
  */
 
 (function () {
@@ -8,7 +8,7 @@
 
   // ── REGISTRY & GLOBAL STATE ──
   const REGISTRY = window.EXAM_REGISTRY || {};
-  const SETTINGS_KEY = 'cpl_global_settings_v1';
+  const SETTINGS_KEY = 'cpl_global_settings_v2';
   const DEFAULT_DURATION_SECS = 2 * 60 * 60; // 2 Hours (7200s)
 
   let activeSubjectId = null;
@@ -69,8 +69,6 @@
     questionText: document.getElementById('questionText'),
     optionsContainer: document.getElementById('optionsContainer'),
     instantExplanationBox: document.getElementById('instantExplanationBox'),
-    expResultBadge: document.getElementById('expResultBadge'),
-    instantExpText: document.getElementById('instantExpText'),
 
     // Quiz Nav
     prevBtn: document.getElementById('prevBtn'),
@@ -195,7 +193,6 @@
       const colorClass = subject.badgeColor || 'info';
       const iconClass = subject.icon || 'bi-airplane-fill';
 
-      // Load previous high score from localStorage if any
       const savedScore = localStorage.getItem(`cpl_score_${key}`);
       let scoreBadgeHtml = '';
       if (savedScore !== null) {
@@ -241,9 +238,8 @@
       elements.subjectCardsGrid.appendChild(col);
     });
 
-    // Attach click listeners to Start buttons
     document.querySelectorAll('.start-exam-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         const subId = btn.dataset.subjectId;
         const mode = btn.dataset.mode;
         startSubjectExam(subId, mode === 'practice');
@@ -261,7 +257,6 @@
     elements.quizView.classList.add('d-none');
     elements.resultsView.classList.add('d-none');
 
-    // Navbar controls
     elements.navBackToHubBtn.classList.add('d-none');
     elements.timerBadge.classList.add('d-none');
     elements.timerBadge.classList.remove('d-flex');
@@ -289,7 +284,6 @@
       saveSettings();
     }
 
-    // Check if there is saved progress for this specific subject
     const stateKey = `cpl_state_${subjectId}`;
     const saved = localStorage.getItem(stateKey);
     let loadedState = null;
@@ -305,7 +299,6 @@
       buildDeck(activeExamMeta.questions);
     }
 
-    // Update Header
     elements.navBackToHubBtn.classList.remove('d-none');
     elements.timerBadge.classList.remove('d-none');
     elements.timerBadge.classList.add('d-flex');
@@ -361,6 +354,7 @@
         question: q.question,
         options: optionsList,
         correctText: correctText,
+        detailed_explanation: q.detailed_explanation || null,
         explanation: q.explanation || `Correct Answer: ${correctText}`
       };
     });
@@ -436,6 +430,72 @@
     }
   }
 
+  // ── DETAILED EXPLANATION HTML BUILDER ──
+  function buildDetailedExplanationHtml(q, userAns) {
+    const isAnswered = userAns !== undefined;
+    const isCorrect = userAns === q.correctText;
+    const det = q.detailed_explanation || {};
+
+    const whyRightText = det.why_right || q.explanation || `The correct answer is: ${q.correctText}`;
+    const whyOthersWrong = det.why_others_wrong || [];
+    const keyTakeaway = det.key_takeaway || `Key Concept: ${q.correctText}`;
+
+    let statusBadge = '';
+    if (isAnswered) {
+      statusBadge = isCorrect 
+        ? '<span class="badge bg-success px-2 py-1"><i class="bi bi-check-circle-fill me-1"></i> Your Answer is Correct</span>'
+        : '<span class="badge bg-danger px-2 py-1"><i class="bi bi-x-circle-fill me-1"></i> Your Answer is Incorrect</span>';
+    }
+
+    let wrongListHtml = '';
+    if (whyOthersWrong && whyOthersWrong.length > 0) {
+      wrongListHtml = `
+        <div class="exp-section-title text-danger mt-3">
+          <i class="bi bi-x-octagon-fill"></i> Why Other Options Are Incorrect:
+        </div>
+        <ul class="exp-why-wrong-list">
+          ${whyOthersWrong.map(item => `<li class="exp-why-wrong-item">❌ ${escapeHtml(item)}</li>`).join('')}
+        </ul>
+      `;
+    }
+
+    return `
+      <div class="explanation-card-detailed">
+        
+        <!-- Header with correct answer highlight -->
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3 pb-2 border-bottom">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-info-subtle text-info border border-info-subtle px-2 py-1"><i class="bi bi-lightbulb-fill"></i> Detailed Solution</span>
+            ${statusBadge}
+          </div>
+        </div>
+
+        <!-- 1. WHICH IS RIGHT CALLOUT -->
+        <div class="exp-correct-callout">
+          <div class="small fw-bold text-success text-uppercase mb-1"><i class="bi bi-check-circle-fill"></i> Correct Option:</div>
+          <div class="fw-bold fs-6 text-success-emphasis">${escapeHtml(q.correctText)}</div>
+        </div>
+
+        <!-- 2. WHY IT IS RIGHT -->
+        <div class="exp-section-title text-success">
+          <i class="bi bi-patch-check-fill"></i> Why It Is Right:
+        </div>
+        <div class="exp-why-right">
+          ${escapeHtml(whyRightText)}
+        </div>
+
+        <!-- 3. WHY IT ISN'T RIGHT (DISTRACTOR BREAKDOWN) -->
+        ${wrongListHtml}
+
+        <!-- 4. KEY CONCEPT TAKEAWAY -->
+        <div class="exp-takeaway-box mt-3">
+          <i class="bi bi-bookmark-star-fill me-1"></i> <strong>Key Takeaway:</strong> ${escapeHtml(keyTakeaway)}
+        </div>
+
+      </div>
+    `;
+  }
+
   // ── RENDER QUESTION ──
   function renderCurrentQuestion() {
     if (!state.questionDeck || state.questionDeck.length === 0) return;
@@ -489,12 +549,10 @@
       elements.optionsContainer.appendChild(optionBtn);
     });
 
+    // Practice Mode Instant Detailed Feedback at the Bottom
     if (settings.practiceMode && isAnswered) {
       elements.instantExplanationBox.classList.remove('d-none');
-      const isCorrect = state.answers[q.id] === q.correctText;
-      elements.expResultBadge.textContent = isCorrect ? 'Correct ✓' : 'Incorrect ✗';
-      elements.expResultBadge.className = `badge ${isCorrect ? 'bg-success' : 'bg-danger'}`;
-      elements.instantExpText.textContent = q.explanation;
+      elements.instantExplanationBox.innerHTML = buildDetailedExplanationHtml(q, state.answers[q.id]);
     } else {
       elements.instantExplanationBox.classList.add('d-none');
     }
@@ -679,7 +737,6 @@
     const percentage = Math.round((correct / total) * 100);
     const passed = percentage >= 70;
 
-    // Save best score to localStorage
     if (activeSubjectId) {
       const prevBest = parseInt(localStorage.getItem(`cpl_score_${activeSubjectId}`) || '0', 10);
       if (percentage > prevBest) {
@@ -765,6 +822,8 @@
         `;
       });
 
+      const explanationBottomHtml = buildDetailedExplanationHtml(q, userAns);
+
       card.innerHTML = `
         <div class="d-flex align-items-center justify-content-between mb-2">
           <span class="fw-bold text-info font-display">Question ${idx + 1} ${isMarked ? '★' : ''}</span>
@@ -772,9 +831,8 @@
         </div>
         <div class="fw-semibold text-body mb-3">${escapeHtml(q.question)}</div>
         <div class="d-flex flex-column gap-2 mb-3">${optionsHtml}</div>
-        <div class="alert alert-info py-2 px-3 mb-0 small border-info">
-          <strong>💡 Key Concept & Explanation:</strong><br />
-          ${escapeHtml(q.explanation)}
+        <div class="mt-3">
+          ${explanationBottomHtml}
         </div>
       `;
 
