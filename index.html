@@ -3,413 +3,322 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Hiba's CPL Multi-Subject Prep Portal</title>
-  <meta name="description" content="Dedicated CPL exam training dashboard for Captain Hiba." />
+  <title>MET Mock 2 — Meteorology Exam Prep</title>
+  <meta name="description" content="100-Question CPL Meteorology Mock Examination 2 with interactive practice and exam modes." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="subject-mode-met">
-
-<!-- ───────── 1. PROFILE SELECTION SCREEN ───────── -->
-<div class="profile-screen" id="profileScreen">
-  <div class="profile-backdrop-blur"></div>
-  <div class="profile-content">
-    <h1 class="profile-title">Who's training today?</h1>
-    <div class="profile-grid">
-      <!-- Profile: Captain Hiba -->
-      <div class="profile-card" id="profileCardHiba">
-        <div class="avatar-wrap hiba-avatar">
-          <span class="avatar-emoji">👩‍✈️</span>
-        </div>
-        <h3 class="profile-name">Captain Hiba</h3>
-        <p class="profile-role">CPL Candidate</p>
-      </div>
-
-      <!-- Profile: Mentor Aadil -->
-      <div class="profile-card" id="profileCardAadil">
-        <div class="avatar-wrap aadil-avatar">
-          <span class="avatar-emoji">🧭</span>
-        </div>
-        <h3 class="profile-name">Mentor Aadil</h3>
-        <p class="profile-role">Flight Instructor</p>
+<body>
+  <!-- TOP APP BAR -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="logo-icon">✈️</div>
+      <div class="logo-text">
+        <h1 class="exam-title">MET Mock 2</h1>
+        <span class="exam-sub">Meteorology • 100 Questions</span>
       </div>
     </div>
-    <div class="profile-footer">
-      <p>CPL Multi-Subject Examination Portal</p>
-    </div>
-  </div>
-</div>
 
-<!-- ───────── 2. CAPTAIN HIBA'S DASHBOARD ───────── -->
-<div class="dashboard-layout hidden" id="hibaDashboard">
-  <header class="dash-header">
-    <div class="header-profile-badge">
-      <span class="badge-avatar">👩‍✈️</span>
-      <div>
-        <p class="badge-title">Captain Hiba</p>
-        <p class="badge-sub">CPL Study Portal</p>
+    <div class="header-center">
+      <div class="timer-badge" id="timerBadge" title="Exam Timer">
+        <span class="timer-icon">⏱️</span>
+        <span class="timer-display" id="timerDisplay">02:00:00</span>
       </div>
     </div>
-    <div class="header-actions">
-      <button class="settings-gear-btn" id="dashHomeBtn" title="Switch User">🏠 Switch</button>
-      <button class="settings-gear-btn" id="dashSettingsBtn" title="Settings">⚙️</button>
+
+    <div class="header-right">
+      <button class="icon-btn" id="themeToggleBtn" title="Toggle Theme">
+        <span id="themeIcon">🌙</span>
+      </button>
+      <button class="icon-btn" id="settingsToggleBtn" title="Exam Settings">
+        <span>⚙️</span>
+      </button>
+      <button class="btn btn-secondary palette-toggle-mobile" id="mobilePaletteBtn">
+        <span>📋 Grid (<span id="mobileAnsweredCount">0</span>/100)</span>
+      </button>
+      <button class="btn btn-primary submit-top-btn" id="topSubmitBtn">
+        <span>Submit Exam</span>
+      </button>
     </div>
   </header>
 
-  <main class="dash-main">
-
-    <!-- Greeting + Stats Row -->
-    <section class="hiba-hero-section">
-      <div class="hiba-greeting">
-        <h2 class="hiba-hello">Ready to fly, Captain? ✈️</h2>
-        <p class="hiba-sub">Pick a subject to start studying</p>
-      </div>
-      <div class="hiba-stats-row">
-        <div class="hiba-stat">
-          <span class="hiba-stat-val" id="dashHibaAccuracy">—</span>
-          <span class="hiba-stat-lbl">Accuracy</span>
-        </div>
-        <div class="hiba-stat-divider"></div>
-        <div class="hiba-stat">
-          <span class="hiba-stat-val" id="dashHibaMastery">0</span>
-          <span class="hiba-stat-lbl">Answered</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SUBJECT TILES — HERO -->
-    <section class="subjects-section">
-      <h3 class="section-title">Choose Your Subject</h3>
-      <div class="subjects-grid hero-grid">
-        <div class="subject-card hero-card" data-subject="nav" id="subCardNav">
-          <div class="sc-avatar nav-subject">🧭</div>
-          <h4>Navigation</h4>
-          <p class="sc-count" id="subCountNav">— Questions</p>
-        </div>
-        <div class="subject-card hero-card" data-subject="reg" id="subCardReg">
-          <div class="sc-avatar reg-subject">📜</div>
-          <h4>Regulations</h4>
-          <p class="sc-count" id="subCountReg">— Questions</p>
-        </div>
-        <div class="subject-card hero-card" data-subject="met" id="subCardMet">
-          <div class="sc-avatar met-subject">🌦️</div>
-          <h4>Meteorology</h4>
-          <p class="sc-count" id="subCountMet">— Questions</p>
-        </div>
-        <div class="subject-card hero-card" data-subject="tech" id="subCardTech">
-          <div class="sc-avatar tech-subject">🔧</div>
-          <h4>Technical</h4>
-          <p class="sc-count" id="subCountTech">— Questions</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHAPTERS (for non-met subjects only) -->
-    <section class="chapters-section hidden" id="chaptersSection">
-      <h3 class="section-title" id="chaptersTitle">Chapter focus</h3>
-      <div class="chapter-chips-grid" id="chapterChipsContainer"></div>
-    </section>
-
-  </main>
-</div>
-
-
-<!-- ───────── 2b. SUBJECT DETAIL VIEW (Met Chapters) ───────── -->
-<div class="dashboard-layout hidden" id="subjectDetailPanel">
-  <header class="dash-header">
-    <button class="back-nav-btn" id="subjectBackBtn">← Back</button>
-    <div class="header-profile-badge">
-      <span class="badge-avatar" id="subjectDetailIcon">🌦️</span>
-      <div>
-        <p class="badge-title" id="subjectDetailTitle">Aviation Meteorology</p>
-        <p class="badge-sub" id="subjectDetailSub">Select a chapter to study</p>
-      </div>
-    </div>
-    <div class="header-actions">
-      <button class="settings-gear-btn" id="subjectDetailHomeBtn">🏠</button>
-    </div>
-  </header>
-
-  <main class="dash-main subject-detail-main">
-    <!-- MODE SLIDER -->
-    <div class="mode-slider-wrapper">
-      <div class="mode-slider" id="modeSlider">
-        <button class="mode-btn active" id="modeTestBtn" data-mode="test">
-          <span class="mode-icon">🎯</span>
-          <span>Take a Test</span>
-        </button>
-        <button class="mode-btn" id="modeNotesBtn" data-mode="notes">
-          <span class="mode-icon">📖</span>
-          <span>Read Notes</span>
-        </button>
-        <div class="mode-slider-thumb" id="modeSliderThumb"></div>
-      </div>
-      <p class="mode-hint" id="modeHint">Click a chapter to start a practice test</p>
-    </div>
-
-    <!-- CHAPTER TILES GRID -->
-    <div class="chapter-tiles-grid" id="chapterTilesGrid">
-      <!-- Dynamically injected by JS -->
-    </div>
-  </main>
-</div>
-
-<!-- ───────── 2c. NOTES READER PANEL ───────── -->
-<div class="notes-reader-overlay hidden" id="notesReaderPanel">
-  <div class="notes-reader-header">
-    <button class="notes-reader-back" id="notesReaderBack">← Back to Chapters</button>
-    <div class="notes-reader-title-wrap">
-      <span class="notes-reader-icon" id="notesReaderIcon">💧</span>
-      <div>
-        <h2 class="notes-reader-title" id="notesReaderTitle">Humidity</h2>
-        <p class="notes-reader-sub">Aviation Meteorology</p>
-      </div>
-    </div>
-    <button class="notes-reader-test-btn" id="notesReaderStartTest">🎯 Take Test on This Chapter</button>
-  </div>
-  <div class="notes-reader-body" id="notesReaderBody">
-    <!-- Content injected by JS -->
-  </div>
-</div>
-
-
-<!-- ───────── 3. MENTOR AADIL'S PORTAL ───────── -->
-<div class="dashboard-layout hidden" id="aadilDashboard">
-  <header class="dash-header">
-    <div class="header-profile-badge">
-      <span class="badge-avatar">🧭</span>
-      <div>
-        <p class="badge-title">Mentor Aadil</p>
-        <p class="badge-sub">Flight Analytics Console</p>
-      </div>
-    </div>
-    <div class="header-actions">
-      <button class="settings-gear-btn" id="mentorHomeBtn" title="Switch User">🏠 Switch User</button>
-      <button class="settings-gear-btn" id="mentorSettingsBtn" title="Settings">⚙️ Settings</button>
-    </div>
-  </header>
-
-  <main class="dash-main">
-    <!-- Hiba's Summary Stats -->
-    <section class="metrics-grid">
-      <div class="metric-card">
-        <span class="metric-val" id="mentorAccuracy">—</span>
-        <span class="metric-lbl">Hiba's Accuracy</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-val" id="mentorTotalAttempts">0</span>
-        <span class="metric-lbl">Total Attempts</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-val" id="mentorCorrectAnswers">0</span>
-        <span class="metric-lbl">Correct Answers</span>
-      </div>
-    </section>
-
-    <div class="mentor-details-grid">
-      <!-- Performance by Subject -->
-      <section class="mentor-section">
-        <h3 class="section-title">Accuracy by Subject</h3>
-        <div class="chapter-progress-list" id="mentorSubjectList">
-          <!-- Dynamically populated by JS -->
-        </div>
-      </section>
-
-      <!-- Activity Calendar (How often she does this) -->
-      <section class="mentor-section">
-        <h3 class="section-title">Daily Effort Levels</h3>
-        <div class="activity-log-list" id="mentorActivityList">
-          <!-- Dynamically populated by JS -->
-        </div>
-      </section>
-    </div>
-
-    <!-- Chronological Question Log -->
-    <section class="mentor-section full-width">
-      <h3 class="section-title">Hiba's Attempt History Log</h3>
-      <div class="table-wrap">
-        <table class="history-table">
-          <thead>
-            <tr>
-              <th>Timestamp</th>
-              <th>Subject</th>
-              <th>Question</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="mentorHistoryBody">
-            <!-- Dynamically populated by JS -->
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
-</div>
-
-<!-- ───────── 4. EXAMINATION SYSTEM ───────── -->
-<div class="app-shell hidden" id="examPanel">
-
-  <!-- TOP BAR -->
-  <header class="topbar">
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="topbar-title">
-      <span id="subjectLabel">Meteorology</span>
-      <span class="divider">/</span>
-      <span id="sectionLabel">All Chapters</span>
-    </div>
-    <button class="home-icon-btn" id="exitExamBtn" title="Back to Dashboard">🏠</button>
-    <button class="settings-gear-btn icon-only" id="examSettingsBtn" title="Settings">⚙️</button>
-    <div class="topbar-score">
-      <span id="topScore">0/0</span>
-    </div>
-  </header>
-
-  <!-- PROGRESS BAR -->
-  <div class="progress-wrap">
-    <div class="progress-bar" id="progressBar"></div>
+  <!-- PROGRESS LINE -->
+  <div class="progress-track">
+    <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <main class="main-content">
-
-    <!-- QUESTION PANEL -->
-    <section class="question-panel" id="questionPanel">
-      <div class="q-meta">
-        <span class="q-badge" id="qBadge">Q 1</span>
-        <span class="q-topic-tag" id="qTopicTag">Atmosphere</span>
-      </div>
-
-      <p class="question-text" id="questionText">Loading question…</p>
-
-      <div class="options-list" id="optionsList">
-        <!-- Options injected by JS -->
-      </div>
-
-      <div class="feedback-strip" id="feedbackStrip" style="display:none"></div>
-
-      <div class="action-row">
-        <button class="btn-skip" id="skipBtn">⏭ Skip Question</button>
-        <button class="btn-next" id="nextBtn" style="display:none">Next Question →</button>
-      </div>
-    </section>
-
-    <!-- NOTES PANEL (explains correct answer) -->
-    <aside class="notes-panel" id="notesPanel" style="display:none">
-      <div class="notes-header">
-        <span>📝 Explanatory flight log notes</span>
-        <button class="notes-close" id="notesClose">✕</button>
-      </div>
-      <div class="notes-body" id="notesBody"></div>
-    </aside>
-
-  </main>
-
-  <!-- STATS BAR (bottom on mobile) -->
-  <footer class="stats-bar">
-    <div class="stat-item">
-      <span class="stat-val" id="statAnswered">0</span>
-      <span class="stat-lbl">Attempted</span>
-    </div>
-    <div class="stat-item correct">
-      <span class="stat-val" id="statCorrect">0</span>
-      <span class="stat-lbl">Correct ✓</span>
-    </div>
-    <div class="stat-item wrong">
-      <span class="stat-val" id="statWrong">0</span>
-      <span class="stat-lbl">Wrong ✗</span>
-    </div>
-    <div class="stat-item skip">
-      <span class="stat-val" id="statSkipped">0</span>
-      <span class="stat-lbl">Skipped</span>
-    </div>
-  </footer>
-
-  <!-- Floating Reset & Shuffle Button -->
-  <button class="float-reset-btn" id="floatResetBtn" title="Reset & Shuffle Session">🔄 Reset &amp; Shuffle</button>
-</div>
-
-<!-- ───────── 5. COCKPIT SETTINGS MODAL ───────── -->
-<div class="modal-overlay hidden" id="settingsModal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3>🛠️ Cockpit Settings</h3>
-      <button class="modal-close" id="settingsCloseBtn">✕</button>
-    </div>
-    <div class="modal-body">
-      <!-- Connection Status -->
-      <div class="setting-item">
-        <span class="setting-label">API Server Status</span>
-        <div class="connection-status status-checking" id="connectionStatus">
-          <span class="status-dot"></span>
-          <span class="status-text">Checking...</span>
-        </div>
-      </div>
+  <!-- MAIN APP CONTAINER -->
+  <main class="main-container">
+    
+    <!-- 1. QUIZ VIEW -->
+    <div class="quiz-layout" id="quizView">
       
-      <!-- General actions -->
-      <div class="setting-item">
-        <span class="setting-label">Profile Operations</span>
-        <button class="setting-action-btn" id="settingsSwitchProfileBtn">⇄ Switch User Profile</button>
+      <!-- LEFT: QUESTION DISPLAY AREA -->
+      <section class="question-pane">
+        
+        <!-- Header Info within Question Pane -->
+        <div class="q-header-row">
+          <div class="q-number-pill" id="qNumberPill">
+            <span class="q-index-highlight">Question <span id="currentQNum">1</span></span>
+            <span class="q-total-label">of 100</span>
+          </div>
+
+          <div class="q-status-tags">
+            <span class="status-pill status-unanswered" id="qStatusPill">Unanswered</span>
+            <button class="mark-btn" id="markBtn" title="Mark this question to review later">
+              <span class="mark-icon">⭐</span>
+              <span id="markBtnText">Mark for Review</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Body Card -->
+        <div class="question-card">
+          <div class="q-text" id="questionText">Loading question...</div>
+
+          <!-- Options List -->
+          <div class="options-container" id="optionsContainer">
+            <!-- Options dynamically rendered by JavaScript -->
+          </div>
+
+          <!-- Instant Feedback (Practice Mode only) -->
+          <div class="explanation-box hidden" id="instantExplanationBox">
+            <div class="exp-header">
+              <span class="exp-badge" id="expResultBadge">Correct</span>
+              <strong>Explanation & Key Concept:</strong>
+            </div>
+            <p class="exp-text" id="instantExpText"></p>
+          </div>
+        </div>
+
+        <!-- Bottom Navigation Controls -->
+        <div class="quiz-nav-bar">
+          <div class="nav-left">
+            <button class="btn btn-secondary" id="prevBtn" disabled>
+              <span>← Previous</span>
+            </button>
+            <button class="btn btn-ghost" id="clearBtn">
+              <span>Clear Choice</span>
+            </button>
+          </div>
+
+          <div class="nav-right">
+            <button class="btn btn-secondary" id="nextBtn">
+              <span>Next →</span>
+            </button>
+            <button class="btn btn-accent" id="finishBtn">
+              <span>Submit & Finish 🏁</span>
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- RIGHT: QUESTION PALETTE SIDEBAR -->
+      <aside class="palette-pane" id="palettePane">
+        <div class="palette-header">
+          <h2 class="palette-title">Question Grid</h2>
+          <button class="close-palette-mobile" id="closeMobilePaletteBtn">&times;</button>
+        </div>
+
+        <!-- Stats Chips -->
+        <div class="palette-stats-row">
+          <div class="stat-pill stat-answered">
+            <span class="stat-dot green"></span>
+            <span class="stat-val" id="statAnsweredCount">0</span>
+            <span class="stat-lbl">Done</span>
+          </div>
+          <div class="stat-pill stat-marked">
+            <span class="stat-dot amber"></span>
+            <span class="stat-val" id="statMarkedCount">0</span>
+            <span class="stat-lbl">Marked</span>
+          </div>
+          <div class="stat-pill stat-unanswered">
+            <span class="stat-dot grey"></span>
+            <span class="stat-val" id="statUnansweredCount">100</span>
+            <span class="stat-lbl">Pending</span>
+          </div>
+        </div>
+
+        <!-- Palette Filter Tabs -->
+        <div class="palette-filters">
+          <button class="p-filter-btn active" data-filter="all">All (100)</button>
+          <button class="p-filter-btn" data-filter="answered">Answered</button>
+          <button class="p-filter-btn" data-filter="marked">Marked</button>
+          <button class="p-filter-btn" data-filter="unanswered">Pending</button>
+        </div>
+
+        <!-- 100 Grid -->
+        <div class="questions-grid" id="questionsGrid">
+          <!-- 1 to 100 generated by JS -->
+        </div>
+
+        <!-- Quick Submit in Sidebar -->
+        <div class="palette-footer">
+          <button class="btn btn-primary btn-block" id="paletteSubmitBtn">
+            Finish & Review Score
+          </button>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- 2. RESULTS & REVIEW VIEW (HIDDEN INITIALLY) -->
+    <section class="results-layout hidden" id="resultsView">
+      
+      <!-- HERO SCORE CARD -->
+      <div class="results-hero-card">
+        <div class="results-badge" id="resultsVerdictBadge">PASSED 🎉</div>
+        <h2 class="results-title">MET Mock 2 Completed</h2>
+        <p class="results-subtitle">Meteorology 100-Question Exam Summary</p>
+
+        <div class="score-circle-wrap">
+          <div class="score-percentage" id="scorePercent">0%</div>
+          <div class="score-fraction" id="scoreFraction">0 / 100 Correct</div>
+        </div>
+
+        <!-- Detailed Metrics Grid -->
+        <div class="results-metrics-grid">
+          <div class="res-metric-box metric-correct">
+            <div class="metric-val" id="resCorrectCount">0</div>
+            <div class="metric-lbl">Correct (🟢)</div>
+          </div>
+          <div class="res-metric-box metric-incorrect">
+            <div class="metric-val" id="resIncorrectCount">0</div>
+            <div class="metric-lbl">Incorrect (🔴)</div>
+          </div>
+          <div class="res-metric-box metric-skipped">
+            <div class="metric-val" id="resSkippedCount">0</div>
+            <div class="metric-lbl">Skipped (⚪)</div>
+          </div>
+          <div class="res-metric-box metric-time">
+            <div class="metric-val" id="resTimeSpent">0m 0s</div>
+            <div class="metric-lbl">Time Spent (⏱️)</div>
+          </div>
+        </div>
+
+        <!-- Hero Actions -->
+        <div class="results-actions">
+          <button class="btn btn-primary" id="retakeAllBtn">
+            <span>🔄 Retake Full Exam</span>
+          </button>
+          <button class="btn btn-secondary" id="retakeMistakesBtn">
+            <span>🎯 Practice Mistakes Only</span>
+          </button>
+          <button class="btn btn-ghost" id="jumpToReviewBtn">
+            <span>⬇️ Jump to Explanations</span>
+          </button>
+        </div>
       </div>
 
-      <div class="setting-item">
-        <span class="setting-label">Session Operations</span>
-        <button class="setting-action-btn" id="settingsResetBtn">🔄 Reset &amp; Shuffle Active Session</button>
+      <!-- DETAILED QUESTION-BY-QUESTION REVIEW -->
+      <div class="review-section" id="reviewSection">
+        <div class="review-header">
+          <h3>Question-by-Question Solutions & Explanations</h3>
+          
+          <div class="review-filters">
+            <button class="rev-filter-btn active" data-rev-filter="all">All (100)</button>
+            <button class="rev-filter-btn filter-wrong" data-rev-filter="incorrect">Incorrect Only (<span id="revWrongCount">0</span>)</button>
+            <button class="rev-filter-btn filter-correct" data-rev-filter="correct">Correct (<span id="revRightCount">0</span>)</button>
+            <button class="rev-filter-btn filter-marked" data-rev-filter="marked">Marked (<span id="revMarkedCount">0</span>)</button>
+          </div>
+        </div>
+
+        <div class="review-list" id="reviewList">
+          <!-- Solutions dynamically populated by JS -->
+        </div>
       </div>
 
-      <!-- Danger zone -->
-      <div class="setting-item danger-zone">
-        <span class="setting-label">Danger Zone</span>
-        <button class="setting-action-btn btn-danger" id="settingsHardResetBtn">⚠️ Hard Reset Local Progress</button>
-        <button class="setting-action-btn btn-danger hidden" id="settingsClearServerLogsBtn">⚠️ Clear Server Activity Logs</button>
+    </section>
+
+  </main>
+
+  <!-- CONFIRM SUBMISSION MODAL -->
+  <div class="modal-backdrop hidden" id="submitModal">
+    <div class="modal-card">
+      <div class="modal-icon">📝</div>
+      <h3 class="modal-title">Ready to submit MET Mock 2?</h3>
+      <p class="modal-desc">Please review your test status before finalizing:</p>
+
+      <div class="modal-summary-grid">
+        <div class="modal-summary-item sum-answered">
+          <span class="sum-num" id="modalAnsweredCount">0</span>
+          <span class="sum-label">Answered</span>
+        </div>
+        <div class="modal-summary-item sum-marked">
+          <span class="sum-num" id="modalMarkedCount">0</span>
+          <span class="sum-label">Marked for Review</span>
+        </div>
+        <div class="modal-summary-item sum-unanswered">
+          <span class="sum-num" id="modalUnansweredCount">0</span>
+          <span class="sum-label">Unanswered</span>
+        </div>
+      </div>
+
+      <div class="modal-alert hidden" id="unansweredWarning">
+        ⚠️ You still have <strong id="modalUnansweredWarnCount">0</strong> unanswered question(s)!
+      </div>
+
+      <div class="modal-buttons">
+        <button class="btn btn-secondary" id="modalCancelBtn">Keep Answering</button>
+        <button class="btn btn-primary" id="modalConfirmBtn">Yes, Submit Exam</button>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ───────── OVERLAY NAVIGATION FOR EXAM SIDEBAR ───────── -->
-<div class="overlay" id="overlay"></div>
-<nav class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <div class="logo-mark">🌦️</div>
-    <div>
-      <p class="sidebar-title">CPL Prep Deck</p>
-      <p class="sidebar-sub">Captain Hiba's Flight Deck</p>
+  <!-- SETTINGS MODAL -->
+  <div class="modal-backdrop hidden" id="settingsModal">
+    <div class="modal-card">
+      <div class="modal-icon">⚙️</div>
+      <h3 class="modal-title">Exam Settings</h3>
+      <p class="modal-desc">Customize your testing experience:</p>
+
+      <div class="settings-list">
+        <div class="setting-row">
+          <div class="setting-info">
+            <div class="setting-name">Practice / Instant Feedback Mode</div>
+            <div class="setting-desc">Reveal explanations immediately upon choosing an answer</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="settingPracticeMode" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-info">
+            <div class="setting-name">Randomize / Shuffle Option Order</div>
+            <div class="setting-desc">Mix option choices (A, B, C, D) to prevent position bias</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="settingShuffleOptions" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-info">
+            <div class="setting-name">Count Down Timer (2 Hours)</div>
+            <div class="setting-desc">Simulate realistic CPL 120-minute time constraint</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="settingCountdownTimer" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-buttons">
+        <button class="btn btn-ghost danger-text" id="resetExamBtn">Reset All Answers</button>
+        <button class="btn btn-primary" id="closeSettingsBtn">Done</button>
+      </div>
     </div>
-    <button class="close-btn" id="examSidebarClose" aria-label="Close menu">✕</button>
   </div>
 
-  <div class="sidebar-score-card">
-    <div class="sc-row">
-      <span>Active Session Score</span><span id="nav-score">0 / 0</span>
-    </div>
-    <div class="sc-row">
-      <span>Accuracy Rate</span><span id="nav-acc">—</span>
-    </div>
-    <div class="sc-row">
-      <span>Winning Target</span><span class="pass-badge">70% Minimum</span>
-    </div>
-  </div>
-
-  <div id="sectionContainer">
-    <p class="section-label" id="sectionHeader">CHAPTERS</p>
-    <ul class="nav-list" id="examNavList">
-      <!-- Injected programmatically based on active subject -->
-    </ul>
-  </div>
-
-  <p class="section-label">FILTER BY TOPIC</p>
-  <div id="examTopicFilters" class="topic-chips"></div>
-
-  <div class="sidebar-footer">
-    <button class="home-nav-btn" id="examHomeBtn">🏠 Main Dashboard</button>
-    <button class="reset-btn" id="examResetBtn">🔄 Reset Session</button>
-  </div>
-</nav>
-
-<script src="questions.js"></script>
-<script src="app.js"></script>
+  <!-- QUESTIONS DATA & SCRIPT -->
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
