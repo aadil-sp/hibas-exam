@@ -1,6 +1,6 @@
 /**
- * CPL EXAM PREP PORTAL — MULTI-SUBJECT ENGINE
- * Live Instant Correction & Score Tracking
+ * CPL EXAM PREP PORTAL — MULTI-SUBJECT & CHAPTER PACKET ENGINE
+ * Live Instant Correction, In-Depth Explanations & Analytics
  */
 
 (function () {
@@ -8,16 +8,20 @@
 
   // ── REGISTRY & GLOBAL STATE ──
   const REGISTRY = window.EXAM_REGISTRY || {};
-  const SETTINGS_KEY = 'cpl_global_settings_v3';
-  const DEFAULT_DURATION_SECS = 2 * 60 * 60; // 2 Hours (7200s)
+  const SETTINGS_KEY = 'cpl_global_settings_v4';
 
-  let activeSubjectId = null;
-  let activeExamMeta = null;
+  let activeSession = {
+    subjectId: null,
+    chapterId: null,      // null if full exam, or string if chapter packet
+    sessionTitle: '',
+    sessionSubtitle: '',
+    durationSeconds: 7200
+  };
 
   let state = {
     currentIndex: 0,
-    answers: {},       // { qId: selectedOptionText }
-    marked: {},        // { qId: true/false }
+    answers: {},          // { qId: selectedOptionText }
+    marked: {},           // { qId: true/false }
     startTime: Date.now(),
     elapsedSeconds: 0,
     isSubmitted: false,
@@ -26,7 +30,7 @@
   };
 
   let settings = {
-    liveCorrection: true,  // Show right/wrong and explanations live
+    liveCorrection: true,
     shuffleOptions: true,
     countdownTimer: true,
     theme: 'dark'
@@ -55,6 +59,7 @@
     settingsToggleBtn: document.getElementById('settingsToggleBtn'),
     mobileGridBtn: document.getElementById('mobileGridBtn'),
     mobileAnsweredCount: document.getElementById('mobileAnsweredCount'),
+    mobileTotalCount: document.getElementById('mobileTotalCount'),
     topSubmitBtn: document.getElementById('topSubmitBtn'),
 
     // Views
@@ -66,6 +71,8 @@
     // Quiz Pane
     currentQNum: document.getElementById('currentQNum'),
     totalQuestionsLabel: document.getElementById('totalQuestionsLabel'),
+    questionChapterPillWrap: document.getElementById('questionChapterPillWrap'),
+    questionChapterText: document.getElementById('questionChapterText'),
     qStatusPill: document.getElementById('qStatusPill'),
     markBtn: document.getElementById('markBtn'),
     markBtnText: document.getElementById('markBtnText'),
@@ -180,7 +187,7 @@
     applyTheme(settings.theme === 'light' ? 'dark' : 'light');
   }
 
-  // ── SUBJECT HUB RENDERING ──
+  // ── SUBJECT & CHAPTER HUB RENDERING ──
   function renderSubjectHub() {
     elements.subjectCardsGrid.innerHTML = '';
     const subjectKeys = Object.keys(REGISTRY);
@@ -195,15 +202,54 @@
       const qCount = subject.questions ? subject.questions.length : 0;
       const colorClass = subject.badgeColor || 'info';
       const iconClass = subject.icon || 'bi-airplane-fill';
+      const chapters = subject.chapters || [];
 
-      const savedScore = localStorage.getItem(`cpl_score_${key}`);
-      let scoreBadgeHtml = '';
-      if (savedScore !== null) {
-        scoreBadgeHtml = `<span class="badge bg-success-subtle text-success border border-success-subtle">Best: ${savedScore}%</span>`;
+      const savedFullScore = localStorage.getItem(`cpl_score_${key}`);
+      let fullScoreBadge = '';
+      if (savedFullScore !== null) {
+        fullScoreBadge = `<span class="badge bg-success-subtle text-success border border-success-subtle">Best: ${savedFullScore}%</span>`;
+      }
+
+      // Build chapter packets list
+      let chaptersHtml = '';
+      if (chapters.length > 0) {
+        chaptersHtml = `
+          <div class="mt-4 pt-3 border-top">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="fw-bold small text-body"><i class="bi bi-collection-fill text-${colorClass} me-1"></i> Chapter Practice Packets (${chapters.length})</span>
+            </div>
+            <div class="d-flex flex-column gap-2 mt-2">
+              ${chapters.map((ch, chIdx) => {
+                const chQs = subject.questions.filter(q => q.chapter_id === ch.id);
+                const chScore = localStorage.getItem(`cpl_score_${ch.id}`);
+                const chScoreHtml = chScore !== null ? `<span class="badge bg-success-subtle text-success border border-success-subtle ms-auto me-2">${chScore}%</span>` : '';
+                return `
+                  <div class="chapter-packet-item">
+                    <div class="d-flex align-items-center gap-2 overflow-hidden">
+                      <div class="chapter-badge-icon bg-${colorClass}-subtle text-${colorClass}">
+                        <i class="bi ${ch.icon || 'bi-book-fill'}"></i>
+                      </div>
+                      <div class="text-truncate">
+                        <div class="chapter-title-text text-truncate">${escapeHtml(ch.title)}</div>
+                        <div class="chapter-sub-text text-truncate">${chQs.length} Questions • ${escapeHtml(ch.subtitle || '')}</div>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center flex-shrink-0">
+                      ${chScoreHtml}
+                      <button class="btn btn-sm btn-outline-${colorClass} rounded-pill px-3 py-1 fw-semibold start-chapter-btn" data-subject-id="${key}" data-chapter-id="${ch.id}">
+                        Start Packet
+                      </button>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
       }
 
       const col = document.createElement('div');
-      col.className = 'col-12 col-md-6';
+      col.className = 'col-12 col-lg-6';
       col.innerHTML = `
         <div class="subject-card shadow-sm">
           <div>
@@ -212,7 +258,7 @@
                 <i class="bi ${iconClass}"></i>
               </div>
               <div class="d-flex align-items-center gap-2">
-                ${scoreBadgeHtml}
+                ${fullScoreBadge}
                 <span class="badge bg-secondary-subtle text-secondary border">Section ${index + 1}</span>
               </div>
             </div>
@@ -220,28 +266,39 @@
             <h3 class="subject-title mb-1">${escapeHtml(subject.title)}</h3>
             <p class="subject-desc mb-3">${escapeHtml(subject.subtitle)}</p>
 
-            <div class="d-flex align-items-center gap-3 text-secondary small mb-4">
+            <div class="d-flex align-items-center gap-3 text-secondary small mb-3">
               <span><i class="bi bi-card-list me-1"></i> ${qCount} Questions</span>
               <span><i class="bi bi-clock me-1"></i> ${subject.durationMinutes || 120} Mins</span>
               <span><i class="bi bi-award me-1"></i> Pass: 70%</span>
             </div>
-          </div>
 
-          <div class="d-flex gap-2">
-            <button class="btn btn-primary flex-grow-1 fw-semibold py-2 start-exam-btn" data-subject-id="${key}">
-              <i class="bi bi-play-circle-fill me-1"></i> Start Exam (Live Correction)
+            <button class="btn btn-primary w-100 fw-semibold py-2 start-full-exam-btn mb-2" data-subject-id="${key}">
+              <i class="bi bi-play-circle-fill me-1"></i> Start Full 100-Q Mock Exam
             </button>
           </div>
+
+          <!-- Chapters accordion/list -->
+          ${chaptersHtml}
         </div>
       `;
 
       elements.subjectCardsGrid.appendChild(col);
     });
 
-    document.querySelectorAll('.start-exam-btn').forEach(btn => {
+    // Event listeners for Full Exam buttons
+    document.querySelectorAll('.start-full-exam-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const subId = btn.dataset.subjectId;
-        startSubjectExam(subId);
+        startSession(subId, null);
+      });
+    });
+
+    // Event listeners for Chapter Packet buttons
+    document.querySelectorAll('.start-chapter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const subId = btn.dataset.subjectId;
+        const chId = btn.dataset.chapterId;
+        startSession(subId, chId);
       });
     });
   }
@@ -249,8 +306,7 @@
   // ── VIEW SWITCHING ──
   function showHubView() {
     if (timerInterval) clearInterval(timerInterval);
-    activeSubjectId = null;
-    activeExamMeta = null;
+    activeSession = { subjectId: null, chapterId: null, sessionTitle: '', sessionSubtitle: '', durationSeconds: 7200 };
 
     elements.hubView.classList.remove('d-none');
     elements.quizView.classList.add('d-none');
@@ -268,30 +324,48 @@
     elements.navProgressBarWrap.classList.add('d-none');
 
     elements.navHeaderTitle.textContent = 'CPL Exam Hub';
-    elements.navHeaderSubtitle.textContent = 'Select a Mock Test';
+    elements.navHeaderSubtitle.textContent = 'Select a Subject or Chapter';
 
     renderSubjectHub();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function startSubjectExam(subjectId) {
-    activeSubjectId = subjectId;
-    activeExamMeta = REGISTRY[subjectId];
-    if (!activeExamMeta) return;
+  function startSession(subjectId, chapterId = null) {
+    const subjectMeta = REGISTRY[subjectId];
+    if (!subjectMeta) return;
 
-    const stateKey = `cpl_state_${subjectId}`;
-    const saved = localStorage.getItem(stateKey);
+    let questions = subjectMeta.questions || [];
+    let title = subjectMeta.title;
+    let subtitle = subjectMeta.subtitle;
+    let durationSecs = (subjectMeta.durationMinutes || 120) * 60;
+
+    if (chapterId) {
+      const chapterObj = (subjectMeta.chapters || []).find(c => c.id === chapterId);
+      questions = questions.filter(q => q.chapter_id === chapterId);
+      title = `${subjectMeta.title} • ${chapterObj ? chapterObj.title : 'Chapter Packet'}`;
+      subtitle = `${questions.length} Questions • Live Correction`;
+      durationSecs = Math.max(15 * 60, Math.round(questions.length * 72)); // ~1.2 mins per question
+    }
+
+    activeSession = {
+      subjectId: subjectId,
+      chapterId: chapterId,
+      sessionTitle: title,
+      sessionSubtitle: subtitle,
+      durationSeconds: durationSecs
+    };
+
+    const sessionKey = chapterId ? `cpl_state_${subjectId}_${chapterId}` : `cpl_state_${subjectId}`;
+    const saved = localStorage.getItem(sessionKey);
     let loadedState = null;
     if (saved) {
-      try {
-        loadedState = JSON.parse(saved);
-      } catch (e) {}
+      try { loadedState = JSON.parse(saved); } catch (e) {}
     }
 
     if (loadedState && loadedState.questionDeck && loadedState.questionDeck.length > 0) {
       state = loadedState;
     } else {
-      buildDeck(activeExamMeta.questions);
+      buildDeck(questions);
     }
 
     elements.navBackToHubBtn.classList.remove('d-none');
@@ -306,12 +380,11 @@
     elements.topSubmitBtn.classList.add('d-lg-inline-flex');
     elements.navProgressBarWrap.classList.remove('d-none');
 
-    elements.navHeaderTitle.textContent = activeExamMeta.title;
-    elements.navHeaderSubtitle.textContent = `${state.questionDeck.length} Questions • Live Correction`;
+    elements.navHeaderTitle.textContent = title;
+    elements.navHeaderSubtitle.textContent = subtitle;
     elements.totalQuestionsLabel.textContent = `of ${state.questionDeck.length}`;
-    if (elements.sidebarTotalBadge) {
-      elements.sidebarTotalBadge.textContent = `${state.questionDeck.length} Questions`;
-    }
+    if (elements.sidebarTotalBadge) elements.sidebarTotalBadge.textContent = `${state.questionDeck.length} Questions`;
+    if (elements.mobileTotalCount) elements.mobileTotalCount.textContent = state.questionDeck.length;
 
     elements.hubView.classList.add('d-none');
     elements.resultsView.classList.add('d-none');
@@ -332,9 +405,7 @@
 
   // ── DECK GENERATION & PERSISTENCE ──
   function buildDeck(sourceList) {
-    const questions = sourceList || (activeExamMeta ? activeExamMeta.questions : []);
-    
-    state.questionDeck = questions.map((q) => {
+    state.questionDeck = sourceList.map((q) => {
       const correctIdx = q.answer !== undefined ? q.answer : 0;
       const correctText = q.options[correctIdx] !== undefined ? q.options[correctIdx] : q.options[0];
       let optionsList = [...q.options];
@@ -348,6 +419,7 @@
 
       return {
         id: q.id,
+        chapter_name: q.chapter_name || '',
         question: q.question,
         options: optionsList,
         correctText: correctText,
@@ -365,17 +437,34 @@
     saveState();
   }
 
+  function getSessionStorageKey() {
+    if (!activeSession.subjectId) return null;
+    return activeSession.chapterId 
+      ? `cpl_state_${activeSession.subjectId}_${activeSession.chapterId}`
+      : `cpl_state_${activeSession.subjectId}`;
+  }
+
   function saveState() {
-    if (!activeSubjectId) return;
+    const key = getSessionStorageKey();
+    if (!key) return;
     try {
-      localStorage.setItem(`cpl_state_${activeSubjectId}`, JSON.stringify(state));
+      localStorage.setItem(key, JSON.stringify(state));
     } catch (e) {}
   }
 
   function resetExamState() {
-    if (!activeSubjectId) return;
-    localStorage.removeItem(`cpl_state_${activeSubjectId}`);
-    buildDeck(activeExamMeta.questions);
+    const key = getSessionStorageKey();
+    if (key) localStorage.removeItem(key);
+
+    const subjectMeta = REGISTRY[activeSession.subjectId];
+    if (!subjectMeta) return;
+
+    let questions = subjectMeta.questions || [];
+    if (activeSession.chapterId) {
+      questions = questions.filter(q => q.chapter_id === activeSession.chapterId);
+    }
+
+    buildDeck(questions);
     saveState();
   }
 
@@ -393,7 +482,7 @@
       saveState();
       renderTimer();
 
-      if (settings.countdownTimer && state.elapsedSeconds >= DEFAULT_DURATION_SECS) {
+      if (settings.countdownTimer && state.elapsedSeconds >= activeSession.durationSeconds) {
         clearInterval(timerInterval);
         submitExam();
       }
@@ -406,14 +495,14 @@
     if (!elements.timerDisplay) return;
 
     if (settings.countdownTimer) {
-      const remaining = Math.max(0, DEFAULT_DURATION_SECS - state.elapsedSeconds);
+      const remaining = Math.max(0, activeSession.durationSeconds - state.elapsedSeconds);
       const hours = Math.floor(remaining / 3600);
       const mins = Math.floor((remaining % 3600) / 60);
       const secs = remaining % 60;
       elements.timerDisplay.textContent = 
         `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 
-      if (remaining <= 600) {
+      if (remaining <= 300) {
         elements.timerBadge.classList.add('timer-warning');
       } else {
         elements.timerBadge.classList.remove('timer-warning');
@@ -459,21 +548,18 @@
     return `
       <div class="explanation-card-detailed">
         
-        <!-- Header with correct answer highlight -->
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3 pb-2 border-bottom">
           <div class="d-flex align-items-center gap-2">
-            <span class="badge bg-info-subtle text-info border border-info-subtle px-2 py-1"><i class="bi bi-lightbulb-fill"></i> Live Solution & Breakdown</span>
+            <span class="badge bg-info-subtle text-info border border-info-subtle px-2 py-1"><i class="bi bi-lightbulb-fill"></i> Solution & Concept</span>
             ${statusBadge}
           </div>
         </div>
 
-        <!-- 1. WHICH IS RIGHT CALLOUT -->
         <div class="exp-correct-callout">
           <div class="small fw-bold text-success text-uppercase mb-1"><i class="bi bi-check-circle-fill"></i> Correct Option:</div>
           <div class="fw-bold fs-6 text-success-emphasis">${escapeHtml(q.correctText)}</div>
         </div>
 
-        <!-- 2. WHY IT IS RIGHT -->
         <div class="exp-section-title text-success">
           <i class="bi bi-patch-check-fill"></i> Why It Is Right:
         </div>
@@ -481,10 +567,8 @@
           ${escapeHtml(whyRightText)}
         </div>
 
-        <!-- 3. WHY IT ISN'T RIGHT (DISTRACTOR BREAKDOWN) -->
         ${wrongListHtml}
 
-        <!-- 4. KEY CONCEPT TAKEAWAY -->
         <div class="exp-takeaway-box mt-3">
           <i class="bi bi-bookmark-star-fill me-1"></i> <strong>Key Takeaway:</strong> ${escapeHtml(keyTakeaway)}
         </div>
@@ -493,7 +577,7 @@
     `;
   }
 
-  // ── RENDER QUESTION WITH LIVE CORRECTION ──
+  // ── RENDER QUESTION WITH CHAPTER PILL & LIVE CORRECTION ──
   function renderCurrentQuestion() {
     if (!state.questionDeck || state.questionDeck.length === 0) return;
 
@@ -503,6 +587,14 @@
 
     elements.currentQNum.textContent = `Question ${qNum}`;
     elements.questionText.textContent = q.question;
+
+    // Chapter Pill Tag
+    if (q.chapter_name) {
+      elements.questionChapterPillWrap.classList.remove('d-none');
+      elements.questionChapterText.textContent = q.chapter_name;
+    } else {
+      elements.questionChapterPillWrap.classList.add('d-none');
+    }
 
     const userAns = state.answers[q.id];
     const isAnswered = userAns !== undefined;
@@ -573,7 +665,6 @@
       elements.optionsContainer.appendChild(optionBtn);
     });
 
-    // Show detailed explanation at bottom if answered
     if (isAnswered && settings.liveCorrection) {
       elements.instantExplanationBox.classList.remove('d-none');
       elements.instantExplanationBox.innerHTML = buildDetailedExplanationHtml(q, userAns);
@@ -699,16 +790,13 @@
 
     const unansweredCount = total - answeredCount;
 
-    // Live navbar score
     if (elements.liveCorrectCount) elements.liveCorrectCount.textContent = correctCount;
     if (elements.liveWrongCount) elements.liveWrongCount.textContent = wrongCount;
 
-    // Desktop stats
     if (elements.statCorrectCount) elements.statCorrectCount.textContent = correctCount;
     if (elements.statWrongCount) elements.statWrongCount.textContent = wrongCount;
     if (elements.statUnansweredCount) elements.statUnansweredCount.textContent = unansweredCount;
 
-    // Mobile stats
     if (elements.statCorrectCountMobile) elements.statCorrectCountMobile.textContent = correctCount;
     if (elements.statWrongCountMobile) elements.statWrongCountMobile.textContent = wrongCount;
     if (elements.statUnansweredCountMobile) elements.statUnansweredCountMobile.textContent = unansweredCount;
@@ -793,18 +881,23 @@
     const percentage = Math.round((correct / total) * 100);
     const passed = percentage >= 70;
 
-    if (activeSubjectId) {
-      const prevBest = parseInt(localStorage.getItem(`cpl_score_${activeSubjectId}`) || '0', 10);
+    // Save best score for subject or chapter
+    const scoreKey = activeSession.chapterId 
+      ? `cpl_score_${activeSession.chapterId}`
+      : `cpl_score_${activeSession.subjectId}`;
+    
+    if (scoreKey) {
+      const prevBest = parseInt(localStorage.getItem(scoreKey) || '0', 10);
       if (percentage > prevBest) {
-        localStorage.setItem(`cpl_score_${activeSubjectId}`, String(percentage));
+        localStorage.setItem(scoreKey, String(percentage));
       }
     }
 
     elements.resultsVerdictBadge.textContent = passed ? 'PASSED 🎉' : 'NEEDS REVIEW ⚠️';
     elements.resultsVerdictBadge.className = `badge rounded-pill px-3 py-2 fs-6 fw-bold ${passed ? 'bg-success' : 'bg-danger'}`;
 
-    elements.resultsExamTitle.textContent = `${activeExamMeta ? activeExamMeta.title : 'Mock Exam'} Completed`;
-    elements.resultsExamSubtitle.textContent = `${activeExamMeta ? activeExamMeta.subtitle : 'Summary'}`;
+    elements.resultsExamTitle.textContent = `${activeSession.sessionTitle} Completed`;
+    elements.resultsExamSubtitle.textContent = activeSession.sessionSubtitle;
 
     elements.scorePercent.textContent = `${percentage}%`;
     elements.scoreFraction.textContent = `${correct} / ${total} Correct`;
@@ -882,7 +975,10 @@
 
       card.innerHTML = `
         <div class="d-flex align-items-center justify-content-between mb-2">
-          <span class="fw-bold text-info font-display">Question ${idx + 1} ${isMarked ? '★' : ''}</span>
+          <div class="d-flex align-items-center gap-2">
+            <span class="fw-bold text-info font-display">Question ${idx + 1} ${isMarked ? '★' : ''}</span>
+            ${q.chapter_name ? `<span class="badge bg-secondary-subtle text-secondary border small">${escapeHtml(q.chapter_name)}</span>` : ''}
+          </div>
           ${badgeHtml}
         </div>
         <div class="fw-semibold text-body mb-3">${escapeHtml(q.question)}</div>
@@ -898,7 +994,7 @@
 
   // ── RETAKE FUNCTIONS ──
   function retakeFullExam() {
-    if (confirm(`Retake ${activeExamMeta ? activeExamMeta.title : 'this mock'} from the beginning?`)) {
+    if (confirm(`Retake ${activeSession.sessionTitle} from the beginning?`)) {
       resetExamState();
       elements.resultsView.classList.add('d-none');
       elements.quizView.classList.remove('d-none');
@@ -966,7 +1062,7 @@
     });
 
     elements.resetExamBtn.addEventListener('click', () => {
-      if (confirm('This will erase your progress on this mock test and restart. Proceed?')) {
+      if (confirm('This will erase your progress on this session and restart. Proceed?')) {
         if (settingsModalInstance) settingsModalInstance.hide();
         resetExamState();
         elements.resultsView.classList.add('d-none');

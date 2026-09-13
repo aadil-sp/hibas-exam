@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>CPL Exam Prep Portal — Multi-Subject Mock Tests</title>
-  <meta name="description" content="Aviation CPL multi-subject mock examination portal with live correction, instant explanations, and analytics." />
+  <meta name="description" content="Aviation CPL multi-subject mock examination portal with chapter packets, live correction, and in-depth explanations." />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +34,7 @@
           <span class="brand-badge"><i class="bi bi-airplane-engines-fill text-info"></i></span>
           <div>
             <div class="brand-title" id="navHeaderTitle">CPL Exam Hub</div>
-            <div class="brand-subtitle d-none d-sm-block" id="navHeaderSubtitle">Select a Mock Test</div>
+            <div class="brand-subtitle d-none d-sm-block" id="navHeaderSubtitle">Select a Subject or Chapter</div>
           </div>
         </a>
       </div>
@@ -68,13 +68,13 @@
         <!-- Question Grid Offcanvas Toggle (Mobile only) -->
         <button class="btn btn-outline-info d-none d-flex align-items-center gap-1 px-2 py-1" id="mobileGridBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#paletteOffcanvas">
           <i class="bi bi-grid-3x3-gap-fill"></i>
-          <span class="small fw-semibold"><span id="mobileAnsweredCount">0</span>/100</span>
+          <span class="small fw-semibold"><span id="mobileAnsweredCount">0</span>/<span id="mobileTotalCount">100</span></span>
         </button>
 
         <!-- Desktop Submit Button (Quiz active only) -->
         <button class="btn btn-primary d-none align-items-center gap-1 fw-semibold" id="topSubmitBtn" type="button">
           <i class="bi bi-check2-circle"></i>
-          <span>Submit Exam</span>
+          <span>Finish Test</span>
         </button>
 
       </div>
@@ -90,7 +90,7 @@
   <div class="container-xl py-3 py-md-4">
     
     <!-- ══════════════════════════════════════════════════════════
-         VIEW 1: SUBJECT HUB / HOME (Scalable Sections)
+         VIEW 1: SUBJECT HUB / HOME (Scalable Sections & Chapters)
          ══════════════════════════════════════════════════════════ -->
     <div class="hub-layout" id="hubView">
       
@@ -99,9 +99,9 @@
         <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-info-subtle text-info fw-bold small mb-3">
           <i class="bi bi-shield-check"></i> CPL Multi-Subject Examination Portal
         </div>
-        <h1 class="display-6 fw-bold font-display mb-2">Select Your Mock Examination</h1>
+        <h1 class="display-6 fw-bold font-display mb-2">CPL Training & Chapter Packs</h1>
         <p class="text-secondary max-w-700 mx-auto mb-0">
-          Features live answer correction, in-depth explanations for every choice, and comprehensive score analytics.
+          Take full 100-question mock exams or practice small chapter-by-chapter packets with live instant corrections.
         </p>
       </div>
 
@@ -110,23 +110,10 @@
         <!-- Rendered dynamically from EXAM_REGISTRY in questions.js -->
       </div>
 
-      <!-- Quick Info Guide -->
-      <div class="card border-0 shadow-sm rounded-4 p-4 mt-4 bg-surface">
-        <div class="d-flex align-items-start gap-3">
-          <div class="fs-3 text-info"><i class="bi bi-lightning-charge-fill text-warning"></i></div>
-          <div>
-            <h2 class="h6 fw-bold mb-1">Live Correction & Scoring Enabled</h2>
-            <p class="small text-secondary mb-0">
-              Answers are evaluated in real time upon selection with instant right/wrong visual feedback and deep breakdown explanations at the bottom, followed by a full score report upon completion.
-            </p>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <!-- ══════════════════════════════════════════════════════════
-         VIEW 2: ACTIVE QUIZ EXAM
+         VIEW 2: ACTIVE QUIZ / CHAPTER PACKET
          ══════════════════════════════════════════════════════════ -->
     <div class="row g-4 d-none" id="quizView">
       
@@ -135,7 +122,7 @@
         <div class="card border-0 shadow-sm rounded-4 question-card p-3 p-md-4">
           
           <!-- Card Header Info -->
-          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pb-3 mb-3 border-bottom">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pb-3 mb-2 border-bottom">
             <div class="d-flex align-items-baseline gap-2">
               <span class="fs-4 fw-bold text-info" id="currentQNum">Question 1</span>
               <span class="text-secondary small fw-medium" id="totalQuestionsLabel">of 100</span>
@@ -148,6 +135,14 @@
                 <span id="markBtnText">Mark for Review</span>
               </button>
             </div>
+          </div>
+
+          <!-- Chapter Tag Pill -->
+          <div class="mb-3 d-none" id="questionChapterPillWrap">
+            <span class="q-chapter-pill" id="questionChapterPill">
+              <i class="bi bi-bookmark-fill text-info"></i>
+              <span id="questionChapterText">Chapter Topic</span>
+            </span>
           </div>
 
           <!-- Question Text -->
@@ -189,7 +184,7 @@
 
               <div class="col-6 col-sm-3 order-4">
                 <button class="btn btn-success w-100 py-2 fw-semibold d-flex align-items-center justify-content-center gap-1" id="finishBtn" type="button">
-                  <i class="bi bi-flag-fill"></i> Finish Exam
+                  <i class="bi bi-flag-fill"></i> Finish Test
                 </button>
               </div>
 
@@ -239,7 +234,7 @@
             <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="unanswered">Pending</button>
           </div>
 
-          <!-- 100 Button Grid -->
+          <!-- Question Button Grid -->
           <div class="palette-grid-scroll mb-3">
             <div class="d-grid grid-cols-5 gap-2" id="questionsGridDesktop">
               <!-- Rendered by JS -->
@@ -248,7 +243,7 @@
 
           <!-- Finish Button in Sidebar -->
           <button class="btn btn-primary w-100 fw-semibold py-2" id="paletteSubmitBtn" type="button">
-            Finish & Review Score
+            Finish & View Score
           </button>
 
         </div>
@@ -311,7 +306,7 @@
             <i class="bi bi-house-door-fill"></i> Subject Hub
           </button>
           <button class="btn btn-primary px-4 py-2 fw-semibold" id="retakeAllBtn" type="button">
-            <i class="bi bi-arrow-repeat"></i> Retake This Mock
+            <i class="bi bi-arrow-repeat"></i> Retake This Test
           </button>
           <button class="btn btn-outline-danger px-4 py-2 fw-semibold" id="retakeMistakesBtn" type="button">
             <i class="bi bi-bullseye"></i> Practice Mistakes Only
@@ -407,11 +402,11 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 border-0 shadow">
         <div class="modal-header border-0 pb-0">
-          <h5 class="modal-title fw-bold" id="submitModalLabel">Submit Exam?</h5>
+          <h5 class="modal-title fw-bold" id="submitModalLabel">Finish Test?</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body py-3">
-          <p class="text-secondary small mb-3">Review your final exam standing before concluding:</p>
+          <p class="text-secondary small mb-3">Review your test standing before concluding:</p>
 
           <div class="row g-2 text-center mb-3">
             <div class="col-4">
@@ -440,7 +435,7 @@
         </div>
         <div class="modal-footer border-0 pt-0">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keep Answering</button>
-          <button type="button" class="btn btn-primary fw-semibold" id="modalConfirmBtn">Yes, Submit & View Score</button>
+          <button type="button" class="btn btn-primary fw-semibold" id="modalConfirmBtn">Yes, Finish & View Score</button>
         </div>
       </div>
     </div>

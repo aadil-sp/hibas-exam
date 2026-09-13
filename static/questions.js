@@ -28,7 +28,9 @@ window.EXAM_REGISTRY = {
             "Option D is wrong because the tropopause also undergoes seasonal variations (higher in summer, lower in winter)."
           ],
           "key_takeaway": "Tropopause Height: Equator (~16-18 km / -75\u00b0C) to Poles (~8 km / -40\u00b0C)."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 2,
@@ -50,7 +52,9 @@ window.EXAM_REGISTRY = {
             "Option D (40 km) is well inside the upper stratosphere."
           ],
           "key_takeaway": "Equatorial Tropopause \u2248 16 km (FL 520); Mid-Latitudes \u2248 11 km (FL 360); Poles \u2248 8 km (FL 260)."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 3,
@@ -72,7 +76,9 @@ window.EXAM_REGISTRY = {
             "Option D (Stratopause) is located at ~50 km and contains almost zero moisture."
           ],
           "key_takeaway": "Virtually all weather phenomena and moisture are confined to the Troposphere."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 4,
@@ -94,7 +100,9 @@ window.EXAM_REGISTRY = {
             "Option D (Atmosphere) is the general term for the entire envelope of gases."
           ],
           "key_takeaway": "Boundary between Troposphere and Stratosphere = Tropopause."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 5,
@@ -116,7 +124,9 @@ window.EXAM_REGISTRY = {
             "Option D (Altostratus) is also a mid-level layer cloud."
           ],
           "key_takeaway": "Cumulonimbus (Cb) is the only cloud capable of penetrating into the stratosphere."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 6,
@@ -138,7 +148,9 @@ window.EXAM_REGISTRY = {
             "Option D is wrong because the tropopause is not inherently an inversion layer."
           ],
           "key_takeaway": "Definition of Tropopause: Transition level separating troposphere and stratosphere."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 7,
@@ -159,7 +171,9 @@ window.EXAM_REGISTRY = {
             "Option D (Ionosphere) contains no meaningful water vapour."
           ],
           "key_takeaway": ">90% of atmospheric water vapour resides in the Troposphere."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 8,
@@ -181,7 +195,9 @@ window.EXAM_REGISTRY = {
             "Option D (Wind) redistributes heat locally but does not define global thickness."
           ],
           "key_takeaway": "Troposphere vertical extent varies with latitude and season."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 9,
@@ -201,7 +217,9 @@ window.EXAM_REGISTRY = {
             "Option B, C, D have entirely incorrect volumetric percentages for atmospheric gases."
           ],
           "key_takeaway": "Dry Air Composition by Volume: 78% Nitrogen, 21% Oxygen, 1% other gases."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 10,
@@ -223,7 +241,9 @@ window.EXAM_REGISTRY = {
             "Option D is wrong because temperature increases (becomes less cold)."
           ],
           "key_takeaway": "Equator to Pole: Tropopause altitude decreases (16 -> 8 km) and temperature increases (-75\u00b0C -> -40\u00b0C)."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 11,
@@ -245,7 +265,9 @@ window.EXAM_REGISTRY = {
             "Option D is wrong because height varies substantially by latitude."
           ],
           "key_takeaway": "Troposphere is highest over the equator (~16 km) and lowest over the poles (~8 km)."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 12,
@@ -267,7 +289,9 @@ window.EXAM_REGISTRY = {
             "Option D describes the stratopause."
           ],
           "key_takeaway": "Troposphere = Part of atmosphere below the tropopause."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 13,
@@ -289,7 +313,9 @@ window.EXAM_REGISTRY = {
             "Option D is wrong because vertical currents are capped by the tropopause."
           ],
           "key_takeaway": "Tropopause: Level where temperature ceases to decrease rapidly with height."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 14,
@@ -311,7 +337,9 @@ window.EXAM_REGISTRY = {
             "Option D is wrong because equator is higher, not lower."
           ],
           "key_takeaway": "Tropopause is lower over the poles than over the equator."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 15,
@@ -333,7 +361,9 @@ window.EXAM_REGISTRY = {
             "Option D (16 km) is equatorial."
           ],
           "key_takeaway": "Average Tropopause at 50\u00b0N \u2248 11 km (FL 360 / 36,090 ft)."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 16,
@@ -355,7 +385,9 @@ window.EXAM_REGISTRY = {
             "Option D has inverted values."
           ],
           "key_takeaway": "Equatorial Tropopause: 16 km and -75\u00b0C."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 17,
@@ -377,7 +409,9 @@ window.EXAM_REGISTRY = {
             "Option D (85 to 200 km) is the thermosphere."
           ],
           "key_takeaway": "Stratosphere Extent: 11 km (tropopause) to 50 km (stratopause)."
-        }
+        },
+        "chapter_id": "met-ch-1",
+        "chapter_name": "Chapter 1: Atmospheric Structure & Composition"
       },
       {
         "id": 18,
@@ -398,7 +432,9 @@ window.EXAM_REGISTRY = {
             "Option C and D used incorrect lapse rate calculations."
           ],
           "key_takeaway": "Descent Calculation: T_lower = T_upper + (Height Difference in 1000s of ft \u00d7 2\u00b0C)."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 19,
@@ -418,7 +454,9 @@ window.EXAM_REGISTRY = {
             "Option B, C, D fail to account for the isothermal nature of the lower stratosphere."
           ],
           "key_takeaway": "Above the tropopause, temperature remains constant (isothermal) in the lower stratosphere."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 20,
@@ -439,7 +477,9 @@ window.EXAM_REGISTRY = {
             "Option C & D miscalculated the ISA baseline at FL 200."
           ],
           "key_takeaway": "ISA Deviation = Measured OAT - ISA Temperature."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 21,
@@ -460,7 +500,9 @@ window.EXAM_REGISTRY = {
             "Option C (-35\u00b0C) and D (-25\u00b0C) are far too warm for the tropopause."
           ],
           "key_takeaway": "Tropical Tropopause Temperature \u2248 -75\u00b0C."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 22,
@@ -482,7 +524,9 @@ window.EXAM_REGISTRY = {
             "Option D (FL 110) corresponds to -12\u00b0C."
           ],
           "key_takeaway": "FL = 0\u00b0C Level + (Temp Drop / 2\u00b0C \u00d7 10)."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 23,
@@ -504,7 +548,9 @@ window.EXAM_REGISTRY = {
             "Option D (+2\u00b0C) deducted only 4\u00b0C."
           ],
           "key_takeaway": "T_higher = T_lower - (Climb / 1,000 \u00d7 2\u00b0C)."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 24,
@@ -524,7 +570,9 @@ window.EXAM_REGISTRY = {
             "Option B, C, D used incorrect lapse rate adjustments."
           ],
           "key_takeaway": "T_FL50 = -5\u00b0C + (6 \u00d7 2\u00b0C) = +7\u00b0C."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 25,
@@ -544,7 +592,9 @@ window.EXAM_REGISTRY = {
             "Option B, C, D miscalculated the descent temperature increase."
           ],
           "key_takeaway": "T_FL90 = -22\u00b0C + 14\u00b0C = -8\u00b0C."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 26,
@@ -564,7 +614,9 @@ window.EXAM_REGISTRY = {
             "Option B (+4\u00b0C), C (0\u00b0C), and D (-2\u00b0C) used non-standard lapse rates."
           ],
           "key_takeaway": "Metric ISA Lapse Rate: 6.5\u00b0C per 1,000 m (0.65\u00b0C per 100 m)."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 27,
@@ -586,7 +638,9 @@ window.EXAM_REGISTRY = {
             "Option D is wrong because it is 10\u00b0C (not 20\u00b0C) below standard."
           ],
           "key_takeaway": "700 hPa \u2248 FL 100 (ISA = -5\u00b0C). Actual -15\u00b0C is Low."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 28,
@@ -606,7 +660,9 @@ window.EXAM_REGISTRY = {
             "Option B, C, D are wrong because -30\u00b0C is significantly warmer than ISA -45\u00b0C."
           ],
           "key_takeaway": "300 hPa \u2248 FL 300 (ISA = -45\u00b0C). Actual -30\u00b0C is High."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 29,
@@ -626,7 +682,9 @@ window.EXAM_REGISTRY = {
             "Option B, C, D describe extreme anomalies that do not apply to a 1.5\u00b0C difference."
           ],
           "key_takeaway": "200 hPa \u2248 FL 390 (ISA = -56.5\u00b0C). Actual -55\u00b0C is Within \u00b15\u00b0C of ISA."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 30,
@@ -648,7 +706,9 @@ window.EXAM_REGISTRY = {
             "Option D is incorrect for lower stratosphere."
           ],
           "key_takeaway": "Lower Stratosphere (11 to 20 km) is Isothermal."
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 31,
@@ -670,7 +730,9 @@ window.EXAM_REGISTRY = {
             "Option D ('There is no significant difference with change of latitude') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: It is higher in polar regions than in equatorial regions"
-        }
+        },
+        "chapter_id": "met-ch-2",
+        "chapter_name": "Chapter 2: Temperature, ISA & Lapse Rates"
       },
       {
         "id": 32,
@@ -692,7 +754,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Absorption and evaporation') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Convection and condensation"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 33,
@@ -714,7 +778,9 @@ window.EXAM_REGISTRY = {
             "Option D ('winter in the afternoon') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: summer in the afternoon"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 34,
@@ -736,7 +802,9 @@ window.EXAM_REGISTRY = {
             "Option D ('the same as convection') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: horizontal motion of air"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 35,
@@ -758,7 +826,9 @@ window.EXAM_REGISTRY = {
             "Option D ('the air in the troposphere only directly if no clouds are present') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: the surface of the earth, which heats the air in the troposphere"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 36,
@@ -780,7 +850,9 @@ window.EXAM_REGISTRY = {
             "Option D ('is unstable for saturated air as well as for dry air') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: is unstable for saturated air and stable for dry air"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 37,
@@ -802,7 +874,9 @@ window.EXAM_REGISTRY = {
             "Option D ('is between the dry and saturated adiabatic lapse rate') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: exceeds the dry adiabatic lapse rate"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 38,
@@ -824,7 +898,9 @@ window.EXAM_REGISTRY = {
             "Option D ('conditionally unstable') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: stable"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 39,
@@ -846,7 +922,9 @@ window.EXAM_REGISTRY = {
             "Option D ('has a variable value') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: has a constant fixed value"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 40,
@@ -868,7 +946,9 @@ window.EXAM_REGISTRY = {
             "Option D ('the environmental lapse rate is high, with little vertical motion of air currents') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: the vertical motion of rising air tends to become weaker and disappears"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 41,
@@ -890,7 +970,9 @@ window.EXAM_REGISTRY = {
             "Option D ('unstable for unsaturated air and conditionally unstable') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: stable for unsaturated air and unstable for saturated air"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 42,
@@ -912,7 +994,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Pressure at the surface') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Environmental lapse rate"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 43,
@@ -934,7 +1018,9 @@ window.EXAM_REGISTRY = {
             "Option D ('wind speed will always decrease with increasing height in the northern hemisphere') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: stability increases in the layer"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 44,
@@ -956,7 +1042,9 @@ window.EXAM_REGISTRY = {
             "Option D ('conditionally stable') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: absolutely stable"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 45,
@@ -978,7 +1066,9 @@ window.EXAM_REGISTRY = {
             "Option D ('has a fixed value of 2\u00b0C/1000 FT') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: varies with time"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 46,
@@ -1000,7 +1090,9 @@ window.EXAM_REGISTRY = {
             "Option D ('0.5\u00b0C/100m') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 1\u00b0C/100m"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 47,
@@ -1022,7 +1114,9 @@ window.EXAM_REGISTRY = {
             "Option D ('normal lapse rate') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: environmental lapse rate"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 48,
@@ -1044,7 +1138,9 @@ window.EXAM_REGISTRY = {
             "Option D ('cumulus') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: cirrus"
-        }
+        },
+        "chapter_id": "met-ch-3",
+        "chapter_name": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates"
       },
       {
         "id": 49,
@@ -1066,7 +1162,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Heating of the air by subsidence') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Terrestrial radiation on a clear night with no or very light winds"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 50,
@@ -1088,7 +1186,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Clear air turbulence at higher altitudes') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: An inversion over a large area with haze, mist"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 51,
@@ -1110,7 +1210,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Advection') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Inversion"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 52,
@@ -1132,7 +1234,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Area of active storms') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Stability"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 53,
@@ -1154,7 +1258,9 @@ window.EXAM_REGISTRY = {
             "Option D ('cumulus clouds') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: nocturnal radiation"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 54,
@@ -1176,7 +1282,9 @@ window.EXAM_REGISTRY = {
             "Option D ('decreases with height more than 1\u00b0C/100m') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: increases with height"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 55,
@@ -1198,7 +1306,9 @@ window.EXAM_REGISTRY = {
             "Option D ('increases with height at a constant rate') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: remains constant with height"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 56,
@@ -1220,7 +1330,9 @@ window.EXAM_REGISTRY = {
             "Option D ('a decrease of temperature with height') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: an increase of temperature with height"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 57,
@@ -1242,7 +1354,9 @@ window.EXAM_REGISTRY = {
             "Option D ('overcast and winds are strong') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: clear and winds are weak"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 58,
@@ -1264,7 +1378,9 @@ window.EXAM_REGISTRY = {
             "Option D ('significantly above +3\u00b0C') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: slightly below +3\u00b0C"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 59,
@@ -1286,7 +1402,9 @@ window.EXAM_REGISTRY = {
             "Option D ('one hour before sunrise') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: half an hour after sunrise"
-        }
+        },
+        "chapter_id": "met-ch-4",
+        "chapter_name": "Chapter 4: Temperature Inversions & Diurnal Changes"
       },
       {
         "id": 60,
@@ -1308,7 +1426,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Positions with the same relative pressure heights') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Positions with the same air pressure at a given level"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 61,
@@ -1330,7 +1450,9 @@ window.EXAM_REGISTRY = {
             "Option D ('QNE') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: QFF"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 62,
@@ -1352,7 +1474,9 @@ window.EXAM_REGISTRY = {
             "Option D ('at a determined density altitude') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: reduced to sea level"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 63,
@@ -1374,7 +1498,9 @@ window.EXAM_REGISTRY = {
             "Option D ('QNH') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: QFF"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 64,
@@ -1396,7 +1522,9 @@ window.EXAM_REGISTRY = {
             "Option D ('is in the order of 27 hPa near MSL') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: is smaller at higher levels than at lower levels"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 65,
@@ -1418,7 +1546,9 @@ window.EXAM_REGISTRY = {
             "Option D ('64 m (210 FT)') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 15 m (50 FT)"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 66,
@@ -1440,7 +1570,9 @@ window.EXAM_REGISTRY = {
             "Option D ('It always decreases with height at a rate of 1 hPa per 8m') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: It decreases with height"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 67,
@@ -1462,7 +1594,9 @@ window.EXAM_REGISTRY = {
             "Option D ('indicates the altitude of the zero degree isotherm') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: indicates the true altitude of a pressure level"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 68,
@@ -1484,7 +1618,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Elevation and the temperature at the airfield') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Elevation of the airfield"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 69,
@@ -1506,7 +1642,9 @@ window.EXAM_REGISTRY = {
             "Option D ('It is not possible to give a definitive answer') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: More than 1016 hPa"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 70,
@@ -1528,7 +1666,9 @@ window.EXAM_REGISTRY = {
             "Option D ('It is not possible to give a definitive answer') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Less than 1016 hPa"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 71,
@@ -1550,7 +1690,9 @@ window.EXAM_REGISTRY = {
             "Option D ('It is not possible to give a definitive answer') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: More than 1009 hPa"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 72,
@@ -1572,7 +1714,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Less than 1022 hPa') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: It is not possible to give a definitive answer"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 73,
@@ -1594,7 +1738,9 @@ window.EXAM_REGISTRY = {
             "Option D ('It is not possible to give a definitive answer') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 1022 hPa"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 74,
@@ -1616,7 +1762,9 @@ window.EXAM_REGISTRY = {
             "Option D ('It is not possible to give a definitive answer') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: More than 1018 hPa"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 75,
@@ -1638,7 +1786,9 @@ window.EXAM_REGISTRY = {
             "Option D ('It is not possible to give a definitive answer') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: More than 1030 hPa"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 76,
@@ -1660,7 +1810,9 @@ window.EXAM_REGISTRY = {
             "Option D ('1010 hPa') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 1005 hPa"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 77,
@@ -1682,7 +1834,9 @@ window.EXAM_REGISTRY = {
             "Option D ('1035 hPa') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 1025 hPa"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 78,
@@ -1704,7 +1858,9 @@ window.EXAM_REGISTRY = {
             "Option D ('1005 hPa') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 990 hPa"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 79,
@@ -1726,7 +1882,9 @@ window.EXAM_REGISTRY = {
             "Option D ('1025 hPa') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 1000 hPa"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 80,
@@ -1748,7 +1906,9 @@ window.EXAM_REGISTRY = {
             "Option D ('QFE reduced to MSL using the values of the actual atmosphere') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: QFE reduced to MSL using the values of the standard atmosphere"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 81,
@@ -1770,7 +1930,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Elevation of the airfield and the temperature at the airfield') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Elevation of the airfield"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 82,
@@ -1792,7 +1954,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Unable to be determined without knowing the QNH') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Greater than the density of the ISA atmosphere at FL 180"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 83,
@@ -1814,7 +1978,9 @@ window.EXAM_REGISTRY = {
             "Option D ('When the altimeter setting is 1013.2 hPa') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: At standard temperature"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 84,
@@ -1836,7 +2002,9 @@ window.EXAM_REGISTRY = {
             "Option D ('11 km') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 5 km"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 85,
@@ -1858,7 +2026,9 @@ window.EXAM_REGISTRY = {
             "Option D ('-100\u00b0C') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: -56.5\u00b0C"
-        }
+        },
+        "chapter_id": "met-ch-5",
+        "chapter_name": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF"
       },
       {
         "id": 86,
@@ -1880,7 +2050,9 @@ window.EXAM_REGISTRY = {
             "Option D ('FL 50') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: FL 390"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 87,
@@ -1902,7 +2074,9 @@ window.EXAM_REGISTRY = {
             "Option D ('FL 50') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: FL 300"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 88,
@@ -1924,7 +2098,9 @@ window.EXAM_REGISTRY = {
             "Option D ('FL 390') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: FL 180"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 89,
@@ -1946,7 +2122,9 @@ window.EXAM_REGISTRY = {
             "Option D ('FL 390') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: FL 100"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 90,
@@ -1968,7 +2146,9 @@ window.EXAM_REGISTRY = {
             "Option D ('FL 390') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: FL 50"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 91,
@@ -1990,7 +2170,9 @@ window.EXAM_REGISTRY = {
             "Option D ('-15\u00b0C') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: -30\u00b0C"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 92,
@@ -2012,7 +2194,9 @@ window.EXAM_REGISTRY = {
             "Option D ('-15\u00b0C') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: +5\u00b0C"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 93,
@@ -2034,7 +2218,9 @@ window.EXAM_REGISTRY = {
             "Option D ('FL 90') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: FL 110"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 94,
@@ -2056,7 +2242,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Remains constant') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Decreases"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 95,
@@ -2078,7 +2266,9 @@ window.EXAM_REGISTRY = {
             "Option D ('2\u00b0C per 1000 m') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 6.5\u00b0C per 1000 m"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 96,
@@ -2100,7 +2290,9 @@ window.EXAM_REGISTRY = {
             "Option D ('0.6\u00b0C per 100m') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 0.65\u00b0C per 100m"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 97,
@@ -2122,7 +2314,9 @@ window.EXAM_REGISTRY = {
             "Option D ('At MSL pressure is 1013.25 hPa and the decrease of temperature with height is 1\u00b0C per 100m') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: At MSL temperature is 15\u00b0C and pressure is 1013.25 hPa"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 98,
@@ -2144,7 +2338,9 @@ window.EXAM_REGISTRY = {
             "Option D ('600 - 500 hPa') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 300 - 200 hPa"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 99,
@@ -2166,7 +2362,9 @@ window.EXAM_REGISTRY = {
             "Option D ('-35\u00b0C') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: -5\u00b0C"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
       },
       {
         "id": 100,
@@ -2188,7 +2386,71 @@ window.EXAM_REGISTRY = {
             "Option D ('variable') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 0.65\u00b0C"
-        }
+        },
+        "chapter_id": "met-ch-6",
+        "chapter_name": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere"
+      }
+    ],
+    "chapters": [
+      {
+        "id": "met-ch-1",
+        "title": "Chapter 1: Atmospheric Structure & Composition",
+        "subtitle": "Tropopause heights, atmospheric layers & gaseous composition",
+        "icon": "bi-layers-fill",
+        "q_range": [
+          1,
+          17
+        ]
+      },
+      {
+        "id": "met-ch-2",
+        "title": "Chapter 2: Temperature, ISA & Lapse Rates",
+        "subtitle": "FL temperature calculations, ISA deviations & standard gradients",
+        "icon": "bi-thermometer-half",
+        "q_range": [
+          18,
+          31
+        ]
+      },
+      {
+        "id": "met-ch-3",
+        "title": "Chapter 3: Atmospheric Heating, Stability & Adiabatic Rates",
+        "subtitle": "Convection, solar heating, DALR vs SALR & conditional instability",
+        "icon": "bi-wind",
+        "q_range": [
+          32,
+          48
+        ]
+      },
+      {
+        "id": "met-ch-4",
+        "title": "Chapter 4: Temperature Inversions & Diurnal Changes",
+        "subtitle": "Radiation & subsidence inversions, nocturnal cooling & isothermal layers",
+        "icon": "bi-sun-fill",
+        "q_range": [
+          49,
+          59
+        ]
+      },
+      {
+        "id": "met-ch-5",
+        "title": "Chapter 5: Atmospheric Pressure, QNH, QFE & QFF",
+        "subtitle": "Isobars, station pressure, altimetry & sea level pressure conversions",
+        "icon": "bi-speedometer2",
+        "q_range": [
+          60,
+          85
+        ]
+      },
+      {
+        "id": "met-ch-6",
+        "title": "Chapter 6: Pressure Altitudes & ICAO Standard Atmosphere",
+        "subtitle": "Standard pressure levels (850 to 200 hPa), freezing levels & upper charts",
+        "icon": "bi-compass-fill",
+        "q_range": [
+          86,
+          100
+        ]
       }
     ]
   },
@@ -2221,7 +2483,9 @@ window.EXAM_REGISTRY = {
             "Option D (4th freedom) is the right to carry commercial traffic from foreign state back to home state."
           ],
           "key_takeaway": "2nd Freedom: Non-traffic / Technical landing in a foreign state."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 2,
@@ -2242,7 +2506,9 @@ window.EXAM_REGISTRY = {
             "Option C and D ignore the legal right of states to file differences under Article 38."
           ],
           "key_takeaway": "ICAO Standards are legally binding unless a national difference is formally filed."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 3,
@@ -2264,7 +2530,9 @@ window.EXAM_REGISTRY = {
             "Option D is wrong because individual crew licensing records are managed nationally."
           ],
           "key_takeaway": "Article 38: Obligation to notify ICAO of national differences from Annex Standards."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 4,
@@ -2286,7 +2554,9 @@ window.EXAM_REGISTRY = {
             "Option D is wrong because states can file differences."
           ],
           "key_takeaway": "ICAO establishes International Standards and Recommended Practices (SARPs)."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 5,
@@ -2308,7 +2578,9 @@ window.EXAM_REGISTRY = {
             "Option D relates to ICAO Annex 17 (Aviation Security)."
           ],
           "key_takeaway": "Warsaw Convention: Air carrier liability limits for passengers, baggage, and goods."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 6,
@@ -2330,7 +2602,9 @@ window.EXAM_REGISTRY = {
             "Option D (Geneva 1936) is unrelated."
           ],
           "key_takeaway": "ICAO was established by the Chicago Convention of 1944."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 7,
@@ -2350,7 +2624,9 @@ window.EXAM_REGISTRY = {
             "Option B (3 months), C (2 months), and D (4 months) specify incorrect statutory time periods."
           ],
           "key_takeaway": "Montreal Convention Denunciation Period: 6 Months after formal notification."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 8,
@@ -2372,7 +2648,9 @@ window.EXAM_REGISTRY = {
             "Option D (Montreal) dealt with acts of sabotage (1971)."
           ],
           "key_takeaway": "ICAO Establishment = Chicago Convention 1944."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 9,
@@ -2393,7 +2671,9 @@ window.EXAM_REGISTRY = {
             "Option C and D misstate the commander's authority regarding crew and passenger assistance."
           ],
           "key_takeaway": "Tokyo Convention Art. 9: Commander may deliver offenders to competent authorities."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 10,
@@ -2413,7 +2693,9 @@ window.EXAM_REGISTRY = {
             "Option B, C, D misattribute commercial airline operational approvals to ICAO."
           ],
           "key_takeaway": "ICAO Objective: Develop principles and techniques of international air navigation."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 11,
@@ -2433,7 +2715,9 @@ window.EXAM_REGISTRY = {
             "Option B, C, D do not represent the designated depositary for Tokyo Convention notifications."
           ],
           "key_takeaway": "Tokyo Convention Denunciation: Addressed to ICAO."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 12,
@@ -2455,7 +2739,9 @@ window.EXAM_REGISTRY = {
             "Option D (Montreal 1971) deals with unlawful acts of sabotage."
           ],
           "key_takeaway": "Air Carrier Liability Convention = Warsaw Convention (1929)."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 13,
@@ -2477,7 +2763,9 @@ window.EXAM_REGISTRY = {
             "Option D (Chicago 1944) established ICAO and international SARPs."
           ],
           "key_takeaway": "Offences on Board Aircraft = Tokyo Convention (1963)."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 14,
@@ -2497,7 +2785,9 @@ window.EXAM_REGISTRY = {
             "Option B, C, D represent incorrect colloquial definitions."
           ],
           "key_takeaway": "Cabotage = Domestic air transportation within a foreign sovereign state."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 15,
@@ -2519,7 +2809,9 @@ window.EXAM_REGISTRY = {
             "Option D describes 3rd/4th/5th commercial freedoms."
           ],
           "key_takeaway": "2nd Freedom = Right to land for technical stop."
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 16,
@@ -2541,7 +2833,9 @@ window.EXAM_REGISTRY = {
             "Option D ('The right to board passengers from the state where the aircraft is registered and to fly to another state') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: The right to overfly without landing"
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 17,
@@ -2563,7 +2857,9 @@ window.EXAM_REGISTRY = {
             "Option D ('the convention of Madrid') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: the convention of Tokyo"
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 18,
@@ -2585,7 +2881,9 @@ window.EXAM_REGISTRY = {
             "Option D ('the above convention does not deal with this item') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: caused in the territory of a contracting state or in a ship or aircraft registered therein, by an aircraft registered in the territory of another contracting state"
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 19,
@@ -2607,7 +2905,9 @@ window.EXAM_REGISTRY = {
             "Option D ('offences and certain other acts committed on board aircraft') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Damage caused by foreign aircraft to third parties on the surface"
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 20,
@@ -2629,7 +2929,9 @@ window.EXAM_REGISTRY = {
             "Option D ('the Tokyo Convention') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: the Rome Convention"
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 21,
@@ -2651,7 +2953,9 @@ window.EXAM_REGISTRY = {
             "Option D ('the Montreal Convention') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: the Rome Convention"
-        }
+        },
+        "chapter_id": "air-ch-1",
+        "chapter_name": "Chapter 1: International Conventions & ICAO SARPs"
       },
       {
         "id": 22,
@@ -2673,7 +2977,9 @@ window.EXAM_REGISTRY = {
             "Option D ('letters used for ICAO identification documents') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: five letter combinations used in the international code of signals"
-        }
+        },
+        "chapter_id": "air-ch-2",
+        "chapter_name": "Chapter 2: Airworthiness & Aircraft Nationality Markings"
       },
       {
         "id": 23,
@@ -2695,7 +3001,9 @@ window.EXAM_REGISTRY = {
             "Option D ('up to 5,700 kg maximum certificate take-off and landing mass') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: over 5,700 kg maximum certificate take-off mass"
-        }
+        },
+        "chapter_id": "air-ch-2",
+        "chapter_name": "Chapter 2: Airworthiness & Aircraft Nationality Markings"
       },
       {
         "id": 24,
@@ -2717,7 +3025,9 @@ window.EXAM_REGISTRY = {
             "Option D ('all limiting mass, centres of gravity position and floor loadings') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: all limiting mass, centres of gravity position, mass distributions and floor loadings"
-        }
+        },
+        "chapter_id": "air-ch-2",
+        "chapter_name": "Chapter 2: Airworthiness & Aircraft Nationality Markings"
       },
       {
         "id": 25,
@@ -2739,7 +3049,9 @@ window.EXAM_REGISTRY = {
             "Option D ('at least 75 centimetres') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: at least 50 centimetres"
-        }
+        },
+        "chapter_id": "air-ch-2",
+        "chapter_name": "Chapter 2: Airworthiness & Aircraft Nationality Markings"
       },
       {
         "id": 26,
@@ -2761,7 +3073,9 @@ window.EXAM_REGISTRY = {
             "Option D ('at least between 20 centimetres and 40 centimetres') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: at least 30 centimetres"
-        }
+        },
+        "chapter_id": "air-ch-2",
+        "chapter_name": "Chapter 2: Airworthiness & Aircraft Nationality Markings"
       },
       {
         "id": 27,
@@ -2781,7 +3095,9 @@ window.EXAM_REGISTRY = {
             "Option A, B, D represent incorrect validity calculation dates under standard flight crew licensing."
           ],
           "key_takeaway": "Proficiency Check Validity: Calculated from previous expiry when completed within the renewal window."
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 28,
@@ -2803,7 +3119,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Two consecutive periods each of six month in the case of a flight crew member of an aircraft engaged in non-commercial operations') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: A single period of six month in the case of a flight crew member of an aircraft engaged in non-commercial operations"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 29,
@@ -2825,7 +3143,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Is only considered for PPL') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Shall not extend beyond the period of validity of the licence"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 30,
@@ -2847,7 +3167,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Annex 4') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Annex 1"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 31,
@@ -2869,7 +3191,9 @@ window.EXAM_REGISTRY = {
             "Option D ('60% of the co-pilot flight time towards, the total flight time required for a higher grade of a pilot licence') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 50% of the co-pilot flight time towards the total flight time required for a higher grade of pilot licence"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 32,
@@ -2891,7 +3215,9 @@ window.EXAM_REGISTRY = {
             "Option D ('16 years of age') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 18 years of age"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 33,
@@ -2913,7 +3239,9 @@ window.EXAM_REGISTRY = {
             "Option D ('a current class medical assessment as prescribed by the state issuing the licence') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: a current class I medical assessment"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 34,
@@ -2935,7 +3263,9 @@ window.EXAM_REGISTRY = {
             "Option D ('none of the answers are correct') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: to act as pilot-in command in any aeroplane engaged in operations other than commercial air transportation"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 35,
@@ -2957,7 +3287,9 @@ window.EXAM_REGISTRY = {
             "Option D ('20 hours and 270 km (150NM)') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 20 hours and 540 km (300NM)"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 36,
@@ -2979,7 +3311,9 @@ window.EXAM_REGISTRY = {
             "Option D ('75 hours of night time only as pilot in command') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 100 hours of night flight as pilot in command or as co-pilot"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 37,
@@ -3001,7 +3335,9 @@ window.EXAM_REGISTRY = {
             "Option D ('150 hours and 75 hours') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 250 hours and 100 hours"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 38,
@@ -3023,7 +3359,9 @@ window.EXAM_REGISTRY = {
             "Option D ('200 hours and 75 hours') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 200 hours and 100 hours"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 39,
@@ -3045,7 +3383,9 @@ window.EXAM_REGISTRY = {
             "Option D ('75 hours of instrument time, of which not more than 20 hours of instrument ground time') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 75 hours of instrument time, of which not more than 30 hours may be instrument ground time"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 40,
@@ -3067,7 +3407,9 @@ window.EXAM_REGISTRY = {
             "Option D ('75 hours of which not more than 20 hours shall have been acquired in a flight procedure trainer or basic instrument flight trainer') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 100 hours, of which not more than 25 hours shall have been acquired in a flight procedure trainer or basic instrument flight trainer"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 41,
@@ -3089,7 +3431,9 @@ window.EXAM_REGISTRY = {
             "Option D ('50 hours and 15 hours') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 50 hours and 10 hours"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 42,
@@ -3111,7 +3455,9 @@ window.EXAM_REGISTRY = {
             "Option D ('in the case of a private pilot, a single period of 12 months') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: A single period of six months in the case of a flight crew member of an aircraft engaged in non commercial operations"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 43,
@@ -3133,7 +3479,9 @@ window.EXAM_REGISTRY = {
             "Option D ('the licence is delivered to the pilot') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: the medical assessment is issued"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 44,
@@ -3155,7 +3503,9 @@ window.EXAM_REGISTRY = {
             "Option D ('shall not extend beyond the period of validity of the licence other than for use in private flights') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: shall not extend beyond the period of validity of the licence"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 45,
@@ -3177,7 +3527,9 @@ window.EXAM_REGISTRY = {
             "Option D specifies incorrect instrument time distribution."
           ],
           "key_takeaway": "CPL Instrument Time Requirement: 20 hours instrument instruction (max 5 hrs ground)."
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 46,
@@ -3199,7 +3551,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Annex 12') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Annex 1"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 47,
@@ -3219,7 +3573,9 @@ window.EXAM_REGISTRY = {
             "Option A, B, C state outdated or non-JAR-FCL validity brackets."
           ],
           "key_takeaway": "JAR-FCL Class 2 Medical: 24 months (<40), 12 months (40-60), 6 months (>60)."
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 48,
@@ -3241,7 +3597,9 @@ window.EXAM_REGISTRY = {
             "Option D ('200 hours of flight time plus 10 hours of instrument ground time') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 150 hours of flight time"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 49,
@@ -3263,7 +3621,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Indefinitely') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: one year"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 50,
@@ -3285,7 +3645,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Five years after licence issue') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Two years"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 51,
@@ -3307,7 +3669,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Instructional flight time as student-pilot-in-command of aeroplanes or helicopters of which at least 10 hours shall be in aeroplanes') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Cross country flight time as pilot-in-command in aeroplanes or helicopters of which at least 10 hours shall be in aeroplanes"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 52,
@@ -3329,7 +3693,9 @@ window.EXAM_REGISTRY = {
             "Option D ('A certificate of airworthiness issued by the manufacturer') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Handling characteristics that require additional flying or simulator training"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 53,
@@ -3350,7 +3716,9 @@ window.EXAM_REGISTRY = {
             "Option C (Application date) and D (Medical date) are incorrect."
           ],
           "key_takeaway": "Type Rating Validity: 1 year from the date of the Skill Test."
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 54,
@@ -3372,7 +3740,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Any other type of aeroplane if considered necessary') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: All self-sustaining gliders"
-        }
+        },
+        "chapter_id": "air-ch-3",
+        "chapter_name": "Chapter 3: Flight Crew & Personnel Licensing"
       },
       {
         "id": 55,
@@ -3394,7 +3764,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Service provided: Air Traffic Control Service, ATC Clearance: not required') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Service provided: Traffic Information as far as practical, ATC Clearance: not required"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 56,
@@ -3416,7 +3788,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Switching on and off four times the navigation lights') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: The repeated switching on and off of the landing lights"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 57,
@@ -3437,7 +3811,9 @@ window.EXAM_REGISTRY = {
             "Option C ('You land') and D ('Descend for landing') are invalid."
           ],
           "key_takeaway": "ICAO Interception Phrase to descend: 'LET DOWN'."
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 58,
@@ -3457,7 +3833,9 @@ window.EXAM_REGISTRY = {
             "Option A, B, D represent non-standard variations."
           ],
           "key_takeaway": "ICAO Interception Phrase for inability to comply: 'UNABLE TO COMPLY'."
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 59,
@@ -3479,7 +3857,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Continue circling and wait for further instructions') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: The airport is unsafe, do not land"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 60,
@@ -3501,7 +3881,9 @@ window.EXAM_REGISTRY = {
             "Option D ('all vehicles moving on the apron except the \"follow me\" vehicle') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: aircraft taking off or about to take off"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 61,
@@ -3523,7 +3905,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Need special precautions while approaching for landing') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: The aerodrome is being used by gliders and that glider flights are being performed"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 62,
@@ -3545,7 +3929,9 @@ window.EXAM_REGISTRY = {
             "Option D ('1 000 feet or visibility is less than 8 km') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 1 500 feet or visibility is less than 5 km"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 63,
@@ -3567,7 +3953,9 @@ window.EXAM_REGISTRY = {
             "Option D ('The airliner operator') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: The commander"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 64,
@@ -3589,7 +3977,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Hospital aircraft carrying a very sick person needing immediate medical attention') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Emergency aircraft"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 65,
@@ -3611,7 +4001,9 @@ window.EXAM_REGISTRY = {
             "Option D ('2 000 feet horizontally, 1000 feet vertically from clouds, 5 km visibility') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 1 500 m horizontally, 1000 feet vertically from clouds, 5 km visibility"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 66,
@@ -3631,7 +4023,9 @@ window.EXAM_REGISTRY = {
             "Option A, B, C specify incorrect distance from cloud or visibility limits for airspace above FL 100."
           ],
           "key_takeaway": "VMC Minima above 10,000 ft MSL: 8 km visibility, 1,000 ft vertical & 1,500 m horizontal from clouds."
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 67,
@@ -3653,7 +4047,9 @@ window.EXAM_REGISTRY = {
             "Option D ('1 nautical mile horizontally and 1000 feet vertically from clouds, 8 km visibility') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 1500 m horizontally and 1 000 feet vertically from clouds, 5 km visibility"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 68,
@@ -3675,7 +4071,9 @@ window.EXAM_REGISTRY = {
             "Option D ('10%') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 5%"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 69,
@@ -3697,7 +4095,9 @@ window.EXAM_REGISTRY = {
             "Option D ('7 000') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 7 700"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 70,
@@ -3719,7 +4119,9 @@ window.EXAM_REGISTRY = {
             "Option D ('243 MHz - 125.5 MHz') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 121.5 MHz - 243 MHz"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 71,
@@ -3741,7 +4143,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Rocking the wings and flashing the navigational lights') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Executing a climbing turn of 90 degrees or more without crossing the line of flight of the intercepted aircraft"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 72,
@@ -3763,7 +4167,9 @@ window.EXAM_REGISTRY = {
             "Option D ('2 000 feet above the highest obstacle within 8 nautical miles of course') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 1 000 feet above the highest obstacle within 8 kilometres of the estimated position of the aircraft"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 73,
@@ -3783,7 +4189,9 @@ window.EXAM_REGISTRY = {
             "Option A, B, D fail to acknowledge that ATC clearance does NOT grant unconditional priority over basic right-of-way rules in VMC."
           ],
           "key_takeaway": "Right of Way in VMC: The aircraft on the right has right-of-way regardless of ATC clearance."
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 74,
@@ -3805,7 +4213,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Notify ATC of the new track immediately and comply with instructions') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Adjust the heading of aircraft to regain track as soon as practicable"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 75,
@@ -3827,7 +4237,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Squawk 7700') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: The appropriate ATC unit shall be notified of the action taken as soon as circumstances permit"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 76,
@@ -3849,7 +4261,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Horizontally moving his hands, fingers extended, palms toward ground') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Raise arm and hand, with fingers extended, horizontally in front of body, then clench fist"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 77,
@@ -3869,7 +4283,9 @@ window.EXAM_REGISTRY = {
             "Option A, B, D fail to prioritize landing at the closest aerodrome when VMC conditions exist."
           ],
           "key_takeaway": "Radio Failure in VMC: Maintain VMC, land at nearest suitable aerodrome, and notify ATS."
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 78,
@@ -3891,7 +4307,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Dangerous airfield. Do not land') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Not with standing any previous instructions, do not land for the time being"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 79,
@@ -3913,7 +4331,9 @@ window.EXAM_REGISTRY = {
             "Option D ('may file a flight plan under pilot's discretion') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Shall nevertheless submit a flight plan and notify changes made thereto to the ATS unit providing that service"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 80,
@@ -3935,7 +4355,9 @@ window.EXAM_REGISTRY = {
             "Option D ('it is a deviation from the track') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: the TAS varies by plus or minus 5% of the TAS notified in the flightplan"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 81,
@@ -3957,7 +4379,9 @@ window.EXAM_REGISTRY = {
             "Option D ('at least 2000 feet within 5KM of the estimated position') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: at least 2000 feet within 8 KM of the estimated position"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 82,
@@ -3979,7 +4403,9 @@ window.EXAM_REGISTRY = {
             "Option D ('outside the daylight-period at engine-start. During the daylight-period this is not applicable') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: on the ground when the engines are running"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 83,
@@ -4001,7 +4427,9 @@ window.EXAM_REGISTRY = {
             "Option D describes parallel runway markings."
           ],
           "key_takeaway": "White Dumb-bell with Perpendicular Black Bar = Use runways and taxiways ONLY."
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 84,
@@ -4023,7 +4451,9 @@ window.EXAM_REGISTRY = {
             "Option D ('As soon as possible commence emergency descent in order minimize the difference between cabin pressure and outside pressure') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Continue at an altitude that differs from the semicircular rule with 1000 feet when above FL 290 and 500 feet when lower than FL 290"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 85,
@@ -4045,7 +4475,9 @@ window.EXAM_REGISTRY = {
             "Option D ('may continue to taxi to the take-off area') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: must vacate the landing area in use"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 86,
@@ -4067,7 +4499,9 @@ window.EXAM_REGISTRY = {
             "Option D ('is cleared for take-off') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: may continue to taxi towards the take-off area"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 87,
@@ -4089,7 +4523,9 @@ window.EXAM_REGISTRY = {
             "Option D ('not land for the moment regardless of previous instructions') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: not land because the airport is not available for landing"
-        }
+        },
+        "chapter_id": "air-ch-4",
+        "chapter_name": "Chapter 4: Rules of the Air & Airspace Classification"
       },
       {
         "id": 88,
@@ -4111,7 +4547,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Obstruction in surface') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Obstacle identification surface"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 89,
@@ -4133,7 +4571,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Distance end of runway') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Departure end of runway"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 90,
@@ -4155,7 +4595,9 @@ window.EXAM_REGISTRY = {
             "Option D ('12.5\u00b0') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 15\u00b0"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 91,
@@ -4177,7 +4619,9 @@ window.EXAM_REGISTRY = {
             "Option D ('30 NM') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 25 NM"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 92,
@@ -4199,7 +4643,9 @@ window.EXAM_REGISTRY = {
             "Option D ('20 Km') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 10 Km"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 93,
@@ -4221,7 +4667,9 @@ window.EXAM_REGISTRY = {
             "Option D ('VH (visibility horizontal) greater or equal to VH required for landing, and ceiling greater or equal to ceiling required for landing, with an available instrument approach procedure') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: ceiling greater or equal to DH/MDH, and VH (horizontal visibility) greater or equal to VH required for landing, with an available instrument approach procedure"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 94,
@@ -4243,7 +4691,9 @@ window.EXAM_REGISTRY = {
             "Option D ('25\u00b0 of the alignment of the runway centre-line') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: 15\u00b0 of the alignment of the runway centre-line"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 95,
@@ -4265,7 +4715,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Intersect the localizer at 30\u00b0 and will not be more 10 NM in length') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Intersect the localizer at 45\u00b0 and will not be more 10 NM in length"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 96,
@@ -4287,7 +4739,9 @@ window.EXAM_REGISTRY = {
             "Option D ('To request clearance from ATC for applying a wind correction') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: To correct for known wind to remain within the protected airspace"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 97,
@@ -4309,7 +4763,9 @@ window.EXAM_REGISTRY = {
             "Option D ('Airspace restrictions') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: The terrain surrounding the airport"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 98,
@@ -4331,7 +4787,9 @@ window.EXAM_REGISTRY = {
             "Option D (0.8%) is the obstacle clearance margin gradient."
           ],
           "key_takeaway": "PANS-OPS Screen Height at DER = 35 ft."
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 99,
@@ -4351,7 +4809,9 @@ window.EXAM_REGISTRY = {
             "Option A, C, D do not match the standard intermediate segment obstacle clearance specification."
           ],
           "key_takeaway": "Intermediate Approach Primary Area Obstacle Clearance = 150 m / 300 m."
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
       },
       {
         "id": 100,
@@ -4373,7 +4833,61 @@ window.EXAM_REGISTRY = {
             "Option D ('Arrival segment') is incorrect because it conflicts with standard definitions or operational criteria."
           ],
           "key_takeaway": "Standard Key Rule: Final approach segment"
-        }
+        },
+        "chapter_id": "air-ch-5",
+        "chapter_name": "Chapter 5: Instrument Departure & Approach Procedures"
+      }
+    ],
+    "chapters": [
+      {
+        "id": "air-ch-1",
+        "title": "Chapter 1: International Conventions & ICAO SARPs",
+        "subtitle": "Freedoms of the Air, Chicago 1944, Warsaw, Tokyo, Rome & Montreal",
+        "icon": "bi-globe-americas",
+        "q_range": [
+          1,
+          21
+        ]
+      },
+      {
+        "id": "air-ch-2",
+        "title": "Chapter 2: Airworthiness & Aircraft Nationality Markings",
+        "subtitle": "Registration marks, continuing integrity programs & mass limitations",
+        "icon": "bi-tools",
+        "q_range": [
+          22,
+          26
+        ]
+      },
+      {
+        "id": "air-ch-3",
+        "title": "Chapter 3: Flight Crew & Personnel Licensing",
+        "subtitle": "CPL, ATPL, JAR-FCL, medical assessments, type ratings & hour requirements",
+        "icon": "bi-person-badge-fill",
+        "q_range": [
+          27,
+          54
+        ]
+      },
+      {
+        "id": "air-ch-4",
+        "title": "Chapter 4: Rules of the Air & Airspace Classification",
+        "subtitle": "Airspace classes, VMC minima, radio failure, interception & light signals",
+        "icon": "bi-signpost-split-fill",
+        "q_range": [
+          55,
+          87
+        ]
+      },
+      {
+        "id": "air-ch-5",
+        "title": "Chapter 5: Instrument Departure & Approach Procedures",
+        "subtitle": "PANS-OPS, DER, obstacle clearance, MSA, ILS dead reckoning & segments",
+        "icon": "bi-airplane-engines-fill",
+        "q_range": [
+          88,
+          100
+        ]
       }
     ]
   }
