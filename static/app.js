@@ -1,6 +1,6 @@
 /**
  * CPL EXAM PREP PORTAL — MULTI-SUBJECT ENGINE
- * Pure client-side modular architecture with In-Depth Explanations
+ * Live Instant Correction & Score Tracking
  */
 
 (function () {
@@ -8,7 +8,7 @@
 
   // ── REGISTRY & GLOBAL STATE ──
   const REGISTRY = window.EXAM_REGISTRY || {};
-  const SETTINGS_KEY = 'cpl_global_settings_v2';
+  const SETTINGS_KEY = 'cpl_global_settings_v3';
   const DEFAULT_DURATION_SECS = 2 * 60 * 60; // 2 Hours (7200s)
 
   let activeSubjectId = null;
@@ -26,7 +26,7 @@
   };
 
   let settings = {
-    practiceMode: false,
+    liveCorrection: true,  // Show right/wrong and explanations live
     shuffleOptions: true,
     countdownTimer: true,
     theme: 'dark'
@@ -45,6 +45,9 @@
     navHeaderSubtitle: document.getElementById('navHeaderSubtitle'),
     navProgressBarWrap: document.getElementById('navProgressBarWrap'),
     progressBar: document.getElementById('progressBar'),
+    liveScoreBadge: document.getElementById('liveScoreBadge'),
+    liveCorrectCount: document.getElementById('liveCorrectCount'),
+    liveWrongCount: document.getElementById('liveWrongCount'),
     timerBadge: document.getElementById('timerBadge'),
     timerDisplay: document.getElementById('timerDisplay'),
     themeToggleBtn: document.getElementById('themeToggleBtn'),
@@ -78,11 +81,11 @@
 
     // Palette
     sidebarTotalBadge: document.getElementById('sidebarTotalBadge'),
-    statAnsweredCount: document.getElementById('statAnsweredCount'),
-    statMarkedCount: document.getElementById('statMarkedCount'),
+    statCorrectCount: document.getElementById('statCorrectCount'),
+    statWrongCount: document.getElementById('statWrongCount'),
     statUnansweredCount: document.getElementById('statUnansweredCount'),
-    statAnsweredCountMobile: document.getElementById('statAnsweredCountMobile'),
-    statMarkedCountMobile: document.getElementById('statMarkedCountMobile'),
+    statCorrectCountMobile: document.getElementById('statCorrectCountMobile'),
+    statWrongCountMobile: document.getElementById('statWrongCountMobile'),
     statUnansweredCountMobile: document.getElementById('statUnansweredCountMobile'),
     questionsGridDesktop: document.getElementById('questionsGridDesktop'),
     questionsGridMobile: document.getElementById('questionsGridMobile'),
@@ -114,15 +117,15 @@
 
     // Modals
     submitModalEl: document.getElementById('submitModal'),
-    modalAnsweredCount: document.getElementById('modalAnsweredCount'),
-    modalMarkedCount: document.getElementById('modalMarkedCount'),
+    modalCorrectCount: document.getElementById('modalCorrectCount'),
+    modalWrongCount: document.getElementById('modalWrongCount'),
     modalUnansweredCount: document.getElementById('modalUnansweredCount'),
     unansweredWarning: document.getElementById('unansweredWarning'),
     modalUnansweredWarnCount: document.getElementById('modalUnansweredWarnCount'),
     modalConfirmBtn: document.getElementById('modalConfirmBtn'),
 
     settingsModalEl: document.getElementById('settingsModal'),
-    settingPracticeMode: document.getElementById('settingPracticeMode'),
+    settingLiveCorrection: document.getElementById('settingLiveCorrection'),
     settingShuffleOptions: document.getElementById('settingShuffleOptions'),
     settingCountdownTimer: document.getElementById('settingCountdownTimer'),
     resetExamBtn: document.getElementById('resetExamBtn')
@@ -153,7 +156,7 @@
       if (saved) settings = Object.assign(settings, JSON.parse(saved));
     } catch (e) {}
 
-    if (elements.settingPracticeMode) elements.settingPracticeMode.checked = settings.practiceMode;
+    if (elements.settingLiveCorrection) elements.settingLiveCorrection.checked = settings.liveCorrection;
     if (elements.settingShuffleOptions) elements.settingShuffleOptions.checked = settings.shuffleOptions;
     if (elements.settingCountdownTimer) elements.settingCountdownTimer.checked = settings.countdownTimer;
   }
@@ -225,11 +228,8 @@
           </div>
 
           <div class="d-flex gap-2">
-            <button class="btn btn-primary flex-grow-1 fw-semibold py-2 start-exam-btn" data-subject-id="${key}" data-mode="exam">
-              <i class="bi bi-play-circle-fill me-1"></i> Start Mock Exam
-            </button>
-            <button class="btn btn-outline-secondary fw-semibold py-2 start-exam-btn" data-subject-id="${key}" data-mode="practice" title="Instant practice feedback mode">
-              <i class="bi bi-lightning-charge-fill text-warning"></i> Practice
+            <button class="btn btn-primary flex-grow-1 fw-semibold py-2 start-exam-btn" data-subject-id="${key}">
+              <i class="bi bi-play-circle-fill me-1"></i> Start Exam (Live Correction)
             </button>
           </div>
         </div>
@@ -241,8 +241,7 @@
     document.querySelectorAll('.start-exam-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const subId = btn.dataset.subjectId;
-        const mode = btn.dataset.mode;
-        startSubjectExam(subId, mode === 'practice');
+        startSubjectExam(subId);
       });
     });
   }
@@ -258,6 +257,8 @@
     elements.resultsView.classList.add('d-none');
 
     elements.navBackToHubBtn.classList.add('d-none');
+    elements.liveScoreBadge.classList.add('d-none');
+    elements.liveScoreBadge.classList.remove('d-flex');
     elements.timerBadge.classList.add('d-none');
     elements.timerBadge.classList.remove('d-flex');
     elements.settingsToggleBtn.classList.add('d-none');
@@ -273,16 +274,10 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function startSubjectExam(subjectId, isPracticeMode = false) {
+  function startSubjectExam(subjectId) {
     activeSubjectId = subjectId;
     activeExamMeta = REGISTRY[subjectId];
     if (!activeExamMeta) return;
-
-    if (isPracticeMode) {
-      settings.practiceMode = true;
-      if (elements.settingPracticeMode) elements.settingPracticeMode.checked = true;
-      saveSettings();
-    }
 
     const stateKey = `cpl_state_${subjectId}`;
     const saved = localStorage.getItem(stateKey);
@@ -300,6 +295,8 @@
     }
 
     elements.navBackToHubBtn.classList.remove('d-none');
+    elements.liveScoreBadge.classList.remove('d-none');
+    elements.liveScoreBadge.classList.add('d-flex');
     elements.timerBadge.classList.remove('d-none');
     elements.timerBadge.classList.add('d-flex');
     elements.settingsToggleBtn.classList.remove('d-none');
@@ -310,7 +307,7 @@
     elements.navProgressBarWrap.classList.remove('d-none');
 
     elements.navHeaderTitle.textContent = activeExamMeta.title;
-    elements.navHeaderSubtitle.textContent = `${state.questionDeck.length} Questions • CPL Exam`;
+    elements.navHeaderSubtitle.textContent = `${state.questionDeck.length} Questions • Live Correction`;
     elements.totalQuestionsLabel.textContent = `of ${state.questionDeck.length}`;
     if (elements.sidebarTotalBadge) {
       elements.sidebarTotalBadge.textContent = `${state.questionDeck.length} Questions`;
@@ -443,8 +440,8 @@
     let statusBadge = '';
     if (isAnswered) {
       statusBadge = isCorrect 
-        ? '<span class="badge bg-success px-2 py-1"><i class="bi bi-check-circle-fill me-1"></i> Your Answer is Correct</span>'
-        : '<span class="badge bg-danger px-2 py-1"><i class="bi bi-x-circle-fill me-1"></i> Your Answer is Incorrect</span>';
+        ? '<span class="badge bg-success px-2 py-1"><i class="bi bi-check-circle-fill me-1"></i> Correct Answer ✓</span>'
+        : '<span class="badge bg-danger px-2 py-1"><i class="bi bi-x-circle-fill me-1"></i> Incorrect Choice ✗</span>';
     }
 
     let wrongListHtml = '';
@@ -465,7 +462,7 @@
         <!-- Header with correct answer highlight -->
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3 pb-2 border-bottom">
           <div class="d-flex align-items-center gap-2">
-            <span class="badge bg-info-subtle text-info border border-info-subtle px-2 py-1"><i class="bi bi-lightbulb-fill"></i> Detailed Solution</span>
+            <span class="badge bg-info-subtle text-info border border-info-subtle px-2 py-1"><i class="bi bi-lightbulb-fill"></i> Live Solution & Breakdown</span>
             ${statusBadge}
           </div>
         </div>
@@ -496,7 +493,7 @@
     `;
   }
 
-  // ── RENDER QUESTION ──
+  // ── RENDER QUESTION WITH LIVE CORRECTION ──
   function renderCurrentQuestion() {
     if (!state.questionDeck || state.questionDeck.length === 0) return;
 
@@ -507,12 +504,24 @@
     elements.currentQNum.textContent = `Question ${qNum}`;
     elements.questionText.textContent = q.question;
 
-    const isAnswered = state.answers[q.id] !== undefined;
+    const userAns = state.answers[q.id];
+    const isAnswered = userAns !== undefined;
+    const isCorrect = userAns === q.correctText;
     const isMarked = !!state.marked[q.id];
 
     if (isAnswered) {
-      elements.qStatusPill.textContent = 'Answered';
-      elements.qStatusPill.className = 'badge rounded-pill bg-success-subtle text-success border border-success-subtle px-2 py-1 small';
+      if (settings.liveCorrection) {
+        if (isCorrect) {
+          elements.qStatusPill.textContent = 'Correct ✓';
+          elements.qStatusPill.className = 'badge rounded-pill bg-success-subtle text-success border border-success-subtle px-2 py-1 small';
+        } else {
+          elements.qStatusPill.textContent = 'Incorrect ✗';
+          elements.qStatusPill.className = 'badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle px-2 py-1 small';
+        }
+      } else {
+        elements.qStatusPill.textContent = 'Answered';
+        elements.qStatusPill.className = 'badge rounded-pill bg-success-subtle text-success border border-success-subtle px-2 py-1 small';
+      }
     } else {
       elements.qStatusPill.textContent = 'Unanswered';
       elements.qStatusPill.className = 'badge rounded-pill bg-secondary-subtle text-secondary border px-2 py-1 small';
@@ -533,13 +542,28 @@
       const optionBtn = document.createElement('button');
       optionBtn.type = 'button';
       optionBtn.className = 'option-card-btn';
-      const isSelected = state.answers[q.id] === optText;
+      const isSelected = userAns === optText;
+      const isThisCorrect = optText === q.correctText;
 
-      if (isSelected) optionBtn.classList.add('selected');
+      let badgeLetter = letters[optIdx] || optIdx + 1;
+      let suffix = '';
+
+      if (isAnswered && settings.liveCorrection) {
+        if (isThisCorrect) {
+          optionBtn.classList.add('correct-choice');
+          suffix = ' <span class="badge bg-success ms-auto small">✓ Correct</span>';
+        } else if (isSelected && !isThisCorrect) {
+          optionBtn.classList.add('wrong-choice');
+          suffix = ' <span class="badge bg-danger ms-auto small">✗ Your Choice</span>';
+        }
+      } else if (isSelected) {
+        optionBtn.classList.add('selected');
+      }
 
       optionBtn.innerHTML = `
-        <span class="option-letter-badge">${letters[optIdx] || optIdx + 1}</span>
+        <span class="option-letter-badge">${badgeLetter}</span>
         <span class="option-text">${escapeHtml(optText)}</span>
+        ${suffix}
       `;
 
       optionBtn.addEventListener('click', () => {
@@ -549,10 +573,10 @@
       elements.optionsContainer.appendChild(optionBtn);
     });
 
-    // Practice Mode Instant Detailed Feedback at the Bottom
-    if (settings.practiceMode && isAnswered) {
+    // Show detailed explanation at bottom if answered
+    if (isAnswered && settings.liveCorrection) {
       elements.instantExplanationBox.classList.remove('d-none');
-      elements.instantExplanationBox.innerHTML = buildDetailedExplanationHtml(q, state.answers[q.id]);
+      elements.instantExplanationBox.innerHTML = buildDetailedExplanationHtml(q, userAns);
     } else {
       elements.instantExplanationBox.classList.add('d-none');
     }
@@ -603,7 +627,7 @@
     }
   }
 
-  // ── PALETTE GRID ──
+  // ── PALETTE GRID & LIVE SCORE ──
   function buildPaletteGrids() {
     [elements.questionsGridDesktop, elements.questionsGridMobile].forEach(gridEl => {
       if (!gridEl) return;
@@ -628,6 +652,8 @@
 
   function updatePaletteUI() {
     const total = state.questionDeck.length;
+    let correctCount = 0;
+    let wrongCount = 0;
     let answeredCount = 0;
     let markedCount = 0;
 
@@ -635,15 +661,22 @@
     const mobileBtns = elements.questionsGridMobile ? elements.questionsGridMobile.querySelectorAll('.q-grid-item-btn') : [];
 
     state.questionDeck.forEach((q, i) => {
-      const isAnswered = state.answers[q.id] !== undefined;
+      const userAns = state.answers[q.id];
+      const isAnswered = userAns !== undefined;
+      const isCorrect = userAns === q.correctText;
       const isMarked = !!state.marked[q.id];
       const isCurrent = state.currentIndex === i;
 
-      if (isAnswered) answeredCount++;
+      if (isAnswered) {
+        answeredCount++;
+        if (isCorrect) correctCount++;
+        else wrongCount++;
+      }
       if (isMarked) markedCount++;
 
       let isVisible = true;
-      if (activeFilter === 'answered' && !isAnswered) isVisible = false;
+      if (activeFilter === 'correct' && (!isAnswered || !isCorrect)) isVisible = false;
+      if (activeFilter === 'wrong' && (!isAnswered || isCorrect)) isVisible = false;
       if (activeFilter === 'marked' && !isMarked) isVisible = false;
       if (activeFilter === 'unanswered' && isAnswered) isVisible = false;
 
@@ -651,7 +684,13 @@
         if (btn) {
           btn.className = 'q-grid-item-btn';
           if (isCurrent) btn.classList.add('current');
-          if (isAnswered) btn.classList.add('answered');
+          
+          if (isAnswered && settings.liveCorrection) {
+            btn.classList.add(isCorrect ? 'grid-correct' : 'grid-wrong');
+          } else if (isAnswered) {
+            btn.classList.add('grid-answered');
+          }
+
           if (isMarked) btn.classList.add('marked');
           btn.style.display = isVisible ? 'flex' : 'none';
         }
@@ -660,12 +699,18 @@
 
     const unansweredCount = total - answeredCount;
 
-    if (elements.statAnsweredCount) elements.statAnsweredCount.textContent = answeredCount;
-    if (elements.statMarkedCount) elements.statMarkedCount.textContent = markedCount;
+    // Live navbar score
+    if (elements.liveCorrectCount) elements.liveCorrectCount.textContent = correctCount;
+    if (elements.liveWrongCount) elements.liveWrongCount.textContent = wrongCount;
+
+    // Desktop stats
+    if (elements.statCorrectCount) elements.statCorrectCount.textContent = correctCount;
+    if (elements.statWrongCount) elements.statWrongCount.textContent = wrongCount;
     if (elements.statUnansweredCount) elements.statUnansweredCount.textContent = unansweredCount;
 
-    if (elements.statAnsweredCountMobile) elements.statAnsweredCountMobile.textContent = answeredCount;
-    if (elements.statMarkedCountMobile) elements.statMarkedCountMobile.textContent = markedCount;
+    // Mobile stats
+    if (elements.statCorrectCountMobile) elements.statCorrectCountMobile.textContent = correctCount;
+    if (elements.statWrongCountMobile) elements.statWrongCountMobile.textContent = wrongCount;
     if (elements.statUnansweredCountMobile) elements.statUnansweredCountMobile.textContent = unansweredCount;
 
     if (elements.mobileAnsweredCount) elements.mobileAnsweredCount.textContent = answeredCount;
@@ -685,12 +730,23 @@
   // ── SUBMISSION & RESULTS ──
   function openSubmitModal() {
     const total = state.questionDeck.length;
-    const answeredCount = Object.keys(state.answers).length;
-    const markedCount = Object.keys(state.marked).filter(k => state.marked[k]).length;
+    let correctCount = 0;
+    let wrongCount = 0;
+    let answeredCount = 0;
+
+    state.questionDeck.forEach((q) => {
+      const userAns = state.answers[q.id];
+      if (userAns !== undefined) {
+        answeredCount++;
+        if (userAns === q.correctText) correctCount++;
+        else wrongCount++;
+      }
+    });
+
     const unansweredCount = total - answeredCount;
 
-    elements.modalAnsweredCount.textContent = answeredCount;
-    elements.modalMarkedCount.textContent = markedCount;
+    elements.modalCorrectCount.textContent = correctCount;
+    elements.modalWrongCount.textContent = wrongCount;
     elements.modalUnansweredCount.textContent = unansweredCount;
 
     if (unansweredCount > 0) {
@@ -891,10 +947,11 @@
       if (settingsModalInstance) settingsModalInstance.show();
     });
 
-    elements.settingPracticeMode.addEventListener('change', (e) => {
-      settings.practiceMode = e.target.checked;
+    elements.settingLiveCorrection.addEventListener('change', (e) => {
+      settings.liveCorrection = e.target.checked;
       saveSettings();
       renderCurrentQuestion();
+      updatePaletteUI();
     });
 
     elements.settingShuffleOptions.addEventListener('change', (e) => {

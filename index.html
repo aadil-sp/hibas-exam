@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>CPL Exam Prep Portal — Multi-Subject Mock Tests</title>
-  <meta name="description" content="Aviation CPL multi-subject mock examination portal. Practice MET, Air Law & Regulations with full 100-question test engines." />
+  <meta name="description" content="Aviation CPL multi-subject mock examination portal with live correction, instant explanations, and analytics." />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,9 +39,16 @@
         </a>
       </div>
 
-      <!-- Center / Right: Timer & Tools -->
+      <!-- Center / Right: Live Score, Timer & Tools -->
       <div class="d-flex align-items-center gap-2">
         
+        <!-- Live Score Pill (Quiz active only) -->
+        <div class="live-score-pill d-none align-items-center gap-2 px-2 py-1 rounded-pill" id="liveScoreBadge" title="Live Correct / Incorrect Score">
+          <span class="text-success fw-bold small"><i class="bi bi-check-circle-fill"></i> <span id="liveCorrectCount">0</span></span>
+          <span class="text-secondary opacity-50">|</span>
+          <span class="text-danger fw-bold small"><i class="bi bi-x-circle-fill"></i> <span id="liveWrongCount">0</span></span>
+        </div>
+
         <!-- Timer Badge (Quiz active only) -->
         <div class="timer-pill d-none align-items-center gap-1 px-3 py-1 rounded-pill" id="timerBadge">
           <i class="bi bi-stopwatch text-info"></i>
@@ -94,7 +101,7 @@
         </div>
         <h1 class="display-6 fw-bold font-display mb-2">Select Your Mock Examination</h1>
         <p class="text-secondary max-w-700 mx-auto mb-0">
-          Choose a subject section below to begin your full 100-question practice test or timed examination simulation.
+          Features live answer correction, in-depth explanations for every choice, and comprehensive score analytics.
         </p>
       </div>
 
@@ -103,14 +110,14 @@
         <!-- Rendered dynamically from EXAM_REGISTRY in questions.js -->
       </div>
 
-      <!-- Quick Info / Add Section Guide for User -->
+      <!-- Quick Info Guide -->
       <div class="card border-0 shadow-sm rounded-4 p-4 mt-4 bg-surface">
         <div class="d-flex align-items-start gap-3">
-          <div class="fs-3 text-info"><i class="bi bi-plus-circle-dotted"></i></div>
+          <div class="fs-3 text-info"><i class="bi bi-lightning-charge-fill text-warning"></i></div>
           <div>
-            <h2 class="h6 fw-bold mb-1">Adding More Subjects Is Completely Plug & Play</h2>
+            <h2 class="h6 fw-bold mb-1">Live Correction & Scoring Enabled</h2>
             <p class="small text-secondary mb-0">
-              Each test section runs independently on the same modular engine. To add another subject (like Navigation or Technical), simply append a new block to <code>window.EXAM_REGISTRY</code> in <code>questions.js</code>!
+              Answers are evaluated in real time upon selection with instant right/wrong visual feedback and deep breakdown explanations at the bottom, followed by a full score report upon completion.
             </p>
           </div>
         </div>
@@ -153,13 +160,9 @@
             <!-- Options populated dynamically -->
           </div>
 
-          <!-- Instant Feedback (Practice Mode) -->
-          <div class="alert alert-info border-info d-none mb-4" id="instantExplanationBox" role="alert">
-            <div class="d-flex align-items-center gap-2 mb-1">
-              <span class="badge" id="expResultBadge">Correct</span>
-              <strong class="small">Explanation & Concept:</strong>
-            </div>
-            <p class="small mb-0 lh-base text-secondary-emphasis" id="instantExpText"></p>
+          <!-- Instant Live Correction & Detailed Explanation at Bottom -->
+          <div class="d-none mb-4" id="instantExplanationBox">
+            <!-- Populated dynamically upon answering -->
           </div>
 
           <!-- Bottom Actions -->
@@ -186,7 +189,7 @@
 
               <div class="col-6 col-sm-3 order-4">
                 <button class="btn btn-success w-100 py-2 fw-semibold d-flex align-items-center justify-content-center gap-1" id="finishBtn" type="button">
-                  <i class="bi bi-flag-fill"></i> Finish
+                  <i class="bi bi-flag-fill"></i> Finish Exam
                 </button>
               </div>
 
@@ -205,18 +208,18 @@
             <span class="badge bg-info-subtle text-info" id="sidebarTotalBadge">100 Questions</span>
           </div>
 
-          <!-- Quick Stats -->
+          <!-- Quick Stats (Correct, Incorrect, Pending) -->
           <div class="row g-2 mb-3 text-center">
             <div class="col-4">
               <div class="p-2 rounded-3 bg-success-subtle border border-success-subtle">
-                <div class="fs-6 fw-bold text-success" id="statAnsweredCount">0</div>
-                <div class="text-secondary" style="font-size: 11px;">Done</div>
+                <div class="fs-6 fw-bold text-success" id="statCorrectCount">0</div>
+                <div class="text-secondary" style="font-size: 11px;">Correct (✓)</div>
               </div>
             </div>
             <div class="col-4">
-              <div class="p-2 rounded-3 bg-warning-subtle border border-warning-subtle">
-                <div class="fs-6 fw-bold text-warning" id="statMarkedCount">0</div>
-                <div class="text-secondary" style="font-size: 11px;">Marked</div>
+              <div class="p-2 rounded-3 bg-danger-subtle border border-danger-subtle">
+                <div class="fs-6 fw-bold text-danger" id="statWrongCount">0</div>
+                <div class="text-secondary" style="font-size: 11px;">Wrong (✗)</div>
               </div>
             </div>
             <div class="col-4">
@@ -230,8 +233,9 @@
           <!-- Filter Pills -->
           <div class="btn-group btn-group-sm w-100 mb-3" role="group">
             <button type="button" class="btn btn-outline-secondary p-filter-btn active" data-filter="all">All</button>
-            <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="answered">Done</button>
-            <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="marked">Marked</button>
+            <button type="button" class="btn btn-outline-success p-filter-btn" data-filter="correct">Correct</button>
+            <button type="button" class="btn btn-outline-danger p-filter-btn" data-filter="wrong">Wrong</button>
+            <button type="button" class="btn btn-outline-warning p-filter-btn" data-filter="marked">Marked</button>
             <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="unanswered">Pending</button>
           </div>
 
@@ -310,7 +314,7 @@
             <i class="bi bi-arrow-repeat"></i> Retake This Mock
           </button>
           <button class="btn btn-outline-danger px-4 py-2 fw-semibold" id="retakeMistakesBtn" type="button">
-            <i class="bi bi-bullseye"></i> Practice Mistakes
+            <i class="bi bi-bullseye"></i> Practice Mistakes Only
           </button>
           <button class="btn btn-outline-secondary px-3 py-2 fw-semibold" id="jumpToReviewBtn" type="button">
             <i class="bi bi-card-checklist"></i> View Solutions
@@ -357,14 +361,14 @@
       <div class="row g-2 mb-3 text-center">
         <div class="col-4">
           <div class="p-2 rounded-3 bg-success-subtle border border-success-subtle">
-            <div class="fs-6 fw-bold text-success" id="statAnsweredCountMobile">0</div>
-            <div class="text-secondary" style="font-size: 11px;">Done</div>
+            <div class="fs-6 fw-bold text-success" id="statCorrectCountMobile">0</div>
+            <div class="text-secondary" style="font-size: 11px;">Correct</div>
           </div>
         </div>
         <div class="col-4">
-          <div class="p-2 rounded-3 bg-warning-subtle border border-warning-subtle">
-            <div class="fs-6 fw-bold text-warning" id="statMarkedCountMobile">0</div>
-            <div class="text-secondary" style="font-size: 11px;">Marked</div>
+          <div class="p-2 rounded-3 bg-danger-subtle border border-danger-subtle">
+            <div class="fs-6 fw-bold text-danger" id="statWrongCountMobile">0</div>
+            <div class="text-secondary" style="font-size: 11px;">Wrong</div>
           </div>
         </div>
         <div class="col-4">
@@ -378,8 +382,9 @@
       <!-- Filter Buttons -->
       <div class="btn-group btn-group-sm w-100 mb-3" role="group">
         <button type="button" class="btn btn-outline-secondary p-filter-btn active" data-filter="all">All</button>
-        <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="answered">Done</button>
-        <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="marked">Marked</button>
+        <button type="button" class="btn btn-outline-success p-filter-btn" data-filter="correct">Correct</button>
+        <button type="button" class="btn btn-outline-danger p-filter-btn" data-filter="wrong">Wrong</button>
+        <button type="button" class="btn btn-outline-warning p-filter-btn" data-filter="marked">Marked</button>
         <button type="button" class="btn btn-outline-secondary p-filter-btn" data-filter="unanswered">Pending</button>
       </div>
 
@@ -391,7 +396,7 @@
       </div>
 
       <button class="btn btn-primary w-100 fw-semibold py-2" id="mobilePaletteSubmitBtn" type="button" data-bs-dismiss="offcanvas">
-        Submit Exam
+        Finish & Calculate Score
       </button>
 
     </div>
@@ -406,19 +411,19 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body py-3">
-          <p class="text-secondary small mb-3">Review your exam status before final score evaluation:</p>
+          <p class="text-secondary small mb-3">Review your final exam standing before concluding:</p>
 
           <div class="row g-2 text-center mb-3">
             <div class="col-4">
               <div class="p-2 rounded-3 bg-success-subtle border border-success-subtle">
-                <div class="h5 fw-bold text-success mb-0" id="modalAnsweredCount">0</div>
-                <div class="text-secondary" style="font-size: 11px;">Answered</div>
+                <div class="h5 fw-bold text-success mb-0" id="modalCorrectCount">0</div>
+                <div class="text-secondary" style="font-size: 11px;">Correct</div>
               </div>
             </div>
             <div class="col-4">
-              <div class="p-2 rounded-3 bg-warning-subtle border border-warning-subtle">
-                <div class="h5 fw-bold text-warning mb-0" id="modalMarkedCount">0</div>
-                <div class="text-secondary" style="font-size: 11px;">Marked</div>
+              <div class="p-2 rounded-3 bg-danger-subtle border border-danger-subtle">
+                <div class="h5 fw-bold text-danger mb-0" id="modalWrongCount">0</div>
+                <div class="text-secondary" style="font-size: 11px;">Incorrect</div>
               </div>
             </div>
             <div class="col-4">
@@ -435,7 +440,7 @@
         </div>
         <div class="modal-footer border-0 pt-0">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keep Answering</button>
-          <button type="button" class="btn btn-primary fw-semibold" id="modalConfirmBtn">Yes, Submit Exam</button>
+          <button type="button" class="btn btn-primary fw-semibold" id="modalConfirmBtn">Yes, Submit & View Score</button>
         </div>
       </div>
     </div>
@@ -455,11 +460,11 @@
             
             <div class="d-flex align-items-center justify-content-between p-2 rounded-3 border">
               <div>
-                <div class="fw-semibold small">Practice Mode (Instant Feedback)</div>
-                <div class="text-secondary" style="font-size: 11px;">Show explanations immediately upon choosing</div>
+                <div class="fw-semibold small">Live Instant Correction</div>
+                <div class="text-secondary" style="font-size: 11px;">Instantly show right/wrong & explanation after clicking</div>
               </div>
               <div class="form-check form-switch m-0">
-                <input class="form-check-input" type="checkbox" id="settingPracticeMode" role="switch" />
+                <input class="form-check-input" type="checkbox" id="settingLiveCorrection" role="switch" checked />
               </div>
             </div>
 

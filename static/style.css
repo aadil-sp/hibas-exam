@@ -1,6 +1,6 @@
 /* ══════════════════════════════════════════════════════════
    CPL EXAM PREP PORTAL — MULTI-SUBJECT STYLESHEET
-   Bootstrap 5.3 + Custom Responsive Aero Design
+   Bootstrap 5.3 + Live Correction & Aero Design
    ══════════════════════════════════════════════════════════ */
 
 :root {
@@ -92,6 +92,13 @@ body {
   white-space: nowrap;
 }
 
+.live-score-pill {
+  background: var(--bg-card-item);
+  border: 1px solid var(--border-item);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
 .timer-pill.timer-warning {
   border-color: var(--bs-danger);
   color: var(--bs-danger);
@@ -144,7 +151,7 @@ body {
   line-height: 1.5;
 }
 
-/* ═══════════ QUESTION CARD ═══════════ */
+/* ═══════════ QUESTION CARD & OPTIONS ═══════════ */
 .question-card {
   background-color: var(--bg-surface);
 }
@@ -169,7 +176,7 @@ body {
   user-select: none;
 }
 
-.option-card-btn:hover {
+.option-card-btn:hover:not(:disabled) {
   background: var(--bg-card-hover);
   border-color: var(--border-active);
   transform: translateY(-1px);
@@ -179,6 +186,31 @@ body {
   background: rgba(56, 189, 248, 0.12);
   border-color: var(--border-active);
   box-shadow: 0 0 0 1px var(--border-active);
+}
+
+/* Live Correction Options */
+.option-card-btn.correct-choice {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border-color: var(--bs-success) !important;
+  box-shadow: 0 0 0 1px var(--bs-success);
+}
+
+.option-card-btn.correct-choice .option-letter-badge {
+  background: var(--bs-success) !important;
+  color: #ffffff !important;
+  border-color: var(--bs-success) !important;
+}
+
+.option-card-btn.wrong-choice {
+  background: rgba(244, 63, 94, 0.15) !important;
+  border-color: var(--bs-danger) !important;
+  box-shadow: 0 0 0 1px var(--bs-danger);
+}
+
+.option-card-btn.wrong-choice .option-letter-badge {
+  background: var(--bs-danger) !important;
+  color: #ffffff !important;
+  border-color: var(--bs-danger) !important;
 }
 
 .option-letter-badge {
@@ -250,10 +282,23 @@ body {
   outline-offset: 1px;
 }
 
-.q-grid-item-btn.answered {
-  background: var(--bs-success);
-  border-color: var(--bs-success);
-  color: #ffffff;
+/* Live Colored Grid Buttons */
+.q-grid-item-btn.grid-correct {
+  background: var(--bs-success) !important;
+  border-color: var(--bs-success) !important;
+  color: #ffffff !important;
+}
+
+.q-grid-item-btn.grid-wrong {
+  background: var(--bs-danger) !important;
+  border-color: var(--bs-danger) !important;
+  color: #ffffff !important;
+}
+
+.q-grid-item-btn.grid-answered {
+  background: var(--bs-info) !important;
+  border-color: var(--bs-info) !important;
+  color: #ffffff !important;
 }
 
 .q-grid-item-btn.marked::after {
@@ -265,100 +310,9 @@ body {
   color: var(--bs-warning);
 }
 
-.q-grid-item-btn.marked.answered::after {
+.q-grid-item-btn.marked.grid-correct::after,
+.q-grid-item-btn.marked.grid-wrong::after {
   color: #ffffff;
-}
-
-/* ═══════════ RESULTS & REVIEW ═══════════ */
-.rev-item-card {
-  background: var(--bg-card-item);
-  border: 1px solid var(--border-item);
-  border-radius: 14px;
-  padding: 16px 20px;
-}
-
-.rev-item-card.is-correct {
-  border-left: 4px solid var(--bs-success);
-}
-
-.rev-item-card.is-incorrect {
-  border-left: 4px solid var(--bs-danger);
-}
-
-.rev-item-card.is-skipped {
-  border-left: 4px solid var(--bs-secondary);
-}
-
-.rev-opt-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-item);
-}
-
-.rev-opt-row.correct-ans {
-  background: var(--bs-success-bg-subtle);
-  border-color: var(--bs-success-border-subtle);
-  color: var(--bs-success-text-emphasis);
-  font-weight: 600;
-}
-
-.rev-opt-row.user-wrong {
-  background: var(--bs-danger-bg-subtle);
-  border-color: var(--bs-danger-border-subtle);
-  color: var(--bs-danger-text-emphasis);
-  font-weight: 600;
-}
-
-/* ═══════════ MOBILE REFINEMENTS ═══════════ */
-@media (max-width: 576px) {
-  .brand-title {
-    font-size: 0.98rem;
-  }
-
-  .brand-badge {
-    padding: 3px 6px;
-    font-size: 1rem;
-  }
-
-  .timer-pill {
-    padding: 3px 8px !important;
-    font-size: 0.78rem;
-  }
-
-  .btn-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 0.85rem;
-  }
-
-  .question-card {
-    padding: 16px !important;
-  }
-
-  .question-text-wrap h2 {
-    font-size: 1rem;
-  }
-
-  .option-card-btn {
-    padding: 12px 14px;
-    gap: 10px;
-  }
-
-  .option-card-btn .option-text {
-    font-size: 0.88rem;
-  }
-
-  .option-letter-badge {
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-    font-size: 0.75rem;
-  }
 }
 
 /* ═══════════ DETAILED EXPLANATION CARDS ═══════════ */
@@ -423,4 +377,96 @@ body {
   font-size: 0.88rem;
   color: var(--text-active);
   font-weight: 600;
+}
+
+/* ═══════════ RESULTS & REVIEW ═══════════ */
+.rev-item-card {
+  background: var(--bg-card-item);
+  border: 1px solid var(--border-item);
+  border-radius: 14px;
+  padding: 16px 20px;
+}
+
+.rev-item-card.is-correct {
+  border-left: 4px solid var(--bs-success);
+}
+
+.rev-item-card.is-incorrect {
+  border-left: 4px solid var(--bs-danger);
+}
+
+.rev-item-card.is-skipped {
+  border-left: 4px solid var(--bs-secondary);
+}
+
+.rev-opt-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-item);
+}
+
+.rev-opt-row.correct-ans {
+  background: var(--bs-success-bg-subtle);
+  border-color: var(--bs-success-border-subtle);
+  color: var(--bs-success-text-emphasis);
+  font-weight: 600;
+}
+
+.rev-opt-row.user-wrong {
+  background: var(--bs-danger-bg-subtle);
+  border-color: var(--bs-danger-border-subtle);
+  color: var(--bs-danger-text-emphasis);
+  font-weight: 600;
+}
+
+/* ═══════════ MOBILE REFINEMENTS ═══════════ */
+@media (max-width: 576px) {
+  .brand-title {
+    font-size: 0.98rem;
+  }
+
+  .brand-badge {
+    padding: 3px 6px;
+    font-size: 1rem;
+  }
+
+  .timer-pill, .live-score-pill {
+    padding: 3px 8px !important;
+    font-size: 0.78rem;
+  }
+
+  .btn-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .question-card {
+    padding: 16px !important;
+  }
+
+  .question-text-wrap h2 {
+    font-size: 1rem;
+  }
+
+  .option-card-btn {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .option-card-btn .option-text {
+    font-size: 0.88rem;
+  }
+
+  .option-letter-badge {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    font-size: 0.75rem;
+  }
 }
